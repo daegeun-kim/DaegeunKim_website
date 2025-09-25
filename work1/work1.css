@@ -1,0 +1,384 @@
+/* =========================================================
+  Base
+   ========================================================= */
+html, body { 
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #141414;
+}
+
+/* =========================================================
+  Global Map Layers (fixed behind content)
+  ========================================================= */
+#map {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+#map.is-visible { opacity: 1; }
+
+#map-dimmer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+/*-----------------------------------------------------------------*/
+/* Header --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.header #name {
+  font-size: 23px;
+}
+.subpage {
+  background: transparent;
+  font-size: 20px;
+  text-align: left;
+  border: none;
+  color: #7e7e7e;
+}
+.nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.header {
+  height: 73.3px;
+  font-family: Helvetica, Arial, sans-serif;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;            /* full width */
+  margin: 0 auto;      /* centers the 1000px box inside */
+  max-width: 1000px;   /* keep it constrained to 1000px */
+  z-index: 1000;
+}
+
+.header.hidden {
+  transform: translateY(-120%);
+}
+
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
+}
+
+
+/* =========================================================
+  Section: Title
+  ========================================================= */
+.title {
+  position: relative;
+  height: 100vh;
+  padding-bottom: 30vh;
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,1) 40%,
+    rgba(0,0,0,0) 90%
+  );
+  z-index: 1;
+}
+
+.title-content {
+  position: reladtive;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 5rem;
+  padding: 6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: left;
+}
+
+#title {
+  font-size: 4vw;
+  color: #ffffff;
+  margin: 0;
+  padding-bottom: 3vw;
+}
+#name {
+  font-size: 1.5vw;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+#detail {
+  font-size: 1.5vw;
+  color: #5e5e5e;
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+/* =========================================================
+  Section: Intro
+  ========================================================= */
+
+.intro {
+  position: relative;
+  height: 100vh;
+  padding-bottom: 30vh;
+  overflow: hidden;
+}
+
+/* masked background only (keeps children full-bright) */
+.intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  -webkit-mask-image:
+    linear-gradient(to right, #fff 0%, #fff 40%, transparent 90%),
+    linear-gradient(to bottom, #fff 0%, #fff 60%, transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-image:
+    linear-gradient(to right, #fff 0%, #fff 40%, transparent 90%),
+    linear-gradient(to bottom, #fff 0%, #fff 60%, transparent 100%);
+          mask-composite: intersect;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.masked-bg { 
+  position: absolute; 
+  inset: 0; 
+  overflow: hidden; 
+}
+
+/* fixed overlay (aligned with global map) */
+#map-overlays {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+#map-overlays.is-visible { opacity: 1; }
+
+#intro-title {
+  font-size: 2vw;
+  color: #bbc4c7;
+  line-height: 1.2;
+  z-index: 1;
+}
+#intro { padding-top: 15vw; }
+#intro, #description {
+  position: relative;
+  z-index: 1;
+  height: auto;
+  width: 36vw;
+  font-size: 1vw;
+  line-height: 1.6;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 6rem;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #cfcfcf;
+  margin-top: 2rem;
+}
+#description {
+  font-size: 1vw;
+  padding-top: 2vw;
+  color: #a9a9a9;
+}
+
+/* =========================================================
+  Map Canvas Defaults (keep current behavior)
+  ========================================================= */
+#map, #map canvas, .mapboxgl-canvas {
+  filter: none;
+  opacity: 1;               /* preserves current always-visible map */
+  mix-blend-mode: normal;
+}
+
+
+
+/* =========================================================
+  Spotlight
+  ========================================================= */
+.map-spotlight {
+  position: relative;
+  height: 100vh;
+  margin-bottom: 35vh;      /* keep for your dots */
+}
+#source {
+  font-size: 1.6vw;
+  position: relative;
+  font-family: Helvetica, Arial, sans-serif;
+  padding-top: 10vh;
+  margin-left: 7rem;
+  z-index: 5;
+  color: #cfcfcf;
+}
+#source-text {
+  font-size: 0.8vw;
+  position: relative;
+  font-family: Helvetica, Arial, sans-serif;
+  max-width: 30vw;
+  margin-left: 7rem;
+  line-height: 1.5;
+  text-align: justify;
+  z-index: 5;
+  color: #cfcfcf;
+  margin-bottom: 5vh;
+  border-bottom: 3px solid #7a7d80;
+}
+#spotlight-text {
+  position: relative;
+  z-index: 4; 
+  height: 100%;              /* fill the 100vh section */
+  display: grid;
+  /* align-content: center;   */
+  justify-content: start;    /* left-align horizontally */
+  left: 7rem;                /* your left inset */
+  max-width: 30vw;
+  margin: 0;                 /* remove 30rem top margin */
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.8vw;
+  line-height: 1.5;
+  text-align: justify;
+  color: #cfcfcf;
+}
+#caption {
+  font-size: 1.6vw;
+  max-width: 60vw;
+  color: #cfcfcf;
+}
+
+/* show only the current step */
+#spotlight-text .step { display: none; }
+#spotlight-text .step.active { display: block; }
+
+.source-button {
+  position: absolute;
+  display: flex;
+  flex-direction: column;     /* stack buttons top-to-bottom */
+  align-items: flex-end;      /* align each button’s right edge */
+
+  top: 50%;                   /* vertical midpoint of section */
+  right: 11vw;                /* inset from right */
+  transform: translateY(-50%);/* true vertical centering */
+
+  font-size: 1.6vw;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 0.5em 1em;
+  z-index: 6;
+}
+.source-button button {
+  background-color: rgba(255, 255, 255, 0.06); /* transparent white overlay */
+  backdrop-filter: blur(8px);                 /* blur whatever is behind */
+  -webkit-backdrop-filter: blur(8px);         /* Safari support */
+  border: 0px;
+  margin: 0.3em 0;            /* vertical spacing between buttons */
+  text-align: right;          /* text aligned to the right edge */
+  padding: 6px;
+  text-align: center;
+  width: 17vw;
+  padding: 8px;
+  font-size: 0.8vw;
+  border-radius: 50vh;
+  color: #cfcfcf;
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+.source-button button:hover {
+  transform: translateY(4px);
+  transition: transform 0.15s ease;
+}
+.source-button button.active {
+  background-color: #e2e2e2;
+  font-weight: bold;
+  color: #141414;
+  border: 1px solid #141414;
+}
+
+
+
+.cluster {
+  background: transparent;
+  background-repeat: no-repeat;
+  background-size: 100% auto;                     /* fit width, keep aspect ratio */
+  background-position: bottom center; 
+  position: relative;
+  height: 100vh;
+  z-index: 6;        
+  padding: 2rem 5rem;    
+  font-family: Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: left;
+}
+.svg-wrap {
+  position: relative;   /* or absolute if you want it floating */
+  width: 50vw;        /* lock size so siblings can’t change it */
+  height: 40vh;
+}
+#nodelink {
+  width: 100%; height: 100%;
+  display: block;       /* removes inline SVG baseline gap */
+}
+.cluster-des {
+  position: relative;
+  z-index: 2;           /* above background, below svg */
+  width: 30vw;
+  margin-left: 5rem;
+  margin-top: 3vh;
+  color: #cfcfcf;
+  font-size: 0.7vw;
+  line-height: 1.3;
+  text-align: justify;
+}
+.cluster-des > div {
+  display: none;      /* hide all by default */
+}
+.cluster-des > div.active {
+  display: block;     /* only the active one shows */
+}
+
+.notes { margin-top: 1rem; }
+.cluster#bg-evolutionary  { background-image: url("cluster_evolutionary.png"); }
+.cluster#bg-architectural { background-image: url("cluster_architectural.png"); }
+.cluster#bg-socio         { background-image: url("cluster_sociospatial.png"); }
+.cluster#bg-economic      { background-image: url("cluster_ecofin.png"); }
+
+g.label.button:hover {
+  transform: translateY(4px);
+  transition: transform 0.15s ease;
+}
+g.label.active rect {
+  fill: #d3d3d3;
+  stroke: #ffffff;
+}
+g.label.active text {
+  fill: #000000;
+  font-weight: 500;
+}
+
+
+
+.cluster-img {
+  z-index: 2;}
+#map {
+  transition: opacity 0.5s ease;
+}

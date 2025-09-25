@@ -1,0 +1,44 @@
+{
+  "nodes": [
+    { "id": "Building Stories", "group": "original data" },
+    { "id": "Building Construction Year", "group": "original data" },
+    { "id": "Building Height", "group": "original data" },
+    { "id": "Time to Closest Subway Station", "group": "original data" },
+    { "id": "Average Property Value", "group": "original data" },
+    { "id": "Property Value Per Sqft", "group": "original data" },
+    { "id": "Property Value Increase 2024-2025", "group": "original data" },
+    { "id": "Building Class", "group": "original data" },
+    { "id": "Elevator Access", "group": "original data" },
+    { "id": "Residential Gross Area", "group": "original data" },
+    { "id": "Residential Area Share", "group": "original data" },
+
+    { "id": "Socio Spatial Clusters", "group": "cluster" },
+    { "id": "Architectural Clusters", "group": "cluster" },
+    { "id": "Evolutionary Clusters", "group": "cluster" },
+    { "id": "Economic Financial Clusters", "group": "cluster" }
+  ],
+
+  "links": [
+    { "source": "Elevator Access", "target": "Socio Spatial Clusters", "value": 1 },
+    { "source": "Property Value Per Sqft", "target": "Socio Spatial Clusters", "value": 1 },
+    { "source": "Time to Closest Subway Station", "target": "Socio Spatial Clusters", "value": 1 },
+    { "source": "Building Height", "target": "Socio Spatial Clusters", "value": 1 },
+    { "source": "Residential Area Share", "target": "Socio Spatial Clusters", "value": 1 },
+
+    { "source": "Building Construction Year", "target": "Evolutionary Clusters", "value": 1 },
+    { "source": "Building Height", "target": "Evolutionary Clusters", "value": 1 },
+    { "source": "Property Value Per Sqft", "target": "Evolutionary Clusters", "value": 1 },
+    { "source": "Building Class", "target": "Evolutionary Clusters", "value": 1 },
+
+    { "source": "Building Stories", "target": "Economic Financial Clusters", "value": 1 },
+    { "source": "Average Property Value", "target": "Economic Financial Clusters", "value": 1 },
+    { "source": "Property Value Per Sqft", "target": "Economic Financial Clusters", "value": 1 },
+    { "source": "Property Value Increase 2024-2025", "target": "Economic Financial Clusters", "value": 1 },
+
+    { "source": "Building Height", "target": "Architectural Clusters", "value": 1 },
+    { "source": "Building Stories", "target": "Architectural Clusters", "value": 1 },
+    { "source": "Elevator Access", "target": "Architectural Clusters", "value": 1 },
+    { "source": "Residential Gross Area", "target": "Architectural Clusters", "value": 1 },
+    { "source": "Residential Area Share", "target": "Architectural Clusters", "value": 1 }
+  ]
+}

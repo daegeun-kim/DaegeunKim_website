@@ -1,0 +1,175 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 1000px;
+  font-size: 16px;
+  margin: 10px auto;
+  font-family: Helvetica, Arial, sans-serif;
+  padding-top: 68px;
+}
+
+/*-----------------------------------------------------------------*/
+/* Header --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.header #name {
+  font-size: 23px;
+}
+.subpage {
+  background: transparent;
+  font-size: 20px;
+  text-align: left;
+  border: none;
+  color: #6d6d6d;
+}
+.nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.header {
+  background: #ffffffb9;    /* #f4ede8 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 1000px;
+  z-index: 1000;
+}
+
+.header.hidden {
+  transform: translateY(-120%);
+}
+
+/* Only animate header when the `.animate` class is present (added after load) */
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
+}
+
+/*-----------------------------------------------------------------*/
+/* Content --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.main-image {
+  height: 640px;
+  background: url('Cruciform12.JPG') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 0px;
+}
+.title {
+  color:black;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.intro {
+  margin: 30px 0;
+  margin-bottom: 130px;
+  color: #6d6d6d;
+}
+.section-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 90px 0 20px 0;
+  color: black;
+}
+.design-logic {
+  height: 1000px;
+  background: url('Cruciform.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.threedata {
+  height: 720px;
+  background: url('rhinodata.jpg') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 60px;
+}
+.dataset {
+  display: flex;
+  gap: 30px;
+  height: 530px;
+  padding: 0 2px 0 2px;
+}
+.dataset .text {
+  width: 600px;
+}
+.dataset #dataset-image {
+  width: 370px;
+  background: url('initial-data.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+
+.plan {
+  height: 250px;
+  background: url('plan.png') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+}
+.outcome {
+  height: 400px;
+  display: flex;
+  gap: 20px;
+}
+.histogram {
+  width: 700px;
+  background: url('histogram.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+.analysis {
+  width: 300px;
+}
+dl.grid {
+  display: grid;
+  grid-template-columns: auto max-content;
+  column-gap: 8px;
+  row-gap: 5px;
+  max-width: 720px;
+  margin: 0;
+}
+dd {
+  color: rgb(237, 0, 0);
+  margin: 0;
+  font-weight: 800;
+}
+dt.section {
+  grid-column: 1 / -1; 
+  margin-top: 12px;
+}
+dt.section + dd { display: none; }
+
+.text {
+  color: #575757;
+  line-height: 1.55;
+}
+.lower-manhattan {
+  height: 500px;
+  background: url('lower-manhattan.png') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.midtown {
+  height: 500px;
+  background: url('midtown.png') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.upper-manhattan {
+  height: 500px;
+  background: url('upper-manhattan.png') no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}

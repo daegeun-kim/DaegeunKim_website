@@ -1,0 +1,130 @@
+body {
+  background: #fdf4e3;    /* #f4ede8 */
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 1000px;
+  font-size: 18px;
+  margin: 10px auto;
+  font-family: Helvetica, Arial, sans-serif;
+  padding-top: 68px;
+}
+
+/*-----------------------------------------------------------------*/
+/* Header --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.header #name {
+  font-size: 23px;
+}
+.subpage {
+  background: transparent;
+  font-size: 20px;
+  text-align: left;
+  border: none;
+  color: #6d6d6d;
+}
+.nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.header {
+  background: #fdf4e3b9;    /* #f4ede8 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 1000px;
+  z-index: 1000;
+}
+
+.header.hidden {
+  transform: translateY(-120%);
+}
+
+/* Only animate header when the `.animate` class is present (added after load) */
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
+}
+
+/*-----------------------------------------------------------------*/
+/* Intro --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.intro {
+  margin: 100px 0;
+  color: #6d6d6d;
+}
+.bigname {
+  font-size: 80px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #000000;
+}
+.bigname-description {
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-weight: normal;
+  color: #6d6d6d;
+  }
+
+/*-----------------------------------------------------------------*/
+/* Work --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.work {
+  display: flex;
+  gap: 30px;
+  height: 200px;
+  padding: 0 2px 0 2px;
+}
+.work-title {
+  font-size: 25px;
+  color: #000000;
+}
+.image {
+  border:#6d6d6d solid 1px;
+  height: 500px;
+  margin-bottom: 20px;
+  border-radius: 25px;
+}
+.work-text {
+  width: 800px;
+  color: #6d6d6d;
+}
+.work-tool {
+  width: 200px;
+  font-size: 15px;
+  color: #134686;
+  text-align: right;
+}
+#work1-image {
+  background: url('image/clusters.png') no-repeat center center;
+  background-size: cover;
+}
+#work2-image {
+  background: url('image/work2.png') no-repeat center center;
+  background-size: cover;
+}
+#work3-image {
+  background: url('image/work3.png') no-repeat center center;
+  background-size: cover;
+}
+#work4-image {
+  background: url('image/work4.png') no-repeat center center;
+  background-size: cover;
+}
+#work5-image {
+  background: url('image/work5.png') no-repeat center center;
+  background-size: cover;
+}
+#work6-image {
+  background: url('image/work6.png') no-repeat center center;
+  background-size: cover;
+}

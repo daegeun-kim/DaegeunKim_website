@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="work3/work3.css" rel="stylesheet"/> 
+    <title>Page Title</title>
+</head>
+<body>
+  <main>                                                        
+    <div class="header" id="header">
+      <p id="name"><b>Daegeun Kim</b></p>
+      <div class="nav">
+        <a href="index.html"><button class="subpage" id="subpage1"><b>Works</b></button></a>
+        <a href="photography.html"><button class="subpage" id="subpage2">Photography</button></a>
+        <a href="artworks.html"><button class="subpage" id="subpage3">Resume</button></a>
+        <a href="about.html"><button class="subpage" id="subpage4">About</button></a>
+      </div>
+    </div>
+    <div class="main-image"></div>
+
+    <div class="intro">
+      <span class="title">Manhattan Transit Accessibility Mapping</span><br>
+      <p>
+        Summer 2025<br>
+        Parametric Modeling<br>
+        Shortest-Path Calculation<br>
+        Urban Data Visualization<br>
+        <br>
+        Tools:<br>
+        Python: (Data Preparation & Wrangling)<br>
+        Rhino + Grasshopper (Data Modeling & Visualization)<br>
+      </p>
+    </div>
+    <p class="section-title">Flow Chart</p>
+    <div class="flow-chart"></div>
+    <p class="section-title">Datasets</p>
+    <div class="threedata"></div>
+    <div class="dataset">
+      <div class="text">
+        <b>1. NYC Subway Station Location Data (geojson)</b><br>
+        Source: NYC.gov NYC 3D Model by Community District<br>
+        Use: For Locating subway station as points<br><br>
+        <b>2. NYC Pedestrian Street Network Data</b><br>
+        Source: OpenStreetMap<br>
+        Use: For creating street network for distance calculation<br><br>
+        <b>3. Manhattan Building Footprint Data (geojson)</b><br>
+        Source: NYC OpenData BUILDINGS<br>
+        Use: For building geometry generation<br><br>
+        <b>4. Manhattan Building Height Data (csv)</b><br>
+        Source: NYC OpenData BUILDINGS<br>
+        Use: For building geometry generation<br><br>
+        <b>5. Manhattan Building Volume Data (csv)</b><br>
+        Source: NYC OpenData BUILDINGS<br>
+        Use: For calculating weighted average on building floor area<br><br>
+      </div>
+      <div id="dataset-image"></div>
+    </div>
+    <p class="section-title">Outcome & Statistics</p>
+    <div class="plan"></div>
+    <div class="outcome">
+      <div class="histogram"></div>
+      <div class="analysis">
+        <p>
+        <dl class="grid">
+          <p><b>Statistical Summary:</b><p>
+          <dt>Average Walking Time:</dt>  <dd>5.132 min</dd>
+          <dt>Median Walking Time:</dt>   <dd>4.687 min</dd>
+          <dt>Maximum Walking Time:</dt>  <dd>21.18 min</dd>
+
+          <dt class="section">% of buildings with</dt><dd></dd>
+          <dt>Less than 5 min:</dt>       <dd>55.40%</dd>
+          <dt>Between 5 and 10 min:</dt>  <dd>39.45%</dd>
+          <dt>More than 10 min:</dt>      <dd>5.15%</dd>
+        </dl>
+        </p>
+      </div>
+    </div>
+
+    <p class="section-title">Regional Analysis</p>
+    <div class="lower-manhattan"></div>
+    <p class="text">Lower Manhattan has the highest concentration of subway stations, while the East Village has the lowest.
+      Almost all of the buildings in financial district is withint 3 minutes of walking time to the station, while
+      majority of the buildings in East Village requires up to 20 minutes of walking time to the nearest subway station.</p>
+    <div class="midtown"></div>
+    <p class="text">Midtown shows a clear contrast between the densely served central area and the less connected waterfront zones. 
+      Due to the concentrated subway stations in the commercial districts, residential regions are underprivileged for transit access.</p>
+    <div class="upper-manhattan"></div>
+    <p class="text">Upper Manhattan shows most even distribution of subway stations. Majority of the buildings are withint 15 minutes 
+      walking time to the station, even for buildings closer to the waterfront.</p>
+  </main>
+  <script src="main.js"></script>  
+</body>
+</html>
