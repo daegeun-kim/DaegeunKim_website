@@ -111,10 +111,34 @@ if (window.map) {
 }
 
 // ===== Init =====
+// (async function initSpotlight() {
+//   await preloadSlides();
+//   renderSlide(0);
+//   if (window.map && map.loaded()) positionCurrentImage();
+// })();
+
+// ===== Init =====
+function waitForMapReady() {
+  return new Promise(resolve => {
+    if (window.map && map.loaded()) return resolve();
+    window.addEventListener("map:ready", resolve, { once: true });
+  });
+}
+
 (async function initSpotlight() {
+  // preload images early, but don't show yet
   await preloadSlides();
+
+  // wait until the map is ready (idle)
+  await waitForMapReady();
+
+  // now safe to wire map events and show the first slide
+  map.on("move", positionCurrentImage);
+  window.addEventListener("resize", positionCurrentImage);
+
   renderSlide(0);
-  if (window.map && map.loaded()) positionCurrentImage();
+  positionCurrentImage();
 })();
+
 
 

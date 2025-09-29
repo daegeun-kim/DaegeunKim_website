@@ -66,8 +66,8 @@ main {
 /*-----------------------------------------------------------------*/
 
 .main-image {
-  height: 700px;
-  background: url('title.png') no-repeat center center;
+  height: 600px;
+  background: url('Spiral Dwelling.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 0px;
@@ -80,7 +80,7 @@ main {
 }
 .intro {
   margin: 30px 0;
-  margin-bottom: 130px;
+  margin-bottom: 60px;
   color: #6d6d6d;
 }
 .text {
@@ -94,20 +94,157 @@ main {
   margin: 90px 0 20px 0;
   color: black;
 }
-.design-logic {
+.robotic {
   height: 1000px;
-  background: url('Cruciform.jpg') no-repeat center center;
+  background: url('Spiral Dwelling3.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
-.egressdistance {
+
+.robotic {
+  position: relative; /* containing block for absolutely positioned text */
+}
+
+.robotic .text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 350px; /* fixed width as requested */
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.0); /* transparent by default; change if you want a backdrop */
+}
+.tonglau {
+  margin-top: 50px;
+  clear: both;
+  height: 1000px;
+  background: url('Spiral Dwelling4.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.stacking {
+  margin-top: 50px;
+  clear: both;
+  height: 300px;
+  background: url('Spiral Dwelling5.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.comparison {
+  margin-top: 50px;
+  clear: both;
+  height: 700px;
+  background: url('Spiral Dwelling2.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.generative {
+  margin-top: 50px;
+  clear: both;
+  height: 800px;
+  background: url('Spiral Dwelling6.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.pinwheel {
+  margin-top: 50px;
+  clear: both;
+  height: 1100px;
+  background: url('Spiral Dwelling7.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.cluster {
+  margin-top: 50px;
+  clear: both;
+  height: 1100px;
+  background: url('Spiral Dwelling8.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.circulation {
+  margin-top: 50px;
+  clear: both;
+  height: 750px;
+  background: url('Spiral Dwelling9.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.circulation .text {
+  line-height: 1.4;
+  height: 160px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 450px; 
+  box-sizing: border-box;
+}
+.site {
   display: flex;
   gap: 30px;
-  height: 530px;
-  padding: 0 2px 0 2px;
-  align-items: stretch; 
+  align-items: flex-start;
+  flex-wrap: nowrap;
 }
+.siteplan {
+  margin-top: 50px;
+  clear: both;
+  height: 900px;
+  background: url('Spiral Dwelling10.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.site .text {
+  margin-top: 50px;
+  box-sizing: border-box;
+  padding: 16px;
+  flex: 1 1 0;
+  min-width: 300px;
+}
+.siteplan {
+  flex: 0 0 600px;
+}
+.section {
+  margin-top: 50px;
+  clear: both;
+  height: 900px;
+  background: url('Spiral Dwelling11.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #egress {
   width: 300px;

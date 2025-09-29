@@ -30,6 +30,15 @@ main {
   gap: 40px;
   align-items: center;
 }
+
+.nav .subpage {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav .subpage:hover {
+  transform: translateY(3px);
+}
 .header {
   background: #ffffffb9;    /* #f4ede8 */
   display: flex;
@@ -172,4 +181,10 @@ dt.section + dd { display: none; }
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;
+}
+.footer {
+  font-size: 15px;
+  line-height: 1.5;
+  height: 200px;
+  margin: 100px 0 0 0;
 }

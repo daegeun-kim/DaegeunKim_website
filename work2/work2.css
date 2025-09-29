@@ -28,6 +28,15 @@ body {
   gap: 40px;
   align-items: center;
 }
+
+.nav .subpage {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav .subpage:hover {
+  transform: translateY(3px);
+}
 .header {
   height: 73.3px;
   font-family: Helvetica, Arial, sans-serif;
@@ -312,4 +321,11 @@ footer {
   font-size: 1.5rem;
   margin-bottom: 200px;
   color: #000000;
+}
+
+.footer {
+  font-size: 15px;
+  line-height: 1.5;
+  height: 200px;
+  margin: 100px 0 0 0;
 }

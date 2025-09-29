@@ -12,9 +12,12 @@
       <p id="name"><b>Daegeun Kim</b></p>
       <div class="nav">
         <a href="index.html"><button class="subpage" id="subpage1"><b>Works</b></button></a>
-        <a href="photography.html"><button class="subpage" id="subpage2">Photography</button></a>
-        <a href="artworks.html"><button class="subpage" id="subpage3">Resume</button></a>
-        <a href="about.html"><button class="subpage" id="subpage4">About</button></a>
+        <a href="https://drive.google.com/file/d/1phvI6we6ZPI1DQJBmqCvIJlCcnFChQFu/view?usp=drive_link" target="_blank">
+          <button class="subpage" id="subpage4">Resume</button>
+        </a>
+        <a href="https://www.linkedin.com/in/daegeun-kim-5449632a1/" target="_blank">
+          <button class="subpage" id="subpage4">LinkedIn</button>
+        </a>
       </div>
     </div>
     <div class="main-image"></div>
@@ -41,60 +44,49 @@
       This approach prioritizes efficiency and speed of construction but overlooks the diverse lifestyles and needs of residents. The uniformity of the design reflects a 
       one-size-fits-all mindset, failing to adapt to the varying demands of Hong Kong's dynamic population.
     </div>
-    <p class="section-title">Datasets</p>
-    <div class="threedata"></div>
-    <div class="dataset">
-      <div class="text">
-        <b>1. NYC Subway Station Location Data (geojson)</b><br>
-        Source: NYC.gov NYC 3D Model by Community District<br>
-        Use: For Locating subway station as points<br><br>
-        <b>2. NYC Pedestrian Street Network Data</b><br>
-        Source: OpenStreetMap<br>
-        Use: For creating street network for distance calculation<br><br>
-        <b>3. Manhattan Building Footprint Data (geojson)</b><br>
-        Source: NYC OpenData BUILDINGS<br>
-        Use: For building geometry generation<br><br>
-        <b>4. Manhattan Building Height Data (csv)</b><br>
-        Source: NYC OpenData BUILDINGS<br>
-        Use: For building geometry generation<br><br>
-        <b>5. Manhattan Building Volume Data (csv)</b><br>
-        Source: NYC OpenData BUILDINGS<br>
-        Use: For calculating weighted average on building floor area<br><br>
+    <div class="egressdistance">
+      <div class="egressimage" aria-hidden="true"></div>
+      <div class="text" id="egress">
+        <span>
+          <b>Egress Travel Distance Analysis</b><br><br>
+          Code of Practice for The Provision of Means of Escape in Case of Fire by Building Authority of Hong Kong states that for buildings with 2 staircases where the exit route
+          is not along balcony approach should be 30m Maximum. The analysis shows that the maximum egress travel distance for Concord 1 type is far below 30m, thanks to its efficient
+          radial layout, leaving much more room for extension of floor area.
+        </span>
       </div>
-      <div id="dataset-image"></div>
     </div>
-    <p class="section-title">Outcome & Statistics</p>
+    <div class="isoperi"></div>
+    <div class="text">
+      <b>Residential Unit Perimeter Research and Variation</b><br><br>
+      Research shows that as the climate warms, building perimeters tend to increase relative to their area, as measured by the isoperimetric quotient. <br><br>
+      Iterative tests on the Concord 1 residential units adjusted their external perimeters, revealing key trade-offs. Larger perimeters improve natural ventilation but also increase heat loss and spatial inefficiency. These changes impact privacy, circulation, and insulation, requiring a careful balance between thermal performance, ventilation, and space utilization.
+    </div>
     <div class="plan"></div>
-    <div class="outcome">
-      <div class="histogram"></div>
-      <div class="analysis">
-        <p>
-        <dl class="grid">
-          <p><b>Statistical Summary:</b><p>
-          <dt>Average Walking Time:</dt>  <dd>5.132 min</dd>
-          <dt>Median Walking Time:</dt>   <dd>4.687 min</dd>
-          <dt>Maximum Walking Time:</dt>  <dd>21.18 min</dd>
-
-          <dt class="section">% of buildings with</dt><dd></dd>
-          <dt>Less than 5 min:</dt>       <dd>55.40%</dd>
-          <dt>Between 5 and 10 min:</dt>  <dd>39.45%</dd>
-          <dt>More than 10 min:</dt>      <dd>5.15%</dd>
-        </dl>
-        </p>
-      </div>
+    <div class="text">
+      <b>Plan Arrangement</b><br><br>
+      The next generation of crucifix towers is designed by attaching finalized unit clusters to a central core. These clusters form a cohesive community within a single residential tower, 
+      creating a new identity through the integration of units, communal spaces, structural systems, and circulation pathways. While introducing innovation, the design retains the traditional 
+      principle of cruciform towers: units are connected to the central core via the shortest horizontal circulation routes.
     </div>
-
-    <p class="section-title">Regional Analysis</p>
-    <div class="lower-manhattan"></div>
-    <p class="text">Lower Manhattan has the highest concentration of subway stations, while the East Village has the lowest.
-      Almost all of the buildings in financial district is withint 3 minutes of walking time to the station, while
-      majority of the buildings in East Village requires up to 20 minutes of walking time to the nearest subway station.</p>
-    <div class="midtown"></div>
-    <p class="text">Midtown shows a clear contrast between the densely served central area and the less connected waterfront zones. 
-      Due to the concentrated subway stations in the commercial districts, residential regions are underprivileged for transit access.</p>
-    <div class="upper-manhattan"></div>
-    <p class="text">Upper Manhattan shows most even distribution of subway stations. Majority of the buildings are withint 15 minutes 
-      walking time to the station, even for buildings closer to the waterfront.</p>
+    <div class="view">
+      <div class='text' id='view'>
+        <p><b>Visibility Analysis</b><br><br>
+        One of the important reason for a crucifix type plan is that it ensures a good view from all of the units evenly. However, the problem with Concord 1 type housing is 
+        that it is possible to see from one unit to another, hindering the privacy. The new plan suggests to rotate the rooms 45degree alternatively, so that the view from 
+        adjacent rooms are parallel to each other, ensuring a much better privacy.
+        The visibility is calculated by the percent of the angle of the outside view out of 360°. For example, a 30% view rate means 108° out of 360° is open toward outside.
+        Overall, the updated plan provides a higher general visibility rate, while its visibility is less even than the original Concord 1 plan. Which means the updated plan 
+        is consisted of either rooms with very high or very low visibility rate.</p></div>
+    </div>
+    <div class="res-type"></div>
+    <div class="matrix"></div>
+    <div class="text">
+      <b>Unit Types and Combination</b><br><br>
+      The final unit design is consisted of 2 types of spaces: Standard type and non-standard types. The purpose of the standard type is to provide appropriate number of necessary spaces: bedroom, bathroom, and kitchen. The non standard type spaces are seving for more specific activities for people with different lifestyle. Standard and Non-standard types are mixed up in a matrix so that appropriate combinations can be created.
+    </div>
+    <div class="model"></div>
+    <div class="structure"></div>
+    <div class="footer">________________________________________<br>Parametric Study of Hong Kong Cruciform Towers<br>&copy; Daegeun Kim</div>
   </main>
   <script src="main.js"></script>  
 </body>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="work5/work5.css" rel="stylesheet"/> 
+    <title>Page Title</title>
+</head>
+<body>
+  <main>                                                        
+    <div class="header" id="header">
+      <p id="name"><b>Daegeun Kim</b></p>
+      <div class="nav">
+        <a href="index.html"><button class="subpage" id="subpage1"><b>Works</b></button></a>
+        <a href="https://drive.google.com/file/d/1phvI6we6ZPI1DQJBmqCvIJlCcnFChQFu/view?usp=drive_link" target="_blank">
+          <button class="subpage" id="subpage4">Resume</button>
+        </a>
+        <a href="https://www.linkedin.com/in/daegeun-kim-5449632a1/" target="_blank">
+          <button class="subpage" id="subpage4">LinkedIn</button>
+        </a>
+      </div>
+    </div>
+    <div class="main-image"></div>
+
+    <div class="intro">
+      <span class="title">Spiral Dwelling</span><br>
+      <p>
+        Spring 2023<br>
+        Generative Design<br>
+        Architectural Design<br>
+        Digital Fabrication<br>
+        <br>
+        Tools:<br>
+        ABB IRB 1200 Robotic Arm<br>
+        Grasshopper HAL plugin<br>
+      </p>
+    </div>
+    <div class="robotic">
+      <div class="text">
+        <p><b>Robotic Arm Model Generation</b><br><br>
+        The studio employs robotic manufacturing to drive design thinking, using robotic hot-wire cutting to create foam models. 
+        The process begins by inputting a line in Rhino3D, which is then linked to an ABB robotic arm via the HAL plugin. With a hot wire attached, 
+        the robotic arm follows the specified line precisely, cutting the foam into the desired shape. Once cut, individual foam pieces are extracted.
+      </p></div>
+    </div>
+    <div class="tonglau"></div>
+    <div class="text">
+      <b>Site Analysis: Reflect on podium tower and Tong Lau</b><br><br>
+      Located on a site in the middle of the slope of Hong Kong Island, this project aims to bridge the gap between two distinct regions: the area characterized by Tong Lau buildings, 
+      and the region dominated by podium towers. Tong Lau buildings are traditional Hong Kong buildings having advantages of active street-level interactions. 
+      They are not suitable for the high density requirements of the city, which the recent podium towers have successfully addressed. <br><br>
+      As a result, the project seeks to address the following questions: <br>
+      How can the next generation of residential towers in Hong Kong combine the advantages of Tong Lau and podium towers harmoniously?  
+      Is it possible to bring back the traditional street culture of Hong Kong in the form of vertical living?
+    </div>
+    <div class="stacking"></div>
+    <div class="text">
+      <b>Tong Lau Stacking</b><br><br>
+      The  solution for merging Tong Lau buildings and podium towers is proposed by stacking the typical Tong Lau buildings vertically. As the block is stacked upward around a core, the Tong Lau blocks are connected to create a spiral circulation around the Tower.
+      In contrast to the original building, which placed all facilities below the residential floors, the new design integrates public facilities around the tower, blending them with the residential spaces rather than separating the two.
+    </div>
+    <div class="comparison"></div>
+    <div class="generative"></div>
+    <div class='text' id='view'>
+      <p><b>Spiral Generation</b><br><br>
+      Tools: Grasshopper + Python<br>
+      Using Grasshopper, the spiral circulation formed by stacking Tong Lau buildings was iterated and adjusted. The height of each spiral cycle was controlled by 
+      manipulating the z-coordinates of the vertices. Each iteration was then evaluated for aesthetic quality and functional efficiency, analyzing the ratio between 
+      the areas allocated for spiral circulation, public facilities, and residential floors. The objective is to achieve a balanced distribution of floor area among these three programmatic elements<br><br>
+      <b>Walkability Analysis</b><br><br>
+      It is crucial that both residents and the public find the spiral circulation walkable to access the public facilities effectively.
+      Walkability is assessed using two variables:<br><br>
+      cumulative distance and stair slope:<br>
+      Cumulative Distance: The walkability score increases by 1 for every 200 meters traveled.<br><br>
+      Slope of Stairs: A 0 degree slope scores 0, while a 45-degree slope scores 1.<br>
+      The overall walkability value starts at 0, with higher values indicating decreased walkability. The formula is weighted to give greater importance to slope over distance, meaning shorter spirals with steeper stairs result in higher walkability scores.<br>
+      Interestingly, walkability tends to improve near the top of the tower, where gentler slopes make circulation easier, even though the total walking distance increases.</p></div>
+    <div class="pinwheel"></div>
+    <div class="text">
+      <b>Pinwheel Plan</b><br><br>
+      The arrangement positions each unit cluster to face different orientations: two sides of each cluster facing the building's perimeter and the other two sides facing inward. 
+      Served spaces of rooms and living areas are placed along the building's perimeter, while servant spaces of kitchen and toilet spaces are placed inside enabling natural ventilation.<br><br>
+      Each cluster is equipped with its own lifts that provide access to the spiral levels, and they are structurally supported by core shear walls. Additionally, the clusters partially 
+      cantilever out from these structural walls to accommodate spiral staircases which rotate around them.
+    </div>
+    <div class="cluster"></div>
+    <div class="text">
+      <b>Unit Types and Combination</b><br><br>
+      The final unit design is consisted of 2 types of spaces: Standard type and non-standard types. The purpose of the standard type is to provide appropriate number of necessary spaces: bedroom, bathroom, and kitchen. The non standard type spaces are seving for more specific activities for people with different lifestyle. Standard and Non-standard types are mixed up in a matrix so that appropriate combinations can be created.
+    </div>
+    <div class="circulation">
+      <div class="text">
+        <p><b>Circulation: Public and Private Lift</b><br><br>
+        The building features 4 core lifts that interconnect all the spiral levels. Both the public and residents are directed to access these spiral levels, 
+        with residents subsequently using their private lifts within their unit clusters. This design encourages residents to interact with the surrounding amenities. 
+        By intentionally avoiding direct entry to their flats through the central lift, the arrangement fosters interactions among shops, residents, and the public, 
+        resulting in the creation of a vibrant and interconnected neighborhood.
+      </p></div>
+    </div>
+    <div class="site">
+      <div class="siteplan"></div>
+      <div class="text">
+        <b>Unit Types and Combination</b><br><br>
+        The final unit design is consisted of 2 types of spaces: Standard type and non-standard types. The purpose of the standard type is to provide appropriate number of necessary spaces: bedroom, bathroom, and kitchen. The non standard type spaces are seving for more specific activities for people with different lifestyle. Standard and Non-standard types are mixed up in a matrix so that appropriate combinations can be created.
+      </div>
+    </div>
+    <div class="section"></div>
+    <div class="footer">_________________________________<br>Spiral Dwelling<br>&copy; Daegeun Kim</div>
+  </main>
+  <script src="main.js"></script>  
+</body>
+</html>

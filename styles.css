@@ -1,5 +1,5 @@
 body {
-  background: #fdf4e3;    /* #f4ede8 */
+  background: #fdf4e3;
   margin: 0;
   padding: 0;
 }
@@ -31,8 +31,18 @@ main {
   gap: 40px;
   align-items: center;
 }
+
+.nav .subpage {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav .subpage:hover {
+  transform: translateY(3px);
+}
+
 .header {
-  background: #fdf4e3b9;    /* #f4ede8 */
+  background: #fdf4e3b9;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,7 +56,6 @@ main {
   transform: translateY(-120%);
 }
 
-/* Only animate header when the `.animate` class is present (added after load) */
 .header.animate,
 .header.animate.hidden {
   transition: transform 1s ease-in-out;

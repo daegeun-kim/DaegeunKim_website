@@ -19,7 +19,11 @@ const map = new mapboxgl.Map({
   pitch: 0,
   bearing: 0,
   interactive: false,
-  fadeDuration: 0
+  fadeDuration: 300
+});
+
+map.once('idle', () => {
+  window.dispatchEvent(new Event('map:ready')); // fire a global ready signal
 });
 
 map.scrollZoom.disable();
@@ -77,16 +81,20 @@ const waitImg  = () => new Promise(res => {
   img.onerror = res;   // <- ensure we still show the map if PNG fails
 });
 
-map.on('load', async () => {
+  map.on('load', async () => {
   await Promise.all([waitIdle(), waitImg()]);
   positionOverlay();
-  mapEl.classList.add('is-visible');
-  overlaysEl.classList.add('is-visible');
+
+  // reliable CSS fade-in
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      mapEl.classList.add('is-visible');
+      overlaysEl.classList.add('is-visible');
+    });
+  });
 
   window.addEventListener('resize', positionOverlay);
   map.on('move', positionOverlay);
-
-
   
   /* ---------- Spotlight: switch to 40.7–40.8 band ---------- */
 

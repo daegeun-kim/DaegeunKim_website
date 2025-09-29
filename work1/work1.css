@@ -5,7 +5,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #141414;
+  background-color: #1d1d1d;
 }
 
 /* =========================================================
@@ -22,12 +22,17 @@ html, body {
   transition: opacity 0.3s ease;
 }
 #map.is-visible { opacity: 1; }
-
+#map-overlays {
+  opacity: 0;
+  transition: opacity 500ms ease;  /* adjust duration as desired */
+  will-change: opacity;
+}
+#map-overlays.is-visible { opacity: 1; }
 #map-dimmer {
   position: fixed;
   inset: 0;
   z-index: 1;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
   pointer-events: none;
 }
 
@@ -49,6 +54,15 @@ html, body {
   display: flex;
   gap: 40px;
   align-items: center;
+}
+
+.nav .subpage {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav .subpage:hover {
+  transform: translateY(3px);
 }
 .header {
   height: 73.3px;
@@ -86,9 +100,9 @@ html, body {
   overflow: hidden;
   background: linear-gradient(
     to right,
-    rgba(0,0,0,1) 0%,
-    rgba(0,0,0,1) 40%,
-    rgba(0,0,0,0) 90%
+    rgb(0, 0, 0) 0%,
+    rgb(0, 0, 0) 40%,
+    rgb(30, 30, 30, 0) 90%
   );
   z-index: 1;
 }
@@ -103,19 +117,20 @@ html, body {
   justify-content: flex-start;
   margin-top: 5rem;
   padding: 6rem;
+  padding-left: 20rem;
   font-family: Helvetica, Arial, sans-serif;
   text-align: left;
 }
 
 #title {
   font-size: 4vw;
-  color: #ffffff;
+  color: #d1d1d1;
   margin: 0;
   padding-bottom: 3vw;
 }
 #name {
   font-size: 1.5vw;
-  color: #ffffff;
+  color: #d1d1d1;
   margin: 0;
   padding: 0;
   line-height: 1.5;
@@ -193,7 +208,7 @@ html, body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  padding-left: 6rem;
+  padding-left: 12rem;
   font-family: Helvetica, Arial, sans-serif;
   color: #cfcfcf;
   margin-top: 2rem;
@@ -290,7 +305,7 @@ html, body {
   background-color: rgba(255, 255, 255, 0.06); /* transparent white overlay */
   backdrop-filter: blur(8px);                 /* blur whatever is behind */
   -webkit-backdrop-filter: blur(8px);         /* Safari support */
-  border: 0px;
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
   margin: 0.3em 0;            /* vertical spacing between buttons */
   text-align: right;          /* text aligned to the right edge */
   padding: 6px;
@@ -374,8 +389,6 @@ g.label.active text {
   fill: #000000;
   font-weight: 500;
 }
-
-
 
 .cluster-img {
   z-index: 2;}
