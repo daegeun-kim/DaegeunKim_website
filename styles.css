@@ -1,5 +1,5 @@
 body {
-  background: #fdf4e3;
+  background: #dbd8d1;
   margin: 0;
   padding: 0;
 }
@@ -42,7 +42,7 @@ main {
 }
 
 .header {
-  background: #fdf4e3b9;
+  background: #dbd8d1b9;
   display: flex;
   justify-content: space-between;
   align-items: center;
