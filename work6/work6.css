@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 1000px;
+  font-size: 18px;
+  margin: 10px auto;
+  font-family: Helvetica, Arial, sans-serif;
+  padding-top: 68px;
+}
+
+/*-----------------------------------------------------------------*/
+/* Header --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.header #name {
+  font-size: 23px;
+}
+.subpage {
+  background: transparent;
+  font-size: 20px;
+  text-align: left;
+  border: none;
+  color: #6d6d6d;
+}
+.nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav .subpage {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav .subpage:hover {
+  transform: translateY(3px);
+}
+.header {
+  background: #ffffffb9;    /* #f4ede8 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 1000px;
+  z-index: 1000;
+}
+
+.header.hidden {
+  transform: translateY(-120%);
+}
+
+/* Only animate header when the `.animate` class is present (added after load) */
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
+}
+
+/*-----------------------------------------------------------------*/
+/* Content --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.main-image {
+  height: 500px;
+  background: url('title.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.title {
+  color:black;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.atlas_wrapper {
+  width:100%; 
+  overflow:hidden; 
+  display:flex; 
+  justify-content:center;
+}
+.intro {
+  margin: 50px 0;
+  margin-bottom: 130px;
+  color: #6d6d6d;
+}
+.pdf {
+  width: 100%;
+  height: 18190px;
+}
+
+.footer {
+  font-size: 15px;
+  line-height: 1.5;
+  height: 200px;
+  margin: 100px 0 0 0;
+}
