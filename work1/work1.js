@@ -57,6 +57,16 @@
 
 
   // Replace previous source-button event listener block with updated code to manage active state
+const spotlight = document.getElementById('spotlight-text');
+const readMoreBtn = document.getElementById('read-more');
+
+readMoreBtn.addEventListener('click', () => {
+  spotlight.classList.toggle('expanded');
+  spotlight.classList.toggle('collapsed');
+  readMoreBtn.textContent =
+    spotlight.classList.contains('expanded') ? 'Read less' : 'Read more';
+});
+
   (() => {
     const buttons = document.querySelectorAll('.source-button button');
     // Set the first button as active on page load

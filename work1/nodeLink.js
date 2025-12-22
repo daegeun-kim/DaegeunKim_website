@@ -33,7 +33,7 @@ d3.json(scriptBase + 'nodeLink.json')
         });
 
         Object.entries(layers).forEach(([group, nodes], i) => {
-            const layerSpacing = 450;
+            const layerSpacing = 200;
             const totalLayoutWidth = (groupNames.length - 1) * layerSpacing;
             const offsetX = (width - totalLayoutWidth) / 2;
             const verticalGap = (group === "cluster") ? 150*vh : 50*vh;
@@ -116,7 +116,7 @@ labels.filter(d => !buttonIDs.has(d.id)).style("cursor", "default");
 
         labels.append("rect")
         .filter(d => buttonIDs.has(d.id))
-        .attr("rx", 20).attr("ry", 20) // rounded corners
+        .attr("rx", 10).attr("ry", 10) // rounded corners
         .attr("fill", "#232323ff")
         .attr("fill", "rgba(255, 255, 255, 0.11)");
 
@@ -126,7 +126,7 @@ labels.filter(d => !buttonIDs.has(d.id)).style("cursor", "default");
         .attr("y", d => d.y)
         .attr("text-anchor", d => (d.group === "original data" ? "end" : "start"))
         .attr("alignment-baseline", "middle")
-        .attr("font-size", "1vw")
+        // .style("font-size", "clamp(6px, 1.8vw, 18px);")
         .attr("fill", "#e5e5e5ff")
         .text(d => d.id);
 
@@ -141,7 +141,7 @@ labels.filter(d => !buttonIDs.has(d.id)).style("cursor", "default");
             .filter(d => buttonIDs.has(d.id))
             .attr("x", bbox.x - 30)           // padding left
             .attr("y", bbox.y - 6)            // padding top
-            .attr("width", bbox.width + 60)   // text width + padding
+            .attr("width", bbox.width + 70)   // text width + padding
             .attr("height", bbox.height + 12);
         });
 

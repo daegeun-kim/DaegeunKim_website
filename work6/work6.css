@@ -4,30 +4,46 @@ body {
 }
 
 main {
-  width: 1000px;
-  font-size: 18px;
-  margin: 10px auto;
+  font-size: clamp(10px, 1.8vw, 18px);
   font-family: Helvetica, Arial, sans-serif;
+  max-width: 1000px;
+  width: 97%;
+  margin: 10px auto;
   padding-top: 68px;
+  box-sizing: border-box;
 }
 
 /*-----------------------------------------------------------------*/
 /* Header --------------------------------------------------------*/
 /*-----------------------------------------------------------------*/
 
+.header {
+  background: #ffffffb9;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  max-width: 1000px;
+  width: 97%;
+  z-index: 1000;
+}
+
 .header #name {
-  font-size: 23px;
+  margin: 20px 0;
+  font-size: clamp(14px, 2.3vw, 23px);
 }
 .subpage {
   background: transparent;
-  font-size: 20px;
+  font-size: clamp(11px, 2.0vw, 20px);
   text-align: left;
   border: none;
   color: #6d6d6d;
 }
 .nav {
   display: flex;
-  gap: 40px;
+  gap: clamp(5px, 4vw, 40px);
   align-items: center;
 }
 
@@ -39,19 +55,16 @@ main {
 .nav .subpage:hover {
   transform: translateY(3px);
 }
-.header {
-  background: #ffffffb9;    /* #f4ede8 */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  width: 1000px;
-  z-index: 1000;
-}
+
+
 
 .header.hidden {
   transform: translateY(-120%);
+}
+
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
 }
 
 /* Only animate header when the `.animate` class is present (added after load) */
@@ -65,7 +78,7 @@ main {
 /*-----------------------------------------------------------------*/
 
 .main-image {
-  height: 500px;
+  aspect-ratio: 2 / 1;
   background: url('title.png') no-repeat center center;
   background-size: contain;
   background-position: center;
@@ -73,7 +86,7 @@ main {
 }
 .title {
   color:black;
-  font-size: 50px;
+  font-size: clamp(20px, 5vw, 50px);
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -86,7 +99,7 @@ main {
 .intro {
   margin: 50px 0;
   margin-bottom: 130px;
-  font-size: 21px;;
+  font-size: clamp(12px, 2.1vw, 21px);
   color: #6d6d6d;
 }
 .pdf {
@@ -95,7 +108,7 @@ main {
 }
 
 .footer {
-  font-size: 15px;
+  font-size: clamp(10px, 1.5vw, 15px);
   line-height: 1.5;
   height: 200px;
   margin: 100px 0 0 0;

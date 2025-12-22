@@ -19,14 +19,14 @@
     <div class="header" id="header">
       <p id="name"><b>Daegeun Kim</b></p>
       <div class="nav">
-        <a href="index.html"><button class="subpage" id="subpage1"><b>Works</b></button></a>
+        <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
         <a href="https://drive.google.com/file/d/1phvI6we6ZPI1DQJBmqCvIJlCcnFChQFu/view?usp=drive_link" target="_blank">
           <button class="subpage" id="subpage4">Resume</button>
         </a>
         <a href="https://www.linkedin.com/in/daegeun-kim-5449632a1/" target="_blank">
           <button class="subpage" id="subpage4">LinkedIn</button>
         </a>
-        <a href="about.html"><button class="subpage" id="subpage1"><b>About</b></button></a>
+        <a href="about.html"><button class="subpage" id="subpage1">About</button></a>
       </div>
     </div>
 
@@ -64,7 +64,7 @@
 
     <section class="map-spotlight">
       <div id="spotlight-overlay">
-  <figure><img id="spot-img" alt=""></figure>
+        <figure><img id="spot-img" alt=""></figure>
       </div>
       <p id="source">
         <b>Residential Source Data</b>
@@ -75,7 +75,8 @@
         as the unique key. Since several original datasets were provided at the tax lot level, 
         these entries were duplicated and expanded to align with individual buildings.<br><br>
       </p>
-      <aside id="spotlight-text">
+      <aside id="spotlight-text" class="collapsed">
+        <button id="read-more">Read more</button>
         <div class="step" data-key="BLD_STORY">
           <span id="caption"><b>1. Building Stories</b></span><br>
           <br>
@@ -301,7 +302,7 @@
           <u>K-means clustering</u> was performed using selected datasets, with <u>customized weightings</u> applied to 
           different variables to reflect their relative importance. The resulting clusters were then interpreted through 
           <u>qualitative analysis and assigned descriptive</u>, context-specific names.<br><br>
-          ___________________________________________________________________<br><br>
+          ______________________<br><br>
           <span id="caption"><b>Socio Spatial Clusters</b></span><br><br>
           <b>Weights: <br></b>
           Building Height: 3<br>
@@ -320,7 +321,7 @@
           <u>K-means clustering</u> was performed using selected datasets, with <u>customized weightings</u> applied to 
           different variables to reflect their relative importance. The resulting clusters were then interpreted through 
           <u>qualitative analysis and assigned descriptive</u>, context-specific names.<br><br>
-          ___________________________________________________________________<br><br>
+          ______________________<br><br>
           <span id="caption"><b>Architectural Clusters</b></span><br><br>
           <b>Weights: <br></b>
           Building Stories: 3<br>
@@ -338,7 +339,7 @@
           <u>K-means clustering</u> was performed using selected datasets, with <u>customized weightings</u> applied to 
           different variables to reflect their relative importance. The resulting clusters were then interpreted through 
           <u>qualitative analysis and assigned descriptive</u>, context-specific names.<br><br>
-          ___________________________________________________________________<br><br>
+          ______________________<br><br>
           <span id="caption"><b>Evolutionary Clusters</b></span><br><br>
           <b>Weights: <br></b>
           Building Construction Year: 4<br>
@@ -357,7 +358,7 @@
           <u>K-means clustering</u> was performed using selected datasets, with <u>customized weightings</u> applied to 
           different variables to reflect their relative importance. The resulting clusters were then interpreted through 
           <u>qualitative analysis and assigned descriptive</u>, context-specific names.<br><br>
-          ___________________________________________________________________<br><br>
+          ______________________<br><br>
           <span id="caption"><b>Economic Financial Clusters</b></span><br><br>
           <b>Weights: <br></b>
           Building Height: 3<br>

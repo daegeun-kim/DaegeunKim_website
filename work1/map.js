@@ -4,7 +4,7 @@ mapboxgl.accessToken = config.mapboxToken;
 // ----- Base lat band (north–south only) -----
 const LAT_MIN = 40.65;
 const LAT_MAX = 40.92;
-const LON0    = -74.12;
+const LON0    = -74;
 const EPS     = 1e-4; 
 
 const mapEl = document.getElementById('map');
@@ -98,10 +98,12 @@ const waitImg  = () => new Promise(res => {
   
   /* ---------- Spotlight: switch to 40.7–40.8 band ---------- */
 
+  const viewportWidth = window.innerWidth;
+  console.log(viewportWidth);
   const HOME_BAND = { min: 40.65, max: 40.92 };
-  const SPOT_BAND = { min: 40.68, max: 40.89 };
+  const SPOT_BAND = { min: 40.68, max: 40.89 - viewportWidth*0.0000941 + 0.1478 };
   const LON_HOME = LON0;
-  const LON_SPOT  = -73.98;
+  const LON_SPOT  = -73.98 - viewportWidth*0.0000582 + 0.0739;
   let activeBand = HOME_BAND;
 
   function camForLatBand(latMin, latMax, lon) {

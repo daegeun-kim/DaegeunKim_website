@@ -111,13 +111,6 @@ if (window.map) {
 }
 
 // ===== Init =====
-// (async function initSpotlight() {
-//   await preloadSlides();
-//   renderSlide(0);
-//   if (window.map && map.loaded()) positionCurrentImage();
-// })();
-
-// ===== Init =====
 function waitForMapReady() {
   return new Promise(resolve => {
     if (window.map && map.loaded()) return resolve();

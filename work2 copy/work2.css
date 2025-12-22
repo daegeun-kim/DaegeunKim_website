@@ -1,0 +1,331 @@
+
+body {
+  font-family: 'Helvetica', Arial, sans-serif;  
+  text-align: center;
+  color: #111;
+  margin: 0;      
+  min-height: 100vh;
+}
+
+
+
+/*-----------------------------------------------------------------*/
+/* Header --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.header #name {
+  font-size: 23px;
+}
+.subpage {
+  background: transparent;
+  font-size: 20px;
+  text-align: left;
+  border: none;
+  color: #7e7e7e;
+}
+.nav {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav .subpage {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav .subpage:hover {
+  transform: translateY(3px);
+}
+.header {
+  height: 73.3px;
+  font-family: Helvetica, Arial, sans-serif;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;            /* full width */
+  margin: 0 auto;      /* centers the 1000px box inside */
+  max-width: 1000px;   /* keep it constrained to 1000px */
+  z-index: 1000;
+}
+
+.header.hidden {
+  transform: translateY(-120%);
+}
+
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
+}
+
+/*-----------------------------------------------------------------*/
+/* Header --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.header-title {
+  font-family: Helvetica, Arial, sans-serif;
+  letter-spacing: -5px;
+  font-size: 3rem;
+  margin-top: 16rem;
+  margin-bottom: 20px;
+}
+.subtitle {
+  font-family: Helvetica, Arial, sans-serif;
+  color:#7e7e7e;
+  letter-spacing: 0px;
+  font-size: 25px;
+  margin-bottom: 0px;
+} 
+
+.title {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+.text-frame {
+  width: 870px;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 30px;
+  text-align: left;
+  line-height: 1.7;
+}
+.subframe {
+  width: 870px;
+  margin: 20px auto;
+  border-radius: 20px;
+  border: #bebebe solid 1px;
+  padding: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.question {
+  font-size: 3rem;
+  margin: 10%;
+  margin-top: 100px;
+  margin-bottom: 120px;
+}
+.highlight {
+  color: #ff0000;
+  font-weight: bold;
+}
+.statement {
+  font-size: 1.2rem;
+  margin: auto;
+  margin-bottom: 100px;
+  width: 75%;
+  padding: 10px;
+  color: #8a8a8a;
+  line-height: 1.6;
+}
+
+.canvas {
+  margin: 60px auto;
+  width: 1530px;    
+  height: 700px;
+  background: url('keywords.png') no-repeat center center;
+  background-size: contain;
+}
+
+#frame4 {
+  text-align: left;
+}
+
+.quotes {
+  width: 870px;
+  margin: 20px auto;
+  margin-bottom: 400px;
+  padding: 10px;
+  font-size: 30px;
+  text-align: left;
+  line-height: 1.7;
+  font-family: 'impact', sans-serif;
+}
+
+
+.lineage {
+  font-size: 40px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+/* Arrange history-frame in 2x2 grid */
+.history {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 40px;
+  width: 50%;
+  margin: 40px auto 40px auto;
+  margin-bottom: 200px;
+}
+
+.history-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  min-width: 0;
+}
+
+.history-frame .image {
+  margin-bottom: 16px;
+}
+
+.history-text {
+  text-align: left;
+  font-size: 1rem;
+}
+
+.slider-wrapper {
+    overflow: hidden;
+    width: 60vw;
+    height: 100vh;
+    position: relative;
+    margin: 0 auto; /* <-- centers the slider horizontally */
+    margin-bottom: 400px;
+    font-size: 40px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.slide-container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    width: 300vw; /* 5 slides */
+}
+.slide {
+    width: 60vw;
+    height: 75vh;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background-color: rgb(255, 255, 255);
+}
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+#prevBtn, #nextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: rgb(151, 151, 151);
+    border: none;
+    font-size: 5rem;
+    padding: 0.4rem;
+    cursor: pointer;
+    z-index: 10;
+    width: 60px;
+}
+#prevBtn {
+    left: 0;
+}
+#nextBtn {
+    right: 0;
+}
+
+.proposal {
+  font-size: 40px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.canvas2 {
+  margin: 60px auto;
+  width: 1530px;    
+  height: 570px;
+  background: url('nodeLink.png') no-repeat center center;
+  background-size: cover;
+}
+
+.canvas2-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 72%;
+  margin: 0 auto 0 auto;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #222;
+  text-align: center;
+  gap: 120px;
+}
+
+#canvas2-col1, #canvas2-col2, #canvas2-col3, #canvas2-col4 {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.query {
+  font-size: 1rem;
+  width: 33%;
+  margin: 20px auto;
+  margin-top: 50px;
+  border: #bebebe solid 1px;
+  border-radius: 20px;
+  background-color: rgba(141, 141, 141, 0.2);
+}
+
+footer {
+  margin-top: 200px;
+}
+
+
+
+
+#dot-nav {
+  position: fixed;
+  top: 70px;                  /* align to top */
+  right: 16px;
+  height: 90vh;            /* stretch down the screen */
+  width: 20px;
+  z-index: 1000;
+  pointer-events: none;    /* optional: allows clicks through line except on dots */
+}
+
+.dot-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 99%;
+  background-color: #ccc;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.dot {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  z-index: 1;
+  pointer-events: auto;    /* re-enable click for dots */
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+.sampleUI {
+  font-size: 1.5rem;
+  margin-bottom: 200px;
+  color: #000000;
+}
+
+.footer {
+  font-size: 15px;
+  line-height: 1.5;
+  height: 200px;
+  margin: 100px 0 0 0;
+}
