@@ -92,34 +92,6 @@ main {
 /*-----------------------------------------------------------------*/
 /* About --------------------------------------------------------*/ 
 /*-----------------------------------------------------------------*/
-/* .about {
-  display: flex;
-  gap: 50px;  
-  margin-bottom: 100px;
-}
-.about-image {
-  width: 400px;
-  height: 400px;
-  background: url('DaegeunKim.JPG') no-repeat center center;
-  background-size: cover;
-}
-.bigname-about {
-  font-size: clamp(30px, 5vw, 50px);
-  margin-top: 5px;
-  margin-bottom: 40px;
-  font-weight: bold;
-  color: #000000;
-}
-.bigname-description-about {
-  display: block;
-  width: 550px;
-  height: 400px;
-  font-size: clamp(8px, 1.7vw, 17px);
-  line-height: 1.7;
-  font-weight: normal;
-  color: #464646;
-  text-align: justify;
-  } */
 
 .about {
   display: flex;
