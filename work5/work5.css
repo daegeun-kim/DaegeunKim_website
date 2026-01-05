@@ -5,8 +5,9 @@ body {
 }
 
 main {
-  width: 1000px;
-  font-size: 16px;
+  max-width: 1000px;
+  width: 97%;
+  font-size: clamp(11px, 1.8vw, 18px);
   margin: 10px auto;
   font-family: Helvetica, Arial, sans-serif;
   padding-top: 68px;
@@ -16,19 +17,40 @@ main {
 /* Header --------------------------------------------------------*/
 /*-----------------------------------------------------------------*/
 
+.header {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.725);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  max-width: 1000px;
+  width: 97%;
+  z-index: 1000;
+}
+
 .header #name {
-  font-size: 23px;
+  margin: 20px 0;
+  font-size: clamp(14px, 2.3vw, 20px);
+}
+#name a {
+  color: inherit;
+  text-decoration: none;
+}
+#name a:visited {
+  color: inherit;
 }
 .subpage {
   background: transparent;
-  font-size: 20px;
+  font-size: clamp(9px, 1.8vw, 18px);
   text-align: left;
   border: none;
   color: #6d6d6d;
 }
 .nav {
   display: flex;
-  gap: 40px;
+  gap: clamp(1px, 2vw, 20px);
   align-items: center;
 }
 
@@ -40,22 +62,11 @@ main {
 .nav .subpage:hover {
   transform: translateY(3px);
 }
-.header {
-  background: #ffffffb9;    /* #f4ede8 */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  width: 1000px;
-  z-index: 1000;
-}
 
 .header.hidden {
   transform: translateY(-120%);
 }
 
-/* Only animate header when the `.animate` class is present (added after load) */
 .header.animate,
 .header.animate.hidden {
   transition: transform 1s ease-in-out;
@@ -66,7 +77,8 @@ main {
 /*-----------------------------------------------------------------*/
 
 .main-image {
-  height: 600px;
+  aspect-ratio: 10 / 6;
+  width: 100%;
   background: url('Spiral Dwelling.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
@@ -74,7 +86,7 @@ main {
 }
 .title {
   color:black;
-  font-size: 40px;
+  font-size: clamp(20px, 4vw, 40px);
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -86,16 +98,11 @@ main {
 .text {
   color: #575757;
   line-height: 1.55;
-  margin-bottom: 100px;
-}
-.section-title {
-  font-size: 25px;
-  font-weight: bold;
-  margin: 90px 0 20px 0;
-  color: black;
+  margin-bottom: 20px;
 }
 .robotic {
-  height: 1000px;
+  aspect-ratio: 1 / 1;
+  width: 100%;
   background: url('Spiral Dwelling3.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
@@ -115,63 +122,70 @@ main {
   background: rgba(255,255,255,0.0); /* transparent by default; change if you want a backdrop */
 }
 .tonglau {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1000px;
   background: url('Spiral Dwelling4.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .stacking {
+  aspect-ratio: 3 / 2;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 300px;
   background: url('Spiral Dwelling5.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .comparison {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 700px;
   background: url('Spiral Dwelling2.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .generative {
+  aspect-ratio: 3 / 2;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 800px;
   background: url('Spiral Dwelling6.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .pinwheel {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1100px;
   background: url('Spiral Dwelling7.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .cluster {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1100px;
   background: url('Spiral Dwelling8.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .circulation {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 750px;
   background: url('Spiral Dwelling9.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
@@ -193,19 +207,24 @@ main {
   align-items: flex-start;
   flex-wrap: nowrap;
 }
+@media (max-width: 768px) {
+  .site {
+    flex-direction: column;
+  }
+}
 .siteplan {
+  aspect-ratio: 2 / 3;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 900px;
   background: url('Spiral Dwelling10.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .site .text {
-  margin-top: 50px;
+  margin-top: 10px;
   box-sizing: border-box;
-  padding: 16px;
   flex: 1 1 0;
   min-width: 300px;
 }
@@ -213,9 +232,10 @@ main {
   flex: 0 0 600px;
 }
 .section {
+  aspect-ratio: 2 / 3;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 900px;
   background: url('Spiral Dwelling11.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
@@ -341,7 +361,7 @@ main {
   margin-bottom: 20px;
 }
 .footer {
-  font-size: 15px;
+  font-size: clamp(10px, 1.5vw, 15px);
   line-height: 1.5;
   height: 200px;
   margin: 100px 0 0 0;

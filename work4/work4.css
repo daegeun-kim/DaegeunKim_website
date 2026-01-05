@@ -1,12 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  text-align: justify;
+  text-align: left;
 }
 
 main {
-  width: 1000px;
-  font-size: 16px;
+  max-width: 1000px;
+  width: 97%;
+  font-size: clamp(11px, 1.8vw, 18px);
   margin: 10px auto;
   font-family: Helvetica, Arial, sans-serif;
   padding-top: 68px;
@@ -16,19 +17,40 @@ main {
 /* Header --------------------------------------------------------*/
 /*-----------------------------------------------------------------*/
 
+.header {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.725);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  max-width: 1000px;
+  width: 97%;
+  z-index: 1000;
+}
+
 .header #name {
-  font-size: 23px;
+  margin: 20px 0;
+  font-size: clamp(14px, 2.3vw, 20px);
+}
+#name a {
+  color: inherit;
+  text-decoration: none;
+}
+#name a:visited {
+  color: inherit;
 }
 .subpage {
   background: transparent;
-  font-size: 20px;
+  font-size: clamp(9px, 1.8vw, 18px);
   text-align: left;
   border: none;
   color: #6d6d6d;
 }
 .nav {
   display: flex;
-  gap: 40px;
+  gap: clamp(1px, 2vw, 20px);
   align-items: center;
 }
 
@@ -40,22 +62,11 @@ main {
 .nav .subpage:hover {
   transform: translateY(3px);
 }
-.header {
-  background: #ffffffb9;    /* #f4ede8 */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  width: 1000px;
-  z-index: 1000;
-}
 
 .header.hidden {
   transform: translateY(-120%);
 }
 
-/* Only animate header when the `.animate` class is present (added after load) */
 .header.animate,
 .header.animate.hidden {
   transition: transform 1s ease-in-out;
@@ -66,7 +77,8 @@ main {
 /*-----------------------------------------------------------------*/
 
 .main-image {
-  height: 700px;
+  aspect-ratio: 3 / 2;
+  width: 100%;
   background: url('title.png') no-repeat center center;
   background-size: contain;
   background-position: center;
@@ -74,13 +86,12 @@ main {
 }
 .title {
   color:black;
-  font-size: 40px;
+  font-size: clamp(20px, 4vw, 40px);
   font-weight: bold;
   margin-bottom: 10px;
 }
 .intro {
   margin: 30px 0;
-  margin-bottom: 130px;
   color: #6d6d6d;
 }
 .text {
@@ -88,14 +99,9 @@ main {
   line-height: 1.55;
   margin-bottom: 100px;
 }
-.section-title {
-  font-size: 25px;
-  font-weight: bold;
-  margin: 90px 0 20px 0;
-  color: black;
-}
 .design-logic {
-  height: 1000px;
+  aspect-ratio: 2 / 3;
+  width: 100%;
   background: url('Cruciform.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
@@ -108,20 +114,22 @@ main {
   padding: 0 2px 0 2px;
   align-items: stretch; 
 }
+@media (max-width: 768px) {
+  .egressdistance {
+    flex-direction: column;
+  }
+}
 
 #egress {
-  width: 300px;
-  height: 100%;
+  flex: 2 1 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 16px;
   box-sizing: border-box;
 }
 
 .egressimage {
-  flex: 1 1 0;
-  min-width: 300px;
+  flex: 3 1 0;  
   height: 100%; 
   background: url('Cruciform2.jpg') no-repeat center center;
   background-size: contain;
@@ -130,9 +138,10 @@ main {
 }
 
 .isoperi {
+  aspect-ratio: 2 / 3;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1000px;
   background: url('Cruciform3.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
@@ -140,18 +149,20 @@ main {
 }
 
 .plan {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1000px;
   background: url('Cruciform5.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .view {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1000px;
   background: url('Cruciform6.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
@@ -163,48 +174,51 @@ main {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 600px;
   box-sizing: border-box;
   padding: 16px;
 }
 .res-type {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1000px;
   background: url('Cruciform7.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .matrix {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1000px;
   background: url('Cruciform8.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .model {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1000px;
   background: url('Cruciform9.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .structure {
+  aspect-ratio: 1 / 1;
+  width: 100%;
   margin-top: 50px;
   clear: both;
-  height: 1000px;
   background: url('Cruciform10.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
 .footer {
-  font-size: 15px;
+  font-size: clamp(10px, 1.5vw, 15px);
   line-height: 1.5;
   height: 200px;
   margin: 100px 0 0 0;

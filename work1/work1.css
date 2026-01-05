@@ -43,16 +43,23 @@ html, body {
   margin: 20px 0;
   font-size: clamp(14px, 2.3vw, 20px);
 }
+#name a {
+  color: inherit;
+  text-decoration: none;
+}
+#name a:visited {
+  color: inherit;
+}
 .subpage {
   background: transparent;
-  font-size: clamp(11px, 2.0vw, 20px);
+  font-size: clamp(9px, 1.8vw, 18px);
   text-align: left;
   border: none;
   color: #8e8e8e;
 }
 .nav {
   display: flex;
-  gap: clamp(9px, 4vw, 40px);
+  gap: clamp(1px, 2vw, 20px);
   align-items: center;
 }
 
