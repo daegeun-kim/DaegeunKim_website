@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daegeun Kim</title>
+  <link rel="icon" type="image/png" href="image/favicon.jpg">
+  <link rel="stylesheet" href="work7/work7.css">
+</head>
+<body>
+  <main>
+  <div class="header" id="header">
+    <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
+    <div class="nav">
+        <a href="index.html"><button class="subpage" id="subpage1"><b>Works</b></button></a>
+        <a href="https://drive.google.com/file/d/1phvI6we6ZPI1DQJBmqCvIJlCcnFChQFu/view?usp=drive_link" target="_blank">
+          <button class="subpage">Resume</button>
+        </a>
+        <a href="https://www.linkedin.com/in/daegeun-kim-5449632a1/" target="_blank">
+          <button class="subpage">LinkedIn</button>
+        </a>
+        <a href="https://github.com/daegeun-kim" target="_blank">
+          <button class="subpage">Github</button>
+        </a>
+        <a href="about.html"><button class="subpage" id="subpage1">About</button></a>
+      </div>
+  </div>
+  <div class="main-image"></div>
+  <div class="intro">
+    <div class="title"></div>
+    <p>
+      <a href="https://github.com/daegeun-kim/mergeprep" target="_blank">
+        <p id="github">Github<br></p>
+      </a>
+      Fall 2025<br>
+      Python Package<br>Data Wrangling<br>Data Pipeline Tooling<br>
+      <br>
+      <br>
+    </p>
+    <div class="description">
+      mergeprep is a Python package designed to make row-wise merging of messy tables reliable and repeatable, built on top of pandas library. 
+      It handles common real-world problems that cause merges to break or produce incorrect results, such as 
+      inconsistent table layouts, mismatched column names, different value formats, and unclear join keys.<br><br>
+      The package provides utilities to prepare tables into merge-ready structures, measure similarity between tables 
+      and columns, and automatically suggest likely merge keys based on patterns in the data. It also includes diagnostic 
+      tools that explain why a merge succeeded or failed, highlighting issues like low key uniqueness, key mismatches, 
+      duplicates, or unexpected row expansion, so you can fix problems quickly and merge with confidence.<br><br>
+      *mergeprep was created with <b>cookiecutter</b> and the py-pkgs-cookiecutter template.<br><br>
+      <b>Details are available in above github page.</b>
+    </div>
+    <p class="section-title">Functions</p>
+    <div class="description">
+      5 functions in the package:<br><br><br>
+      <b>1. calc_match_rate()</b><br><br>
+      <p style="margin: 0 10vw 0 2vw;">
+      Compares every column pair between two tables and quantifies how much their values overlap to identify likely merge keys.<br>
+      </p><br>
+      <b>2. convert_style()</b><br><br>
+      <p style="margin: 0 10vw 0 2vw;">
+      Standardizes values from two columns into a common format so that differently written but equivalent entries can be merged reliably.<br>
+      </p><br>
+      <b>3. similarity_mapping()</b><br><br>
+      <p style="margin: 0 10vw 0 2vw;">
+      Analyzes two columns to find and rank similar values, producing a mapping that aligns mismatched labels across tables.<br>
+      </p><br>
+      <b>4. merge_with_mapping()</b><br><br>
+      <p style="margin: 0 10vw 0 2vw;">
+      Merges two tables using a shared canonical key derived from optional value mappings, while preserving the original merge context.<br>
+      </p><br>
+      <b>5. diagnose_merge()</b><br><br>
+      <p style="margin: 0 10vw 0 2vw;">
+      Summarizes a merge by reporting match rates, row counts, and value conversions to explain why the merge succeeded or failed.<br>
+      </p><br>
+
+    </div>
+
+  <div class="footer">________________________________<br>GeoEstateChat<br>&copy; Daegeun Kim</div>
+  </main>
+  <script src="main.js"></script>  
+</body>

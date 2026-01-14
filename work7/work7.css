@@ -1,0 +1,199 @@
+
+body {
+  font-family: 'Helvetica', Arial, sans-serif; 
+  background-color: #15161b; 
+  text-align: center;
+  color: #ffffff;
+  margin: 0;      
+}
+
+main {
+  font-size: clamp(11px, 1.8vw, 18px);
+  font-family: Helvetica, Arial, sans-serif;
+  max-width: 1000px;
+  width: 97%;
+  margin: 10px auto;
+  padding-top: 68px;
+  box-sizing: border-box;
+}
+
+
+/*-----------------------------------------------------------------*/
+/* Header --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+.header {
+  margin: 0;
+  background: #15161bb9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  max-width: 1000px;
+  width: 97%;
+  z-index: 1000;
+}
+
+.header #name {
+  margin: 20px 0;
+  font-size: clamp(14px, 2.3vw, 20px);
+}
+#name a {
+  color: inherit;
+  text-decoration: none;
+}
+#name a:visited {
+  color: inherit;
+}
+.subpage {
+  background: transparent;
+  font-size: clamp(9px, 1.8vw, 18px);
+  text-align: left;
+  border: none;
+  color: #b2b2b2;
+}
+.nav {
+  display: flex;
+  gap: clamp(1px, 2vw, 20px);
+  align-items: center;
+}
+
+.nav .subpage {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav .subpage:hover {
+  transform: translateY(3px);
+}
+
+.header.hidden {
+  transform: translateY(-120%);
+}
+
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
+}
+
+
+/*-----------------------------------------------------------------*/
+/* Content --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+.main-image {
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  background: url('mergeprep.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.intro {
+  margin: 30px 0;
+  margin-bottom: 30px;
+  font-size: clamp(11px, 2.0vw, 20px);
+  line-height: 1.5;
+  color: #adadad;
+}
+.title {
+  height: clamp(50px, 10vw, 100px);
+  background: url('title.png') no-repeat center center;
+  background-size: contain;
+  color:rgb(255, 255, 255);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+a {
+  color: inherit;
+}
+#github {
+  font-size: clamp(11px, 2.3vw, 20px);
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+.description {
+  font-size: clamp(11px, 2.0vw, 20px);
+  text-align: justify;
+  color: #adadad;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+#diagram {
+  height: clamp(200px, 40vw, 400px);
+  background: url('diagram.png') no-repeat center center;
+  background-size: contain;
+  margin-bottom: clamp(20px, 4vw, 40px);
+}
+#research-question {
+  width: clamp(200px, 60vw, 600px);
+  margin: 100px auto 100px auto;
+  font-size: clamp(11px, 2.3vw, 20px);
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+#highlight {
+  color: rgb(255, 77, 77);
+}
+
+.section-title {
+  text-align: left;
+  color:#e2e2e2;
+  font-size: clamp(16px, 2.5vw, 25px);
+  font-weight: bold;
+  margin: 40px 0;
+}
+.flow-chart {  
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  background: url('flowchart.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.flow-chart2 {  
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  background: url('flowchart2.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.capture {  
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#capture1 {  
+  background: url('capture2.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+#capture2 {  
+  background: url('capture3.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+#capture3 {  
+  background: url('capture1.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 200px;
+}
+#gif {  
+  background: url('presentation.gif') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.footer {
+  font-size: clamp(10px, 1.5vw, 15px);
+  line-height: 1.5;
+  height: 200px;
+  margin: 100px 0 0 0;
+  text-align: left;
+}
