@@ -1,5 +1,5 @@
 body {
-  background: #e8e8e8;
+  background: #f3f3f3;
   margin: 0;
   padding: 0;
 }
@@ -19,7 +19,7 @@ main {
 /*----------------------------------------------------------------*/
 .header {
   margin: 0;
-  background: #e8e8e8b9;
+  background: #f3f3f3b9;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,7 +46,7 @@ main {
   font-size: clamp(9px, 1.8vw, 18px);
   text-align: left;
   border: none;
-  color: #6d6d6d;
+  color: #8e8e8e;
 }
 .nav {
   display: flex;
@@ -77,23 +77,24 @@ main {
 /*-----------------------------------------------------------------*/
 
 .intro {
-  margin-top: clamp(32px, 12vw, 120px);
-  margin-bottom: clamp(24px, 10vw, 100px);
-  color: #6d6d6d;
+  margin-top: clamp(28px, 10vw, 100px);
+  margin-bottom: clamp(20px, 7vw, 70px);
+  color: #8e8e8e;
 }
 .bigname {
-  font-size: clamp(50px, 8vw, 80px);
+  font-size: clamp(30px, 5vw, 50px);
   margin-bottom: 10px;
   font-weight: bold;
-  color: #000000;
+  color: #203968;
 }
 
 .bigname-description {
-  font-size: clamp(11px, 2vw, 20px);
+  font-size: clamp(15px, 2.5vw, 25px);
   line-height: 1.5;
   margin-bottom: 20px;
   font-weight: normal;
-  color: #6d6d6d;
+  color: #8f8f8f;
+  font-weight: 400;
   }
 
 /*-----------------------------------------------------------------*/
@@ -147,7 +148,7 @@ main {
   color: #000000;
 }
 .bigname-description-about {
-  font-size: clamp(12px, 1.7vw, 17px);
+  font-size: clamp(12px, 2vw, 20px);
   line-height: 1.7;
   font-weight: normal;
   color: #464646;
@@ -189,19 +190,22 @@ main {
     aspect-ratio: auto;
   }
 }
-.work-title {
-  font-size: clamp(17px, 2.5vw, 25px);
-  color: #000000;
-}
+
 .image {
   border:#6d6d6d solid 1px;
   aspect-ratio: 2 / 1;
   margin-bottom: 20px;
   border-radius: clamp(12px, 2.5vw, 25px);
 }
+.work-title {
+  font-size: clamp(17px, 2.5vw, 25px);
+  color: #000000;
+  font-weight: 400;
+}
 .work-text {
   flex: 2 1 0;
-  color: #6d6d6d;
+  color: #8e8e8e;
+  font-weight: 400;
 }
 .work-tool {
   flex: 1 1 0;
