@@ -1,0 +1,199 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  font-size: clamp(10px, 1.8vw, 18px);
+  font-family: Helvetica, Arial, sans-serif;
+  max-width: 1000px;
+  width: 97%;
+  margin: 10px auto;
+  padding-top: 68px;
+  box-sizing: border-box;
+}
+
+/*-----------------------------------------------------------------*/
+/* Header --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.header {
+  background: #ffffffb9;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  max-width: 1000px;
+  width: 97%;
+  z-index: 1000;
+}
+
+.header #name {
+  margin: 20px 0;
+  font-size: clamp(14px, 2.3vw, 20px);
+}
+#name a {
+  color: inherit;
+  text-decoration: none;
+}
+#name a:visited {
+  color: inherit;
+}
+.subpage {
+  background: transparent;
+  font-size: clamp(9px, 1.8vw, 18px);
+  text-align: left;
+  border: none;
+  color: #6d6d6d;
+}
+.nav {
+  display: flex;
+  gap: clamp(1px, 2vw, 20px);
+  align-items: center;
+}
+
+.nav .subpage {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.nav .subpage:hover {
+  transform: translateY(3px);
+}
+
+
+
+.header.hidden {
+  transform: translateY(-120%);
+}
+
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
+}
+
+/* Only animate header when the `.animate` class is present (added after load) */
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
+}
+
+/*-----------------------------------------------------------------*/
+/* Content --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+
+.main-image {
+  aspect-ratio: 2 / 1;
+  background: url('title.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.title {
+  color:black;
+  font-size: clamp(20px, 5vw, 50px);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.intro {
+  margin: 50px 0;
+  margin-bottom: 130px;
+  font-size: clamp(12px, 2.1vw, 21px);
+  color: #6d6d6d;
+}
+
+.section-title {
+  font-size: clamp(12px, 2.5vw, 25px);
+  font-weight: bold;
+  margin: 90px 0 20px 0;
+  color: black;
+}
+.text {
+  font-size: clamp(10px, 2vw, 20px);
+  line-height: 1.5;
+  color: #636363;
+  text-align: justify;
+}
+
+/*-----------------------------------------------------------------*/
+/* Images  --------------------------------------------------------*/
+/*-----------------------------------------------------------------*/
+.workflow {  
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  background: url('train_val_test.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.graph {
+  display: flex;
+}
+.image_vs_graph {
+  flex: 1 1 0;
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  background: url('data_type.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 60px;
+}
+.graphstructure {
+  flex: 3 1 0;
+  aspect-ratio: 5 / 3;
+  width: 100%;
+  background: url('graph_diagram.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 60px;
+}
+.nn_diagram {  
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  background: url('NN_diagram.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.imbalanced {  
+  aspect-ratio: 5 / 3;
+  width: 100%;
+  background: url('imbalanced.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+.final_pred {  
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  background: url('philly_pred.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+.conf_matrix {
+  display: flex;
+}
+.conf_matrix1 {
+  flex: 1 1 0;
+  width: 100%;
+  background: url('lr_confusion_matrix.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.conf_matrix2 {
+  flex: 1 1 0;
+  width: 100%;
+  background: url('nn_confusion_matrix.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.footer {
+  font-size: clamp(10px, 1.5vw, 15px);
+  line-height: 1.5;
+  height: 200px;
+  margin: 100px 0 0 0;
+}

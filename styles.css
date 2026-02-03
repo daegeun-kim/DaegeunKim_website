@@ -242,3 +242,7 @@ main {
   background: url('image/mergeprep.png') no-repeat center center;
   background-size: cover;
 }
+#work8-image {
+  background: url('image/work8.png') no-repeat center center;
+  background-size: cover;
+}
