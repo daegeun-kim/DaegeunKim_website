@@ -165,7 +165,7 @@ main {
   background-position: center;
 }
 .final_pred {  
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 5 / 3;
   width: 100%;
   background: url('philly_pred.png') no-repeat center center;
   background-size: contain;
@@ -176,6 +176,7 @@ main {
 }
 .conf_matrix1 {
   flex: 1 1 0;
+  aspect-ratio: 3 / 2;
   width: 100%;
   background: url('lr_confusion_matrix.png') no-repeat center center;
   background-size: contain;
@@ -184,12 +185,28 @@ main {
 }
 .conf_matrix2 {
   flex: 1 1 0;
+  aspect-ratio: 3 / 2;
   width: 100%;
   background: url('nn_confusion_matrix.png') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
 }
+.sample1 {  
+  aspect-ratio: 7 / 4;
+  width: 100%;
+  background: url('suburbNJ.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+.sample2 {  
+  aspect-ratio: 7 / 4;
+  width: 100%;
+  background: url('Bay.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+/* ---------------------------------------------------------------- */
 
 .footer {
   font-size: clamp(10px, 1.5vw, 15px);
