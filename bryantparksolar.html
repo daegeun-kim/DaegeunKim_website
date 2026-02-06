@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="work10/work10.css" rel="stylesheet"/> 
+    <title>Daegeun Kim</title>
+    <link rel="icon" type="image/png" href="image/favicon.jpg">
+</head>
+<body>
+  <main>                                                        
+    <div class="header" id="header">
+      <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
+      <div class="nav">
+        <a href="index.html"><button class="subpage" id="subpage1"><b>Works</b></button></a>
+        <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
+          <button class="subpage">Resume</button>
+        </a>
+        <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
+          <button class="subpage">LinkedIn</button>
+        </a>
+        <a href="https://github.com/daegeun-kim" target="_blank">
+          <button class="subpage">Github</button>
+        </a>
+        <a href="about.html"><button class="subpage" id="subpage1">About</button></a>
+      </div>
+    </div>
+    <div class="main-image"></div>
+
+    <div class="intro">
+      <span class="title">Bryant Park Solar Mapping</span><br>
+      <p>
+        Summer 2025<br>
+        Parametric Modeling<br>
+        Urban Data Analysis<br>
+        <br>
+        Tools:<br>
+        Rhino3D + Grasshopper<br>
+        Plugin:<br>
+        - ClimateStudio<br>
+        - DeCodingSpaces<br>
+        - Ladybug<br>
+        <br>
+      </p>
+    </div>
+
+    <div class="atlas-wrapper">
+      <div class="text">
+        Bryant Park was selected as the testing site to evaluate how surrounding
+        urban form influences solar access at the block and surface level. For
+        each subdivided surface block within the park, total annual solar radiation
+        was calculated while treating adjacent buildings as fixed obstructions
+        that cast shadows throughout the day and across seasons. This setup
+        isolates the geometric impact of the built context, allowing sunlight
+        distribution to be understood primarily as a function of building height,
+        orientation, and street alignment rather than material or vegetation effects.<br>
+        <br>
+      </div>
+      <img src="work10/image1.png" style="width:100%;" />
+      <div class="text">
+        Input 1: Target Surface<br>
+        Input 2: Obstruction Building Geometry<br>
+        Input 3: NYC Sun Path Data<br>
+        <br>
+        Surface-level solar radiation was simulated with surrounding buildings
+        treated as obstructions, showing reduced sunlight on the south and west sides and greater
+        exposure toward the central north. Real conditions vary due to trees and smaller structures
+        not captured in the model.<br><br>
+      </div>
+      <img src="work10/image2.png" style="width:100%;" />
+      <div class="text">
+        Another trade-off point during the process if result precision vs computational
+        capacity. For every half the square size, the computational capacity
+        quadruples. The computational capacity and time of the last image is 64
+        times the first image (4 x 4 x 4).<br><br>
+      </div>
+      <img src="work10/image3.png" style="width:100%;" />
+      <img src="work10/image4.png" style="width:100%; margin-bottom: 100px;" />
+      <div class="text">
+        Grasshopper Analysis result:<br>
+        Average Daylight Hours: 6.4978<br>
+        Average % of Day with Daylight: 59.0705%<br>
+        % Above Minimum Daylight Hours: 98.1819%<br>
+        <br>
+      </div>
+      
+    <div class="footer">________________________________<br>Statistical Insights from Urban Geometry<br>&copy; Daegeun Kim</div>
+  </main>
+  <script src="main.js"></script>  
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="work9/work9.css" rel="stylesheet"/> 
+    <title>Daegeun Kim</title>
+    <link rel="icon" type="image/png" href="image/favicon.jpg">
+</head>
+<body>
+  <main>                                                        
+    <div class="header" id="header">
+      <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
+      <div class="nav">
+        <a href="index.html"><button class="subpage" id="subpage1"><b>Works</b></button></a>
+        <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
+          <button class="subpage">Resume</button>
+        </a>
+        <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
+          <button class="subpage">LinkedIn</button>
+        </a>
+        <a href="https://github.com/daegeun-kim" target="_blank">
+          <button class="subpage">Github</button>
+        </a>
+        <a href="about.html"><button class="subpage" id="subpage1">About</button></a>
+      </div>
+    </div>
+    <div class="main-image"></div>
+
+    <div class="intro">
+      <span class="title">Parametric City Generation & Analysis</span><br>
+      <p>
+        Summer 2025<br>
+        Generative Design<br>
+        Parametric Modeling<br>
+        Solar & View Analysis<br>
+        <br>
+        Tools:<br>
+        Rhino3D + Grasshopper<br>
+        Plugin:<br>
+        - Ladybug<br>
+        - DeCodingSpace<br>
+        <br>
+      </p>
+    </div>
+
+    <div class="atlas-wrapper">
+      <div class="text">
+        Using Rhino3D and parametric plugins, a procedural city model was
+        developed based on three primary inputs: street network, building
+        geometry, and density allocation. The street network defines block
+        boundaries and overall urban structure, while buildings are generated
+        parametrically to fit within each block. Density is controlled through
+        attraction points that distribute program intensity across the site, allowing
+        building height, footprint, and massing to adapt according to location.<br>
+        <br>
+      </div>
+      <img src="work9/image1.png" style="width:100%;" />
+      <div class="text">
+        With input 1 and 2, the building geometries are allocated to fit
+        the street grid shape with different density allocation points. The
+        density allocation points determines which area is downtown
+        and which is suburb, providing a more contextual elements to
+        the cities generated. With 3 iterations of each input, 3 x 3 x 3
+        creates a total 27 numbers of cities generated.<br>
+        <br>
+        Grasshopper Script for City Generation:<br><br>
+      </div>
+      <img src="work9/image2.png" style="width:100%; margin-bottom: 100px;" />
+      <img src="work9/image3.png" style="width:100%; margin-bottom: 100px;" />
+      <div class="text">
+        The solar analysis shows clear pattern where south facing
+        facade receives the most light, while there are some surfaces
+        with high obstruction receiving less solar radiation. This shows
+        that for building's solar exposure, usually orientation is more
+        important than surrounding.<br>
+        <br>
+      </div>
+      <img src="work9/image4.png" style="width:100%; margin-bottom: 100px;" />
+      <div class="text">
+        In case of view analysis, the general pattern is that higher
+        floor is always better. Compared to solar analysis, the view
+        depends much more on the surrounding, where the existence of
+        higher buildings affects view much more than the height or the
+        orientation of the building.<br>
+        <br>
+      </div>
+
+    </div>
+    <div class="footer">________________________________<br>Statistical Insights from Urban Geometry<br>&copy; Daegeun Kim</div>
+  </main>
+  <script src="main.js"></script>  
+</body>
+</html>
