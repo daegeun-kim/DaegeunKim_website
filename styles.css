@@ -132,14 +132,15 @@ main {
 }
 
 .about-image {
-  flex: 400 1 0;
+  flex: 1 1 0;
   aspect-ratio: 1 / 1;
   min-width: 0;
   background: url('DaegeunKim.JPG') no-repeat center center;
   background-size: cover;
+  border-radius:clamp(6px,1.2vw,12px);
 }
 .description {
-  flex: 550 1 0;
+  flex: 2 1 0;
   min-width: 0;
 }
 .bigname-about {
@@ -155,7 +156,7 @@ main {
   font-weight: normal;
   color: #464646;
   text-align: justify;
-  max-width: 550px;
+  /* max-width: 550px; */
 }
 
 
