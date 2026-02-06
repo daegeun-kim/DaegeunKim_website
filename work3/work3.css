@@ -78,7 +78,7 @@ main {
 .main-image {
   aspect-ratio: 16 / 10;
   width: 100%;
-  background: url('main-image.jpg') no-repeat center center;
+  background: url('main-image.jpg?v=20260205') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -104,7 +104,7 @@ main {
 .flow-chart {
   aspect-ratio: 16 / 10;
   width: 100%;
-  background: url('flow-chart.png') no-repeat center center;
+  background: url('flow-chart.png?v=20260205') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -112,7 +112,7 @@ main {
 .threedata {
   aspect-ratio: 5 / 4;
   width: 100%;
-  background: url('rhinodata.jpg') no-repeat center center;
+  background: url('rhinodata.jpg?v=20260205') no-repeat center center;
   background-size: cover;
   background-position: center;
   margin-bottom: 60px;
@@ -136,7 +136,7 @@ main {
 .dataset #dataset-image {
   flex: 1 1 0;
   aspect-ratio: 2 / 3;
-  background: url('initial-data.png') no-repeat center center;
+  background: url('initial-data.png?v=20260205') no-repeat center center;
   background-size: contain;
   background-position: center;
 }
@@ -144,7 +144,7 @@ main {
 .plan {
   aspect-ratio: 4 / 1;
   width: 100%;
-  background: url('plan.png') no-repeat center center;
+  background: url('plan.png?v=20260205') no-repeat center center;
   background-size: contain;
   background-position: center;
 }
@@ -162,7 +162,7 @@ main {
   flex: 3 1 0;
   aspect-ratio: 3 / 2;
   width: 80%;
-  background: url('histogram.png') no-repeat center center;
+  background: url('histogram.png?v=20260205') no-repeat center center;
   background-size: contain;
   background-position: center;
 }
@@ -195,7 +195,7 @@ dt.section + dd { display: none; }
 .lower-manhattan {
   aspect-ratio: 3 / 2;
   width: 100%;
-  background: url('lower-manhattan.png') no-repeat center center;
+  background: url('lower-manhattan.png?v=20260205') no-repeat center center;
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;
@@ -203,7 +203,7 @@ dt.section + dd { display: none; }
 .midtown {
   aspect-ratio: 3 / 2;
   width: 100%;
-  background: url('midtown.png') no-repeat center center;
+  background: url('midtown.png?v=20260205') no-repeat center center;
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;
@@ -211,7 +211,7 @@ dt.section + dd { display: none; }
 .upper-manhattan {
   aspect-ratio: 3 / 2;
   width: 100%;
-  background: url('upper-manhattan.png') no-repeat center center;
+  background: url('upper-manhattan.png?v=20260205') no-repeat center center;
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;

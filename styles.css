@@ -286,7 +286,7 @@ main {
   background-size: cover;
 }
 #work3-image {
-  background: url('image/work3.png') no-repeat center center;
+  background: url('image/work3.png?v=20260205') no-repeat center center;
   background-size: cover;
 }
 #work4-image {
@@ -306,7 +306,7 @@ main {
   background-size: cover;
 }
 #work8-image {
-  background: url('image/work8.png') no-repeat center center;
+  background: url('image/work8.png?v=20260205') no-repeat center center;
   background-size: cover;
 }
 #work9-image {
