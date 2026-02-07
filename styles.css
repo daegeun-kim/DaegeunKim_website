@@ -48,6 +48,14 @@ main {
   border: none;
   color: #8e8e8e;
 }
+.photography {
+  font-size: clamp(12px, 2vw, 20px);
+  color: #6496b6;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
 .nav {
   display: flex;
   gap: clamp(1px, 2vw, 20px);
@@ -58,8 +66,11 @@ main {
   cursor: pointer;
   transition: transform 0.2s;
 }
-
 .nav .subpage:hover {
+  transform: translateY(3px);
+}
+
+.photography:hover {
   transform: translateY(3px);
 }
 
