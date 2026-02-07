@@ -17,15 +17,21 @@ main {
 /*-----------------------------------------------------------------*/
 
 .header {
-  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
   background: #ffffffb9;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   position: fixed;
   top: 0;
-  max-width: 1000px;
+  left: 0;
+  right: 0;
+
+  margin: 0 auto;
+  max-width: 1400px;
   width: 97%;
+
   z-index: 1000;
 }
 
@@ -78,7 +84,7 @@ main {
 .main-image {
   aspect-ratio: 16 / 10;
   width: 100%;
-  background: url('main-image.jpg?v=20260205') no-repeat center center;
+  background: url('main-image2.jpg') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -102,7 +108,7 @@ main {
   color: black;
 }
 .flow-chart {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 8 / 3;
   width: 100%;
   background: url('flow-chart.png?v=20260205') no-repeat center center;
   background-size: contain;
@@ -139,6 +145,31 @@ main {
   background: url('initial-data.png?v=20260205') no-repeat center center;
   background-size: contain;
   background-position: center;
+}
+#distance {
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  background: url('distance.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 50px; 
+}
+#coloring1 {
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  background: url('street3.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-top: 20px; 
+}
+#coloring2 {
+  aspect-ratio: 2 / 1;
+  width: 100%;
+  background: url('street2.jpg') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-top: 20px; 
+  margin-bottom: 40px; 
 }
 
 .plan {

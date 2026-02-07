@@ -8,7 +8,6 @@
     <link rel="icon" type="image/png" href="image/favicon.jpg">
 </head>
 <body>
-  <main>                                                        
     <div class="header" id="header">
       <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
       <div class="nav">
@@ -25,8 +24,8 @@
         <a href="about.html"><button class="subpage" id="subpage1">About</button></a>
       </div>
     </div>
+  <main>
     <div class="main-image"></div>
-
     <div class="intro">
       <span class="title">Manhattan Transit Accessibility Mapping</span><br>
       <p>
@@ -63,6 +62,35 @@
         Use: For calculating weighted average on building floor area<br><br>
       </div>
       <div id="dataset-image"></div>
+    </div>
+    <p class="section-title">Process</p>
+    <div class="text">
+      <ul> <li> <b>Distance Calculation (Street Network Only)</b><br> - 
+        Convert streets into a weighted graph (nodes = intersections, 
+        edges = street segments, weight = segment length).<br> 
+        - Snap each building centroid to the nearest street and assign it to a graph node 
+        <i>v<sub>b</sub></i>.<br> - Snap each subway station point to the nearest street and assign it to a graph node 
+        <i>v<sub>s</sub></i>.<br> - Compute distance only along the street network using shortest path:<br> 
+        <span style="font-family: Arial, sans-serif;">d(b, s) = Σ L<sub>e</sub> over edges in the shortest path 
+        (v<sub>b</sub> → v<sub>s</sub>)</span><br> </li> <br> 
+
+        <div id="distance"></div>
+
+        <li> <b>Finding Street For Each Building</b><br> - Run multi-source shortest path (e.g., Dijkstra) from all station nodes.
+        <br> - Assign each building to its nearest station:<br> 
+        <span style="font-family: Arial, sans-serif;">s* = argmin<sub>s</sub> d(b, s)</span><br> 
+        - Extract the shortest-path edges and allocate that street set to the building.<br> 
+        - Aggregate edge usage counts to get street “flow” intensity.<br> </li> <br> <li> 
+
+        <b>Coloring</b><br> 
+        - Streets: vary thickness by edge flow; color by nearest-station catchment or flow intensity.<br> 
+        - Buildings: color by distance to assigned nearest station <i>d(b, s*)</i> (shorter = better access).<br> </li> <br>
+        
+        <div id="coloring1"></div>
+        <div id="coloring2"></div>
+
+        <li> <b>Statistical Analysis</b><br> 
+        - Compute summary statistics from all building distances { d(b, s*) }: min, median, mean, max.<br> </li> </ul>
     </div>
     <p class="section-title">Outcome & Statistics</p>
     <div class="plan"></div>

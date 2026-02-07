@@ -74,17 +74,20 @@ html, body {
 
 .header {
   font-family: Helvetica, Arial, sans-serif;
-  left: 0;
-  right: 0;
-  background: transparent;
-  margin: 0 auto;
+  /* background: #ffffffb9; */
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   position: fixed;
   top: 0;
-  max-width: 1000px;
+  left: 0;
+  right: 0;
+
+  margin: 0 auto;
+  max-width: 1400px;
   width: 97%;
+
   z-index: 1000;
 }
 
