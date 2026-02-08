@@ -1,124 +1,81 @@
-(function () {
-  const collage = document.getElementById("collage");
-  if (!collage) return;
+window.addEventListener("DOMContentLoaded", () => {
+  const lb = document.getElementById("lightbox")
+  const lbImg = document.getElementById("lightboxImg")
+  const prev = document.getElementById("prev")
+  const next = document.getElementById("next")
 
-  const GAP = 8;                // must match CSS gap
-  const BASE_ROW_H = () => {
-    const w = collage.clientWidth;
-    if (w <= 480) return 300;
-    if (w <= 700) return 350;
-    if (w <= 1100) return 400;
-    return 500;
-  };
+  const buttons = document.querySelectorAll(".photo-filter .continent")
+  const items = [...document.querySelectorAll(".item")]
+  const hero = document.getElementById("heroImg")
 
-  const items = Array.from(collage.querySelectorAll(".item"));
-  const imgs = items.map(it => it.querySelector("img"));
+  let imgs = []
+  let index = 0
 
-  function getAR(img) {
-    const w = img.naturalWidth || img.width || 1;
-    const h = img.naturalHeight || img.height || 1;
-    return w / h;
+  function refreshImgs(){
+    imgs = items
+      .filter(it => it.style.display !== "none")
+      .map(it => it.querySelector("img"))
   }
 
-  function layout() {
-    const containerW = collage.clientWidth;
-    if (!containerW) return;
+  function show(i){
+    refreshImgs()
+    index = (i + imgs.length) % imgs.length
+    lbImg.src = imgs[index].src.replace("/thumb/", "/full/")
+    lb.style.display = "flex"
+  }
 
-    const targetH = BASE_ROW_H();
+  document.addEventListener("click", e => {
+    const img = e.target.closest(".item img")
+    if(!img) return
+    refreshImgs()
+    show(imgs.indexOf(img))
+  })
 
-    let row = [];
-    let sumAR = 0;
+  prev.onclick = e => { e.stopPropagation(); show(index-1) }
+  next.onclick = e => { e.stopPropagation(); show(index+1) }
+  lb.onclick = () => lb.style.display = "none"
 
-    const flushRow = (isLast) => {
-      if (!row.length) return;
+  document.addEventListener("keydown", e=>{
+    if(lb.style.display !== "flex") return
+    if(e.key === "ArrowLeft") show(index-1)
+    if(e.key === "ArrowRight") show(index+1)
+    if(e.key === "Escape") lb.style.display = "none"
+  })
 
-      const gapsW = GAP * (row.length - 1);
-      const usableW = containerW - gapsW;
+  const map = {
+    "All": "all",
+    "America": "amer",
+    "Asia": "asia",
+    "Europe": "euro"
+  }
 
-      // Calculate row height to fill the exact width
-      let rowH = usableW / sumAR;
-      
-      // For last row, optionally constrain it to target height or less
-      if (isLast) {
-        rowH = Math.min(rowH, targetH);
-      }
+  const heroMap = {
+    amer: "photographs/full/amer_thumbnail.webp",
+    asia: "photographs/full/asia_thumbnail.webp",
+    euro: "photographs/full/euro_thumbnail.webp"
+  }
 
-      let used = 0;
+  buttons.forEach(btn=>{
+    btn.onclick = () => {
+      const key = map[btn.textContent.trim()]
 
-      row.forEach((it, idx) => {
-        const ar = it.__ar || getAR(it.querySelector("img"));
+      buttons.forEach(b=>b.classList.remove("active"))
+      btn.classList.add("active")
 
-        let w = Math.round(ar * rowH);
-
-        // Last item in row gets adjusted width to fill any gaps and match usableW exactly
-        if (idx === row.length - 1) {
-          w = Math.max(1, usableW - used);
+      items.forEach(it=>{
+        if(key === "all"){
+          it.style.display = ""
+        } else {
+          const tag = it.dataset.cat || ""
+          it.style.display = tag.includes(key) ? "" : "none"
         }
+      })
 
-        it.style.height = `${Math.round(rowH)}px`;
-        it.style.width = `${w}px`;
-
-        used += w;
-      });
-
-      row = [];
-      sumAR = 0;
-    };
-
-    for (const it of items) {
-      const img = it.querySelector("img");
-      if (!img) continue;
-
-      const ar = it.__ar || getAR(img);
-      it.__ar = ar;
-
-      row.push(it);
-      sumAR += ar;
-
-      const gapsW = GAP * (row.length - 1);
-      const usableW = containerW - gapsW;
-      const estW = sumAR * targetH;
-
-      // When estimated width exceeds container, flush the row
-      if (estW >= usableW) flushRow(false);
-    }
-
-    // Flush remaining items as last row
-    flushRow(true);
-  }
-
-  function waitForImagesThenLayout() {
-    let pending = 0;
-
-    imgs.forEach((img, i) => {
-      if (!img) return;
-
-      const done = () => {
-        const ar = getAR(img);
-        items[i].__ar = ar;
-        pending--;
-        if (pending <= 0) layout();
-      };
-
-      if (img.complete && img.naturalWidth) {
-        done();
-        return;
+      if(key !== "all" && heroMap[key]){
+        hero.src = heroMap[key]
       }
 
-      pending++;
-      img.addEventListener("load", done, { once: true });
-      img.addEventListener("error", () => {
-        pending--;
-        if (pending <= 0) layout();
-      }, { once: true });
-    });
-
-    if (pending === 0) layout();
-  }
-
-  const ro = new ResizeObserver(() => layout());
-  ro.observe(collage);
-
-  window.addEventListener("load", waitForImagesThenLayout);
-  waitForImagesThenLayout();
-})();
+      refreshImgs()
+    }
+  })
+})

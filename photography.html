@@ -10,88 +10,107 @@
 <body>
   <main>                                                        
     <div class="header" id="header">
-      <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-      <div class="nav">
-        <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-        <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
-          <button class="subpage" id="subpage3">Resume</button>
-        </a>
-        <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-          <button class="subpage" id="subpage4">LinkedIn</button>
-        </a>
-        <a href="https://github.com/daegeun-kim" target="_blank">
-          <button class="subpage" id="subpage5">Github</button>
-        </a>
-        <a href="about.html"><button class="subpage" id="subpage2" style="color: black;">About</button></a>
+      <div class="header-inner">
+        <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
+        <div class="nav">
+          <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
+          <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
+            <button class="subpage" id="subpage3">Resume</button>
+          </a>
+          <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
+            <button class="subpage" id="subpage4">LinkedIn</button>
+          </a>
+          <a href="https://github.com/daegeun-kim" target="_blank">
+            <button class="subpage" id="subpage5">Github</button>
+          </a>
+          <a href="about.html"><button class="subpage" id="subpage2">About</button></a>
+        </div>
       </div>
     </div>
   <div class="wrap">
     <section class="hero">
-      <img src="photographs/thumb/sunset-09259.webp" alt="">
+      <img id="heroImg" src="photographs/full/amer_thumbnail.webp">
+
       <div class="heroText">
-        <h1 class="heroTitle"><b>Photograpphy Portfolio</b></h1>
+        <h1 class="heroTitle"><b>Photography Portfolio</b></h1>
         <div class="heroSub">by Daegeun Kim</div>
+      </div>
+    </section>
+    <section class="intro">
+      <p class="text"><il>I capture what others overlook, distilling fleeting moments into images that endure.</il></p>
+      <div class="photo-filter">
+        <button class="continent">All</button>
+        <button class="continent">America</button>
+        <button class="continent">Asia</button>
+        <button class="continent">Europe</button>
       </div>
     </section>
 
     <section class="gallery">
-        <div class="collage" id="collage">
-          <div class="item"><img src="photographs/thumb/sunset-09412.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/sunset-09381.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/sunset-09335.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/sunrise-09290.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/sunrise-09258.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/sunrise-09047.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/midtown-09008.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/midtown-.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/midtown-08658.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/midtown-08569.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/midtown-08534.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/winter-08089.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/winter-08124.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/centralpark-07835.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/centralpark-07865.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/centralpark-07861.webp" decoding="async" alt=""></div>
+        <div class="masonry" id="masonry">
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09412.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09381.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09335.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunrise-09290.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunrise-09258.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunrise-09047.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-09008.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-08658.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-08569.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-08534.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/winter-08089.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/winter-08124.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07835.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07865.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07861.webp" decoding="async" alt=""></div>
 
-          <div class="item"><img src="photographs/thumb/top of the rock-06969.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/dominopark-06934.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Independence Day-06266.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Manhattan Bridge-05994.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/yeosu.webp" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Rome-03186.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Rome-02224.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Rome-01334.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Rome-02251.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Rome-04172.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Rome-03799.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Rome-03959.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Rome-02824.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Best-9682.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Seoul Fall-00126.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Seoul Fall-00105.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/top of the rock-06969.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/dominopark-06934.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Independence Day-06266.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Manhattan Bridge-05994.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03186.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02224.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/China-01334.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02251.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/staten island-07531.webp" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-04172.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03799.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03959.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02824.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-9682.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00126.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00105.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02805.webp" decoding="async" alt=""></div>
 
-          <div class="item"><img src="photographs/thumb/Seoul Fall-00046.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Seoul Fall-08112.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Seoul Fall-08021.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/eunpyeong.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/suwon.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/gyeongju.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Best-00985.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Best-00420.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Best-00311.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/Best-12.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/NYC-00828-2.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/london-04251.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/budapest-02127.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/budapest-01871.webp" loading="lazy" decoding="async" alt=""></div>
-          <div class="item"><img src="photographs/thumb/NYC-00916.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00046.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-08112.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-08021.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/eunpyeong.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/suwon.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-00985.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-00420.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-00311.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-12.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/NYC-00828-2.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/london-04251.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-02127.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01871.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/NYC-00916.webp" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/yeosu.webp" decoding="async" alt=""></div>
         </div>
     </section>
   </div>
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-nav prev" id="prev">‹</button>
+    <img id="lightboxImg">
+    <button class="lightbox-nav next" id="next">›</button>
+</div>
   <div class="footer">________________________________<br>&copy; Daegeun Kim</div>
 
   </main>
-  <script src="main.js"></script>   
+  <script src="main.js"></script>
   <script src="photography.js"></script>   
 </body>
 </html>
