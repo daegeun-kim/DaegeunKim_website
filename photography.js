@@ -7,6 +7,31 @@ window.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".photo-filter .continent")
   const items = [...document.querySelectorAll(".item")]
   const hero = document.getElementById("heroImg")
+  const rc = document.getElementById("rcNotice")
+
+  function showRC(){
+    rc.classList.add("show")
+    rc.setAttribute("aria-hidden","false")
+    clearTimeout(showRC.t)
+    showRC.t = setTimeout(hideRC, 1200)
+  }
+
+  function hideRC(){
+    rc.classList.remove("show")
+    rc.setAttribute("aria-hidden","true")
+  }
+
+  document.addEventListener("contextmenu", e=>{
+    const img = e.target.closest("img")
+    if(!img) return
+    e.preventDefault()
+    showRC()
+  })
+
+  rc.addEventListener("click", hideRC)
+  document.addEventListener("keydown", e=>{
+    if(e.key === "Escape") hideRC()
+  })
 
   let imgs = []
   let index = 0

@@ -221,7 +221,7 @@ body{
   object-fit:contain;
 
   background:#fff;
-  padding:30px;
+  padding:clamp(3px, 2vw, 30px);
   box-sizing:content-box;
 }
 
@@ -240,3 +240,18 @@ body{
 
 .prev{ left:20px; }
 .next{ right:20px; }
+
+.rcNotice {
+  text-align:center;
+  margin-top:100px;
+  padding:10px 0;
+  color:#000000;
+  font-size:clamp(9px, 1.8vw, 18px);
+}
+.footer {
+  text-align:center;
+  padding:10px 0;
+  margin-bottom: 30px;
+  color:#000000;
+  font-size:clamp(9px, 1.8vw, 18px);
+}
