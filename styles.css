@@ -256,7 +256,7 @@ main {
 }
 
 .image{
-  border:#6d6d6d solid 1px;
+  border:#bcbcbc solid 1px;
   aspect-ratio:2 / 1;
   margin-bottom:20px;
   border-radius:clamp(6px,1.2vw,12px);
