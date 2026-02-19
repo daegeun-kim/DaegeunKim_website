@@ -171,6 +171,30 @@ a {
   width: 100%;
   margin-bottom: 20px;
 }
+
+.sub-title {
+  font-size: clamp(15px, 2.5vw, 25px);
+  margin-top: 80px;
+}
+#mode1 {  
+  aspect-ratio: 3 / 1;
+  background: url('mode_diagram2.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+#mode2 {  
+  aspect-ratio: 3 / 1;
+  background: url('mode_diagram1.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+#mode3 {  
+  aspect-ratio: 3 / 1;
+  background: url('mode_diagram3.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+}
+
 #capture1 {  
   background: url('capture2.png') no-repeat center center;
   background-size: contain;

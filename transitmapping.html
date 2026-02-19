@@ -76,7 +76,7 @@
 
         <div id="distance"></div>
 
-        <li> <b>Finding Street For Each Building</b><br> - Run multi-source shortest path (e.g., Dijkstra) from all station nodes.
+        <li> <b>Finding Street For Each Building</b><br> - Run multi-source shortest path from all station nodes.
         <br> - Assign each building to its nearest station:<br> 
         <span style="font-family: Arial, sans-serif;">s* = argmin<sub>s</sub> d(b, s)</span><br> 
         - Extract the shortest-path edges and allocate that street set to the building.<br> 
@@ -84,7 +84,7 @@
 
         <b>Coloring</b><br> 
         - Streets: vary thickness by edge flow; color by nearest-station catchment or flow intensity.<br> 
-        - Buildings: color by distance to assigned nearest station <i>d(b, s*)</i> (shorter = better access).<br> </li> <br>
+        - Buildings: color by distance to assigned nearest station.<br> </li> <br>
         
         <div id="coloring1"></div>
         <div id="coloring2"></div>
