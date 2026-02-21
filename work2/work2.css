@@ -149,6 +149,24 @@ a {
   font-weight: bold;
   margin: 40px 0;
 }
+.data {
+  display: flex;
+  gap: clamp(16px, 5vw, 50px);
+  width: 100%;
+  align-items: stretch;
+}
+.original-data {  
+  aspect-ratio: 1 / 1;
+  width: 60%;
+  background: url('original_data.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
+  margin-bottom: 20px;
+}
+.data-list {  
+  font-size: clamp(7px, 1.5vw, 15px);
+  text-align: left;
+}
 .flow-chart {  
   aspect-ratio: 16 / 10;
   width: 100%;
