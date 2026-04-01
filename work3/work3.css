@@ -113,7 +113,13 @@ main {
   background: url('flow-chart.png?v=20260205') no-repeat center center;
   background-size: contain;
   background-position: center;
-  margin-bottom: 20px;
+}
+.grasshopper {
+  aspect-ratio: 4 / 1;
+  width: 100%;
+  background: url('grasshopper.png') no-repeat center center;
+  background-size: contain;
+  background-position: center;
 }
 .threedata {
   aspect-ratio: 5 / 4;
@@ -149,7 +155,7 @@ main {
 #distance {
   aspect-ratio: 2 / 1;
   width: 100%;
-  background: url('distance.png') no-repeat center center;
+  background: url('satellite_shortest_path.png?v=20260331') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 50px; 
