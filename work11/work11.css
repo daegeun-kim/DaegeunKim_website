@@ -1,0 +1,442 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  font-size: clamp(10px, 1.8vw, 18px);
+  font-family: Helvetica, Arial, sans-serif;
+  max-width: 1000px;
+  width: 97%;
+  margin: 10px auto;
+  padding-top: 68px;
+  box-sizing: border-box;
+}
+
+/*-----------------------------------------------------------------*/
+/* Header                                                          */
+/*-----------------------------------------------------------------*/
+
+.header {
+  font-family: Helvetica, Arial, sans-serif;
+  background: #ffffffb9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  margin: 0 auto;
+  max-width: 1400px;
+  width: 97%;
+
+  z-index: 1000;
+}
+
+.header #name {
+  margin: 20px 0;
+  font-size: clamp(14px, 2.3vw, 20px);
+}
+#name a {
+  color: inherit;
+  text-decoration: none;
+}
+#name a:visited {
+  color: inherit;
+}
+.subpage {
+  background: transparent;
+  font-size: clamp(9px, 1.8vw, 18px);
+  text-align: left;
+  border: none;
+  color: #6d6d6d;
+}
+.nav {
+  display: flex;
+  gap: clamp(1px, 2vw, 20px);
+  align-items: center;
+}
+.nav .subpage {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.nav .subpage:hover {
+  transform: translateY(3px);
+}
+.header.hidden {
+  transform: translateY(-120%);
+}
+.header.animate,
+.header.animate.hidden {
+  transition: transform 1s ease-in-out;
+}
+
+/*-----------------------------------------------------------------*/
+/* Hero & Intro                                                     */
+/*-----------------------------------------------------------------*/
+
+.main-image {
+  aspect-ratio: 5 / 2;
+  background: #e8e8e8;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: black;
+  font-size: clamp(20px, 5vw, 50px);
+  font-weight: bold;
+}
+
+.intro {
+  margin: 50px 0 130px 0;
+  font-size: clamp(12px, 2.1vw, 21px);
+  color: #6d6d6d;
+}
+
+#github {
+  color: #6d6d6d;
+  margin: 6px 0 18px 0;
+  text-decoration: none;
+}
+
+#github:hover {
+  color: #333;
+}
+
+a:has(#github) {
+  text-decoration: none;
+}
+
+/*-----------------------------------------------------------------*/
+/* Section Titles & Body Text                                       */
+/*-----------------------------------------------------------------*/
+
+.section-title {
+  font-size: clamp(12px, 2.5vw, 25px);
+  font-weight: bold;
+  margin: 90px 0 20px 0;
+  color: black;
+}
+
+.subsection-title {
+  font-size: clamp(11px, 2vw, 20px);
+  font-weight: bold;
+  margin: 44px 0 14px 0;
+  color: #222;
+}
+
+.text {
+  font-size: clamp(10px, 2vw, 20px);
+  line-height: 1.6;
+  color: #636363;
+  text-align: justify;
+}
+
+.text code, code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.88em;
+  background: #f2f2f2;
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: #333;
+}
+
+/*-----------------------------------------------------------------*/
+/* Research Question Grid                                          */
+/*-----------------------------------------------------------------*/
+
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+  margin: 32px 0 0 0;
+}
+
+@media (max-width: 640px) {
+  .research-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.research-card {
+  border-top: 2px solid #000;
+  padding-top: 16px;
+}
+
+.card-num {
+  font-size: clamp(9px, 1.4vw, 13px);
+  color: #bbb;
+  margin-bottom: 6px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+}
+
+.card-title {
+  font-weight: bold;
+  color: #111;
+  font-size: clamp(11px, 1.7vw, 16px);
+  margin-bottom: 8px;
+}
+
+.card-question {
+  font-style: italic;
+  color: #555;
+  font-size: clamp(10px, 1.5vw, 14px);
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.feature-bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature-bullets li {
+  padding: 3px 0 3px 18px;
+  position: relative;
+  color: #777;
+  font-size: clamp(9px, 1.5vw, 14px);
+  line-height: 1.5;
+}
+
+.feature-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #bbb;
+}
+
+/*-----------------------------------------------------------------*/
+/* Platform Comparison Table                                       */
+/*-----------------------------------------------------------------*/
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: clamp(9px, 1.5vw, 14px);
+}
+
+.comparison-table thead tr {
+  border-bottom: 2px solid #000;
+}
+
+.comparison-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: bold;
+  color: #111;
+}
+
+.comparison-table th:first-child {
+  width: 22%;
+}
+
+.comparison-table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.comparison-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.comparison-table td {
+  padding: 9px 14px;
+  color: #636363;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.comparison-table td:first-child {
+  font-weight: bold;
+  color: #333;
+}
+
+.comparison-table td:last-child {
+  color: #333;
+}
+
+/*-----------------------------------------------------------------*/
+/* D3 Diagram Containers                                           */
+/*-----------------------------------------------------------------*/
+
+.diagram-container {
+  width: 100%;
+  margin: 28px 0;
+  overflow: hidden;
+}
+
+.diagram-container svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Architecture diagram is wider than the others; allow horizontal scroll
+   on small viewports so text remains readable */
+#data-pipeline-diagram {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+#data-pipeline-diagram svg {
+  min-width: 640px; /* prevents text from becoming illegible on phones */
+}
+
+/*-----------------------------------------------------------------*/
+/* Screenshots Grid (2×2)                                          */
+/*-----------------------------------------------------------------*/
+
+.screenshots-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 28px 0;
+}
+
+@media (max-width: 500px) {
+  .screenshots-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*-----------------------------------------------------------------*/
+/* UX Feature Rows                                                 */
+/*-----------------------------------------------------------------*/
+
+.ux-feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+  margin: 20px 0 40px 0;
+}
+
+@media (max-width: 600px) {
+  .ux-feature-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ux-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/*-----------------------------------------------------------------*/
+/* Image Placeholders                                              */
+/*-----------------------------------------------------------------*/
+
+.img-placeholder {
+  width: 100%;
+  box-sizing: border-box;
+  background: #ececec;
+  border: 1px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: clamp(9px, 1.4vw, 13px);
+  font-family: Helvetica, Arial, sans-serif;
+  text-align: center;
+  padding: 12px;
+}
+
+/*-----------------------------------------------------------------*/
+/* Charts Section                                                  */
+/*-----------------------------------------------------------------*/
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  margin: 28px 0;
+}
+
+@media (max-width: 580px) {
+  .chart-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.chart-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-placeholder {
+  aspect-ratio: 4 / 3;
+}
+
+/*-----------------------------------------------------------------*/
+/* ML Formula Box                                                  */
+/*-----------------------------------------------------------------*/
+
+.ml-formula-box {
+  background: #f8f8f8;
+  border-left: 3px solid #000;
+  padding: 18px 22px;
+  margin: 22px 0;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(9px, 1.5vw, 14px);
+  color: #333;
+  line-height: 2;
+}
+
+.ml-formula-box b {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: clamp(10px, 1.6vw, 15px);
+  color: #111;
+}
+
+/*-----------------------------------------------------------------*/
+/* Technical Stack Table                                           */
+/*-----------------------------------------------------------------*/
+
+.tech-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: clamp(9px, 1.5vw, 14px);
+}
+
+.tech-table tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.tech-table tbody tr:first-child {
+  border-top: 2px solid #000;
+}
+
+.tech-table td {
+  padding: 9px 14px;
+  color: #636363;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.tech-table td:first-child {
+  font-weight: bold;
+  color: #333;
+  width: 26%;
+  white-space: nowrap;
+}
+
+/*-----------------------------------------------------------------*/
+/* Footer                                                          */
+/*-----------------------------------------------------------------*/
+
+.footer {
+  font-size: clamp(10px, 1.5vw, 15px);
+  line-height: 1.5;
+  height: 200px;
+  margin: 100px 0 0 0;
+  color: #636363;
+}
