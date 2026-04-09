@@ -79,8 +79,8 @@ main {
 /*-----------------------------------------------------------------*/
 
 .main-image {
-  aspect-ratio: 5 / 2;
-  background: #e8e8e8;
+  aspect-ratio: 16 / 9;
+  background: #e8e8e8 url('title.png') no-repeat center center;
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;
@@ -347,6 +347,23 @@ a:has(#github) {
   font-family: Helvetica, Arial, sans-serif;
   text-align: center;
   padding: 12px;
+}
+
+.UX-process1 {
+  background: url('UX1.png') no-repeat center center;
+  background-size: contain;
+}
+.UX-process2 {
+  background: url('UX2.png') no-repeat center center;
+  background-size: contain;
+}
+.UX-process3 {
+  background: url('UX3.png') no-repeat center center;
+  background-size: contain;
+}
+.UX-process4 {
+  background: url('UX4.png') no-repeat center center;
+  background-size: contain;
 }
 
 /*-----------------------------------------------------------------*/
