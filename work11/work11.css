@@ -9,7 +9,6 @@ main {
   max-width: 1000px;
   width: 97%;
   margin: 10px auto;
-  padding-top: 68px;
   box-sizing: border-box;
 }
 
@@ -79,8 +78,8 @@ main {
 /*-----------------------------------------------------------------*/
 
 .main-image {
-  aspect-ratio: 16 / 9;
-  background: #e8e8e8 url('title.png') no-repeat center center;
+  aspect-ratio: 5 / 2;
+  background: #e8e8e8 url('title1.png') no-repeat center center;
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;
@@ -99,7 +98,7 @@ main {
 }
 
 #github {
-  color: #6d6d6d;
+  color: #0051ff;
   margin: 6px 0 18px 0;
   text-decoration: none;
 }
@@ -179,14 +178,14 @@ a:has(#github) {
 .card-title {
   font-weight: bold;
   color: #111;
-  font-size: clamp(11px, 1.7vw, 16px);
+  font-size: clamp(14px, 1.9vw, 19px);
   margin-bottom: 8px;
 }
 
 .card-question {
-  font-style: italic;
-  color: #555;
-  font-size: clamp(10px, 1.5vw, 14px);
+  /* font-style: italic; */
+  color: #000000;
+  font-size: clamp(12px, 1.6vw, 16px);
   margin-bottom: 14px;
   line-height: 1.5;
 }

@@ -23,11 +23,11 @@
       </div>
     </div>
 
-  <main>
+  
 
     <!-- ── Hero ───────────────────────────────────────────────── -->
     <div class="main-image"></div>
-
+  <main>
     <div class="intro">
       <span class="title">Explorentory</span><br>
       <a href="https://github.com/daegeun-kim/Explorentory" target="_blank">
@@ -49,13 +49,13 @@
     <p class="section-title">Overview</p>
     <div class="text">
       Explorentory is a full-stack, AI-powered NYC rental discovery platform. Rather than
-      mimicking the filter-first paradigm of traditional real estate search — where users must
-      commit to a price cap and bedroom count before seeing anything — Explorentory inverts the
+      mimicking the filter-first paradigm of traditional real estate search, where users must
+      commit to a price cap and bedroom count before seeing anything, Explorentory inverts the
       process. Users express natural-language preferences, explore a neighborhood on a live map,
       rate a curated sample of real properties, and receive personalized recommendations ranked
       by an OLS regression model trained on their own feedback. Three LLM-powered endpoints
       provide plain-English context at every stage. The platform operates on a PostGIS database
-      of approximately 3 million synthetic NYC units derived from PLUTO, with MapLibre GL
+      of approximately 3 million synthetic NYC units derived from PLUTO and building data, with MapLibre GL
       rendering up to 5,000 results as an interactive choropleth map across 9 data dimensions.
     </div>
 
@@ -81,7 +81,7 @@
         <div class="card-question">How can machine learning adapt rental recommendations based on user behavior, constraints, and urban data?</div>
         <ul class="feature-bullets">
           <li>OLS regression trained live on 10 user-rated properties to infer latent preferences</li>
-          <li>11 engineered features — rent, sqft, bedroom/bathroom diff, proximity, noise, building age</li>
+          <li>11 engineered features: rent, sqft, bedroom/bathroom diff, proximity, noise, building age</li>
           <li>Hybrid final score: <code>(rule_score + ml_score) / 2</code></li>
           <li><code>StandardScaler</code> fit on 3M-record dataset prevents overfitting with sparse training data</li>
         </ul>
@@ -104,7 +104,7 @@
     <!-- ── Platform Comparison ────────────────────────────────── -->
     <p class="section-title">Rethinking Rental Search</p>
     <div class="text">
-      Traditional real estate platforms — Zillow, StreetEasy, Redfin — are built around a
+      Traditional real estate platforms: Zillow, StreetEasy, Redfin, are built around a
       filter-first paradigm: users must specify price, bedrooms, and neighborhood before seeing
       any results. This forces premature decisions and obscures trade-offs. If a user's exact
       criteria return zero results, they must manually adjust filters and re-search. Explorentory
@@ -112,6 +112,8 @@
       value from their rating behavior and surfaces properties that balance competing preferences,
       including ones the user never explicitly stated.
     </div>
+
+    <img src="work11/rethinking_rental_search.png" alt="Rethinking Rental Search" style="width:100%; aspect-ratio:2/1; object-fit:cover; display:block; margin: 28px 0;">
 
     <!-- D3 Diagram 1 — Comparison Flow -->
     <div class="diagram-container" id="comparison-diagram"></div>
@@ -127,8 +129,8 @@
       <tbody>
         <tr>
           <td>Search paradigm</td>
-          <td>Hard filters — price range, beds, neighborhood set before results appear</td>
-          <td>Trade-off ranking — no filter walls, results always present</td>
+          <td>Hard filters: price range, beds, neighborhood set before results appear</td>
+          <td>Trade-off ranking with no filter walls; results always present</td>
         </tr>
         <tr>
           <td>Personalization</td>
@@ -137,7 +139,7 @@
         </tr>
         <tr>
           <td>Result explanations</td>
-          <td>None — user must interpret listings manually</td>
+          <td>None; user must interpret listings manually</td>
           <td>LLM-generated 2–3 sentence narrative per property</td>
         </tr>
         <tr>
@@ -148,17 +150,17 @@
         <tr>
           <td>Data dimensions shown</td>
           <td>Listing photos + price, beds, sqft</td>
-          <td>9 choropleth modes + histogram distribution + radar triangle</td>
+          <td>9 choropleth modes + histogram distribution + radar chart</td>
         </tr>
         <tr>
           <td>Conversational interface</td>
           <td>None</td>
-          <td><code>/chat</code> — natural language filter and sort over live results</td>
+          <td><code>/chat</code> endpoint for natural language filter and sort over live results</td>
         </tr>
         <tr>
           <td>Trade-off awareness</td>
           <td>User must infer trade-offs manually across listings</td>
-          <td>Radar triangle makes multi-dimensional trade-offs explicit</td>
+          <td>Radar chart makes multi-dimensional trade-offs explicit</td>
         </tr>
         <tr>
           <td>ML feedback loop</td>
@@ -168,7 +170,7 @@
         <tr>
           <td>Data scale</td>
           <td>Actual live listings (sparse, uneven coverage)</td>
-          <td>~3M synthetic NYC units — dense and uniform across all neighborhoods</td>
+          <td>~3M synthetic NYC units, dense and uniform across all neighborhoods</td>
         </tr>
       </tbody>
     </table>
@@ -205,96 +207,19 @@
     <div class="text">
       Explorentory is a three-tier system. A PostGIS spatial database holds approximately
       3 million property records and 260 neighborhood polygons. A FastAPI backend exposes
-      six REST endpoints — three for data retrieval and ML recommendation, three for
+      six REST endpoints: three for data retrieval and ML recommendation, and three for
       OpenAI-powered natural language features. A Vanilla JavaScript frontend renders results
       with MapLibre GL and two custom Canvas-based charts, with no front-end framework dependency.
     </div>
 
-    <!-- D3 Diagram 3 — Data Pipeline -->
-    <div class="diagram-container" id="data-pipeline-diagram"></div>
-
-    <!-- ── UX Features ────────────────────────────────────────── -->
-    <p class="section-title">UX Features</p>
-
-    <p class="subsection-title">01 &nbsp; Preference Modal</p>
-    <div class="ux-feature-row">
-      <div class="ux-text">
-        <div class="text">
-          The preference modal is the entry point. A rent slider with live $ display
-          ($1,500–$10,000 at $50 steps) sets the budget anchor. Bedroom and bathroom
-          numeric inputs define base constraints. A priority ranking interface lets the user
-          click Rent, Location, and Sqft in order of importance — these clicks assign
-          rule-based scoring weights of 3×, 2×, and 1× respectively. A free-text concern
-          field (e.g., "quiet street, close to a park") is passed verbatim into all
-          subsequent LLM prompts, grounding AI explanations in the user's stated intent.
-        </div>
-      </div>
-      <div class="img-placeholder" style="aspect-ratio: 3/2;">
-        <span>Preference Modal Screenshot</span>
-      </div>
+    <div class="diagram-container">
+      <img src="work11/system_architecture.svg" alt="System Architecture Diagram" style="width:100%; height:auto; display:block;">
     </div>
 
-    <p class="subsection-title">02 &nbsp; Neighborhood Selection Map</p>
-    <div class="ux-feature-row">
-      <div class="ux-text">
-        <div class="text">
-          The neighborhood map renders all 260 NYC neighborhood polygons via the
-          <code>/neighborhoods</code> endpoint, which reprojects geometry from EPSG:2263
-          to WGS84 and returns GeoJSON. Hovering highlights a boundary; clicking confirms
-          the selection with a colored fill. The centroid of the chosen polygon is sent to
-          <code>/properties</code>, which filters the 3M-unit database to properties
-          within rent and bedroom tolerances and computes Euclidean distance from the
-          centroid. Stratified sampling guarantees at least 5 of the 10 returned survey
-          properties come from the user's chosen borough, preventing geographic bias.
-        </div>
-      </div>
-      <div class="img-placeholder" style="aspect-ratio: 3/2;">
-        <span>Neighborhood Map Screenshot</span>
-      </div>
-    </div>
+    <!-- ── UI Features ───────────────────────────────────────── -->
+    <p class="section-title">UI Features</p>
 
-    <p class="subsection-title">03 &nbsp; Rating Survey</p>
-    <div class="ux-feature-row">
-      <div class="ux-text">
-        <div class="text">
-          Ten property cards are presented in a scrollable list, each showing
-          neighborhood, rent, square footage, and bed/bath count. Clicking a card triggers
-          <code>map.flyTo()</code> and highlights the building footprint polygon on the
-          map in <code style="background:none; padding:0; color:#63adf2;">#63adf2</code>;
-          unselected properties render in
-          <code style="background:none; padding:0; color:#1a6bc0;">#1a6bc0</code>. All
-          10 polygons and location pins are simultaneously visible, giving the user spatial
-          context when assigning ratings. Each card receives a 0–10 score before submission,
-          after which the ratings are sent to <code>/recommend</code>.
-        </div>
-      </div>
-      <div class="img-placeholder" style="aspect-ratio: 3/2;">
-        <span>Rating Survey Screenshot</span>
-      </div>
-    </div>
-
-    <p class="subsection-title">04 &nbsp; Results Panel</p>
-    <div class="ux-feature-row">
-      <div class="ux-text">
-        <div class="text">
-          The results panel renders 5,000 top-scored properties as a MapLibre GL
-          choropleth. A toolbar switches between 9 data dimensions: overall score, rent,
-          sqft, year built, building stories, elevator availability, park distance, subway
-          distance, and noise level. A top-10 ranked card list appears in the sidebar;
-          clicking a card highlights the corresponding building footprint and exposes an
-          "Explain" button that calls <code>/explain</code> for a 2–3 sentence GPT match
-          narrative. An "Explain Result" button at the top calls
-          <code>/explain_result</code>, which translates the OLS regression coefficients
-          into a plain-English preference summary such as "Your ratings show you value
-          proximity to green space more than building age."
-        </div>
-      </div>
-      <div class="img-placeholder" style="aspect-ratio: 3/2;">
-        <span>Results Panel Screenshot</span>
-      </div>
-    </div>
-
-    <p class="subsection-title">05 &nbsp; Natural Language Chat</p>
+    <p class="subsection-title">01 &nbsp; Natural Language Chat</p>
     <div class="ux-feature-row">
       <div class="ux-text">
         <div class="text">
@@ -307,50 +232,108 @@
           neighborhoods, building class codes, and all column semantics. The returned JSON
           is applied client-side, re-ranking the displayed properties without an additional
           server round-trip. A reset button restores the original recommendation order.
-          Dark and bright modes each have their own complete MapLibre style JSON and chart
-          color palette.
         </div>
       </div>
-      <div class="img-placeholder" style="aspect-ratio: 3/2;">
-        <span>Chat Interface &amp; Dark Mode Screenshot</span>
+      <img src="work11/natural_language_chat.png" alt="Natural Language Chat" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
+    </div>
+
+    <p class="subsection-title">02 &nbsp; Dark and Bright Mode</p>
+    <div class="ux-feature-row">
+      <div class="ux-text">
+        <div class="text">
+          A toggle button switches the entire interface between dark and bright modes.
+          Each mode has its own complete MapLibre GL style JSON (<code>style.json</code>
+          for dark, <code>style_bright.json</code> for bright), so the basemap, road
+          labels, and water layers all invert as a unit. All nine choropleth color
+          palettes are independently defined for each mode. Canvas charts re-draw with
+          matching foreground and background colors, and property cards update their
+          text and border colors through CSS custom properties. The result is a fully
+          cohesive visual inversion with no partial repaints.
+        </div>
       </div>
+      <img src="work11/dark_and_bright_mode.png" alt="Dark and Bright Mode" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
+    </div>
+
+    <p class="subsection-title">03 &nbsp; Property Cards and AI Explanations</p>
+    <div class="ux-feature-row">
+      <div class="ux-text">
+        <div class="text">
+          The top-10 ranked results appear as compact cards in the sidebar, each showing
+          neighborhood name, rent, square footage, and bed/bath count. Clicking a card
+          triggers <code>map.flyTo()</code> and highlights the corresponding building
+          footprint polygon on the choropleth. Each card exposes an Explain button that
+          calls <code>/explain</code>, which sends the property attributes alongside
+          the user's original preferences and free-text concern to GPT and returns a
+          2–3 sentence plain-English match narrative. A separate Explain Result button
+          at the top of the panel calls <code>/explain_result</code>, translating the
+          OLS regression coefficients into a conversational preference summary such as
+          "Your ratings suggest proximity to parks matters more to you than building age."
+        </div>
+      </div>
+      <img src="work11/property_cards_and_AI_experimentation.png" alt="Property Cards and AI Explanations" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
+    </div>
+
+    <p class="subsection-title">04 &nbsp; Choropleth Mode Selector</p>
+    <div class="ux-feature-row">
+      <div class="ux-text">
+        <div class="text">
+          A toolbar above the map lets the user switch the choropleth coloring across
+          nine data dimensions: overall recommendation score, rent, square footage, year
+          built, number of building stories, elevator availability, distance to the nearest
+          park, distance to the nearest subway station, and noise level. Color stops are
+          computed from dataset percentiles so the full spectrum is always used regardless
+          of the value range. Switching modes simultaneously updates the histogram chart
+          to show the distribution of the newly selected field and redraws the radar chart
+          axes to match. The map, histogram, and radar chart therefore always remain in
+          sync with each other.
+        </div>
+      </div>
+      <img src="work11/choropleth_mode_selector.png" alt="Choropleth Mode Selector" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
     </div>
 
     <!-- ── Visualization & Charts ─────────────────────────────── -->
     <p class="section-title">Visualization &amp; Charts</p>
     <div class="text">
-      Explorentory includes two custom Canvas-based charts, built without a charting library.
-      This allows fine-grained pixel control, seamless dark/bright mode switching, and
-      eliminates a dependency on external rendering engines.
+      Explorentory uses three coordinated visualizations: an interactive choropleth map
+      rendered with MapLibre GL, and two custom Canvas-based charts built without a charting
+      library. All three update in sync when the user switches the choropleth display mode
+      or selects a property card.
     </div>
 
-    <div class="chart-row">
+    <div class="chart-row" style="grid-template-columns: 1fr 1fr 1fr;">
       <div class="chart-block">
-        <p class="subsection-title">Histogram</p>
-        <div class="img-placeholder chart-placeholder">
-          <span>Histogram Screenshot</span>
-        </div>
+        <p class="subsection-title">Choropleth Map</p>
+        <img src="work11/choropleth_map.png" alt="Choropleth Map" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
         <div class="text" style="margin-top: 14px;">
-          Shows the distribution of the selected metric across all 5,000 recommended
-          properties. Bin width adapts per field: $10/bin for rent, 50 sqft/bin for
-          floor area. A red vertical line marks the user's stated target value, making
-          it immediately visible whether the recommendation set centers on the stated
-          preference or skews toward trade-offs. Updates live when the choropleth mode
-          is switched.
+          MapLibre GL renders up to 5,000 recommended properties as a WebGL choropleth
+          layer. Nine data dimensions are available: recommendation score, rent, sqft,
+          year built, stories, elevator presence, park proximity, subway proximity, and
+          noise level. Color stops are derived from dataset percentiles so contrast is
+          consistent regardless of value range. Clicking any polygon highlights the
+          matching property card in the sidebar.
         </div>
       </div>
       <div class="chart-block">
-        <p class="subsection-title">Radar Triangle</p>
-        <div class="img-placeholder chart-placeholder">
-          <span>Radar Triangle Screenshot</span>
-        </div>
+        <p class="subsection-title">Histogram</p>
+        <img src="work11/histogram.png" alt="Histogram" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
         <div class="text" style="margin-top: 14px;">
-          A multi-axis spider chart with 3–6 dimensions: Rent, Location Distance, Sqft,
-          Subway Distance, Green Space, and Noise Level. Each axis is min-max normalized
-          across the full result set. An inner polygon represents the user's stated
-          priority weights; an overlay polygon shows the selected property's actual profile,
-          making multi-dimensional trade-offs legible at a glance rather than buried in
-          a list of numbers.
+          Shows the distribution of the active choropleth field across all 5,000 results.
+          Bin width adapts per field: $10 per bin for rent, 50 sqft per bin for floor area.
+          A vertical marker at the user's stated target value makes it immediately visible
+          whether the result set centers on the stated preference or skews toward trade-offs.
+          Redraws automatically when the choropleth mode changes.
+        </div>
+      </div>
+      <div class="chart-block">
+        <p class="subsection-title">Radar Chart</p>
+        <img src="work11/radar_chart.png" alt="Radar Chart" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
+        <div class="text" style="margin-top: 14px;">
+          A multi-axis polygon chart with a configurable number of dimensions: Rent,
+          Location Distance, Sqft, Subway Distance, Green Space, and Noise Level. Each
+          axis is min-max normalized across the full result set. One polygon represents
+          the user's stated priority weights; a second overlay shows the selected
+          property's actual profile, making multi-dimensional trade-offs legible at
+          a glance instead of buried in a list of numbers.
         </div>
       </div>
     </div>
@@ -371,17 +354,17 @@
     <div class="text">
       Raw property attributes are converted to user-relative differences before training.
       For example, <code>bedroomnum</code> becomes <code>|bedroomnum − target_bedrooms|</code>,
-      aligning the feature with what the user actually cares about — deviation from their
-      preference — rather than the raw count. <code>borocode_match</code> is a binary flag
+      aligning the feature with what the user actually cares about (deviation from their
+      preference) rather than the raw count. <code>borocode_match</code> is a binary flag
       indicating whether the property is in the user's chosen borough. All 11 engineered
       features are scaled with a <code>StandardScaler</code> fit on the entire 3M-record
       dataset, providing stable mean and variance that do not shift with 10-sample noise.
     </div>
 
     <div class="ml-formula-box">
-      <b>Rule-Based Score</b> &nbsp;—&nbsp; explicit priorities weighted 3×, 2×, 1×<br>
+      <b>Rule-Based Score</b> &nbsp;(explicit priorities weighted 3×, 2×, 1×)<br>
       rule_score&nbsp;=&nbsp;Σ&nbsp;weight[i]&nbsp;×&nbsp;normalize(feature[i],&nbsp;direction[i])<br><br>
-      <b>ML Score</b> &nbsp;—&nbsp; OLS prediction rescaled to [0, 1]<br>
+      <b>ML Score</b> &nbsp;(OLS prediction rescaled to [0, 1])<br>
       ml_score&nbsp;=&nbsp;(OLS_prediction&nbsp;−&nbsp;min)&nbsp;/&nbsp;(max&nbsp;−&nbsp;min)<br><br>
       <b>Final Hybrid Score</b><br>
       final_score&nbsp;=&nbsp;(rule_score&nbsp;+&nbsp;ml_score)&nbsp;/&nbsp;2
@@ -391,7 +374,7 @@
     <div class="text">
       The hybrid approach serves two purposes. The rule-based component ensures predictable,
       interpretable behavior that respects user-stated priorities even when the ML signal is
-      noisy — which is inevitable with only 10 training samples. The ML component captures
+      noisy, which is inevitable with only 10 training samples. The ML component captures
       implicit preferences that the user never explicitly stated: a consistent preference for
       newer buildings, quieter streets, or larger units that emerged from rating behavior.
       Averaging the two scores prevents either component from dominating and produces a more
@@ -419,7 +402,7 @@
         </tr>
         <tr>
           <td>Machine Learning</td>
-          <td>scikit-learn 1.7.2 &nbsp;—&nbsp; OLS LinearRegression &nbsp;·&nbsp; StandardScaler</td>
+          <td>scikit-learn 1.7.2 &nbsp;·&nbsp; OLS LinearRegression &nbsp;·&nbsp; StandardScaler</td>
         </tr>
         <tr>
           <td>Geospatial</td>
@@ -427,7 +410,7 @@
         </tr>
         <tr>
           <td>LLM Integration</td>
-          <td>OpenAI SDK &nbsp;—&nbsp; GPT with structured JSON output (3 endpoints)</td>
+          <td>OpenAI SDK &nbsp;·&nbsp; GPT with structured JSON output (3 endpoints)</td>
         </tr>
         <tr>
           <td>Data</td>
@@ -443,788 +426,10 @@
   <!-- ============================================================ -->
   <!-- D3 Diagrams                                                  -->
   <!-- ============================================================ -->
-  <script>
-  (function () {
-    'use strict';
-
-    const FONT = 'Helvetica, Arial, sans-serif';
-    const MONO = "'Courier New', Courier, monospace";
-
-    /* helper: add an arrowhead marker to an svg's defs */
-    function addArrow(svg, id, color) {
-      color = color || '#888';
-      svg.append('defs').append('marker')
-        .attr('id', id)
-        .attr('viewBox', '0 -5 10 10')
-        .attr('refX', 8).attr('refY', 0)
-        .attr('markerWidth', 6).attr('markerHeight', 6)
-        .attr('orient', 'auto')
-        .append('path')
-        .attr('d', 'M0,-5L10,0L0,5')
-        .attr('fill', color);
-    }
-
-    /* helper: draw a vertical arrow from y1 to y2 at x */
-    function vArrow(svg, x, y1, y2, markerId) {
-      svg.append('line')
-        .attr('x1', x).attr('y1', y1)
-        .attr('x2', x).attr('y2', y2 - 8)
-        .attr('stroke', '#999').attr('stroke-width', 1.5)
-        .attr('marker-end', 'url(#' + markerId + ')');
-    }
-
-    /* helper: draw a diagonal arrow */
-    function dArrow(svg, x1, y1, x2, y2, markerId, color) {
-      svg.append('line')
-        .attr('x1', x1).attr('y1', y1)
-        .attr('x2', x2).attr('y2', y2)
-        .attr('stroke', color || '#aaa').attr('stroke-width', 1.5)
-        .attr('marker-end', 'url(#' + markerId + ')');
-    }
-
-    /* helper: append a box (rect) */
-    function box(svg, x, y, w, h, fill, stroke, rx) {
-      svg.append('rect')
-        .attr('x', x).attr('y', y)
-        .attr('width', w).attr('height', h)
-        .attr('fill', fill || '#f5f5f5')
-        .attr('stroke', stroke || '#ccc')
-        .attr('stroke-width', 1)
-        .attr('rx', rx === undefined ? 3 : rx);
-    }
-
-    /* helper: centered text */
-    function ctext(svg, x, y, text, size, weight, fill) {
-      svg.append('text')
-        .attr('x', x).attr('y', y)
-        .attr('text-anchor', 'middle')
-        .attr('font-family', FONT)
-        .attr('font-size', size || 13)
-        .attr('font-weight', weight || 'normal')
-        .attr('fill', fill || '#444')
-        .text(text);
-    }
-
-    /* helper: left-aligned text */
-    function ltext(svg, x, y, text, size, weight, fill) {
-      svg.append('text')
-        .attr('x', x).attr('y', y)
-        .attr('font-family', FONT)
-        .attr('font-size', size || 12)
-        .attr('font-weight', weight || 'normal')
-        .attr('fill', fill || '#555')
-        .text(text);
-    }
-
-    /* helper: left-aligned monospace text */
-    function mtext(svg, x, y, text, size, fill) {
-      svg.append('text')
-        .attr('x', x).attr('y', y)
-        .attr('font-family', MONO)
-        .attr('font-size', size || 11)
-        .attr('fill', fill || '#7ecfff')
-        .text(text);
-    }
-
-    /* ====================================================== */
-    /* DIAGRAM 1 — Platform Comparison Flow                   */
-    /* ====================================================== */
-    (function drawComparison() {
-      var W = 880, H = 310;
-      var svg = d3.select('#comparison-diagram')
-        .append('svg')
-        .attr('viewBox', '0 0 ' + W + ' ' + H)
-        .attr('preserveAspectRatio', 'xMidYMid meet')
-        .style('width', '100%').style('height', 'auto');
-
-      addArrow(svg, 'cArr', '#999');
-
-      var mid = W / 2;
-      var lCx = mid / 2;           /* left column center  */
-      var rCx = mid + mid / 2;     /* right column center */
-      var bw = 200, bh = 58;
-
-      /* ── column headers ── */
-      ctext(svg, lCx, 22, 'Traditional Platforms', 14, 'bold', '#222');
-      ctext(svg, lCx, 38, 'Zillow  ·  StreetEasy  ·  Redfin', 11, 'normal', '#bbb');
-      ctext(svg, rCx, 22, 'Explorentory', 14, 'bold', '#000');
-
-      /* ── left column boxes ── */
-      var lBoxes = [
-        { y: 58, lines: ['User Sets Hard Filters'] },
-        { y: 210, lines: ['Filtered Listing Results'] },
-      ];
-
-      lBoxes.forEach(function (b, i) {
-        var bx = lCx - bw / 2;
-        box(svg, bx, b.y, bw, bh, '#f2f2f2', '#d0d0d0', 3);
-        b.lines.forEach(function (line, li) {
-          ctext(svg, lCx, b.y + 24 + li * 18, line, 13, 'normal', '#555');
-        });
-        if (i < lBoxes.length - 1) {
-          vArrow(svg, lCx, b.y + bh + 2, lBoxes[i + 1].y, 'cArr');
-          /* gap label */
-          ctext(svg, lCx, b.y + bh + 52, 'zero guidance, no personalization', 10, 'normal', '#ccc');
-        }
-      });
-
-      /* ── right column boxes ── */
-      var rBoxes = [
-        { y: 48,  lines: ['Express Natural Preferences'], dark: false },
-        { y: 148, lines: ['ML Customization', '+ AI Assistance'],   dark: true  },
-        { y: 248, lines: ['Personalized Ranked Results'], dark: false },
-      ];
-
-      rBoxes.forEach(function (b, i) {
-        var bx = rCx - bw / 2;
-        var isDark = b.dark;
-        box(svg, bx, b.y, bw, bh,
-          isDark ? '#1a1a1a' : '#f2f2f2',
-          isDark ? '#111'    : '#d0d0d0', 3);
-        b.lines.forEach(function (line, li) {
-          ctext(svg, rCx, b.y + 24 + li * 18, line, 13, 'normal', isDark ? '#fff' : '#444');
-        });
-        if (i < rBoxes.length - 1) {
-          vArrow(svg, rCx, b.y + bh + 2, rBoxes[i + 1].y, 'cArr');
-        }
-      });
-
-      /* ── divider ── */
-      svg.append('line')
-        .attr('x1', mid).attr('y1', 10)
-        .attr('x2', mid).attr('y2', H - 10)
-        .attr('stroke', '#e0e0e0').attr('stroke-width', 1)
-        .attr('stroke-dasharray', '5,4');
-    }());
-
-    /* ====================================================== */
-    /* DIAGRAM 2 — 4-Step User Pipeline                       */
-    /* ====================================================== */
-    (function drawPipeline() {
-      var W = 880, bh = 148, gap = 30;
-      var steps = [
-        {
-          num: '01', title: 'Preferences',
-          api: null, dark: false,
-          bullets: [
-            'Rent slider: $1,500 – $10,000 (step $50) with live display',
-            'Bedrooms & bathrooms numeric inputs',
-            'Priority ranking: click Rent, Location, Sqft in order  →  weights 3×, 2×, 1×',
-            'Free-text concern field  —  fed verbatim into all LLM prompts',
-          ]
-        },
-        {
-          num: '02', title: 'Neighborhood Selection',
-          api: 'POST  /properties', dark: false,
-          bullets: [
-            '260 NYC neighborhood polygons rendered on MapLibre GL',
-            'Hover highlights boundary  ·  Click confirms selection',
-            '/properties: filter 3M units by rent ±20%, beds ±1, distance',
-            'Stratified sampling: ≥ 5 of 10 results from chosen borough',
-          ]
-        },
-        {
-          num: '03', title: 'Survey Rating',
-          api: 'POST  /recommend', dark: false,
-          bullets: [
-            '10 property cards: neighborhood, rent, sqft, bed/bath',
-            'Click card → map.flyTo() + highlight building polygon',
-            'Assign 0–10 rating per property',
-            '/recommend: OLS trains on ratings → hybrid scoring → top 5,000',
-          ]
-        },
-        {
-          num: '04', title: 'Results & AI Explanations',
-          api: '/explain  ·  /explain_result  ·  /chat', dark: true,
-          bullets: [
-            '5,000 properties as choropleth map  —  9 display modes',
-            'Top-10 ranked cards  →  click to highlight polygon on map',
-            '/explain: 2–3 sentence GPT match narrative per property',
-            '/explain_result: plain-English summary of what ML learned',
-            '/chat: natural language filter and sort applied client-side',
-          ]
-        },
-      ];
-
-      var H = steps.length * bh + (steps.length - 1) * gap + 10;
-      var svg = d3.select('#pipeline-diagram')
-        .append('svg')
-        .attr('viewBox', '0 0 ' + W + ' ' + H)
-        .attr('preserveAspectRatio', 'xMidYMid meet')
-        .style('width', '100%').style('height', 'auto');
-
-      addArrow(svg, 'pArr', '#888');
-
-      var pad = 20;
-
-      steps.forEach(function (step, i) {
-        var y = i * (bh + gap);
-        var isDark = step.dark;
-        var numBullets = step.bullets.length;
-
-        /* main box */
-        box(svg, pad, y, W - pad * 2, bh,
-          isDark ? '#111' : '#f8f8f8',
-          isDark ? '#000' : '#e0e0e0', 4);
-
-        /* step number circle */
-        svg.append('circle')
-          .attr('cx', pad + 30).attr('cy', y + 28)
-          .attr('r', 17)
-          .attr('fill', isDark ? '#fff' : '#111');
-        ctext(svg, pad + 30, y + 33, step.num, 12, 'bold', isDark ? '#111' : '#fff');
-
-        /* step title */
-        ltext(svg, pad + 56, y + 32, step.title, 15, 'bold', isDark ? '#fff' : '#111');
-
-        /* API badge */
-        if (step.api) {
-          var badgeW = step.dark ? 260 : 200;
-          var badgeX = W - pad - badgeW;
-          box(svg, badgeX, y + 10, badgeW, 22,
-            isDark ? '#2a2a2a' : '#eaeaea',
-            isDark ? '#444'    : '#d0d0d0', 3);
-          svg.append('text')
-            .attr('x', badgeX + badgeW / 2).attr('y', y + 24)
-            .attr('text-anchor', 'middle')
-            .attr('font-family', MONO).attr('font-size', 10)
-            .attr('fill', isDark ? '#7ecfff' : '#666')
-            .text(step.api);
-        }
-
-        /* bullet lines */
-        step.bullets.forEach(function (bullet, bi) {
-          ltext(svg, pad + 56, y + 54 + bi * 19,
-            '— ' + bullet, 12, 'normal',
-            isDark ? '#bbb' : '#666');
-        });
-
-        /* arrow to next */
-        if (i < steps.length - 1) {
-          vArrow(svg, W / 2, y + bh + 2, y + bh + gap, 'pArr');
-        }
-      });
-    }());
-
-    /* ====================================================== */
-    /* DIAGRAM 3 — System Architecture (left → right)         */
-    /* ====================================================== */
-    (function drawDataPipeline() {
-
-      /* ── dimensions ── */
-      var W = 1200, H = 580;
-      var svg = d3.select('#data-pipeline-diagram')
-        .append('svg')
-        .attr('viewBox', '0 0 ' + W + ' ' + H)
-        .attr('preserveAspectRatio', 'xMidYMid meet')
-        .style('width', '100%').style('height', 'auto');
-
-      /* ── shared arrowhead markers ── */
-      var defs = svg.append('defs');
-      var mklist = [
-        { id: 'mBlue',   c: '#4a90d9' },
-        { id: 'mCyan',   c: '#7ecfff' },
-        { id: 'mGray',   c: '#999'    },
-        { id: 'mOrange', c: '#ffb347' },
-        { id: 'mGreen',  c: '#3ddc84' },
-        { id: 'mPurple', c: '#c084fc' },
-        { id: 'mIndigo', c: '#4361ee' },
-        { id: 'mPink',   c: '#e879a0' },
-        { id: 'mSlate',  c: '#7b8fa1' },
-      ];
-      mklist.forEach(function (m) {
-        defs.append('marker')
-          .attr('id', m.id)
-          .attr('viewBox', '0 -5 10 10')
-          .attr('refX', 8).attr('refY', 0)
-          .attr('markerWidth', 5).attr('markerHeight', 5)
-          .attr('orient', 'auto')
-          .append('path').attr('d', 'M0,-5L10,0L0,5').attr('fill', m.c);
-      });
-
-      /* ── column layout ─────────────────────────────────────
-       *  6 swim-lanes inside 3 big containers:
-       *
-       *  [Database]  [db.py | ols/rec/llm | API]  [main.js | Steps | Render]
-       * ──────────────────────────────────────────────────────────────────── */
-      var LH = 15;                          /* body line-height (SVG units) */
-      function nh(n) { return 40 + n * LH; }/* box height for n body lines  */
-
-      /* container rectangles */
-      var CT = [
-        { label:'Database',              x:8,   y:40, w:190, h:530, fill:'#eaf2fb', stroke:'#4a90d9', lc:'#1a5fa8' },
-        { label:'Backend  (FastAPI)',     x:202, y:40, w:494, h:530, fill:'#080808', stroke:'#2a2a2a', lc:'#888'    },
-        { label:'Frontend  (Vanilla JS)', x:700, y:40, w:492, h:530, fill:'#f4f6f4', stroke:'#bbb',    lc:'#555'    },
-      ];
-      CT.forEach(function (c) {
-        svg.append('rect')
-          .attr('x', c.x).attr('y', c.y).attr('width', c.w).attr('height', c.h)
-          .attr('fill', c.fill).attr('stroke', c.stroke).attr('stroke-width', 1.5).attr('rx', 5);
-        svg.append('text')
-          .attr('x', c.x + 12).attr('y', c.y + 18)
-          .attr('font-family', FONT).attr('font-size', 11.5)
-          .attr('font-weight', 'bold').attr('fill', c.lc)
-          .text(c.label);
-      });
-
-      /* sub-section column labels */
-      var SL = [
-        { x: 210, y: 72, t: 'db.py',                                      c: '#4a90d9' },
-        { x: 374, y: 72, t: 'ols.py  ·  recommend.py  ·  llm_router.py',  c: '#666'    },
-        { x: 546, y: 72, t: 'API Endpoints',                               c: '#777'    },
-        { x: 708, y: 72, t: 'main.js',                                     c: '#444'    },
-        { x: 874, y: 72, t: 'Step Modules',                                c: '#777'    },
-        { x:1030, y: 72, t: 'Render',                                      c: '#777'    },
-      ];
-      SL.forEach(function (l) {
-        svg.append('text').attr('x', l.x).attr('y', l.y)
-          .attr('font-family', FONT).attr('font-size', 10)
-          .attr('fill', l.c).text(l.t);
-      });
-
-      /* ── node definitions ──────────────────────────────────
-       *  Each node: { x, y, w, h, fill, stroke, hcolor, header, mono, lines }
-       * ──────────────────────────────────────────────────── */
-      var N = {};
-
-      /* ── Database ── */
-      N.neighb = {
-        x:16,  y:82, w:174, h:nh(4),
-        fill:'#fff', stroke:'#4a90d9', hcolor:'#1a5fa8', mono:false,
-        header:'neighb',
-        lines:['260 neighborhood polygons','· geometry  (EPSG:2263)','· borocode','· centroid  (computed)']
-      };
-      N.nyc_units = {
-        x:16, y:82+nh(4)+12, w:174, h:nh(9),
-        fill:'#fff', stroke:'#4a90d9', hcolor:'#1a5fa8', mono:false,
-        header:'nyc_units  (~3M rows)',
-        lines:['KNN-imputed from PLUTO','· rent_knn  · sqft','· bedroomnum  · bathroomnum',
-               '· borocode  · built_year','· bld_story  · elevator','· dist_greenspace_ft',
-               '· dist_subway_ft','· noise_level  · bldg_class','· small_n  · geometry']
-      };
-
-      /* ── db.py column (x=210) ── */
-      N.db_n = {
-        x:210, y:82, w:152, h:nh(3),
-        fill:'#0d2137', stroke:'#1e5a8a', hcolor:'#7ecfff', mono:true,
-        header:'get_neighborhoods()',
-        lines:['SELECT FROM neighb','ST_AsGeoJSON( )','reproject → EPSG:4326']
-      };
-      N.db_p = {
-        x:210, y:82+nh(3)+12, w:152, h:nh(4),
-        fill:'#0d2137', stroke:'#1e5a8a', hcolor:'#7ecfff', mono:true,
-        header:'get_properties(prefs)',
-        lines:['filter rent ±20%, beds ±1','euclidean dist. sort','stratified sample (n=10)','→ return  []Property']
-      };
-      N.db_a = {
-        x:210, y:82+nh(3)+12+nh(4)+12, w:152, h:nh(2),
-        fill:'#0d2137', stroke:'#1e5a8a', hcolor:'#7ecfff', mono:true,
-        header:'get_all_units(prefs)',
-        lines:['broad rent/beds filter','→ return  GeoDataFrame']
-      };
-
-      /* ── Logic column (x=374) ── */
-      N.ols = {
-        x:374, y:82, w:160, h:nh(9),
-        fill:'#1a0e00', stroke:'#7a4a00', hcolor:'#ffb347', mono:true,
-        header:'ols.py',
-        lines:['engineer_features(X):','  · |bedroomnum − target|',
-               '  · |bathroomnum − target|','  · borocode_match  (bool)',
-               '  · noise_level_ord  0–4','  · 6 additional diff features',
-               'StandardScaler(fit on 3M)','LinearRegression.fit(10)','predict(X_all)  → scores[]']
-      };
-      N.rec = {
-        x:374, y:82+nh(9)+12, w:160, h:nh(7),
-        fill:'#001500', stroke:'#005a00', hcolor:'#7dff7d', mono:true,
-        header:'recommend.py',
-        lines:['preprocess(units)','rule_score(prefs, units)',
-               '  weights:  3×  2×  1×','  minmax normalize each field',
-               'hybrid = (rule + ml) / 2','drop_duplicates(subset=bin)','→ top 5000 unique buildings']
-      };
-      N.llm = {
-        x:374, y:82+nh(9)+12+nh(7)+12, w:160, h:nh(3),
-        fill:'#150020', stroke:'#6a2a90', hcolor:'#c084fc', mono:true,
-        header:'llm_router.py',
-        lines:['system_prompt + schema','gpt  structured JSON output','OpenAI SDK async call']
-      };
-
-      /* ── API endpoints (x=546, w=142) ── */
-      var AX = 546, AW = 142, AH = 44, AG = 56;
-      N.ep_n  = { x:AX, y:82,        w:AW, h:AH, fill:'#001508', stroke:'#00692a', hcolor:'#3ddc84', mono:true, header:'GET  /neighborhoods',   lines:[] };
-      N.ep_p  = { x:AX, y:82+AG,     w:AW, h:AH, fill:'#001508', stroke:'#00692a', hcolor:'#3ddc84', mono:true, header:'POST  /properties',     lines:[] };
-      N.ep_r  = { x:AX, y:82+AG*2,   w:AW, h:AH, fill:'#001508', stroke:'#00692a', hcolor:'#3ddc84', mono:true, header:'POST  /recommend',      lines:[] };
-      N.ep_ex = { x:AX, y:82+AG*3+8, w:AW, h:AH, fill:'#100010', stroke:'#5a1a8a', hcolor:'#c084fc', mono:true, header:'POST  /explain',        lines:[] };
-      N.ep_er = { x:AX, y:82+AG*4+8, w:AW, h:AH, fill:'#100010', stroke:'#5a1a8a', hcolor:'#c084fc', mono:true, header:'POST  /explain_result', lines:[] };
-      N.ep_ch = { x:AX, y:82+AG*5+8, w:AW, h:AH, fill:'#100010', stroke:'#5a1a8a', hcolor:'#c084fc', mono:true, header:'POST  /chat',            lines:[] };
-
-      /* LLM endpoint group label */
-      svg.append('line')
-        .attr('x1', AX).attr('y1', 82+AG*3+2)
-        .attr('x2', AX+AW).attr('y2', 82+AG*3+2)
-        .attr('stroke', '#3a2040').attr('stroke-width', 0.8).attr('stroke-dasharray','3,3');
-      svg.append('text')
-        .attr('x', AX+AW/2).attr('y', 82+AG*3+10)
-        .attr('text-anchor','middle').attr('font-family',FONT)
-        .attr('font-size', 8.5).attr('fill', '#7a5a9a')
-        .text('LLM');
-
-      /* ── main.js (x=708, w=154) ── */
-      N.main = {
-        x:708, y:82, w:154, h:nh(18),
-        fill:'#fff', stroke:'#1a1a1a', hcolor:'#111', mono:true,
-        header:'main.js',
-        lines:['onPreferencesSubmit( )',
-               '  initNeighborhood( )',
-               'onNeighborhoodSubmit( )',
-               '  fetch  /properties',
-               '  initRating(cards)',
-               'onRatingsSubmit(ratings)',
-               '  fetch  /recommend',
-               '  renderResults( )',
-               'renderResults(geojson)',
-               '  map.renderLayer( )',
-               '  charts.drawAll( )',
-               'explainCard(property)',
-               '  fetch  /explain',
-               'explainResult(coef)',
-               '  fetch  /explain_result',
-               'onChatSubmit(msg)',
-               '  fetch  /chat',
-               '  applyFilters(json)']
-      };
-
-      /* ── Step modules (x=874, w=142) ── */
-      N.pref = {
-        x:874, y:82, w:142, h:nh(4),
-        fill:'#fff', stroke:'#9a9a9a', hcolor:'#444', mono:false,
-        header:'preferences.js',
-        lines:['rent slider  ($50 step)','priority rank UI  (1→3)','free-text concern field','→ onPreferencesSubmit( )']
-      };
-      N.nbhd = {
-        x:874, y:82+nh(4)+12, w:142, h:nh(4),
-        fill:'#fff', stroke:'#9a9a9a', hcolor:'#444', mono:false,
-        header:'neighborhood.js',
-        lines:['render 260 polygons','hover highlight / click','click  → centroid lon/lat','→ onNeighborhoodSubmit( )']
-      };
-      N.rate = {
-        x:874, y:82+nh(4)+12+nh(4)+12, w:142, h:nh(4),
-        fill:'#fff', stroke:'#9a9a9a', hcolor:'#444', mono:false,
-        header:'rating.js',
-        lines:['10 property cards','0–10 rating per card','card click  → flyTo( )','→ onRatingsSubmit( )']
-      };
-
-      /* ── Render modules (x=1030, w=152) ── */
-      N.map_js = {
-        x:1030, y:82, w:152, h:nh(10),
-        fill:'#fff', stroke:'#4361ee', hcolor:'#4361ee', mono:false,
-        header:'map.js  (MapLibre GL)',
-        lines:['loadNeighborhoods(geojson)','loadPropertyLayer(geojson)',
-               'setChoropleth(mode, data)','  9 color modes + stops',
-               'flyTo(coords, zoom)','highlightBuilding(bin)',
-               'renderResultLayer(5K)','onFeatureClick(feature)',
-               'toggleDarkBright( )','updateColorMode( )']
-      };
-      N.charts_js = {
-        x:1030, y:82+nh(10)+12, w:152, h:nh(8),
-        fill:'#fff', stroke:'#e879a0', hcolor:'#e879a0', mono:false,
-        header:'charts.js  (Canvas)',
-        lines:['drawHistogram(field, data)','  bin width by field type',
-               '  $10/bin for rent','  vertical target marker',
-               'drawRadar(prop, weights)','  3–6 axes min-max norm',
-               '  priority overlay polygon','onModeSwitch(mode)']
-      };
-
-      /* ── render all nodes ── */
-      Object.keys(N).forEach(function (k) {
-        var n = N[k];
-        svg.append('rect')
-          .attr('x', n.x).attr('y', n.y).attr('width', n.w).attr('height', n.h)
-          .attr('fill', n.fill).attr('stroke', n.stroke).attr('stroke-width', 1).attr('rx', 3);
-        svg.append('text')
-          .attr('x', n.x + 8).attr('y', n.y + 16)
-          .attr('font-family', n.mono ? MONO : FONT)
-          .attr('font-size', 11).attr('font-weight', 'bold')
-          .attr('fill', n.hcolor).text(n.header);
-        if (n.lines.length) {
-          svg.append('line')
-            .attr('x1', n.x + 1).attr('y1', n.y + 21)
-            .attr('x2', n.x + n.w - 1).attr('y2', n.y + 21)
-            .attr('stroke', n.stroke).attr('stroke-width', 0.4);
-        }
-        n.lines.forEach(function (line, li) {
-          svg.append('text')
-            .attr('x', n.x + 8).attr('y', n.y + 35 + li * LH)
-            .attr('font-family', n.mono ? MONO : FONT)
-            .attr('font-size', 9.5)
-            .attr('fill', n.mono ? '#aaa' : '#777')
-            .text(line);
-        });
-      });
-
-      /* ── port helpers ── */
-      function rp(n)     { return [n.x + n.w,       n.y + n.h / 2]; }
-      function lp(n)     { return [n.x,              n.y + n.h / 2]; }
-      function rpy(n, y) { return [n.x + n.w,        y]; }
-      function lpy(n, y) { return [n.x,              y]; }
-      function bp(n)     { return [n.x + n.w / 2,   n.y + n.h]; }
-      function tp(n)     { return [n.x + n.w / 2,   n.y]; }
-
-      /* ── edge drawing ─────────────────────────────────────
-       *  Draws a cubic bezier from src[x,y] → tgt[x,y].
-       *  dx large → S-curve; dx small → near-vertical line.
-       *  Optional label rendered at bezier midpoint.
-       * ──────────────────────────────────────────────────── */
-      function edge(src, tgt, color, mid, label) {
-        var x1=src[0], y1=src[1], x2=tgt[0], y2=tgt[1];
-        var dx = x2 - x1;
-        var t  = Math.max(Math.abs(dx) * 0.42, 14);
-        var d;
-        if (Math.abs(dx) < 24) {
-          /* near-vertical: plain line */
-          d = 'M '+x1+' '+y1+' L '+x2+' '+y2;
-        } else {
-          d = 'M '+x1+' '+y1+
-              ' C '+(x1+t)+' '+y1+' '+(x2-t)+' '+y2+' '+x2+' '+y2;
-        }
-        svg.append('path')
-          .attr('d', d).attr('fill', 'none')
-          .attr('stroke', color).attr('stroke-width', 1.3)
-          .attr('marker-end', 'url(#'+mid+')');
-
-        if (label) {
-          var mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
-          var bw2 = label.length * 5.8 + 8;
-          svg.append('rect')
-            .attr('x', mx - bw2/2).attr('y', my - 8)
-            .attr('width', bw2).attr('height', 14)
-            .attr('fill', '#0a0a0a').attr('opacity', 0.82).attr('rx', 2);
-          svg.append('text')
-            .attr('x', mx).attr('y', my + 3)
-            .attr('text-anchor', 'middle')
-            .attr('font-family', MONO).attr('font-size', 8.5)
-            .attr('fill', color).text(label);
-        }
-      }
-
-      /* ══════════════════════════════════════════════════════
-       *  EDGES — grouped by color/semantic role
-       * ══════════════════════════════════════════════════════ */
-
-      /* ── [DB → db.py]  blue ── */
-      edge(rpy(N.neighb,    N.neighb.y + 28),       lpy(N.db_n, N.db_n.y + 22),  '#4a90d9','mBlue',  'geometry');
-      edge(rpy(N.nyc_units, N.nyc_units.y + 38),    lpy(N.db_p, N.db_p.y + 22),  '#4a90d9','mBlue',  'units[ ]');
-      edge(rpy(N.nyc_units, N.nyc_units.y + 120),   lp(N.db_a),                   '#4a90d9','mBlue',  null);
-
-      /* ── [db.py → API endpoints]  cyan (bypass logic column) ── */
-      edge(rp(N.db_n),  lp(N.ep_n),  '#7ecfff','mCyan',  'GeoJSON');
-      edge(rp(N.db_p),  lp(N.ep_p),  '#7ecfff','mCyan',  '[]Property');
-
-      /* ── [db_a → recommend]  gray ── */
-      edge(rp(N.db_a),  lp(N.rec),  '#888','mGray',  'GeoDataFrame');
-
-      /* ── [ols → rec] vertical  orange ── */
-      edge(bp(N.ols), tp(N.rec), '#ffb347','mOrange', 'scores[]');
-
-      /* ── [rec → /recommend]  green ── */
-      edge(rp(N.rec),  lp(N.ep_r),  '#3ddc84','mGreen', 'GeoJSON+coef');
-
-      /* ── [llm → LLM endpoints]  purple  (upward: llm sits below eps) ── */
-      edge(rpy(N.llm, N.llm.y + 22),  lpy(N.ep_ex, N.ep_ex.y + 22),  '#c084fc','mPurple', null);
-      edge(rpy(N.llm, N.llm.y + 42),  lpy(N.ep_er, N.ep_er.y + 22),  '#c084fc','mPurple', null);
-      edge(rpy(N.llm, N.llm.y + 62),  lpy(N.ep_ch, N.ep_ch.y + 22),  '#c084fc','mPurple', null);
-
-      /* ── [API → Frontend]  varies ── */
-      /* /neighborhoods → neighborhood.js  (green) */
-      edge(rp(N.ep_n),   lpy(N.nbhd, N.nbhd.y + 28),   '#3ddc84','mGreen',  'GeoJSON');
-      /* /properties → main.js  (green) */
-      edge(rp(N.ep_p),   lpy(N.main, N.main.y + 82),    '#3ddc84','mGreen',  '[]Property');
-      /* /recommend → main.js  (green) */
-      edge(rp(N.ep_r),   lpy(N.main, N.main.y + 130),   '#3ddc84','mGreen',  'GeoJSON 5K');
-      /* /explain → main.js  (purple) */
-      edge(rp(N.ep_ex),  lpy(N.main, N.main.y + 190),   '#c084fc','mPurple', 'text');
-      /* /explain_result → main.js  (purple) */
-      edge(rp(N.ep_er),  lpy(N.main, N.main.y + 220),   '#c084fc','mPurple', 'summary');
-      /* /chat → main.js  (purple) */
-      edge(rp(N.ep_ch),  lpy(N.main, N.main.y + 250),   '#c084fc','mPurple', '{filters}');
-
-      /* ── [main.js → Step Modules]  slate ── */
-      edge(rpy(N.main, N.main.y + 18),   lpy(N.pref, N.pref.y + 28),  '#7b8fa1','mSlate', null);
-      edge(rpy(N.main, N.main.y + 52),   lpy(N.nbhd, N.nbhd.y + 62),  '#7b8fa1','mSlate', null);
-      edge(rpy(N.main, N.main.y + 108),  lpy(N.rate, N.rate.y + 62),  '#7b8fa1','mSlate', null);
-
-      /* ── [main.js → Render]  colored by target ── */
-      edge(rpy(N.main, N.main.y + 143),  lpy(N.map_js,    N.map_js.y + 100),     '#4361ee','mIndigo', 'renderLayer');
-      edge(rpy(N.main, N.main.y + 173),  lpy(N.charts_js, N.charts_js.y + 55),   '#e879a0','mPink',   'draw( )');
-
-      /* ── [Step → map.js]  indigo ── */
-      edge(rpy(N.nbhd, N.nbhd.y + 40),  lpy(N.map_js, N.map_js.y + 44),   '#4361ee','mIndigo', 'loadPolygons');
-      edge(rpy(N.rate, N.rate.y + 40),   lpy(N.map_js, N.map_js.y + 118),  '#4361ee','mIndigo', 'flyTo+pins');
-
-      /* ── [Step callbacks → main.js]  dashed slate ── */
-      function edgeDash(src, tgt, color) {
-        var x1=src[0],y1=src[1],x2=tgt[0],y2=tgt[1];
-        var t = Math.max(Math.abs(x2-x1)*0.42, 14);
-        svg.append('path')
-          .attr('d','M '+x1+' '+y1+' C '+(x1+t)+' '+y1+' '+(x2-t)+' '+y2+' '+x2+' '+y2)
-          .attr('fill','none').attr('stroke',color)
-          .attr('stroke-width',1).attr('stroke-dasharray','4,3')
-          .attr('marker-end','url(#mSlate)');
-      }
-      edgeDash(lpy(N.pref, N.pref.y + 80), rpy(N.main, N.main.y + 12), '#7b8fa1');
-      edgeDash(lpy(N.nbhd, N.nbhd.y + 80), rpy(N.main, N.main.y + 44), '#7b8fa1');
-      edgeDash(lpy(N.rate, N.rate.y + 80),  rpy(N.main, N.main.y + 100),'#7b8fa1');
-
-      /* ── legend ── */
-      var legend = [
-        { c:'#4a90d9', t:'DB → db.py  (SQL data)' },
-        { c:'#7ecfff', t:'db.py → API  (result)' },
-        { c:'#3ddc84', t:'API → Frontend  (JSON/GeoJSON)' },
-        { c:'#c084fc', t:'LLM endpoints  (text/JSON)' },
-        { c:'#ffb347', t:'ols → rec  (ML scores)' },
-        { c:'#4361ee', t:'map.js calls' },
-        { c:'#e879a0', t:'charts.js calls' },
-        { c:'#7b8fa1', t:'orchestration (solid=init / dashed=callback)' },
-      ];
-      var lx = 10, ly = H - 12;
-      legend.forEach(function (l, i) {
-        var lxi = lx + i * 145;
-        svg.append('line')
-          .attr('x1', lxi).attr('y1', ly - 3)
-          .attr('x2', lxi + 16).attr('y2', ly - 3)
-          .attr('stroke', l.c).attr('stroke-width', 2);
-        svg.append('text')
-          .attr('x', lxi + 20).attr('y', ly)
-          .attr('font-family', FONT).attr('font-size', 8)
-          .attr('fill', '#888').text(l.t);
-      });
-
-    }());
-
-    /* ====================================================== */
-    /* DIAGRAM 4 — ML Scoring Pipeline                        */
-    /* ====================================================== */
-    (function drawML() {
-      var W = 880, H = 280;
-      var svg = d3.select('#ml-diagram')
-        .append('svg')
-        .attr('viewBox', '0 0 ' + W + ' ' + H)
-        .attr('preserveAspectRatio', 'xMidYMid meet')
-        .style('width', '100%').style('height', 'auto');
-
-      addArrow(svg, 'mArr', '#aaa');
-
-      /*
-       *  Layout (horizontal merge):
-       *
-       *  [10 Ratings + Prefs]  ─┬─→  [OLS Regression]   ─┐
-       *                         │                          ├→ [Hybrid Score] → [Top 5K]
-       *                         └─→  [Rule-Based Score]  ─┘
-       */
-
-      var bh = 70;
-      var row1y = 20;   /* OLS row */
-      var row2y = 160;  /* Rule row */
-      var midY  = (row1y + bh + row2y) / 2 + 8;   /* vertical center between rows */
-
-      /* box positions */
-      var nodes = {
-        ratings: { x: 20,  y: row1y + (row2y - row1y) / 2 - bh / 2, w: 160, h: bh, dark: false },
-        ols:     { x: 240, y: row1y,  w: 200, h: bh, dark: true  },
-        rule:    { x: 240, y: row2y,  w: 200, h: bh, dark: false },
-        hybrid:  { x: 510, y: row1y + (row2y - row1y) / 2 - bh / 2, w: 155, h: bh, dark: false },
-        result:  { x: 725, y: row1y + (row2y - row1y) / 2 - bh / 2, w: 140, h: bh, dark: true  },
-      };
-
-      /* draw boxes */
-      Object.keys(nodes).forEach(function (k) {
-        var n = nodes[k];
-        box(svg, n.x, n.y, n.w, n.h,
-          n.dark ? '#1a1a1a' : '#f2f2f2',
-          n.dark ? '#000'    : '#d0d0d0', 4);
-      });
-
-      /* ratings label */
-      ctext(svg, nodes.ratings.x + nodes.ratings.w / 2,
-            nodes.ratings.y + 26, '10 User Ratings', 12, 'bold',  '#333');
-      ctext(svg, nodes.ratings.x + nodes.ratings.w / 2,
-            nodes.ratings.y + 46, '+ Preferences',   12, 'normal','#888');
-
-      /* ols label */
-      ctext(svg, nodes.ols.x + nodes.ols.w / 2, nodes.ols.y + 26, 'OLS Regression',       12, 'bold',  '#eee');
-      ctext(svg, nodes.ols.x + nodes.ols.w / 2, nodes.ols.y + 46, '11 engineered features',11,'normal','#999');
-
-      /* rule label */
-      ctext(svg, nodes.rule.x + nodes.rule.w / 2, nodes.rule.y + 26, 'Rule-Based Score',    12, 'bold',  '#333');
-      ctext(svg, nodes.rule.x + nodes.rule.w / 2, nodes.rule.y + 46, 'priority weights × 3,2,1', 11, 'normal', '#888');
-
-      /* hybrid label */
-      ctext(svg, nodes.hybrid.x + nodes.hybrid.w / 2, nodes.hybrid.y + 26, 'Hybrid Score', 12, 'bold',  '#333');
-      ctext(svg, nodes.hybrid.x + nodes.hybrid.w / 2, nodes.hybrid.y + 46, '(rule + ml) / 2', 11, 'normal', '#888');
-
-      /* result label */
-      ctext(svg, nodes.result.x + nodes.result.w / 2, nodes.result.y + 26, 'Top 5,000',    12, 'bold',  '#eee');
-      ctext(svg, nodes.result.x + nodes.result.w / 2, nodes.result.y + 46, 'ranked results', 11, 'normal', '#aaa');
-
-      /* ── arrows ── */
-      /* ratings right edge → fork point */
-      var rRightX = nodes.ratings.x + nodes.ratings.w;
-      var rCy     = nodes.ratings.y + nodes.ratings.h / 2;
-
-      /* fork stem (horizontal from ratings to a split point) */
-      var forkX = rRightX + 30;
-      svg.append('line')
-        .attr('x1', rRightX + 2).attr('y1', rCy)
-        .attr('x2', forkX).attr('y2', rCy)
-        .attr('stroke', '#ccc').attr('stroke-width', 1.5);
-
-      /* fork vertical bar */
-      var olsCy  = nodes.ols.y  + nodes.ols.h  / 2;
-      var ruleCy = nodes.rule.y + nodes.rule.h  / 2;
-      svg.append('line')
-        .attr('x1', forkX).attr('y1', olsCy)
-        .attr('x2', forkX).attr('y2', ruleCy)
-        .attr('stroke', '#ccc').attr('stroke-width', 1.5);
-
-      /* fork to OLS */
-      dArrow(svg, forkX, olsCy, nodes.ols.x - 2, olsCy, 'mArr', '#ccc');
-      /* fork to Rule */
-      dArrow(svg, forkX, ruleCy, nodes.rule.x - 2, ruleCy, 'mArr', '#ccc');
-
-      /* OLS → hybrid */
-      var olsRightX  = nodes.ols.x  + nodes.ols.w;
-      var ruleRightX = nodes.rule.x + nodes.rule.w;
-      var hybridCy   = nodes.hybrid.y + nodes.hybrid.h / 2;
-      var hybridLx   = nodes.hybrid.x;
-
-      /* merge lines to a second fork point */
-      var forkX2 = hybridLx - 28;
-      svg.append('line')
-        .attr('x1', olsRightX + 2).attr('y1', olsCy)
-        .attr('x2', forkX2).attr('y2', olsCy)
-        .attr('stroke', '#ccc').attr('stroke-width', 1.5);
-      svg.append('line')
-        .attr('x1', ruleRightX + 2).attr('y1', ruleCy)
-        .attr('x2', forkX2).attr('y2', ruleCy)
-        .attr('stroke', '#ccc').attr('stroke-width', 1.5);
-
-      svg.append('line')
-        .attr('x1', forkX2).attr('y1', olsCy)
-        .attr('x2', forkX2).attr('y2', ruleCy)
-        .attr('stroke', '#ccc').attr('stroke-width', 1.5);
-
-      /* merge to hybrid */
-      dArrow(svg, forkX2, hybridCy, hybridLx - 2, hybridCy, 'mArr', '#ccc');
-
-      /* hybrid → result */
-      dArrow(svg,
-        nodes.hybrid.x + nodes.hybrid.w + 2, hybridCy,
-        nodes.result.x - 2, hybridCy,
-        'mArr', '#ccc');
-    }());
-
-  }());
-  </script>
-
+  <script src="work11/diagram-helpers.js"></script>
+  <script src="work11/diagram-comparison.js"></script>
+  <script src="work11/diagram-pipeline.js"></script>
+  <script src="work11/diagram-ml.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
