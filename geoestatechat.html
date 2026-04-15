@@ -37,39 +37,129 @@
       <br>
     </p>
     <div class="description">
-      GeoEstateChat is a research project exploring how LLMs can enhance the interaction between geospatial 
-      analysis and real-estate decision-making. The project studies LLMs as analytical intermediaries that 
-      translate natural-language questions into structured, multi-scale geospatial queries, rather than as 
+      GeoEstateChat is a research project exploring how LLMs can enhance the interaction between geospatial
+      analysis and real-estate decision-making. The project studies LLMs as analytical intermediaries that
+      translate natural-language questions into structured, multi-scale geospatial queries, rather than as
       sources of knowledge.<br><br>
     </div>
     <div id="diagram"></div>
     <div class="description">
-      Geospatial analysis tools are characterized by high analytical complexity and flexibility but 
-      low usability, making them largely exclusive to domain experts, while most real-estate platforms 
-      prioritize usability at the cost of analytical depth, typically offering only basic attributes such as 
-      location and price. By integrating an LLM-driven reasoning layer with a deterministic geospatial backend, 
-      GeoEstateChat investigates how user intent, spatial scale, data filtering, and analytical logic can be 
-      inferred from ambiguous human language, enabling both high complexity and high usability within a single 
-      system. The research focuses on reducing the technical barriers of GIS while preserving analytical rigor, 
-      transparency, and reproducibility.<br><br>GeoEstateChat positions LLMs as a new infrastructural layer for 
-      geospatial research, examining their potential to reshape access, workflow design, and decision-support 
+      Geospatial analysis tools are characterized by high analytical complexity and flexibility but
+      low usability, making them largely exclusive to domain experts, while most real-estate platforms
+      prioritize usability at the cost of analytical depth, typically offering only basic attributes such as
+      location and price. By integrating an LLM-driven reasoning layer with a deterministic geospatial backend,
+      GeoEstateChat investigates how user intent, spatial scale, data filtering, and analytical logic can be
+      inferred from ambiguous human language, enabling both high complexity and high usability within a single
+      system. The research focuses on reducing the technical barriers of GIS while preserving analytical rigor,
+      transparency, and reproducibility.<br><br>GeoEstateChat positions LLMs as a new infrastructural layer for
+      geospatial research, examining their potential to reshape access, workflow design, and decision-support
       processes in urban and real-estate contexts.
       <br><br>
       The project aims to answer below questions.
     </div>
     <div id="research-question">
       <p>
-        How can NYC real estate be analyzed geospatially with user <span id="highlight">friendly platform</span> in a way that 
+        How can NYC real estate be analyzed geospatially with user <span id="highlight">friendly platform</span> in a way that
         <span id="highlight">modern tools cannot offer</span><br>
         <br>
         How can geospatial data be made more <span id="highlight">accessible and intuitive</span> for non-experts?<br>
         <br>
-        How can experience design and visualization methods <span id="highlight">enhance users' ability to explore</span> complex 
+        How can experience design and visualization methods <span id="highlight">enhance users' ability to explore</span> complex
         geospatial information?<br>
         <br>
       </p>
     </div>
   </div>
+
+  <!-- ── Research Focus Cards ──────────────────────────────────── -->
+  <div class="research-grid">
+    <div class="research-card">
+      <div class="card-num">01</div>
+      <div class="card-title">LLM as Query Engine</div>
+      <div class="card-question">Can an LLM reliably translate ambiguous natural-language intent into valid, multi-step SQL queries over a geospatial database?</div>
+      <ul class="feature-bullets">
+        <li>Structured system prompt encodes full database schema and spatial operation semantics</li>
+        <li>LLM infers spatial scale, filters, groupings, and sort order from conversational input</li>
+        <li>Deterministic SQL execution ensures reproducible, auditable results</li>
+      </ul>
+    </div>
+    <div class="research-card">
+      <div class="card-num">02</div>
+      <div class="card-title">Accessibility vs. Analytical Depth</div>
+      <div class="card-question">How can a single interface serve both casual users and domain experts without sacrificing usability or analytical rigor?</div>
+      <ul class="feature-bullets">
+        <li>Three interaction modes — Analyze, Search, Compare — target distinct user intents</li>
+        <li>No GIS expertise required: queries expressed as plain language</li>
+        <li>Backend preserves full geospatial complexity including multi-scale joins and spatial aggregations</li>
+      </ul>
+    </div>
+    <div class="research-card">
+      <div class="card-num">03</div>
+      <div class="card-title">Spatial Visualization</div>
+      <div class="card-question">How can query results over spatial data be rendered to make geographic patterns immediately legible?</div>
+      <ul class="feature-bullets">
+        <li>Results mapped to building footprints, street blocks, and neighborhood polygons</li>
+        <li>Dynamic choropleth rendering responds to each query result set</li>
+        <li>Statistical summaries accompany visual outputs to provide analytical context</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ── The Problem ───────────────────────────────────────────── -->
+  <p class="section-title">The Problem</p>
+  <div class="text">
+    Real-estate decision-making is inherently spatial, yet available tools sit at opposite ends of a usability–complexity spectrum. GIS platforms like QGIS or ArcGIS offer deep analytical capability but require specialized domain knowledge that most users do not have. Consumer platforms like Zillow or StreetEasy are accessible but collapse rich geospatial data into a handful of listing attributes — price, bedrooms, photos. GeoEstateChat occupies the gap between these extremes: the LLM converts natural language into structured queries that are executed against a deterministic geospatial backend, so results are always data-driven and reproducible, never hallucinated.
+  </div>
+
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Dimension</th>
+        <th>GIS Tools (QGIS / ArcGIS)</th>
+        <th>Consumer Platforms (Zillow / StreetEasy)</th>
+        <th>GeoEstateChat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Required expertise</td>
+        <td>High — GIS knowledge required</td>
+        <td>None</td>
+        <td>None — plain language interface</td>
+      </tr>
+      <tr>
+        <td>Analytical depth</td>
+        <td>Full spatial analysis capabilities</td>
+        <td>Basic: price, beds, location</td>
+        <td>Multi-scale geospatial queries</td>
+      </tr>
+      <tr>
+        <td>Query interface</td>
+        <td>Scripting / GUI tools</td>
+        <td>Filter dropdowns</td>
+        <td>Natural language conversation</td>
+      </tr>
+      <tr>
+        <td>Spatial data layers</td>
+        <td>Any, user-configured</td>
+        <td>Point listings only</td>
+        <td>Buildings, street blocks, neighborhoods</td>
+      </tr>
+      <tr>
+        <td>Result reproducibility</td>
+        <td>High (deterministic)</td>
+        <td>Dependent on live listings</td>
+        <td>High — LLM generates SQL, backend executes</td>
+      </tr>
+      <tr>
+        <td>Onboarding time</td>
+        <td>Hours to days</td>
+        <td>Seconds</td>
+        <td>Seconds</td>
+      </tr>
+    </tbody>
+  </table>
+
   <p class="section-title">Datatable features</p>
   <div class="data">
     <div class="original-data"></div>
@@ -99,15 +189,60 @@
       ...<br>
     </div>
   </div>
+
+  <!-- ── Data Context ───────────────────────────────────────────── -->
+  <div class="text">
+    The database integrates NYC PLUTO building data with street-block-level population and property value statistics. Features are selected to support both spatial (geometry-based joins) and attribute-level queries, enabling the system to reason about proximity, density, land use, and value simultaneously. All tables are spatially indexed with PostGIS for efficient bounding-box and distance queries at building, block, and neighborhood scales.
+  </div>
+
   <p class="section-title">Project Structure</p>
   <div class="flow-chart"></div>
   <p class="section-title">Data Flowchart</p>
   <div class="flow-chart2"></div>
   <div class="description">
-    Once the user query is submitted, it is added with the system instruction to acquire appropriate information 
+    Once the user query is submitted, it is added with the system instruction to acquire appropriate information
     to be able to generate SQL for query. Eventually, once the data is extracted from database, it is sent back
     to frontend with statistically analysis summary and explanation.<br><br>
   </div>
+
+  <!-- ── LLM Query Pipeline ─────────────────────────────────────── -->
+  <p class="section-title">LLM Query Pipeline</p>
+  <div class="text">
+    The core technical challenge is converting loosely structured natural language — <em>"find street blocks near Central Park with high-rise buildings built after 2000"</em> — into syntactically valid, semantically correct PostGIS SQL. GeoEstateChat uses a structured system prompt that encodes the full database schema, available spatial operations, column semantics, and expected output format. The LLM acts as a query planner: it selects tables, infers join conditions, and constructs spatial predicates. The resulting SQL is executed unchanged against the PostGIS backend, ensuring all results are deterministic and data-sourced.
+  </div>
+
+  <div class="pipeline-steps">
+    <div class="pipeline-step">
+      <div class="step-num">1</div>
+      <div class="step-label">User Query</div>
+      <div class="step-detail">Plain language question submitted via the chat interface</div>
+    </div>
+    <div class="pipeline-arrow">→</div>
+    <div class="pipeline-step">
+      <div class="step-num">2</div>
+      <div class="step-label">Prompt Assembly</div>
+      <div class="step-detail">Query combined with system prompt, column semantics, and spatial constraints</div>
+    </div>
+    <div class="pipeline-arrow">→</div>
+    <div class="pipeline-step">
+      <div class="step-num">3</div>
+      <div class="step-label">LLM Inference</div>
+      <div class="step-detail">Model generates structured SQL with appropriate spatial joins and filters</div>
+    </div>
+    <div class="pipeline-arrow">→</div>
+    <div class="pipeline-step">
+      <div class="step-num">4</div>
+      <div class="step-label">PostGIS Execution</div>
+      <div class="step-detail">SQL executed deterministically against the geospatial database</div>
+    </div>
+    <div class="pipeline-arrow">→</div>
+    <div class="pipeline-step">
+      <div class="step-num">5</div>
+      <div class="step-label">Response</div>
+      <div class="step-detail">Results returned with statistical summary and plain-language explanation</div>
+    </div>
+  </div>
+
   <p class="section-title">System Demonstration</p>
   <p class="sub-title">Mode: Analyze</p>
     <div class="mode" id="mode1"></div>
@@ -121,7 +256,59 @@
   <p class="sub-title">Project Demonstration</p>
   <div id="gif"></div>
 
+  <!-- ── Technical Stack ────────────────────────────────────────── -->
+  <p class="section-title">Technical Stack</p>
+  <table class="tech-table">
+    <tbody>
+      <tr>
+        <td>Frontend</td>
+        <td>Vanilla JavaScript &nbsp;·&nbsp; MapLibre GL &nbsp;·&nbsp; Canvas API</td>
+      </tr>
+      <tr>
+        <td>Backend</td>
+        <td>FastAPI &nbsp;·&nbsp; Uvicorn &nbsp;·&nbsp; Python 3</td>
+      </tr>
+      <tr>
+        <td>Database</td>
+        <td>PostgreSQL &nbsp;·&nbsp; PostGIS &nbsp;·&nbsp; Spatial indexing (GIST)</td>
+      </tr>
+      <tr>
+        <td>LLM Integration</td>
+        <td>OpenAI API &nbsp;·&nbsp; Structured system prompt &nbsp;·&nbsp; SQL generation pipeline</td>
+      </tr>
+      <tr>
+        <td>Geospatial</td>
+        <td>GeoPandas &nbsp;·&nbsp; Shapely &nbsp;·&nbsp; PostGIS functions (ST_Within, ST_Distance, ST_DWithin)</td>
+      </tr>
+      <tr>
+        <td>Data Sources</td>
+        <td>NYC PLUTO &nbsp;·&nbsp; Street-block statistics &nbsp;·&nbsp; Neighborhood polygon boundaries</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ── Design Principles ──────────────────────────────────────── -->
+  <p class="section-title">Design Principles</p>
+  <div class="text">
+    Three principles distinguish GeoEstateChat from both GIS tools and consumer real-estate platforms.
+  </div>
+  <div class="principles-grid">
+    <div class="principle-card">
+      <div class="principle-title">LLM as Translator, Not Oracle</div>
+      <div class="principle-body">The LLM never invents facts about the city. It translates intent into SQL, and the database provides ground truth. This preserves analytical rigor while enabling natural interaction with no GIS expertise required.</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-title">Deterministic Backend</div>
+      <div class="principle-body">All results originate from SQL executed against real data. The same query returns the same answer regardless of LLM non-determinism at the natural-language level. Results are auditable and reproducible.</div>
+    </div>
+    <div class="principle-card">
+      <div class="principle-title">Spatial Transparency</div>
+      <div class="principle-body">The generated SQL is surfaced alongside results, allowing users and researchers to inspect the spatial logic applied, understand filter conditions, and verify how conclusions were reached.</div>
+    </div>
+  </div>
+
   <div class="footer">________________________________<br>GeoEstateChat<br>&copy; Daegeun Kim</div>
   </main>
-  <script src="main.js"></script>  
+  <script src="main.js"></script>
 </body>
+</html>
