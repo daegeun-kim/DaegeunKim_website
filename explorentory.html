@@ -234,7 +234,7 @@
           server round-trip. A reset button restores the original recommendation order.
         </div>
       </div>
-      <img src="work11/natural_language_chat.png" alt="Natural Language Chat" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
+      <img src="work11/natural_language_chat.png" alt="Natural Language Chat" style="width:100%; object-fit:cover; display:block;">
     </div>
 
     <p class="subsection-title">02 &nbsp; Dark and Bright Mode</p>
@@ -289,6 +289,135 @@
         </div>
       </div>
       <img src="work11/choropleth_mode_selector.png" alt="Choropleth Mode Selector" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
+    </div>
+
+    <!-- ── LLM Response Modes ───────────────────────────────────── -->
+    <p class="subsection-title">05 &nbsp; LLM Response Modes</p>
+    <div class="text">
+      The <code>/chat</code> endpoint classifies every user message into one of five structured response modes.
+      The LLM always returns valid JSON — the frontend inspects which top-level key is present to determine
+      the action. All filtering and sorting happens client-side on the cached GeoJSON, producing near-zero
+      latency results without an additional backend round-trip. The 401-line system prompt encodes the full
+      database schema, all 260 neighborhood names, building class codes, and concept-to-column mappings so
+      the model can resolve conversational terms like "cheapest", "prewar", or "near the park" into precise
+      column operations.
+    </div>
+
+    <div class="llm-modes-grid">
+      <div class="mode-card">
+        <span class="mode-badge mode-filter">FILTER</span>
+        <div class="mode-title">Narrow Results</div>
+        <div class="mode-desc">
+          Applies one or more constraints to reduce the property set. Supports
+          <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>,
+          <code>&gt;</code>, <code>&gt;=</code> with AND / OR logic. An optional
+          <code>limit</code> key caps to an explicit count or 20&thinsp;% of results
+          for open-ended similarity queries.
+        </div>
+        <div class="mode-schema">{"filters":[{"column":"...","op":"...","value":...}],<br>"logic":"AND"|"OR",<br>"message":"...",<br>"limit": N | true}</div>
+      </div>
+
+      <div class="mode-card">
+        <span class="mode-badge mode-sort">SORT</span>
+        <div class="mode-title">Reorder Results</div>
+        <div class="mode-desc">
+          Changes display order without removing properties. Supports primary and
+          secondary sort keys. Maps conversational terms — "cheapest", "closest to
+          subway", "quietest" — to internal column names
+          (<code>rent_knn</code>, <code>dist_subway_ft</code>, <code>noise_level_ord</code>).
+        </div>
+        <div class="mode-schema">{"sort":[{"by":"...","order":"asc"|"desc"}],<br>"message":"..."}</div>
+      </div>
+
+      <div class="mode-card">
+        <span class="mode-badge mode-explain">EXPLAIN</span>
+        <div class="mode-title">Answer Questions</div>
+        <div class="mode-desc">
+          Returns a 2–4 sentence plain-English answer when the user wants to understand
+          something — what a column means, how the ML score is calculated, why a
+          neighborhood ranked highly — without modifying the displayed list.
+        </div>
+        <div class="mode-schema">{"explain":true,<br>"message":"..."}</div>
+      </div>
+
+      <div class="mode-card">
+        <span class="mode-badge mode-contact">CONTACT</span>
+        <div class="mode-title">Connect with Agent</div>
+        <div class="mode-desc">
+          Triggered when the user signals intent to act — schedule a viewing, make
+          an offer, or reach a broker. Returns borough-specific agent directory
+          information (Manhattan, Bronx, Brooklyn, Queens, Staten Island) with a
+          contextual call-to-action message.
+        </div>
+        <div class="mode-schema">{"contact":true,<br>"message":"..."}</div>
+      </div>
+
+      <div class="mode-card">
+        <span class="mode-badge mode-unclear">UNCLEAR</span>
+        <div class="mode-title">Graceful Fallback</div>
+        <div class="mode-desc">
+          Used when the request is outside the dataset scope, logically impossible,
+          or ambiguous beyond resolution. Returns a brief apology and a suggested
+          alternative action rather than a malformed filter.
+        </div>
+        <div class="mode-schema">{"message":"..."}</div>
+      </div>
+    </div>
+
+    <img src="work11/chat_modes.png" alt="LLM Response Modes" style="width:100%; aspect-ratio:3/1; object-fit:cover; display:block; margin: 24px 0;">
+
+    <!-- ── Filtering Iteration & State History ───────────────────── -->
+    <p class="subsection-title">06 &nbsp; Filtering Iteration &amp; State History</p>
+    <div class="text">
+      Each bot response in the chat panel stores a <em>snapshot</em> of the active filtered GeoJSON at
+      that point in the conversation. When the user applies a new filter or sort, the previous bubble is
+      demoted and gains an inline "↩ Return to this state" button. Clicking it restores that snapshot
+      to the active result set and updates the map, histogram, and radar chart simultaneously — without
+      clearing the conversation history. The chat history is preserved across reverts, so the user can
+      refine forward, revert to an earlier state, and continue refining from there. A top-level Reset
+      button clears all chat history and returns to the original <code>/recommend</code> output.
+    </div>
+
+    <div class="state-history-flow">
+      <div class="history-step">
+        <div class="hs-label">Initial recommendation</div>
+        <div class="hs-sub">5,000 properties from <code>/recommend</code> · full GeoJSON cached client-side</div>
+      </div>
+      <div class="history-arrow">↓</div>
+      <div class="history-step hs-active">
+        <div class="hs-label">Query 1 — "2BR under $3,500"</div>
+        <div class="hs-sub">FILTER mode · Snapshot A stored in bubble · 847 properties remain</div>
+      </div>
+      <div class="history-arrow">↓</div>
+      <div class="history-step hs-active">
+        <div class="hs-label">Query 2 — "sort by closest subway"</div>
+        <div class="hs-sub">SORT mode · Snapshot B stored in bubble · order updated, count unchanged</div>
+      </div>
+      <div class="history-arrow">↓</div>
+      <div class="history-step hs-active">
+        <div class="hs-label">Query 3 — "only Brooklyn or Queens"</div>
+        <div class="hs-sub">FILTER mode · Snapshot C stored in bubble · 412 properties remain</div>
+      </div>
+      <div class="history-arrow revert-arrow">↩ &nbsp; user clicks "Return to this state" on bubble A</div>
+      <div class="history-step hs-reverted">
+        <div class="hs-label">Restored: Snapshot A</div>
+        <div class="hs-sub">847 properties · chat history intact · map + charts update immediately</div>
+      </div>
+    </div>
+
+
+    <!-- ── Property Context & Drag-to-Chat ───────────────────────── -->
+    <p class="subsection-title">07 &nbsp; Property Context &amp; Drag-to-Chat</p>
+    <div class="text">
+      Users can load up to three properties into the chat panel as explicit context for similarity
+      queries. Dragging any card from the top-10 listing sidebar — or clicking a highlighted polygon
+      on the map — adds it as a property bubble in the chat input area. Each bubble displays
+      neighborhood name, rent, and a remove button. When a message is sent with loaded properties,
+      the full attribute set — rent, sqft, bedrooms, bathrooms, building type, subway distance,
+      noise level, borough, and more — is embedded in the LLM prompt, enabling queries like
+      "find apartments similar to this one" or "is this place noisy compared to the others?"
+      The model translates the reference into explicit column-value filters or inline comparisons,
+      applied client-side without a backend round-trip.
     </div>
 
     <!-- ── Visualization & Charts ─────────────────────────────── -->

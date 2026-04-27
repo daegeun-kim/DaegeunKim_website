@@ -446,6 +446,126 @@ a:has(#github) {
 }
 
 /*-----------------------------------------------------------------*/
+/* LLM Modes Grid                                                  */
+/*-----------------------------------------------------------------*/
+
+.llm-modes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0 32px 0;
+}
+
+@media (max-width: 720px) {
+  .llm-modes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .llm-modes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mode-card {
+  border-top: 2px solid #868686;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mode-badge {
+  display: inline-block;
+  font-size: clamp(11px, 1.4vw, 14px);
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  padding: 2px 7px;
+  border-radius: 2px;
+  width: fit-content;
+}
+
+.mode-filter  { background: #e8f0fe; color: #1a56db; }
+.mode-sort    { background: #fef3e8; color: #c05621; }
+.mode-explain { background: #edfaed; color: #276749; }
+.mode-contact { background: #fce8f8; color: #7b2182; }
+.mode-unclear { background: #f2f2f2; color: #666;    }
+
+.mode-title {
+  font-weight: bold;
+  color: #111;
+  font-size: clamp(11px, 1.6vw, 16px);
+}
+
+.mode-desc {
+  color: #636363;
+  font-size: clamp(9px, 1.3vw, 13px);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.mode-schema {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(8px, 1vw, 10px);
+  background: #f8f8f8;
+  padding: 8px 10px;
+  border-radius: 2px;
+  color: #555;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
+/*-----------------------------------------------------------------*/
+/* Filtering Iteration / State History Flow                        */
+/*-----------------------------------------------------------------*/
+
+.state-history-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  margin: 24px 0 32px 20px;
+  max-width: 600px;
+}
+
+.history-step {
+  border-left: 2px solid #ddd;
+  padding: 11px 16px;
+  background: #fafafa;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hs-active   { border-left-color: #111; }
+.hs-reverted { border-left-color: #276749; background: #f2faf2; }
+
+.hs-label {
+  font-weight: bold;
+  font-size: clamp(10px, 1.4vw, 13px);
+  color: #222;
+  margin-bottom: 3px;
+}
+
+.hs-sub {
+  font-size: clamp(9px, 1.2vw, 11px);
+  color: #888;
+}
+
+.history-arrow {
+  font-size: clamp(10px, 1.3vw, 12px);
+  color: #bbb;
+  padding: 4px 0 4px 16px;
+}
+
+.revert-arrow {
+  color: #276749;
+  font-weight: bold;
+}
+
+/*-----------------------------------------------------------------*/
 /* Footer                                                          */
 /*-----------------------------------------------------------------*/
 
