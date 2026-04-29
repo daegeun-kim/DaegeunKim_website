@@ -209,7 +209,7 @@ code {
 }
 
 .rq-text {
-  font-size: clamp(23px, 3.3vw, 45px);
+  font-size: clamp(23px, 2vw, 45px);
   color: #eef0f4;
   line-height: 1.45;
   font-weight: 400;
@@ -273,7 +273,7 @@ code {
 }
 
 .cmp-list li {
-  font-size: clamp(17px, 2.1vw, 29px);
+  font-size: clamp(17px, 1.4vw, 29px);
   padding-left: 1.6em;
   position: relative;
   line-height: 1.5;
@@ -315,14 +315,14 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 }
 
 .arch-name2 {
-  font-size: clamp(24px, 3.3vw, 48px);
+  font-size: clamp(20px, 2.5vw, 48px);
   font-weight: 700;
   color: #eef0f4;
   line-height: 1.2;
 }
 
 .arch-sub2 {
-  font-size: clamp(17px, 2.03vw, 29px);
+  font-size: clamp(12px, 1.2vw, 29px);
   color: #5a6880;
   line-height: 1.8;
 }
@@ -338,7 +338,7 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 }
 
 .arch-arr-label {
-  font-size: clamp(14px, 1.5vw, 20px);
+  font-size: clamp(12px, 1.2vw, 20px);
   color: #4a80ff;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -707,7 +707,7 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 }
 
 .jstep-n {
-  font-size: clamp(14px, 1.5vw, 20px);
+  font-size: clamp(12px, 1.5vw, 20px);
   color: #4a80ff;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -715,14 +715,14 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 }
 
 .jstep-l {
-  font-size: clamp(18px, 2.25vw, 30px);
+  font-size: clamp(11px, 1.4vw, 20px);
   color: #c8d0de;
   font-weight: 500;
   white-space: nowrap;
 }
 
 .jarr {
-  font-size: clamp(18px, 2.25vw, 30px);
+  font-size: clamp(15px, 2.25vw, 30px);
   color: #2a3344;
   padding: 0 1.5%;
   flex-shrink: 0;
@@ -744,7 +744,7 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 }
 
 .funnel-box {
-  background: #131c2e;
+  background: #212914;
   border-radius: 6px;
   padding: 5% 3%;
   text-align: center;
@@ -756,12 +756,12 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
   gap: 6%;
 }
 
-.funnel-b { background: #0f1f18; }
-.funnel-c { background: #0f1828; }
+.funnel-b { background: #11241c; }
+.funnel-c { background: #151e3f; }
 .funnel-d { background: #131c2e; }
 
 .funnel-num {
-  font-size: clamp(45px, 8.25vw, 117px);
+  font-size: clamp(25px, 4vw, 100px);
   font-weight: 900;
   color: #eef0f4;
   letter-spacing: -0.03em;
@@ -770,10 +770,10 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 
 .funnel-b .funnel-num { color: #5a9050; }
 .funnel-c .funnel-num { color: #4a80ff; }
-.funnel-d .funnel-num { font-size: clamp(33px, 6vw, 87px); }
+.funnel-d .funnel-num { font-size: clamp(25px, 4vw, 100px); }
 
 .funnel-lbl {
-  font-size: clamp(17px, 1.95vw, 27px);
+  font-size: clamp(13px, 1.3vw, 27px);
   color: #5a6880;
   line-height: 1.55;
 }
@@ -818,7 +818,7 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 }
 
 .closing-sub {
-  font-size: clamp(20px, 2.55vw, 35px);
+  font-size: clamp(15px, 2vw, 25px);
   color: #868e9c;
   letter-spacing: 0.06em;
   text-align: center;
@@ -847,7 +847,7 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 .closing-box-hi  { background: #192c4c; }
 
 .closing-era {
-  font-size: clamp(14px, 1.5vw, 20px);
+  font-size: clamp(13px, 1.2vw, 20px);
   color: #9ca2a9;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -856,7 +856,8 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 }
 
 .closing-method {
-  font-size: clamp(24px, 3.3vw, 48px);
+  font-size: clamp(20px, 2.5vw, 48px);
+  text-align: center;
   font-weight: 700;
   color: #eef0f4;
   line-height: 1.2;
@@ -873,8 +874,8 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
 }
 
 .closing-pts li {
-  font-size: clamp(17px, 2.1vw, 29px);
-  color: #5a6880;
+  font-size: clamp(12px, 2vw, 20px);
+  color: #828da0;
   padding-left: 1.4em;
   position: relative;
   line-height: 1.5;
@@ -884,5 +885,5 @@ li.ok::before { content: '✓'; position: absolute; left: 0; color: #4a80ff; }
   content: '—';
   position: absolute;
   left: 0;
-  color: #2a3344;
+  color: #7e889b;
 }
