@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorentory — Presentation</title>
+  <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- ── 01 Title ──────────────────────────────────────────────── -->
+  <section class="slide">
+    <div class="slide-inner s-title">
+      <div class="bg" style="background-image:url('title1.png')"></div>
+      <div class="overlay"></div>
+      <div class="tc">
+        <p class="overline">NYC RENTAL DISCOVERY PLATFORM</p>
+        <img src="explorentory_dark.png" alt="Explorentory" class="logo-hero">
+        <p class="tagline">AI &nbsp;·&nbsp; Machine Learning &nbsp;·&nbsp; Geospatial Visualization</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 02 Research Questions ────────────────────────────────── -->
+  <section class="slide">
+    <div class="slide-inner s-rqs">
+      <div class="rqs-list">
+        <div class="rq-item">
+          <span class="rq-idx">01</span>
+          <p class="rq-text">How can an AI-assisted experience translate natural language preferences into <em>personalized rental recommendations</em>?</p>
+        </div>
+        <div class="rq-item">
+          <span class="rq-idx">02</span>
+          <p class="rq-text">How can machine learning adapt rental recommendations based on <em>user behavior and implicit feedback</em>?</p>
+        </div>
+        <div class="rq-item">
+          <span class="rq-idx">03</span>
+          <p class="rq-text">How can interactive visualizations clarify housing information and <em>make spatial trade-offs legible</em>?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 03 Platform Comparison ───────────────────────────────── -->
+  <section class="slide">
+    <div class="slide-inner s-versus">
+      <div class="versus-top">
+        <div class="versus-img-col">
+          <div class="versus-img-wrap">
+            <img src="zillow_vs_explorentory1.png" alt="Zillow">
+          </div>
+          <p class="versus-cap dim-label">Zillow · Traditional Platforms</p>
+        </div>
+        <div class="versus-img-col">
+          <div class="versus-img-wrap">
+            <img src="zillow_vs_explorentory2.png" alt="Explorentory">
+          </div>
+          <p class="versus-cap hi-label">Explorentory</p>
+        </div>
+      </div>
+      <div class="versus-bottom">
+        <ul class="cmp-list">
+          <li class="x">Hard filters — all-or-nothing, binary inclusion</li>
+          <li class="x">Miss properties slightly above your budget</li>
+          <li class="x">No visualization of trade-offs across options</li>
+          <li class="x">Manual one-by-one property review</li>
+        </ul>
+        <ul class="cmp-list">
+          <li class="ok">Explores ± range beyond your initial filters</li>
+          <li class="ok">Learns your specific, ambiguous preferences</li>
+          <li class="ok">Visualizes trade-offs spatially and across axes</li>
+          <li class="ok">AI-assisted exploration and comparison</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 04 System Architecture ───────────────────────────────── -->
+  <section class="slide">
+    <div class="slide-inner s-arch2">
+      <div class="arch-row">
+        <div class="arch-box2">
+          <p class="arch-name2">PostgreSQL<br>+ PostGIS</p>
+          <p class="arch-sub2">~4M synthetic NYC units<br>260 neighborhood polygons<br>GeoJSON boundary data<br>Geospatial indexing</p>
+        </div>
+        <div class="arch-arr2">
+          <span class="arch-arr-label">FastAPI<br>REST</span>
+          <span class="arch-arr-arrow">→</span>
+        </div>
+        <div class="arch-box2 arch-mid2">
+          <p class="arch-name2">Backend</p>
+          <p class="arch-sub2">6 REST endpoints<br>OLS regression (scikit-learn)<br>OpenAI Responses API<br>PostGIS spatial queries</p>
+        </div>
+        <div class="arch-arr2">
+          <span class="arch-arr-label">JSON +<br>GeoJSON</span>
+          <span class="arch-arr-arrow">→</span>
+        </div>
+        <div class="arch-box2">
+          <p class="arch-name2">Vanilla JS<br>Frontend</p>
+          <p class="arch-sub2">MapLibre GL polygons<br>Canvas-based charts<br>Client-side LLM filtering<br>Snapshot state history</p>
+        </div>
+      </div>
+      <div class="arch-journey">
+        <div class="jstep">
+          <span class="jstep-n">01</span>
+          <span class="jstep-l">Initial Input</span>
+        </div>
+        <div class="jarr">→</div>
+        <div class="jstep">
+          <span class="jstep-n">02</span>
+          <span class="jstep-l">Neighborhood Selection</span>
+        </div>
+        <div class="jarr">→</div>
+        <div class="jstep">
+          <span class="jstep-n">03</span>
+          <span class="jstep-l">Property Rating Survey</span>
+        </div>
+        <div class="jarr">→</div>
+        <div class="jstep">
+          <span class="jstep-n">04</span>
+          <span class="jstep-l">Explore &amp; Discover</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 05 UX Workflow ────────────────────────────────────────── -->
+  <section class="slide">
+    <div class="slide-inner s-ux2">
+      <div class="ux2-grid">
+        <div class="ux2-item">
+          <img src="UX1.png" alt="Step 1 — Preferences">
+          <div class="ux2-label">
+            <span class="ux-n">01</span>
+            <span class="ux-l">Preferences &amp; Priorities</span>
+          </div>
+        </div>
+        <div class="ux2-item">
+          <img src="UX2.png" alt="Step 2 — Neighborhood">
+          <div class="ux2-label">
+            <span class="ux-n">02</span>
+            <span class="ux-l">Neighborhood Selection</span>
+          </div>
+        </div>
+        <div class="ux2-item">
+          <img src="UX3.png" alt="Step 3 — Rating">
+          <div class="ux2-label">
+            <span class="ux-n">03</span>
+            <span class="ux-l">Property Rating Survey</span>
+          </div>
+        </div>
+        <div class="ux2-item">
+          <img src="UX4.png" alt="Step 4 — Results">
+          <div class="ux2-label">
+            <span class="ux-n">04</span>
+            <span class="ux-l">Results Panel &amp; Chat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 06 Scoring Pipeline ───────────────────────────────────── -->
+  <section class="slide">
+    <div class="slide-inner s-funnel">
+      <div class="funnel-flow">
+        <div class="funnel-box">
+          <p class="funnel-num">~4M</p>
+          <p class="funnel-lbl">Properties<br>in Database</p>
+        </div>
+        <div class="funnel-conn">
+          <p class="funnel-method">Rule-Based<br>Filter</p>
+          <p class="funnel-arrow">→</p>
+          <p class="funnel-hint">Rent ±20%/+5%<br>BD ±1 · BA ±1</p>
+        </div>
+        <div class="funnel-box funnel-b">
+          <p class="funnel-num">~100K</p>
+          <p class="funnel-lbl">Candidates<br>Shortlisted</p>
+        </div>
+        <div class="funnel-conn">
+          <p class="funnel-method">Rule + ML<br>Scoring</p>
+          <p class="funnel-arrow">→</p>
+          <p class="funnel-hint">50% rule weight<br>50% OLS regression</p>
+        </div>
+        <div class="funnel-box funnel-c">
+          <p class="funnel-num">5,000</p>
+          <p class="funnel-lbl">Top Results<br>Surfaced</p>
+        </div>
+        <div class="funnel-conn">
+          <p class="funnel-method">AI-Assisted<br>Exploration</p>
+          <p class="funnel-arrow">→</p>
+          <p class="funnel-hint">Chat · Map<br>Cards · Radar</p>
+        </div>
+        <div class="funnel-box funnel-d">
+          <p class="funnel-num">You</p>
+          <p class="funnel-lbl">Explore,<br>Compare &amp; Decide</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 07 Closing ────────────────────────────────────────────── -->
+  <section class="slide">
+    <div class="slide-inner s-closing">
+      <p class="closing-sub">Three Methods of Machine Decision-Making</p>
+      <div class="closing-3col">
+        <div class="closing-box">
+          <p class="closing-era">1960s – 1990s</p>
+          <p class="closing-method">Rule-Based<br>Filter</p>
+          <ul class="closing-pts">
+            <li>Deterministic &amp; binary</li>
+            <li>Transparent and fast</li>
+            <li>Cannot handle subjectivity</li>
+          </ul>
+        </div>
+        <div class="closing-box closing-box-mid">
+          <p class="closing-era">2000s – 2010s</p>
+          <p class="closing-method">Classical ML<br>(OLS Regression)</p>
+          <ul class="closing-pts">
+            <li>Learns patterns from data</li>
+            <li>Requires structured input</li>
+            <li>Handles some ambiguity</li>
+          </ul>
+        </div>
+        <div class="closing-box closing-box-hi">
+          <p class="closing-era">2020s →</p>
+          <p class="closing-method">AI Assistive<br>Exploration</p>
+          <ul class="closing-pts">
+            <li>Natural language interface</li>
+            <li>Learns subjective preferences</li>
+            <li>Handles deep ambiguity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="progress-bar"></div>
+<div id="slide-counter"></div>
+<div id="nav-hint">SPACE / → &nbsp; next &nbsp;&nbsp;&nbsp; ← &nbsp; prev</div>
+
+<script src="presentation.js"></script>
+</body>
+</html>

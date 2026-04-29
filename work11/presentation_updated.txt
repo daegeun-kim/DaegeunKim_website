@@ -1,0 +1,167 @@
+================================================================================
+  EXPLORENTORY — PRESENTATION SCRIPT (UPDATED)
+  Total: ~10 min  |  Slides: ~4 min  |  Demo: ~6 min
+  Speaking pace: ~140 wpm  |  Slide portion word count: ~560 words
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+  FULL SPEECH
+────────────────────────────────────────────────────────────────────────────────
+
+#1. TITLE
+─────────
+My project is called Explorentory — a rental discovery platform for New York City
+that uses machine learning, AI, and geospatial visualization to help people find
+where they want to live. The key word is "discover." Not filter, not search —
+discover.
+
+
+#2. RESEARCH QUESTIONS
+───────────────────────
+The project is organized around three research questions. How can AI translate
+natural language preferences into personalized recommendations? How can machine
+learning adapt based on user behavior and feedback? And how can interactive
+visualization make spatial trade-offs legible?
+
+These aren't purely technical questions. They're design questions — about how
+people make complex decisions with machine assistance.
+
+
+#3. PLATFORM COMPARISON
+────────────────────────
+To understand why this matters, look at how people search for apartments today.
+Platforms like Zillow ask you to commit before you can even see what's out there.
+You set a hard budget, a fixed bedroom count, a specific neighborhood — and then
+you get a list and check each one manually.
+
+This works. But it has a hidden cost: you never see what you almost found.
+A great apartment $100 over your budget is invisible to you. You can't express
+"I care more about space than location" and have the platform reason about that.
+You can't compare trade-offs across properties. The whole process puts the
+cognitive burden entirely on you.
+
+Explorentory flips the model. We surface a wide candidate set first, and then
+use your stated priorities and your actual ratings to rank and narrow —
+letting you explore before you commit.
+
+
+#4 & 5. ARCHITECTURE AND USER FLOW
+────────────────────────────────────
+The system is a straightforward three-tier architecture: a PostGIS database
+of 4 million synthetic NYC units, a FastAPI backend running the ML pipeline
+and the OpenAI API, and a vanilla JavaScript frontend with MapLibre for maps
+and canvas-based charts.
+
+The user experience unfolds in four stages, which you can see in these screenshots:
+initial preference input, clicking a neighborhood directly on the map, a ten-property
+rating survey, and finally the results interface — where the real exploration begins.
+
+
+#6. SCORING PIPELINE
+─────────────────────
+The scoring is where the machine learning actually happens.
+
+We start with 4 million units. Rule-based filtering — rent tolerance,
+bedroom and bathroom range — cuts that down to around 100,000 candidates.
+Then a hybrid scoring model runs: 50% rule-based preference weights,
+50% OLS regression trained on your 10 ratings, using 11 engineered features.
+That produces 5,000 ranked results.
+
+From there, it's the user's turn. You can chat in natural language, filter
+spatially on the map, pull up AI-generated explanations for individual properties,
+and compare trade-offs visually with radar charts and histograms.
+
+
+#DEMONSTRATION  (~6 minutes)
+──────────────────────────────
+[ Live demo — persona: Columbia University graduate student looking for
+  a one-bedroom in upper Manhattan, values proximity to campus and quiet
+  evenings, flexible on price up to about 10% above stated budget. ]
+
+
+#7. CLOSING
+────────────
+Let me close with what I think this project is really pointing at.
+
+For most of computing history, software was exceptional at one thing:
+executing precise instructions at scale. Give it a rule — it follows the rule.
+Give it a filter — it filters.
+
+Machine learning gave us the next shift: systems that could learn from data,
+adapt to patterns, personalize — still quantitative, but now responsive.
+
+Generative AI is a third shift. And it is different in kind, not just degree.
+For the first time, machines can work with input that is ambiguous, subjective,
+even contradictory — the kind of input that used to be exclusively human territory.
+
+"I want somewhere cozy, close to good coffee, not too loud on weekends."
+That is not a filter. That is a feeling.
+And now, a machine can reason about it.
+
+Rental search is a small, contained version of a much larger question.
+Across healthcare, education, urban planning, hiring — we are beginning to
+delegate decisions involving human ambiguity to systems that can learn from it.
+
+The designer's role in this world is not simply to make interfaces cleaner
+or instructions simpler. It is to design the boundary between human uncertainty
+and machine intelligence. To make ambiguity legible. To make trade-offs visible.
+To build systems where people understand not just what the machine decided —
+but why, and whether they trust it.
+
+That question is not going away. If anything, it becomes more urgent every year.
+
+Explorentory is a small answer. But the question it is asking is not small.
+
+
+================================================================================
+  SPEECH NOTES  (bullet points — key points per slide)
+================================================================================
+
+#1. TITLE
+  • Project: Explorentory — NYC rental discovery platform
+  • Core idea: discover, not just filter
+  • Stack: ML + AI + geospatial visualization
+
+#2. RESEARCH QUESTIONS
+  • RQ1 — AI + natural language → personalized recommendations
+  • RQ2 — ML adapts from user behavior and implicit feedback
+  • RQ3 — Visualization makes spatial trade-offs legible
+  • Frame as design questions, not just engineering problems
+
+#3. PLATFORM COMPARISON
+  • Zillow: hard filters, commit before you see anything
+  • Hidden cost: miss what you almost found
+  • Can't express preference ambiguity ("space > location")
+  • Full cognitive load on the user
+  • Explorentory: wide set first → rank with your ratings → explore then commit
+
+#4 & 5. ARCHITECTURE + UX FLOW
+  • 3-tier: PostGIS DB → FastAPI backend → Vanilla JS frontend
+  • 4M synthetic NYC units, 260 neighborhood polygons
+  • Backend: OLS pipeline + OpenAI Responses API
+  • Frontend: MapLibre GL + canvas charts + snapshot state history
+  • 4 user stages: Input → Neighborhood → Rating Survey → Results
+
+#6. SCORING PIPELINE
+  • Start: ~4M units in DB
+  • Rule-based filter (rent ±20%/+5%, BD ±1, BA ±1) → ~100K candidates
+  • Hybrid score: 50% rule-based weights + 50% OLS regression (10 ratings, 11 features)
+  • Output: top 5,000 ranked results
+  • User exploration: chat, map, radar chart, AI explanations
+
+#DEMONSTRATION
+  • Persona: Columbia grad student, upper Manhattan, 1BR, flexible budget
+  • Show: preference input → neighborhood click → rate 10 units → explore results
+  • Highlight: chat filter, choropleth toggle, property card AI explanation
+
+#7. CLOSING
+  • Three eras of machine capability:
+      1960s–90s  →  Rule-based: precise, deterministic, zero ambiguity tolerance
+      2000s–10s  →  Classical ML: learns patterns, still needs structured input
+      2020s →    →  Generative AI: handles ambiguity, subjective, contradictory input
+  • Key provocation: "That is not a filter. That is a feeling. And now, a machine can reason about it."
+  • Bigger picture: healthcare, education, urban planning — same paradigm shift
+  • Designer's new role: design the boundary between human uncertainty and machine intelligence
+  • Make ambiguity legible. Make trade-offs visible. Build systems people can trust.
+  • Close: "Explorentory is a small answer. But the question it is asking is not small."

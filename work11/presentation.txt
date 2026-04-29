@@ -1,0 +1,30 @@
+#1.
+My project is called Explorentory, it is a rental discovery tool, where you can explore New York City's units with the aid of machine learning, AI, and geospatial visualization features.
+
+#2. 
+These are 3 research questions:
+- How can an AI-assisted experience translate natural language preferences into personalized rental recommendations?
+- How can machine learning adapt rental recommendations based on user behavior and implicit feedback?
+- How can interactive visualizations clarify housing information and make spatial trade-offs legible?
+
+#3. 
+For traditional rental searching platforms like Zillow, the workflow involves giving strict inputs, including: rent, location, and room counts. Then the platform shows you the properties matching the filter. This method is fast and straightforward, but it does not allow you to visualize tradeoffs, explore options slightly beyond your hard filters, and to compare the tradeoffs between different properties. You sometimes miss out a nice property slightly above your price filter, and you usually spend a lot of time manually checking properties one by one. 
+The biggest benefit of the world of AI is that machines now can learn the specific ambiguity of particular users. My project tries to target that by allow this rental searching process to be more assistive, and allow you to explore beyond your initial inituitive range.
+
+#4, 5
+The project architecture is a simple Database to backend to frontend flow, and it involves 4 distinct stages: Initial input, target neighborhood selection, property rating survey, and final output for users to navigate.
+
+#6. 
+Initially there are around 4 million properties in the database, with rule based filtering it rules out to 100000 potential properties. Then with rule based scoring and machine learning prediction from user survey, it outputs top 5000 properties. Then it is the user's job to explore the properties with the aid of AI
+
+#Demonstration:
+#demonstrate the app with a persona of a Columbia university student. (around 5 min)
+
+#Closing:
+The main output for the project is to think about the role of computers in decision making process. 
+This project involves 3 methods aiding user's decision making: Rule based filter, classical machine learning prediction, AI assistive exploration.
+These 3 stages basically shows the history of how software engineering evolved throughout the history. 
+The more complex one is the one deals with ambiguity much better. It is able to understand user's ambiguous concern that is hard to be learned from traditional computer methods.
+And I guess this is the direction of where the current world is heading. The reason why lots of jobs are considered to be in danger or being replaced by AI is because AI can learn ambiguous and subjective inputs into a complex output. There are many products like this one being released everyday in the economy, and it is the time to explore how designers can utilize these tools for dealing with ambiguous issues in the workflow.
+
+
