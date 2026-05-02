@@ -330,7 +330,7 @@ main {
   background-size: cover;
 }
 #work11-image {
-  background: url('image/work11.png') no-repeat center center;
+  background: url('image/work11.png?v=20260221') no-repeat center center;
   background-size: cover;
 }
 .footer {
