@@ -28,12 +28,8 @@
     <div class="main-image"></div>
     <div class="intro">
       <span class="title">Street-Block Urbanity Prediction</span><br>
-      <a href="https://github.com/daegeun-kim/street_block_ML" target="_blank">
-        <p id="github">Linear Regression & Logistic Regrssion Github<br></p>
-      </a>
-      <a href="https://github.com/daegeun-kim/street_block_DL" target="_blank">
-        <p id="github">Graph Neural Network Github<br></p>
-      </a>
+      <br><a class="gh-link" href="https://github.com/daegeun-kim/street_block_ML" target="_blank">Github</a>: Linear Regression &amp; Logistic Regression<br>
+      <a class="gh-link" href="https://github.com/daegeun-kim/street_block_DL" target="_blank">Github</a>: Graph Neural Network
       <p>
         Linear Regression<br>
         Logistic Regression<br>
@@ -123,7 +119,7 @@
           </p>
         </div>
       </div>
-      <img src="work6/terms_explanation.png" alt="Terms Explanation" class="terms-full-img">
+      <img src="work6/terms_explanation.png" alt="Terms Explanation" class="terms-full-img no-lightbox">
     </div>
 
     <div class="overview">
@@ -266,6 +262,18 @@
           <div class="colorbar-labels"><span>0</span><span>1</span></div>
         </div>
       </div>
+
+      <div class="streetblock-samples">
+        <div class="sb-grid-3">
+          <img src="work6/streetblock1.png" alt="Sample Street Block 1">
+          <img src="work6/streetblock2.png" alt="Sample Street Block 2">
+          <img src="work6/streetblock3.png" alt="Sample Street Block 3">
+          <img src="work6/streetblock4.png" alt="Sample Street Block 4">
+          <img src="work6/streetblock5.png" alt="Sample Street Block 5">
+          <img src="work6/streetblock6.png" alt="Sample Street Block 6">
+        </div>
+        <p class="img-caption">sample streetblocks</p>
+      </div>
     </div>
     <div class="linearregression">
       <p class="sb-heading">Linear Regression: Geometry as Predictor of Population</p>
@@ -370,7 +378,7 @@
         <b>PostgreSQL/PostGIS:</b> Stored city-wise processed street-block geometries and UR20 labels, enabling consistent querying and reproducible splits.<br>
         <b>Python + PyTorch Geometric:</b> Loaded all 10 cities, converted blocks into graph representations, trained a GNN on 9 cities with Houston as a fixed validation set, and tested generalization on an unseen city: Philadelphia.
       </p>
-      <img src="work6/train_val_test.png" alt="Train/Validation/Test Split" class="img-full">
+      <img src="work6/train_val_test.png" alt="Train/Validation/Test Split" class="img-full no-lightbox">
 
       <p class="sb-heading">Street Block to Graph</p>
       <p class="sb-body">
@@ -384,11 +392,11 @@
       </p>
       <div class="image-2col-equal">
         <div>
-          <div class="img-frame"><img src="work6/data_type.png" alt="Image vs Graph Representation"></div>
+          <div class="img-frame"><img src="work6/data_type.png" alt="Image vs Graph Representation" class="no-lightbox"></div>
           <p class="img-caption">Image vs. Graph representation of a street block</p>
         </div>
         <div>
-          <div class="img-frame"><img src="work6/graph_diagram.png" alt="Sample Graph Structure"></div>
+          <div class="img-frame"><img src="work6/graph_diagram.png" alt="Sample Graph Structure" class="no-lightbox"></div>
           <p class="img-caption">Sample graph structure (x, y, &theta;, l<sub>1</sub>, l<sub>2</sub>)</p>
         </div>
       </div>
@@ -406,7 +414,7 @@
       </p>
 
       <p class="sb-heading">Neural Network Architecture</p>
-      <img src="work6/NN_diagram.png" alt="Neural Network Architecture Diagram" class="img-full">
+      <img src="work6/NN_diagram.png" alt="Neural Network Architecture Diagram" class="img-full no-lightbox">
 
       <p class="sb-heading">Treating Imbalanced Data</p>
       <img src="work6/imbalanced.png" alt="Class Imbalance: Count vs Area" class="img-full">
@@ -466,7 +474,7 @@
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightbox-img');
 
-      document.querySelectorAll('main img').forEach(img => {
+      document.querySelectorAll('main img:not(.no-lightbox)').forEach(img => {
         img.addEventListener('click', () => {
           lightboxImg.src = img.src;
           lightboxImg.alt = img.alt;

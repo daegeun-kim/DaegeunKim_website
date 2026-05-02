@@ -109,6 +109,12 @@ main {
   display:flex; 
   justify-content:center;
 }
+.gh-link {
+  color: blue;
+  text-decoration: underline;
+  font-size: clamp(10px, 1.8vw, 18px);
+}
+
 .intro {
   margin: 50px 0;
   margin-bottom: 130px;
@@ -168,6 +174,20 @@ main {
 .crs-note {
   margin-top: 10px;
   color: #6d6d6d;
+}
+
+.sb-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 24px 0 8px;
+}
+
+.sb-grid-3 img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
 .terms-grid {
@@ -326,8 +346,17 @@ main {
 /* LR, Logistic, GNN, Conclusion sections ------------------------*/
 /*-----------------------------------------------------------------*/
 
-main img {
+main img:not(.no-lightbox) {
   cursor: pointer;
+  transition: filter 0.2s;
+}
+
+main img:not(.no-lightbox):hover {
+  filter: brightness(0.85);
+}
+
+main img.no-lightbox {
+  cursor: default;
 }
 
 .formula {
