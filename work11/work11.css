@@ -130,7 +130,7 @@ a:has(#github) {
 }
 
 .text {
-  font-size: clamp(10px, 2vw, 20px);
+  font-size: clamp(10px, 1.6vw, 16px);
   line-height: 1.6;
   color: #636363;
   text-align: justify;

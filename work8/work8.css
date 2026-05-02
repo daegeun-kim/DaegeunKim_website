@@ -106,18 +106,18 @@ main {
 .intro {
   margin: 50px 0;
   margin-bottom: 130px;
-  font-size: clamp(12px, 2.1vw, 21px);
+  font-size: clamp(12px, 1.8vw, 18px);
   color: #6d6d6d;
 }
 
 .section-title {
-  font-size: clamp(12px, 2.5vw, 25px);
+  font-size: clamp(12px, 1.8vw, 18px);
   font-weight: bold;
   margin: 90px 0 20px 0;
   color: black;
 }
 .text {
-  font-size: clamp(10px, 2vw, 20px);
+  font-size: clamp(10px, 1.6vw, 16px);
   line-height: 1.5;
   color: #636363;
   text-align: justify;
@@ -142,13 +142,6 @@ main {
   background-repeat: no-repeat;
   background-position: center;
 }
-
-.streetblock:nth-child(1) { background-image: url('streetblock1.png'); }
-.streetblock:nth-child(2) { background-image: url('streetblock2.png'); }
-.streetblock:nth-child(3) { background-image: url('streetblock3.png'); }
-.streetblock:nth-child(4) { background-image: url('streetblock4.png'); }
-.streetblock:nth-child(5) { background-image: url('streetblock5.png'); }
-.streetblock:nth-child(6) { background-image: url('streetblock6.png'); }
 
 .workflow {  
   aspect-ratio: 2 / 1;
