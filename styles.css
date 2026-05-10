@@ -333,6 +333,10 @@ main {
   background: url('image/work11.png?v=20260221') no-repeat center center;
   background-size: cover;
 }
+#work12-image {
+  background: url('image/work12.jpg?v=20260221') no-repeat center center;
+  background-size: cover;
+}
 .footer {
   font-size: clamp(10px, 1.5vw, 15px);
   line-height: 1.5;
