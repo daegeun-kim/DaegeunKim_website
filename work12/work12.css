@@ -1,4 +1,4 @@
-body {
+﻿body {
   margin: 0;
   padding: 0;
 }
@@ -87,7 +87,7 @@ main {
 
 .main-image {
   aspect-ratio: 5 / 2;
-  background: #111 url('m4_hero_detail.jpg') no-repeat center center;
+  background: #111 url('m4_hero_detail.jpg?v=20260511') no-repeat center center;
   background-size: cover;
   margin-bottom: 20px;
   margin-top: clamp(60px, 10vw, 100px);
@@ -278,7 +278,7 @@ img {
 }
 
 /*-----------------------------------------------------------------*/
-/* M3 Side Stack — contain                                         */
+/* M3 Side Stack â€” contain                                         */
 /*-----------------------------------------------------------------*/
 
 .m3-side-stack .img-rotated-90 {
@@ -304,7 +304,7 @@ img {
 }
 
 /*-----------------------------------------------------------------*/
-/* M2 View Images — cover                                          */
+/* M2 View Images â€” cover                                          */
 /*-----------------------------------------------------------------*/
 
 .m2-views img {
@@ -313,7 +313,7 @@ img {
 }
 
 /*-----------------------------------------------------------------*/
-/* Seasonal Grid — cover                                           */
+/* Seasonal Grid â€” cover                                           */
 /*-----------------------------------------------------------------*/
 
 .seasonal-grid img {
@@ -322,7 +322,7 @@ img {
 }
 
 /*-----------------------------------------------------------------*/
-/* M4 Detail + Diagram — matched height                           */
+/* M4 Detail + Diagram â€” matched height                           */
 /*-----------------------------------------------------------------*/
 
 .m4-detail-diagram img {
@@ -338,7 +338,7 @@ img {
 }
 
 /*-----------------------------------------------------------------*/
-/* Elevation Grid — matched height                                 */
+/* Elevation Grid â€” matched height                                 */
 /*-----------------------------------------------------------------*/
 
 .elevation-grid img {
