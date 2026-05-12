@@ -236,14 +236,14 @@
     <text class="cls-23" transform="translate(551.81 29.82)"><tspan x="0" y="0">Backend (FastAPI)</tspan></text>
     <text class="cls-23" transform="translate(1425.51 32.8193)"><tspan x="0" y="0">Frontend</tspan></text>
     <text class="cls-15" transform="translate(841.33 285.85)"><tspan x="0" y="0">GE</tspan><tspan class="cls-18" x="26.01" y="0">T</tspan><tspan x="36.69" y="0" xml:space="preserve"> /neighborhoods</tspan></text>
-    <text class="cls-15" transform="translate(854.86 372.9)"><tspan x="0" y="0">POS</tspan><tspan class="cls-18" x="38.01" y="0">T</tspan><tspan x="48.69" y="0" xml:space="preserve"> /properties</tspan></text>
+    <text class="cls-15" transform="translate(847.36 372.9)"><tspan x="0" y="0">POS</tspan><tspan class="cls-18" x="38.01" y="0">T</tspan><tspan x="48.69" y="0" xml:space="preserve"> /recommend</tspan></text>
     <text class="cls-15" transform="translate(1148.3994 346.2937)"><tspan x="0" y="0">main.js</tspan></text>
     <text class="cls-15" transform="translate(1389.1558 234.8205)"><tspan x="0" y="0">neighborhood.js</tspan></text>
     <text class="cls-15" transform="translate(1401.1788 446.1237)"><tspan x="0" y="0">preference.js</tspan></text>
     <text class="cls-15" transform="translate(1421.6921 586.1481)"><tspan x="0" y="0">rating.js</tspan></text>
     <text class="cls-15" transform="translate(1738.8449 234.9841)"><tspan x="0" y="0">map.js</tspan></text>
     <text class="cls-15" transform="translate(1731.8443 510.3179)"><tspan x="0" y="0">charts.js</tspan></text>
-    <text class="cls-15" transform="translate(847.36 479.11)"><tspan x="0" y="0">POS</tspan><tspan class="cls-18" x="38.01" y="0">T</tspan><tspan x="48.69" y="0" xml:space="preserve"> /recommend</tspan></text>
+    <text class="cls-15" transform="translate(854.86 479.11)"><tspan x="0" y="0">POS</tspan><tspan class="cls-18" x="38.01" y="0">T</tspan><tspan x="48.69" y="0" xml:space="preserve"> /properties</tspan></text>
     <text class="cls-15" transform="translate(866.36 571.48)"><tspan x="0" y="0">POS</tspan><tspan class="cls-18" x="38.01" y="0">T</tspan><tspan x="48.69" y="0" xml:space="preserve"> /explain</tspan></text>
     <text class="cls-15" transform="translate(839.34 648.9)"><tspan x="0" y="0">POS</tspan><tspan class="cls-18" x="38.01" y="0">T</tspan><tspan x="48.69" y="0" xml:space="preserve"> /explain_result</tspan></text>
     <text class="cls-15" transform="translate(877.87 726.44)"><tspan x="0" y="0">POS</tspan><tspan class="cls-18" x="38.01" y="0">T</tspan><tspan x="48.69" y="0" xml:space="preserve"> /chat</tspan></text>
