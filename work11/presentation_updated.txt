@@ -120,14 +120,13 @@ Explorentory is a small answer. But the question it is asking is not small.
 
 #1. TITLE
   • Project: Explorentory — NYC rental discovery platform
-  • Core idea: discover, not just filter
-  • Stack: ML + AI + geospatial visualization
+  • Core idea: rental discovery
+  • with the aid of ML + AI + geospatial visualization
 
 #2. RESEARCH QUESTIONS
-  • RQ1 — AI + natural language → personalized recommendations
-  • RQ2 — ML adapts from user behavior and implicit feedback
-  • RQ3 — Visualization makes spatial trade-offs legible
-  • Frame as design questions, not just engineering problems
+  • RQ1 — How can machine learning adapt rental recommendations based on user behavior and implicit feedback?
+  • RQ2 — How can interactive visualizations clarify housing information and make spatial trade-offs legible?
+  • RQ3 — How can an AI-assisted experience translate natural language preferences into personalized rental recommendations?
 
 #3. PLATFORM COMPARISON
   • Zillow: hard filters, commit before you see anything
@@ -156,12 +155,11 @@ Explorentory is a small answer. But the question it is asking is not small.
   • Highlight: chat filter, choropleth toggle, property card AI explanation
 
 #7. CLOSING
-  • Three eras of machine capability:
+  • Three eras of computational capability:
       1960s–90s  →  Rule-based: precise, deterministic, zero ambiguity tolerance
       2000s–10s  →  Classical ML: learns patterns, still needs structured input
       2020s →    →  Generative AI: handles ambiguity, subjective, contradictory input
-  • Key provocation: "That is not a filter. That is a feeling. And now, a machine can reason about it."
-  • Bigger picture: healthcare, education, urban planning — same paradigm shift
-  • Designer's new role: design the boundary between human uncertainty and machine intelligence
-  • Make ambiguity legible. Make trade-offs visible. Build systems people can trust.
-  • Close: "Explorentory is a small answer. But the question it is asking is not small."
+  • with better model, ambiguity and complexity
+  • paradigm shift is happening in healthcare, education
+  • designers should learn when to use those computational methods
+
