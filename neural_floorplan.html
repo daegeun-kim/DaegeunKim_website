@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="work13/work13.css" rel="stylesheet"/>
-  <title>Neural Floorplan to Classified CAD â€” Daegeun Kim</title>
+  <title>Neural Floorplan to Classified CAD — Daegeun Kim</title>
   <link rel="icon" type="image/png" href="image/favicon.png">
   <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
@@ -28,28 +28,28 @@
   <div class="main-image"></div>
 
   <main>
-    <!-- â”€â”€ Intro â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- ── Intro ──────────────────────────────────────────────────── -->
     <div class="intro">
       <span class="title">Neural Floorplan</span><br>
       <a href="https://github.com/daegeun-kim/neural_floorplan" target="_blank">
         <p id="github">Github</p>
       </a>
       <p>
-        Raster floorplan / color-coded sketch â†’ semantic segmentation â†’ (planned) classified vector CAD<br>
-        Deep Learning &nbsp;Â·&nbsp; Semantic Segmentation &nbsp;Â·&nbsp; Transfer Learning &nbsp;Â·&nbsp; CAD Automation<br>
+        Raster floorplan / color-coded sketch → semantic segmentation → (planned) classified vector CAD<br>
+        Deep Learning &nbsp;·&nbsp; Semantic Segmentation &nbsp;·&nbsp; Transfer Learning &nbsp;·&nbsp; CAD Automation<br>
         <br>
         Stack:<br>
-        Python 3.11 &nbsp;Â·&nbsp; PyTorch &nbsp;Â·&nbsp; HuggingFace Transformers (SegFormer)<br>
-        OpenCV &nbsp;Â·&nbsp; Shapely &nbsp;Â·&nbsp; pytest &nbsp;Â·&nbsp; ruff<br>
+        Python 3.11 &nbsp;·&nbsp; PyTorch &nbsp;·&nbsp; HuggingFace Transformers (SegFormer)<br>
+        OpenCV &nbsp;·&nbsp; Shapely &nbsp;·&nbsp; pytest &nbsp;·&nbsp; ruff<br>
         <br>
       </p>
     </div>
 
-    <!-- â”€â”€ 1. Overview â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- ── 1. Overview ────────────────────────────────────────────── -->
     <p class="section-title">Overview</p>
     <div class="text">
       Architectural drawings exist in two very different forms. Vector-based formats
-      (DWG, SVG) encode walls, doors, and rooms as typed geometry â€” queryable, editable,
+      (DWG, SVG) encode walls, doors, and rooms as typed geometry — queryable, editable,
       machine-readable. Raster formats (scanned blueprints, photo-captured sketches,
       rendered PNGs) are just pixels, stripped of semantic identity. The problem is that
       the raster form is far more common in practice: architects sketch on paper, older
@@ -58,7 +58,7 @@
     </div>
     <div class="text" style="margin-top:16px;">
       This project builds a supervised learning pipeline that converts raster floorplans
-      â€” including color-coded hand-drawn sketches â€” into per-pixel semantic segmentation
+      — including color-coded hand-drawn sketches — into per-pixel semantic segmentation
       masks, and (as a planned next step) into clean classified vector geometry exported
       as JSON. The segmentation stage is complete; the vectorization stage is under
       development.
@@ -73,25 +73,25 @@
     <div class="text" style="margin-top:16px; border-left: 3px solid #ccc; padding-left: 14px; color: #555;">
       <b>Interview framing:</b> this is structurally the same problem as turning any
       messy real-world 2D/3D engineering representation into a structured, typed
-      downstream format. The same class of approach â€” supervised segmentation on
+      downstream format. The same class of approach — supervised segmentation on
       carefully constructed raster/label pairs, transfer-learned backbone, explicit
-      data-quality strategy â€” applies broadly to engineering-drawing understanding,
+      data-quality strategy — applies broadly to engineering-drawing understanding,
       point-cloud labeling, or scan-to-BIM workflows.
     </div>
 
-    <!-- â”€â”€ 2. Pipeline Diagram â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- ── 2. Pipeline Diagram ────────────────────────────────────── -->
     <p class="section-title">Pipeline</p>
     <div class="text">
-      The full pipeline has eight stages. Stages 1â€“6 are complete; stages 7â€“8 are
+      The full pipeline has eight stages. Stages 1–6 are complete; stages 7–8 are
       planned. The diagram below uses color to distinguish them.
     </div>
 
     <div class="diagram-container" id="pipeline-diagram"></div>
 
-    <!-- â”€â”€ 3. Input Data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- ── 3. Input Data ──────────────────────────────────────────── -->
     <p class="section-title">Input Data</p>
 
-    <p class="subsection-title">Dataset â€” CubiCasa5K</p>
+    <p class="subsection-title">Dataset — CubiCasa5K</p>
     <div class="text">
       The primary dataset is
       <a href="https://github.com/cubicasa/cubicasa5k" target="_blank" style="color:#0051ff;">CubiCasa5K</a>,
@@ -106,7 +106,7 @@
       The original raster images in CubiCasa5K are scraped from real estate listings.
       They are often misaligned with the SVG annotations, inconsistently scaled,
       or visually noisy. Using them directly as training inputs would introduce
-      label noise â€” the pixel-level class boundary in the mask would not accurately
+      label noise — the pixel-level class boundary in the mask would not accurately
       correspond to what the raster image shows.
     </div>
     <div class="text" style="margin-top:12px;">
@@ -115,18 +115,18 @@
     <div class="text" style="margin-top:8px; padding-left: 18px;">
       <b>(a) Clean-subset rasters.</b> A hand-selected subset of original raster images
       where the visual content is clearly aligned with the SVG annotation. These are
-      kept as-is because their rasterâ†”mask correspondence is trustworthy.
+      kept as-is because their raster↔mask correspondence is trustworthy.
     </div>
     <div class="text" style="margin-top:8px; padding-left: 18px;">
       <b>(b) SVG-rasterized images (spec_v003).</b> For the rest of the dataset, the
-      raster is generated by rendering the SVG directly â€” walls, rooms, and openings
+      raster is generated by rendering the SVG directly — walls, rooms, and openings
       are drawn onto a white background as a <code>model_clean.png</code>. Because
       the raster and the mask both originate from the same SVG source, their alignment
       is exact by construction.
     </div>
     <div class="text" style="margin-top:12px;">
       The rationale: reliable supervised segmentation requires clean, exactly-aligned
-      inputâ†”label pairs. Messy or misaligned originals inject label noise that
+      input↔label pairs. Messy or misaligned originals inject label noise that
       degrades training signal and ultimately hurts generalization.
     </div>
 
@@ -143,30 +143,30 @@
 
     <div class="image-2col">
       <div class="img-card">
-        <img src="work13/data_semantic_mask.png" alt="Semantic class map â€” ground truth mask" style="image-rendering: pixelated;">
+        <img src="work13/data_semantic_mask.png" alt="Semantic class map — ground truth mask" style="image-rendering: pixelated;">
         <span class="img-label">Semantic class map (ground truth mask)</span>
       </div>
       <div class="img-card" style="background:#f5f5f5; display:flex; align-items:center; justify-content:center; min-height:120px;">
         <div style="text-align:center; padding:20px;">
           <div style="font-size:clamp(9px,1.3vw,12px); color:#aaa; font-weight:bold; letter-spacing:0.06em; text-transform:uppercase;">Class legend</div>
           <div style="margin-top:14px; font-size:clamp(9px,1.4vw,13px); color:#555; line-height:2;">
-            0 â€” background<br>
-            1 â€” wall<br>
-            2 â€” opening (door/window)<br>
-            3 â€” room<br>
-            4 â€” icon (furniture/fixtures)
+            0 — background<br>
+            1 — wall<br>
+            2 — opening (door/window)<br>
+            3 — room<br>
+            4 — icon (furniture/fixtures)
           </div>
         </div>
       </div>
     </div>
 
-    <!-- â”€â”€ 4. Data Augmentation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- ── 4. Data Augmentation ───────────────────────────────────── -->
     <p class="section-title">Data Augmentation</p>
     <div class="text">
       Sketch-style augmentation (spec_v004) is applied offline before training.
       Each spatial transform is applied identically to the input image and all
       mask files to preserve pixel-level alignment. Pixel-level variations
-      (blur, brightness) are applied to the image only â€” never to semantic masks,
+      (blur, brightness) are applied to the image only — never to semantic masks,
       which would corrupt class-boundary accuracy.
     </div>
     <div class="text" style="margin-top:16px;">
@@ -177,12 +177,12 @@
 
     <div class="arch-box" style="margin-top: 24px;">
       <b>Augmentation pipeline (verified from source)</b><br><br>
-      horizontal flip (50% prob)&nbsp;&nbsp;&nbsp;â€” spatial symmetry; floor plans are equally valid mirrored<br>
-      vertical flip (50% prob)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;â€” same rationale as horizontal<br>
-      90Â° rotation (k âˆˆ {0,1,2,3})&nbsp;â€” plans presented at any cardinal orientation<br>
-      translation Â±10 px&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;â€” slight positional shift simulating imprecise scans<br>
-      Gaussian blur r âˆˆ [0.3, 1.0]&nbsp;â€” simulates scan softness, low-resolution input<br>
-      brightness Ã— [0.85, 1.15]&nbsp;&nbsp;&nbsp;â€” exposure variation in scanned/photographed drawings
+      horizontal flip (50% prob)&nbsp;&nbsp;&nbsp;— spatial symmetry; floor plans are equally valid mirrored<br>
+      vertical flip (50% prob)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— same rationale as horizontal<br>
+      90° rotation (k ∈ {0,1,2,3})&nbsp;— plans presented at any cardinal orientation<br>
+      translation ±10 px&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— slight positional shift simulating imprecise scans<br>
+      Gaussian blur r ∈ [0.3, 1.0]&nbsp;— simulates scan softness, low-resolution input<br>
+      brightness × [0.85, 1.15]&nbsp;&nbsp;&nbsp;— exposure variation in scanned/photographed drawings
     </div>
 
     <div class="image-3col" style="margin-top:28px;">
@@ -201,8 +201,8 @@
     </div>
     <div class="image-3col">
       <div class="img-card">
-        <img src="work13/aug_rotate90.png" alt="90Â° rotation">
-        <span class="img-label">90Â° rotation</span>
+        <img src="work13/aug_rotate90.png" alt="90° rotation">
+        <span class="img-label">90° rotation</span>
       </div>
       <div class="img-card">
         <img src="work13/aug_blur.png" alt="Gaussian blur">
@@ -210,11 +210,11 @@
       </div>
       <div class="img-card">
         <img src="work13/aug_brightness.png" alt="Brightness reduction">
-        <span class="img-label">Brightness Ã— 0.78</span>
+        <span class="img-label">Brightness × 0.78</span>
       </div>
     </div>
 
-    <!-- â”€â”€ 5. Model Architecture â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- ── 5. Model Architecture ──────────────────────────────────── -->
     <p class="section-title">Model Architecture</p>
 
     <p class="subsection-title">SegFormer backbone (frozen)</p>
@@ -222,7 +222,7 @@
       <a href="https://huggingface.co/docs/transformers/model_doc/segformer" target="_blank" style="color:#0051ff;">SegFormer</a>
       is a transformer-based semantic segmentation architecture. Its encoder is a
       hierarchical (multi-scale) Mix Transformer (MiT) that produces feature maps at
-      four resolutions â€” 1/4, 1/8, 1/16, and 1/32 of the input. Rather than fixed
+      four resolutions — 1/4, 1/8, 1/16, and 1/32 of the input. Rather than fixed
       positional encodings, it uses overlapping patch embeddings and Mix-FFN layers,
       which gives it robustness to varying input resolutions. This matters for
       floorplans, which come in a wide range of pixel dimensions.
@@ -230,14 +230,14 @@
     <div class="text" style="margin-top:12px;">
       This project uses <b>SegFormer-B0</b> (<code>nvidia/mit-b0</code>), the lightest
       variant, with encoder stage channel widths of [32, 64, 160, 256]. The backbone
-      is loaded with pretrained ImageNet weights and then <b>fully frozen</b> â€” no
+      is loaded with pretrained ImageNet weights and then <b>fully frozen</b> — no
       gradient flows through it during training. As an optimization, backbone features
       are extracted once per image and cached to disk; the frozen forward pass is never
       called during training epochs.
     </div>
     <div class="text" style="margin-top:12px;">
       <b>Frozen-backbone transfer learning.</b> The SegFormer encoder is pretrained on
-      ImageNet and its weights are locked â€” no gradients flow through it during training.
+      ImageNet and its weights are locked — no gradients flow through it during training.
       Backbone feature extraction runs once per image and the results are cached to disk;
       the encoder forward pass is not invoked again for the rest of training. Only the
       custom decoder head is optimized. This strategy is appropriate here because the
@@ -249,34 +249,34 @@
     <p class="subsection-title">FloorplanDecoder (trainable)</p>
     <div class="text">
       The decoder receives the four frozen multi-scale feature maps, fuses them into a
-      single representation at H/4 Ã— W/4 resolution, refines with two convolutional
-      hidden layers, and upsamples to the full 512 Ã— 512 output. All parameters are
+      single representation at H/4 × W/4 resolution, refines with two convolutional
+      hidden layers, and upsamples to the full 512 × 512 output. All parameters are
       trained from scratch.
     </div>
 
     <div class="decoder-diagram" id="decoder-diagram" style="max-width:380px; margin-left:auto; margin-right:auto;"></div>
 
     <div class="arch-box" style="margin-top:8px;">
-      <b>FloorplanDecoder â€” layer-by-layer (verified from models.py)</b><br><br>
+      <b>FloorplanDecoder — layer-by-layer (verified from models.py)</b><br><br>
       <span style="color:#276749;">IN</span>&nbsp;&nbsp;&nbsp;&nbsp;Backbone hidden states: 4 tensors, ch widths [32, 64, 160, 256] (B0)<br>
-      <span style="color:#276749;">â†’</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Projection: 1Ã—1 Conv per stage â†’ 256 ch each<br>
-      <span style="color:#276749;">â†’</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upsample all to stage-0 res (H/4 Ã— W/4), element-wise sum<br>
-      <span style="color:#276749;">â†’</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conv 3Ã—3 â†’ 256 ch Â· BatchNorm2d Â· GELU Â· Dropout2d(0.1)&nbsp;&nbsp;<span style="color:#aaa; font-size:0.88em;">hidden 1</span><br>
-      <span style="color:#276749;">â†’</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conv 3Ã—3 â†’ 128 ch Â· BatchNorm2d Â· GELU Â· Dropout2d(0.1)&nbsp;&nbsp;<span style="color:#aaa; font-size:0.88em;">hidden 2</span><br>
-      <span style="color:#276749;">â†’</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1Ã—1 Conv â†’ 5 classes (logits)<br>
-      <span style="color:#276749;">OUT</span>&nbsp;&nbsp;Bilinear upsample â†’ [B, 5, 512, 512]
+      <span style="color:#276749;">→</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Projection: 1×1 Conv per stage → 256 ch each<br>
+      <span style="color:#276749;">→</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Upsample all to stage-0 res (H/4 × W/4), element-wise sum<br>
+      <span style="color:#276749;">→</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conv 3×3 → 256 ch · BatchNorm2d · GELU · Dropout2d(0.1)&nbsp;&nbsp;<span style="color:#aaa; font-size:0.88em;">hidden 1</span><br>
+      <span style="color:#276749;">→</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Conv 3×3 → 128 ch · BatchNorm2d · GELU · Dropout2d(0.1)&nbsp;&nbsp;<span style="color:#aaa; font-size:0.88em;">hidden 2</span><br>
+      <span style="color:#276749;">→</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1×1 Conv → 5 classes (logits)<br>
+      <span style="color:#276749;">OUT</span>&nbsp;&nbsp;Bilinear upsample → [B, 5, 512, 512]
     </div>
 
     <p class="subsection-title">Training configuration (verified)</p>
     <table class="tech-table">
       <tbody>
         <tr><td>Variant</td><td>SegFormer-B0 (<code>nvidia/mit-b0</code>)</td></tr>
-        <tr><td>Input size</td><td>512 Ã— 512 px</td></tr>
-        <tr><td>Classes</td><td>5 â€” background, wall, opening, room, icon</td></tr>
+        <tr><td>Input size</td><td>512 × 512 px</td></tr>
+        <tr><td>Classes</td><td>5 — background, wall, opening, room, icon</td></tr>
         <tr><td>Loss</td><td>CrossEntropy (<code>use_dice: false</code>)</td></tr>
         <tr><td>Optimizer</td><td>AdamW</td></tr>
         <tr><td>Scheduler</td><td>CosineAnnealingLR (T_max = epochs)</td></tr>
-        <tr><td>Learning rate</td><td>6 Ã— 10â»âµ</td></tr>
+        <tr><td>Learning rate</td><td>6 × 10⁻⁵</td></tr>
         <tr><td>Weight decay</td><td>0.01</td></tr>
         <tr><td>Batch size</td><td>4</td></tr>
         <tr><td>Epochs</td><td>50</td></tr>
@@ -287,8 +287,8 @@
       </tbody>
     </table>
 
-    <!-- â”€â”€ 6. Results â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-    <p class="section-title">Results â€” Segmentation Output</p>
+    <!-- ── 6. Results ─────────────────────────────────────────────── -->
+    <p class="section-title">Results — Segmentation Output</p>
     <div class="text">
       Preview images are saved every 5 epochs. The examples below are from epoch 50
       (end of training). Each row shows four panels for one sample: the input raster,
@@ -300,7 +300,7 @@
     </div>
 
     <div class="result-row">
-      <div class="result-row-label">Sample 03 â€” epoch 50</div>
+      <div class="result-row-label">Sample 03 — epoch 50</div>
       <div class="image-4col">
         <div class="img-card">
           <img src="work13/result_002_input.png" alt="Input raster">
@@ -322,7 +322,7 @@
     </div>
 
     <div class="result-row">
-      <div class="result-row-label">Sample 04 â€” epoch 50</div>
+      <div class="result-row-label">Sample 04 — epoch 50</div>
       <div class="image-4col">
         <div class="img-card">
           <img src="work13/result_003_input.png" alt="Input raster">
@@ -343,70 +343,70 @@
       </div>
     </div>
 
-    <!-- â”€â”€ 7. Roadmap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- ── 7. Roadmap ─────────────────────────────────────────────── -->
     <p class="section-title">Roadmap</p>
     <div class="text">
       The pipeline is complete through semantic segmentation and evaluation.
       The remaining two stages convert pixel-level masks into structured, classified
-      vector geometry â€” the "to CAD" half of the original goal.
+      vector geometry — the "to CAD" half of the original goal.
     </div>
 
     <ul class="roadmap-list">
       <li class="roadmap-done">
         <span class="roadmap-num">01</span>
-        <span class="roadmap-text">Dataset loading â€” CubiCasa5K, high_quality_architectural subset <span class="status-badge status-done">done</span></span>
+        <span class="roadmap-text">Dataset loading — CubiCasa5K, high_quality_architectural subset <span class="status-badge status-done">done</span></span>
       </li>
       <li class="roadmap-done">
         <span class="roadmap-num">02</span>
-        <span class="roadmap-text">SVG / raster preprocessing â€” CubiCasa SVG annotations rendered to <code>model_clean.png</code> (spec_v003) <span class="status-badge status-done">done</span></span>
+        <span class="roadmap-text">SVG / raster preprocessing — CubiCasa SVG annotations rendered to <code>model_clean.png</code> (spec_v003) <span class="status-badge status-done">done</span></span>
       </li>
       <li class="roadmap-done">
         <span class="roadmap-num">03</span>
-        <span class="roadmap-text">Semantic mask generation â€” per-class masks from SVG geometry <span class="status-badge status-done">done</span></span>
+        <span class="roadmap-text">Semantic mask generation — per-class masks from SVG geometry <span class="status-badge status-done">done</span></span>
       </li>
       <li class="roadmap-done">
         <span class="roadmap-num">04</span>
-        <span class="roadmap-text">Sketch-style augmentation â€” flip, rotate, translate, blur, brightness (spec_v004) <span class="status-badge status-done">done</span></span>
+        <span class="roadmap-text">Sketch-style augmentation — flip, rotate, translate, blur, brightness (spec_v004) <span class="status-badge status-done">done</span></span>
       </li>
       <li class="roadmap-done">
         <span class="roadmap-num">05</span>
-        <span class="roadmap-text">Segmentation model training â€” SegFormer-B0, frozen backbone, custom decoder, AdamW, 50 epochs (spec_v005) <span class="status-badge status-done">done</span></span>
+        <span class="roadmap-text">Segmentation model training — SegFormer-B0, frozen backbone, custom decoder, AdamW, 50 epochs (spec_v005) <span class="status-badge status-done">done</span></span>
       </li>
       <li class="roadmap-done">
         <span class="roadmap-num">06</span>
-        <span class="roadmap-text">Evaluation â€” loss and mIoU logged per epoch; best checkpoint saved by val mIoU (spec_v006) <span class="status-badge status-done">done</span></span>
+        <span class="roadmap-text">Evaluation — loss and mIoU logged per epoch; best checkpoint saved by val mIoU (spec_v006) <span class="status-badge status-done">done</span></span>
       </li>
       <li class="roadmap-planned">
         <span class="roadmap-num">07</span>
-        <span class="roadmap-text">Mask-to-vector post-processing â€” contour extraction, polyline simplification, orthogonal snapping (Shapely, spec_v007) <span class="status-badge status-planned">planned</span></span>
+        <span class="roadmap-text">Mask-to-vector post-processing — contour extraction, polyline simplification, orthogonal snapping (Shapely, spec_v007) <span class="status-badge status-planned">planned</span></span>
       </li>
       <li class="roadmap-planned">
         <span class="roadmap-num">08</span>
-        <span class="roadmap-text">Classified CAD-like JSON export â€” wall centerlines + thickness, opening geometry, room polygons + type (spec_v008) <span class="status-badge status-planned">planned</span></span>
+        <span class="roadmap-text">Classified CAD-like JSON export — wall centerlines + thickness, opening geometry, room polygons + type (spec_v008) <span class="status-badge status-planned">planned</span></span>
       </li>
     </ul>
 
     <div class="text" style="margin-top:24px;">
       Stage 7 will use Shapely to extract contours from predicted masks, simplify
       polylines, and snap geometry to an orthogonal grid. Stage 8 will produce a
-      structured JSON file classifying each element by type â€” walls with centerlines
+      structured JSON file classifying each element by type — walls with centerlines
       and thickness, openings attached to host walls, room polygons with inferred
       type labels. This output is the structured, machine-readable form that a
       downstream CAD or BIM tool could consume directly.
     </div>
 
-    <!-- â”€â”€ Technical Stack â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- ── Technical Stack ─────────────────────────────────────────── -->
     <p class="section-title">Technical Stack</p>
     <table class="tech-table">
       <tbody>
         <tr><td>Language</td><td>Python 3.11</td></tr>
         <tr><td>Deep learning</td><td>PyTorch (mixed-precision training via <code>torch.amp</code>)</td></tr>
-        <tr><td>Model</td><td>Hugging Face Transformers â€” SegFormer (<code>nvidia/mit-b0</code>)</td></tr>
+        <tr><td>Model</td><td>Hugging Face Transformers — SegFormer (<code>nvidia/mit-b0</code>)</td></tr>
         <tr><td>Raster processing</td><td>OpenCV, Pillow</td></tr>
-        <tr><td>Vector geometry</td><td>Shapely (planned, stages 7â€“8)</td></tr>
-        <tr><td>Testing / lint</td><td>pytest &nbsp;Â·&nbsp; ruff (format + check)</td></tr>
+        <tr><td>Vector geometry</td><td>Shapely (planned, stages 7–8)</td></tr>
+        <tr><td>Testing / lint</td><td>pytest &nbsp;·&nbsp; ruff (format + check)</td></tr>
         <tr><td>Environment</td><td>conda env <code>floorplan-cad</code></td></tr>
-        <tr><td>Workflow</td><td>Spec-driven development â€” versioned specs in <code>/specs</code>, one spec at a time, feature branches, commit only after test+lint pass</td></tr>
+        <tr><td>Workflow</td><td>Spec-driven development — versioned specs in <code>/specs</code>, one spec at a time, feature branches, commit only after test+lint pass</td></tr>
       </tbody>
     </table>
 
@@ -420,12 +420,12 @@
   (function () {
     const stages = [
       { id: 1, label: "Dataset\nLoading",       sub: "CubiCasa5K",            done: true  },
-      { id: 2, label: "SVG â†’ Raster\nPreproc",   sub: "spec_v003",             done: true  },
+      { id: 2, label: "SVG → Raster\nPreproc",   sub: "spec_v003",             done: true  },
       { id: 3, label: "Semantic\nMasks",          sub: "spec_v003",             done: true  },
       { id: 4, label: "Sketch-Style\nAugment",    sub: "spec_v004",             done: true  },
       { id: 5, label: "SegFormer\nTraining",      sub: "spec_v005",             done: true  },
       { id: 6, label: "Evaluation",               sub: "spec_v006",             done: true  },
-      { id: 7, label: "Mask â†’\nVector",           sub: "spec_v007 (planned)",   done: false },
+      { id: 7, label: "Mask →\nVector",           sub: "spec_v007 (planned)",   done: false },
       { id: 8, label: "CAD JSON\nExport",         sub: "spec_v008 (planned)",   done: false },
     ];
 
@@ -533,12 +533,12 @@
   <script>
   (function () {
     const layers = [
-      { label: "Backbone hidden states",  sub: "4 tensors Â· [32, 64, 160, 256] ch",  kind: "input"  },
-      { label: "1Ã—1 Projection",          sub: "per stage â†’ 256 ch each",            kind: "layer"  },
-      { label: "Upsample + Sum",          sub: "all â†’ H/4 Ã— W/4  Â·  element-wise",  kind: "layer"  },
-      { label: "Conv 3Ã—3 â†’ 256 ch",       sub: "BatchNorm Â· GELU Â· Dropout(0.1)",   kind: "hidden" },
-      { label: "Conv 3Ã—3 â†’ 128 ch",       sub: "BatchNorm Â· GELU Â· Dropout(0.1)",   kind: "hidden" },
-      { label: "1Ã—1 Conv â†’ 5 classes",    sub: "logits",                             kind: "layer"  },
+      { label: "Backbone hidden states",  sub: "4 tensors · [32, 64, 160, 256] ch",  kind: "input"  },
+      { label: "1×1 Projection",          sub: "per stage → 256 ch each",            kind: "layer"  },
+      { label: "Upsample + Sum",          sub: "all → H/4 × W/4  ·  element-wise",  kind: "layer"  },
+      { label: "Conv 3×3 → 256 ch",       sub: "BatchNorm · GELU · Dropout(0.1)",   kind: "hidden" },
+      { label: "Conv 3×3 → 128 ch",       sub: "BatchNorm · GELU · Dropout(0.1)",   kind: "hidden" },
+      { label: "1×1 Conv → 5 classes",    sub: "logits",                             kind: "layer"  },
       { label: "Bilinear upsample",        sub: "[B, 5, 512, 512]",                  kind: "output" },
     ];
 

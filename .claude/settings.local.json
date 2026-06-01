@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(curl -s \"https://raw.githubusercontent.com/daegeun-kim/Explorentory/main/frontend/index.html\")"
+      "Bash(curl -s \"https://raw.githubusercontent.com/daegeun-kim/Explorentory/main/frontend/index.html\")",
+      "Bash(python3 *)"
     ]
   }
 }
