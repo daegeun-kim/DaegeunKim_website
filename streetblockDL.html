@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -52,8 +52,8 @@
       the study focuses on the top 10 U.S. metropolitan areas by GDP, ensuring both economic relevance 
       and geometric diversity. The ground-truth label is the UR20 attribute from census street-block data, 
       framing the task as a binary classification problem (urban vs. rural). While the previous ML approach 
-      relied on four handcrafted geometric featuresâ€”area, isoperimetric quotient, rectangularity, 
-      and solidityâ€”this project asks a more fundamental question: can a model learn urbanity directly 
+      relied on four handcrafted geometric features—area, isoperimetric quotient, rectangularity, 
+      and solidity—this project asks a more fundamental question: can a model learn urbanity directly 
       from geometry itself? Street blocks are therefore represented as graphs derived from polygon 
       topology and geometry, and a Graph Neural Network (GNN) is trained to classify urban versus 
       rural blocks based purely on learned geometric representations. By replacing feature engineering 
@@ -100,13 +100,13 @@
     <div class="text">
       Each street block is 
       converted into a planar graph where polygon vertices become nodes and consecutive boundary segments become edges. 
-      Node features are stored in an NÃ—5 matrix, where each of the N vertices contains five attributes: (x, y) coordinates, 
-      turning angle Î¸ at the vertex, and the lengths of the two adjacent boundary edges (l1, l2).<br>
+      Node features are stored in an N×5 matrix, where each of the N vertices contains five attributes: (x, y) coordinates, 
+      turning angle θ at the vertex, and the lengths of the two adjacent boundary edges (l1, l2).<br>
       <br>
       The conversion pipeline 
       standardizes vertex ordering, removes duplicate/near-duplicate points, computes angles and edge lengths from the 
       cleaned polygon boundary, builds the edge index from sequential vertex connectivity (including wrap-around from 
-      last to first), and outputs a graph object consisting of x âˆˆ â„^(NÃ—5) and edge_index âˆˆ â„•^(2Ã—E) for GNN training.
+      last to first), and outputs a graph object consisting of x ∈ ℝ^(N×5) and edge_index ∈ ℕ^(2×E) for GNN training.
     </div>
     <div class="graph">
       <div class="image_vs_graph">
@@ -120,12 +120,12 @@
     <div class="text">
       The deep learning model is built around a Graph Neural Network (GNN) that learns hierarchical geometric 
       representations of street-block graphs. In Iteration 1, node embeddings are projected through a graph 
-      convolution layer into an N Ã— 64 latent space, followed by a graph-level readout and a multilayer 
-      perceptron (MLP) with architecture 64 â†’ 128 â†’ 256 â†’ 1 for binary classification. This configuration 
+      convolution layer into an N × 64 latent space, followed by a graph-level readout and a multilayer 
+      perceptron (MLP) with architecture 64 → 128 → 256 → 1 for binary classification. This configuration 
       prioritizes rapid convergence and controlled model capacity to establish a stable performance baseline.<br>
       <br>
       In Iteration 2, model capacity is increased to test whether richer geometric abstractions improve generalization. 
-      Graph convolution layers output N Ã— 128 node embeddings, and the downstream MLP is restructured as 128 â†’ 128 â†’ 128 â†’ 128 â†’ 1, 
+      Graph convolution layers output N × 128 node embeddings, and the downstream MLP is restructured as 128 → 128 → 128 → 128 → 1, 
       emphasizing deeper but more uniform feature transformations. Across both iterations, the network is trained end-to-end 
       using supervised learning with a binary classification objective, global pooling to aggregate node-level information 
       into block-level embeddings, and consistent training protocols to isolate the impact of architectural changes. 
@@ -142,7 +142,7 @@
     <div class="text">
       The dataset exhibits a severe class imbalance: urban blocks account for approximately 98% of all street blocks, 
       while rural blocks represent a small minority. However, when evaluated by total area rather than count, the 
-      imbalance is less extremeâ€”urban blocks cover roughly twice the total area of rural blocks, reflecting the 
+      imbalance is less extreme—urban blocks cover roughly twice the total area of rural blocks, reflecting the 
       much larger size of rural street blocks. This discrepancy highlights that block count alone is a misleading 
       indicator of spatial dominance.<br>
       <br>

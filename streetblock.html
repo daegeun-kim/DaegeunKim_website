@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,7 +45,7 @@
     <div class="abstract">
       <p class="sb-heading">Abstract</p>
       <p class="sb-body">
-        This project presents a quantitative geometric analysis of street blocks across the top ten U.S. metropolitan areas by GDP: New York, Los Angeles, Chicago, Dallas, Washington D.C., San Francisco Bay Area, Boston, Houston, Atlanta, and Seattle. Focusing purely on physical geometry, four shape-based metrics â€” Area, Isoperimetric Quotient, Rectangularity, and Solidity â€” were derived from each block to characterize its form and compactness. An exponential regression model was developed to evaluate which of these four geometric indicators best predicts population density, and to assess the independent usefulness of each metric as a predictor. In parallel, a logistic regression model was trained to classify the urbanity of each block using the dataset's original UR20 label, which defines urban versus non-urban areas based on criteria such as population concentration, adjacency of developed blocks, and built environment continuity. Model reliability and generalization were validated through 10-fold cross-validation, ensuring robustness against sample bias. This study aims to isolate geometric form as an explanatory variable in urban analysis, demonstrating that the morphology of street blocks alone can provide meaningful insight into patterns of density and urbanization across major U.S. cities.
+        This project presents a quantitative geometric analysis of street blocks across the top ten U.S. metropolitan areas by GDP: New York, Los Angeles, Chicago, Dallas, Washington D.C., San Francisco Bay Area, Boston, Houston, Atlanta, and Seattle. Focusing purely on physical geometry, four shape-based metrics — Area, Isoperimetric Quotient, Rectangularity, and Solidity — were derived from each block to characterize its form and compactness. An exponential regression model was developed to evaluate which of these four geometric indicators best predicts population density, and to assess the independent usefulness of each metric as a predictor. In parallel, a logistic regression model was trained to classify the urbanity of each block using the dataset's original UR20 label, which defines urban versus non-urban areas based on criteria such as population concentration, adjacency of developed blocks, and built environment continuity. Model reliability and generalization were validated through 10-fold cross-validation, ensuring robustness against sample bias. This study aims to isolate geometric form as an explanatory variable in urban analysis, demonstrating that the morphology of street blocks alone can provide meaningful insight into patterns of density and urbanization across major U.S. cities.
       </p>
 
       <p class="sb-heading">Data Sources</p>
@@ -89,7 +89,7 @@
             The ratio of the curve area to the area of a circle with the same perimeter as the curve<br><br>
             <b>Formula:</b><br>
             (4&pi; &times; Area) / (Perimeter&sup2;)<br><br>
-            <b>Range:</b> 0 â€“ 1<br><br>
+            <b>Range:</b> 0 – 1<br><br>
             <b>Explanation:</b><br>
             The Isoperimetric Quotient (IQ) is a numerical measure of how compact a shape is. A perfect circle has an IQ of 1.0, representing the most compact possible shape for a given perimeter. As a shape becomes more elongated, irregular, or fragmented, its perimeter increases relative to its area, causing the IQ value to decrease. In urban geometry analysis, a higher IQ indicates more efficient, compact street blocks, while lower values suggest irregular or stretched urban forms.
           </p>
@@ -101,7 +101,7 @@
             The ratio between the area of the shape and the area of its minimum bounding rectangle (MBR)<br><br>
             <b>Formula:</b><br>
             Area / Smallest Fit Rectangle<br><br>
-            <b>Range:</b> 0 â€“ 1<br><br>
+            <b>Range:</b> 0 – 1<br><br>
             <b>Explanation:</b><br>
             A value of 1.0 indicates a perfect rectangle, while lower values signify shapes that deviate from rectangular form, such as irregular, curved, or indented geometries. A triangle has exactly 0.5 rectangularity. In urban geometry analysis, higher rectangularity values correspond to well-aligned grid blocks, while lower values often reflect organic or historical street patterns with more complex boundaries.
           </p>
@@ -113,7 +113,7 @@
             The ratio between the area of the shape and the area of its convex hull<br><br>
             <b>Formula:</b><br>
             Area / Convex Hull Area<br><br>
-            <b>Range:</b> 0 â€“ 1<br><br>
+            <b>Range:</b> 0 – 1<br><br>
             <b>Explanation:</b><br>
             A value of 1.0 indicates that the shape is perfectly convex, meaning all of its boundary points lie on or outside a convex hull with no inward curves. As the value decreases, the shape becomes increasingly concave or fragmented, showing deeper indentations, gaps, or irregular protrusions along its perimeter. In the context of urban geometry, high solidity values correspond to compact, uniform blocks that efficiently occupy space within their boundaries.
           </p>
@@ -124,7 +124,7 @@
 
     <div class="overview">
       <p class="sb-heading">Overview: Top 10 U.S. Cities</p>
-      <p class="sb-body"><b>Top 10 Cities Population Density Heatmap â€” by GDP</b></p>
+      <p class="sb-body"><b>Top 10 Cities Population Density Heatmap — by GDP</b></p>
 
       <div class="popden-grid">
         <div class="city-card">
@@ -317,17 +317,17 @@
         <tr><td>R&sup2;</td><td>0.446</td></tr>
       </table>
       <p class="sb-body">
-        Geometric variables alone explain approximately 44.6% of the variance in log-transformed population density (R&sup2; = 0.446). While this is limited relative to the full complexity of urban density â€” shaped by socioeconomic, infrastructural, and historical factors â€” it confirms that block geometry captures a statistically meaningful portion of urban form variation correlated with density.
+        Geometric variables alone explain approximately 44.6% of the variance in log-transformed population density (R&sup2; = 0.446). While this is limited relative to the full complexity of urban density — shaped by socioeconomic, infrastructural, and historical factors — it confirms that block geometry captures a statistically meaningful portion of urban form variation correlated with density.
       </p>
       <p class="sb-body">
-        The p-values for all four variables are near zero, confirming that the observed relationships are statistically significant â€” a finding made reliable by the large sample size of 746,049 street blocks.
+        The p-values for all four variables are near zero, confirming that the observed relationships are statistically significant — a finding made reliable by the large sample size of 746,049 street blocks.
       </p>
     </div>
 
     <div class="logisticregression">
       <p class="sb-heading">Logistic Regression: Geometry as Classifier of Urbanity</p>
       <p class="sb-body">
-        The original dataset includes an urbanity indicator (UR20) that classifies each street block as Urban or Rural. This classification, defined by the U.S. Census Bureau, is based on factors such as population density and spatial continuity â€” not on any geometric attributes. The objective of this analysis is to evaluate whether the four geometric features (Area, Isoperimetric Quotient, Rectangularity, and Solidity) can effectively predict this label.
+        The original dataset includes an urbanity indicator (UR20) that classifies each street block as Urban or Rural. This classification, defined by the U.S. Census Bureau, is based on factors such as population density and spatial continuity — not on any geometric attributes. The objective of this analysis is to evaluate whether the four geometric features (Area, Isoperimetric Quotient, Rectangularity, and Solidity) can effectively predict this label.
       </p>
       <p class="sb-body">
         A logistic regression model was trained on data from all ten metropolitan areas, using bootstrapping and 10-fold cross-validation to ensure robustness and generalization. The trained model was subsequently tested on an unseen city (Philadelphia) to evaluate transferability.
@@ -382,7 +382,7 @@
 
       <p class="sb-heading">Street Block to Graph</p>
       <p class="sb-body">
-        Street blocks can be modeled either as rasterized images or as graphs. An image representation forces a grid-based approximation and often loses precise corner-to-corner structure, while a graph preserves the true topology of the polygon â€” capturing explicit relationships between corners (nodes) and edges (connections).
+        Street blocks can be modeled either as rasterized images or as graphs. An image representation forces a grid-based approximation and often loses precise corner-to-corner structure, while a graph preserves the true topology of the polygon — capturing explicit relationships between corners (nodes) and edges (connections).
       </p>
       <p class="sb-body">
         Each street block is converted into a planar graph where polygon vertices become nodes and consecutive boundary segments become edges. Node features are stored in an N &times; 5 matrix, where each of the N vertices contains five attributes: (x, y) coordinates, turning angle &theta; at the vertex, and the lengths of the two adjacent boundary edges (l<sub>1</sub>, l<sub>2</sub>).
@@ -405,9 +405,9 @@
       <p class="sb-body">
         The deep learning model is built around a GNN that learns hierarchical geometric representations of street-block graphs. Two architectural configurations were tested to evaluate the effect of model capacity on generalization.
       </p>
-      <p class="sb-body"><b>Iteration 1</b> â€” Node embeddings are projected through a graph convolution layer into a 64-dimensional latent space, followed by global pooling and a multilayer perceptron (MLP) for binary classification:</p>
+      <p class="sb-body"><b>Iteration 1</b> — Node embeddings are projected through a graph convolution layer into a 64-dimensional latent space, followed by global pooling and a multilayer perceptron (MLP) for binary classification:</p>
       <p class="formula">Graph Conv &rarr; N &times; 64 &rarr; Global Pooling &rarr; MLP: 64 &rarr; 128 &rarr; 256 &rarr; 1</p>
-      <p class="sb-body"><b>Iteration 2</b> â€” Model capacity is increased to test whether richer geometric abstractions improve generalization. The convolution output is expanded to 128 dimensions, and the MLP uses a deeper but uniform architecture:</p>
+      <p class="sb-body"><b>Iteration 2</b> — Model capacity is increased to test whether richer geometric abstractions improve generalization. The convolution output is expanded to 128 dimensions, and the MLP uses a deeper but uniform architecture:</p>
       <p class="formula">Graph Conv &rarr; N &times; 128 &rarr; Global Pooling &rarr; MLP: 128 &rarr; 128 &rarr; 128 &rarr; 128 &rarr; 1</p>
       <p class="sb-body">
         Across both iterations, the network is trained end-to-end using supervised learning with a binary classification objective. This iterative setup enables a direct comparison between compact and high-capacity architectures, clarifying the trade-off between expressiveness and overfitting when learning urban form purely from geometry.
@@ -419,13 +419,13 @@
       <p class="sb-heading">Treating Imbalanced Data</p>
       <img src="work6/imbalanced.png" alt="Class Imbalance: Count vs Area" class="img-full">
       <p class="sb-body">
-        The dataset exhibits severe class imbalance: urban blocks account for approximately 98% of all street blocks by count, while rural blocks represent a small minority. However, when evaluated by total area, the imbalance is less extreme â€” urban blocks cover roughly twice the area of rural blocks, reflecting the much larger spatial footprint of rural street blocks. Block count alone is therefore a misleading indicator of spatial dominance.
+        The dataset exhibits severe class imbalance: urban blocks account for approximately 98% of all street blocks by count, while rural blocks represent a small minority. However, when evaluated by total area, the imbalance is less extreme — urban blocks cover roughly twice the area of rural blocks, reflecting the much larger spatial footprint of rural street blocks. Block count alone is therefore a misleading indicator of spatial dominance.
       </p>
       <p class="sb-body">
-        Synthetic oversampling methods such as SMOTE were intentionally not used. Street-block geometry is highly sensitive to small perturbations, and generating synthetic samples risks producing geometries that are topologically invalid or physically implausible â€” corrupting the learning signal in a graph-based model.
+        Synthetic oversampling methods such as SMOTE were intentionally not used. Street-block geometry is highly sensitive to small perturbations, and generating synthetic samples risks producing geometries that are topologically invalid or physically implausible — corrupting the learning signal in a graph-based model.
       </p>
       <p class="sb-body">
-        Instead, class imbalance is addressed through area-based loss weighting, so that misclassification penalties are proportional to the spatial footprint of each block rather than raw sample counts. This aligns the optimization objective with spatial reality, reduces bias toward over-predicting the majority urban class, and preserves the integrity of original geometries. By decoupling data representation from error weighting, the model maintains consistent graph inputs while correcting imbalance at the learning stage â€” enabling more meaningful generalization to unseen cities.
+        Instead, class imbalance is addressed through area-based loss weighting, so that misclassification penalties are proportional to the spatial footprint of each block rather than raw sample counts. This aligns the optimization objective with spatial reality, reduces bias toward over-predicting the majority urban class, and preserves the integrity of original geometries. By decoupling data representation from error weighting, the model maintains consistent graph inputs while correcting imbalance at the learning stage — enabling more meaningful generalization to unseen cities.
       </p>
     </div>
 
@@ -446,10 +446,10 @@
         </div>
       </div>
       <p class="sb-body">
-        The GNN demonstrates a more balanced error distribution. While overall accuracy gains are modest, the network improves both precision and recall for the minority rural class â€” reducing false urban predictions and yielding a cleaner separation between urban and rural blocks. This indicates that the GNN is better at extracting subtle geometric signals that distinguish large rural blocks from dense urban fabrics, even under severe class imbalance.
+        The GNN demonstrates a more balanced error distribution. While overall accuracy gains are modest, the network improves both precision and recall for the minority rural class — reducing false urban predictions and yielding a cleaner separation between urban and rural blocks. This indicates that the GNN is better at extracting subtle geometric signals that distinguish large rural blocks from dense urban fabrics, even under severe class imbalance.
       </p>
       <p class="sb-body">
-        Despite this improvement, the results expose a clear limitation. Across 50 training epochs and both architectural iterations, the loss and error rate plateau after approximately 20 epochs without further meaningful improvement. This suggests that street-block geometry alone has bounded explanatory power for urban classification. While the GNN is more expressive than logistic regression, it is also less efficient and more computationally expensive, delivering only incremental gains. The outcome implies that deep learning does not fundamentally overcome the information ceiling imposed by geometry-only inputs â€” rather, it slightly refines classification within those limits. This reinforces the conclusion that urbanity is only partially encoded in block shape, and that richer contextual or semantic data would be required for significant performance gains beyond this threshold.
+        Despite this improvement, the results expose a clear limitation. Across 50 training epochs and both architectural iterations, the loss and error rate plateau after approximately 20 epochs without further meaningful improvement. This suggests that street-block geometry alone has bounded explanatory power for urban classification. While the GNN is more expressive than logistic regression, it is also less efficient and more computationally expensive, delivering only incremental gains. The outcome implies that deep learning does not fundamentally overcome the information ceiling imposed by geometry-only inputs — rather, it slightly refines classification within those limits. This reinforces the conclusion that urbanity is only partially encoded in block shape, and that richer contextual or semantic data would be required for significant performance gains beyond this threshold.
       </p>
       <div class="image-2col image-2col-lg">
         <div>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -71,8 +71,8 @@
         - Snap each building centroid to the nearest street and assign it to a graph node 
         <i>v<sub>b</sub></i>.<br> - Snap each subway station point to the nearest street and assign it to a graph node 
         <i>v<sub>s</sub></i>.<br> - Compute distance only along the street network using shortest path:<br> 
-        <span style="font-family: Arial, sans-serif;">d(b, s) = Î£ L<sub>e</sub> over edges in the shortest path 
-        (v<sub>b</sub> â†’ v<sub>s</sub>)</span><br> </li> <br> 
+        <span style="font-family: Arial, sans-serif;">d(b, s) = Σ L<sub>e</sub> over edges in the shortest path 
+        (v<sub>b</sub> → v<sub>s</sub>)</span><br> </li> <br> 
 
         <div id="distance"></div>
 
@@ -80,7 +80,7 @@
         <br> - Assign each building to its nearest station:<br> 
         <span style="font-family: Arial, sans-serif;">s* = argmin<sub>s</sub> d(b, s)</span><br> 
         - Extract the shortest-path edges and allocate that street set to the building.<br> 
-        - Aggregate edge usage counts to get street â€œflowâ€ intensity.<br> </li> <br> <li> 
+        - Aggregate edge usage counts to get street “flow” intensity.<br> </li> <br> <li> 
 
         <b>Coloring</b><br> 
         - Streets: vary thickness by edge flow; color by nearest-station catchment or flow intensity.<br> 
