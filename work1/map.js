@@ -1,4 +1,3 @@
-// mapboxgl.accessToken = 'pk.eyJ1Ijoia2Rna2ltIiwiYSI6ImNtOXNoeTdqdTAwdDgyam9yYzVzMW1oN3MifQ.wF32lqy3OcTwRX6nVnv82g';
 mapboxgl.accessToken = config.mapboxToken;
 
 // ----- Base lat band (north–south only) -----
