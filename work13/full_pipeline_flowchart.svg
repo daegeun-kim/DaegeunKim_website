@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 21px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        font-family: Helvetica, Helvetica;
+      }
+
+      .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4, .cls-6 {
+        fill: none;
+      }
+
+      .cls-8 {
+        letter-spacing: -.11em;
+      }
+
+      .cls-9 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-5 {
+        fill: #dff4e0;
+      }
+
+      .cls-2 {
+        font-size: 20px;
+      }
+
+      .cls-3 {
+        font-size: 13px;
+      }
+
+      .cls-6 {
+        stroke-width: 2px;
+      }
+
+      .cls-10 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-11 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-7 {
+        fill: #dfecf4;
+      }
+    </style>
+  </defs>
+  <rect class="cls-7" x="452.15" y="389.12" width="141.79" height="159.74" rx="23.38" ry="23.38"/>
+  <rect class="cls-7" x="452.15" y="193.1" width="141.79" height="97.25" rx="23.38" ry="23.38"/>
+  <rect class="cls-5" x="452.15" y="52.6" width="141.79" height="97.25" rx="23.38" ry="23.38"/>
+  <text class="cls-1" transform="translate(25.37 262.85)"><tspan x="0" y="0">Data Source:</tspan><tspan x="6.42" y="25.2">Cubicasa5k</tspan></text>
+  <text class="cls-1" transform="translate(31.2 108.78)"><tspan x="0" y="0">Input Image</tspan></text>
+  <text class="cls-1" transform="translate(48.02 343.71)"><tspan x="0" y="0">Raster</tspan></text>
+  <text class="cls-1" transform="translate(474.38 463.94)"><tspan x="0" y="0">Segformer </tspan><tspan x="-5.86" y="25.2">Fine</tspan><tspan class="cls-10" x="34.99" y="25.2"> </tspan><tspan class="cls-9" x="40.46" y="25.2">T</tspan><tspan x="52.52" y="25.2">uning</tspan></text>
+  <text class="cls-2" transform="translate(460.59 96.42)"><tspan x="0" y="0">Raster2Graph</tspan><tspan x="35.57" y="24">Model</tspan></text>
+  <text class="cls-2" transform="translate(476.15 225.92)"><tspan x="0" y="0">Fine tuned </tspan><tspan x="-14.45" y="24">Segmentation </tspan><tspan x="20.02" y="48">Model</tspan></text>
+  <text class="cls-1" transform="translate(292.77 431.5)"><tspan x="0" y="0">Raster</tspan></text>
+  <text class="cls-1" transform="translate(717.26 249.28)"><tspan x="0" y="0">Raster</tspan></text>
+  <text class="cls-1" transform="translate(719 108.01)"><tspan x="0" y="0">Graph</tspan></text>
+  <text class="cls-1" transform="translate(900.04 96.18)"><tspan class="cls-9" x="0" y="0">W</tspan><tspan x="19.05" y="0">alls</tspan><tspan x="-7.99" y="25.2">Outline</tspan></text>
+  <text class="cls-1" transform="translate(1114.5844 167.3598)"><tspan x="0" y="0">Final </tspan><tspan class="cls-11" x="-7.01" y="25.2">V</tspan><tspan x="5.84" y="25.2">ector</tspan></text>
+  <text class="cls-1" transform="translate(880.37 211.48)"><tspan x="0" y="0">Openings</tspan><tspan x="5.25" y="25.2">Location</tspan><tspan x="10.53" y="50.4">(Doors, </tspan><tspan x="-1.14" y="75.6">Windows)</tspan></text>
+  <text class="cls-1" transform="translate(277.59 513.6)"><tspan x="0" y="0">7 Classes </tspan><tspan x="7" y="25.2">Masking</tspan></text>
+  <text class="cls-3" transform="translate(134.97 418.61)"><tspan x="0" y="0">Direct Conversion</tspan></text>
+  <text class="cls-3" transform="translate(249.1 92.73)"><tspan x="0" y="0">Preprocessing</tspan></text>
+  <text class="cls-3" transform="translate(484.74 428.63)"><tspan x="0" y="0">Input Feature</tspan></text>
+  <text class="cls-3" transform="translate(487.63 523.32)"><tspan class="cls-8" x="0" y="0">T</tspan><tspan x="6.5" y="0">arget Label</tspan></text>
+  <text class="cls-1" transform="translate(49.18 431.5)"><tspan class="cls-11" x="0" y="0">V</tspan><tspan x="12.86" y="0">ector</tspan></text>
+  <rect class="cls-4" x="24.67" y="299.89" width="108.56" height="159.74" rx="23.38" ry="23.38"/>
+  <g>
+    <line class="cls-6" x1="115.56" y1="426.33" x2="251.12" y2="426.33"/>
+    <polygon points="247.16 432.14 268.84 426.33 247.16 420.51 247.16 432.14"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="153.99" y1="101.22" x2="434.43" y2="101.22"/>
+    <polygon points="430.47 107.03 452.15 101.22 430.47 95.41 430.47 107.03"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="381.48" y1="425.92" x2="463.14" y2="425.92"/>
+    <polygon points="459.18 431.73 480.86 425.92 459.18 420.11 459.18 431.73"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="593.94" y1="100.45" x2="675.61" y2="100.45"/>
+    <polygon points="671.65 106.26 693.33 100.45 671.65 94.64 671.65 106.26"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="797.76" y1="100.45" x2="857.82" y2="100.45"/>
+    <polygon points="853.86 106.26 875.54 100.45 853.86 94.64 853.86 106.26"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="797.76" y1="241.72" x2="857.82" y2="241.72"/>
+    <polygon points="853.86 247.53 875.54 241.72 853.86 235.91 853.86 247.53"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="593.94" y1="241.72" x2="675.61" y2="241.72"/>
+    <polygon points="671.65 247.53 693.33 241.72 671.65 235.91 671.65 247.53"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="523.4" y1="388.94" x2="523.4" y2="308.07"/>
+    <polygon points="529.21 312.03 523.4 290.35 517.59 312.03 529.21 312.03"/>
+  </g>
+  <g>
+    <line class="cls-6" x1="381.48" y1="518.64" x2="463.14" y2="518.64"/>
+    <polygon points="459.18 524.45 480.86 518.64 459.18 512.83 459.18 524.45"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M115.56,426.33h49.47c14.88,0,26.94,12.06,26.94,26.94v38.43c0,14.88,12.06,26.94,26.94,26.94h32.2"/>
+    <polygon points="247.16 524.45 268.84 518.64 247.16 512.83 247.16 524.45"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M973.16,100.45h38.42c11.56,0,20.93,9.37,20.93,20.93v29.84c0,11.56,9.37,20.93,20.93,20.93h21.05"/>
+    <polygon points="1070.52 177.96 1092.2 172.15 1070.52 166.33 1070.52 177.96"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M115.56,333.6h256.2c14.88,0,26.94,12.06,26.94,26.94v38.43c0,14.88,12.06,26.94,26.94,26.94h37.5"/>
+    <polygon points="459.18 431.73 480.86 425.92 459.18 420.11 459.18 431.73"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M153.99,101.22h189.06c14.88,0,26.94,12.06,26.94,26.94v87.61c0,14.88,12.06,26.94,26.94,26.94h37.5"/>
+    <polygon points="430.47 248.53 452.15 242.72 430.47 236.91 430.47 248.53"/>
+  </g>
+  <g>
+    <path class="cls-6" d="M973.16,244.1h38.42c11.56,0,20.93-9.37,20.93-20.93v-29.84c0-11.56,9.37-20.93,20.93-20.93h21.05"/>
+    <polygon points="1070.52 178.21 1092.2 172.4 1070.52 166.59 1070.52 178.21"/>
+  </g>
+</svg>
