@@ -54,7 +54,7 @@ const east  = -73.879700837637;
 const north =  40.878143492702;
 
 const img = document.createElement('img');
-img.src = 'work1/analysis_image/res.png';
+img.src = 'work1/analysis_image/res.png?v=20260629';
 Object.assign(img.style, {
   position: 'absolute',
   left: '0px',

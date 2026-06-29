@@ -89,7 +89,7 @@ main {
 .main-image {
   aspect-ratio: 2 / 1;
   width: 100%;
-  background: url('mergeprep.png') no-repeat center center;
+  background: url('mergeprep.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -104,7 +104,7 @@ main {
 }
 .title {
   height: clamp(50px, 10vw, 100px);
-  background: url('title.png') no-repeat center center;
+  background: url('title.png?v=20260629') no-repeat center center;
   background-size: contain;
   color:rgb(255, 255, 255);
   font-weight: bold;
@@ -127,7 +127,7 @@ a {
 }
 #diagram {
   height: clamp(200px, 40vw, 400px);
-  background: url('diagram.png') no-repeat center center;
+  background: url('diagram.png?v=20260629') no-repeat center center;
   background-size: contain;
   margin-bottom: clamp(20px, 4vw, 40px);
 }
@@ -152,7 +152,7 @@ a {
 .flow-chart {  
   aspect-ratio: 16 / 10;
   width: 100%;
-  background: url('flowchart.png') no-repeat center center;
+  background: url('flowchart.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -160,7 +160,7 @@ a {
 .flow-chart2 {  
   aspect-ratio: 2 / 1;
   width: 100%;
-  background: url('flowchart2.png') no-repeat center center;
+  background: url('flowchart2.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -172,23 +172,23 @@ a {
   margin-bottom: 20px;
 }
 #capture1 {  
-  background: url('capture2.png') no-repeat center center;
+  background: url('capture2.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
 }
 #capture2 {  
-  background: url('capture3.png') no-repeat center center;
+  background: url('capture3.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
 }
 #capture3 {  
-  background: url('capture1.png') no-repeat center center;
+  background: url('capture1.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 200px;
 }
 #gif {  
-  background: url('presentation.gif') no-repeat center center;
+  background: url('presentation.gif?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   aspect-ratio: 16 / 10;

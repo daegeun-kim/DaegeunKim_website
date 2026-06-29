@@ -75,9 +75,9 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   const heroMap = {
-    amer: "photographs/full/amer_thumbnail.webp",
-    asia: "photographs/full/asia_thumbnail.webp",
-    euro: "photographs/full/euro_thumbnail.webp"
+    amer: "photographs/full/amer_thumbnail.webp?v=20260629",
+    asia: "photographs/full/asia_thumbnail.webp?v=20260629",
+    euro: "photographs/full/euro_thumbnail.webp?v=20260629"
   }
 
   buttons.forEach(btn=>{

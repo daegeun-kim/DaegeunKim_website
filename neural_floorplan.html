@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="work13/work13.css" rel="stylesheet"/>
   <title>Neural Floorplan &#8212; Daegeun Kim</title>
-  <link rel="icon" type="image/png" href="image/favicon.png">
+  <link rel="icon" type="image/png" href="image/favicon.png?v=20260629">
   <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
@@ -100,12 +100,12 @@
 
     <div class="image-2col" style="margin-top:24px;">
       <div class="img-card">
-        <img src="work13/data_F1_scaled.png" alt="Original raster floorplan from CubiCasa5K" style="object-fit:contain; height:auto;">
+        <img src="work13/data_F1_scaled.png?v=20260629" alt="Original raster floorplan from CubiCasa5K" style="object-fit:contain; height:auto;">
         <span class="img-label">Original raster (CubiCasa5K)</span>
       </div>
       <div class="img-card">
-        <img src="work13/data_model_clean.png" alt="SVG-rendered clean raster" style="object-fit:contain; height:auto;">
-        <span class="img-label">SVG-rendered clean raster (model_clean.png)</span>
+        <img src="work13/data_model_clean.png?v=20260629" alt="SVG-rendered clean raster" style="object-fit:contain; height:auto;">
+        <span class="img-label">SVG-rendered clean raster (model_clean.png?v=20260629)</span>
       </div>
     </div>
 
@@ -128,7 +128,7 @@
         </div>
         <div class="strategy-card-img">
           <div class="strategy-card-img-frame">
-            <img src="work13/segformer_semantic_evidence.png" alt="SegFormer 7-class segmentation output">
+            <img src="work13/segformer_semantic_evidence.png?v=20260629" alt="SegFormer 7-class segmentation output">
           </div>
           <span class="img-label" style="margin-top:6px; display:block;">7-class semantic prediction</span>
         </div>
@@ -144,7 +144,7 @@
         </div>
         <div class="strategy-card-img">
           <div class="strategy-card-img-frame">
-            <img src="work13/raster2graph_wall_topology.png" alt="Raster-to-Graph wall graph prediction">
+            <img src="work13/raster2graph_wall_topology.png?v=20260629" alt="Raster-to-Graph wall graph prediction">
           </div>
           <span class="img-label" style="margin-top:6px; display:block;">Wall graph overlay</span>
         </div>
@@ -161,7 +161,7 @@
 
     <p class="subsection-title">Full pipeline</p>
     <div style="margin:16px 0 20px 0; text-align:center;">
-      <img src="work13/full_pipeline_flowchart.svg" alt="Full pipeline flowchart" style="max-width:800px; width:100%; height:auto; display:inline-block;">
+      <img src="work13/full_pipeline_flowchart.svg?v=20260629" alt="Full pipeline flowchart" style="max-width:800px; width:100%; height:auto; display:inline-block;">
     </div>
     <ol class="pipeline-list">
       <li>
@@ -227,11 +227,11 @@
 
     <div class="image-3col-compare" style="margin-top:20px;">
       <div class="img-card">
-        <img src="work13/5-class_mask.png" alt="5-class segmentation mask">
+        <img src="work13/5-class_mask.png?v=20260629" alt="5-class segmentation mask">
         <span class="img-label">5-class mask (background, wall, opening, room, icon)</span>
       </div>
       <div class="img-card">
-        <img src="work13/7-class_mask.png" alt="7-class segmentation mask">
+        <img src="work13/7-class_mask.png?v=20260629" alt="7-class segmentation mask">
         <span class="img-label">7-class mask (current &mdash; run3)</span>
       </div>
       <div style="background:#fff; display:flex; align-items:center; padding:16px 18px;">
@@ -269,27 +269,27 @@
 
     <div class="image-6strip" style="margin-top:16px;">
       <div class="img-card">
-        <img src="work13/aug_original.png" alt="Original">
+        <img src="work13/aug_original.png?v=20260629" alt="Original">
         <span class="img-label">Original</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_flip_h.png" alt="Horizontal flip">
+        <img src="work13/aug_flip_h.png?v=20260629" alt="Horizontal flip">
         <span class="img-label">H-flip</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_flip_v.png" alt="Vertical flip">
+        <img src="work13/aug_flip_v.png?v=20260629" alt="Vertical flip">
         <span class="img-label">V-flip</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_rotate90.png" alt="90 degree rotation">
+        <img src="work13/aug_rotate90.png?v=20260629" alt="90 degree rotation">
         <span class="img-label">Rotate 90&deg;</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_blur.png" alt="Gaussian blur">
+        <img src="work13/aug_blur.png?v=20260629" alt="Gaussian blur">
         <span class="img-label">Blur</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_brightness.png" alt="Brightness">
+        <img src="work13/aug_brightness.png?v=20260629" alt="Brightness">
         <span class="img-label">Brightness</span>
       </div>
     </div>
@@ -343,19 +343,19 @@
       <div class="result-row-label">Sample A &mdash; run3 epoch 50, 7-class</div>
       <div class="image-4col">
         <div class="img-card">
-          <img src="work13/run3_000_input.png" alt="Input">
+          <img src="work13/run3_000_input.png?v=20260629" alt="Input">
           <span class="img-label">Input</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_000_target.png" alt="Ground truth target">
+          <img src="work13/run3_000_target.png?v=20260629" alt="Ground truth target">
           <span class="img-label">Target</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_000_prediction.png" alt="7-class prediction">
+          <img src="work13/run3_000_prediction.png?v=20260629" alt="7-class prediction">
           <span class="img-label">Prediction</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_000_overlay.png" alt="Overlay">
+          <img src="work13/run3_000_overlay.png?v=20260629" alt="Overlay">
           <span class="img-label">Overlay</span>
         </div>
       </div>
@@ -364,19 +364,19 @@
       <div class="result-row-label">Sample B &mdash; run3 epoch 50, 7-class</div>
       <div class="image-4col">
         <div class="img-card">
-          <img src="work13/run3_001_input.png" alt="Input">
+          <img src="work13/run3_001_input.png?v=20260629" alt="Input">
           <span class="img-label">Input</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_001_target.png" alt="Ground truth target">
+          <img src="work13/run3_001_target.png?v=20260629" alt="Ground truth target">
           <span class="img-label">Target</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_001_prediction.png" alt="7-class prediction">
+          <img src="work13/run3_001_prediction.png?v=20260629" alt="7-class prediction">
           <span class="img-label">Prediction</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_001_overlay.png" alt="Overlay">
+          <img src="work13/run3_001_overlay.png?v=20260629" alt="Overlay">
           <span class="img-label">Overlay</span>
         </div>
       </div>
@@ -465,13 +465,13 @@
     <div class="primitive-intro-grid" style="margin-top:24px;">
       <div class="primitive-pair-cell">
         <div class="primitive-pair-img">
-          <img src="work13/door_window_primitives.svg" alt="Door and window primitive diagram">
+          <img src="work13/door_window_primitives.svg?v=20260629" alt="Door and window primitive diagram">
         </div>
         <span class="img-label" style="display:block; margin-top:6px;">Door and window semantic primitives</span>
       </div>
       <div class="primitive-pair-cell">
         <div class="primitive-pair-img">
-          <img src="work13/semantic_debug_overlay_openings.png" alt="Debug overlay showing door and window primitives in context">
+          <img src="work13/semantic_debug_overlay_openings.png?v=20260629" alt="Debug overlay showing door and window primitives in context">
         </div>
         <span class="img-label" style="display:block; margin-top:6px;">Pipeline debug overlay (same primitives in context)</span>
       </div>
@@ -499,7 +499,7 @@
         </div>
       </div>
       <div class="subsection-img">
-        <img src="work13/graph_alignment_example.png" alt="Orthogonally aligned wall graph">
+        <img src="work13/graph_alignment_example.png?v=20260629" alt="Orthogonally aligned wall graph">
         <span class="img-label">Orthogonally aligned graph</span>
       </div>
     </div>
@@ -522,7 +522,7 @@
         </div>
       </div>
       <div class="subsection-img">
-        <img src="work13/opening_hosting_same_edge_example.png" alt="Opening hosting debug overlay">
+        <img src="work13/opening_hosting_same_edge_example.png?v=20260629" alt="Opening hosting debug overlay">
         <span class="img-label">Door/window hosting debug overlay</span>
       </div>
     </div>
@@ -544,7 +544,7 @@
         </div>
       </div>
       <div class="subsection-img">
-        <img src="work13/wall_trimming_buffering_example.png" alt="Final vector output showing buffered walls">
+        <img src="work13/wall_trimming_buffering_example.png?v=20260629" alt="Final vector output showing buffered walls">
         <span class="img-label">Final vector output</span>
       </div>
     </div>
@@ -560,35 +560,35 @@
     <p class="subsection-title">Sample 01 &mdash; simple plan, best current result</p>
     <div class="process-grid">
       <div class="img-card">
-        <img src="work13/sample_1316_01_original_or_image.png" alt="Original floorplan">
+        <img src="work13/sample_1316_01_original_or_image.png?v=20260629" alt="Original floorplan">
         <span class="img-label">Original</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_02_preprocessed_input.png" alt="Preprocessed 512px input">
+        <img src="work13/sample_1316_02_preprocessed_input.png?v=20260629" alt="Preprocessed 512px input">
         <span class="img-label">Preprocessed input</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_03_7class_segmentation.png" alt="7-class segmentation">
+        <img src="work13/sample_1316_03_7class_segmentation.png?v=20260629" alt="7-class segmentation">
         <span class="img-label">7-class segmentation</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_04_graph_pred.svg" alt="Raster-to-Graph wall graph">
+        <img src="work13/sample_1316_04_graph_pred.svg?v=20260629" alt="Raster-to-Graph wall graph">
         <span class="img-label">Wall graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_05_graph_overlay.png" alt="Graph overlay on input">
+        <img src="work13/sample_1316_05_graph_overlay.png?v=20260629" alt="Graph overlay on input">
         <span class="img-label">Graph overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_06_graph_overlay_orthogonal.png" alt="Orthogonally aligned graph">
+        <img src="work13/sample_1316_06_graph_overlay_orthogonal.png?v=20260629" alt="Orthogonally aligned graph">
         <span class="img-label">Aligned graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_07_debug_overlay.png" alt="Debug overlay">
+        <img src="work13/sample_1316_07_debug_overlay.png?v=20260629" alt="Debug overlay">
         <span class="img-label">Debug overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_08_final_vector.svg" alt="Final vector output">
+        <img src="work13/sample_1316_08_final_vector.svg?v=20260629" alt="Final vector output">
         <span class="img-label">Final vector</span>
       </div>
     </div>
@@ -597,35 +597,35 @@
     <p class="subsection-title">Sample 02 &mdash; more complex plan</p>
     <div class="process-grid">
       <div class="img-card">
-        <img src="work13/sample_10026_01_original_or_image.png" alt="Original floorplan">
+        <img src="work13/sample_10026_01_original_or_image.png?v=20260629" alt="Original floorplan">
         <span class="img-label">Original</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_02_preprocessed_input.png" alt="Preprocessed 512px input">
+        <img src="work13/sample_10026_02_preprocessed_input.png?v=20260629" alt="Preprocessed 512px input">
         <span class="img-label">Preprocessed input</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_03_7class_segmentation.png" alt="7-class segmentation">
+        <img src="work13/sample_10026_03_7class_segmentation.png?v=20260629" alt="7-class segmentation">
         <span class="img-label">7-class segmentation</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_04_graph_pred.svg" alt="Raster-to-Graph wall graph">
+        <img src="work13/sample_10026_04_graph_pred.svg?v=20260629" alt="Raster-to-Graph wall graph">
         <span class="img-label">Wall graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_05_graph_overlay.png" alt="Graph overlay on input">
+        <img src="work13/sample_10026_05_graph_overlay.png?v=20260629" alt="Graph overlay on input">
         <span class="img-label">Graph overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_06_graph_overlay_orthogonal.png" alt="Orthogonally aligned graph">
+        <img src="work13/sample_10026_06_graph_overlay_orthogonal.png?v=20260629" alt="Orthogonally aligned graph">
         <span class="img-label">Aligned graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_07_debug_overlay.png" alt="Debug overlay">
+        <img src="work13/sample_10026_07_debug_overlay.png?v=20260629" alt="Debug overlay">
         <span class="img-label">Debug overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_08_final_vector.svg" alt="Final vector output">
+        <img src="work13/sample_10026_08_final_vector.svg?v=20260629" alt="Final vector output">
         <span class="img-label">Final vector</span>
       </div>
     </div>
@@ -634,35 +634,35 @@
     <p class="subsection-title">Sample 03 &mdash; more complex plan</p>
     <div class="process-grid">
       <div class="img-card">
-        <img src="work13/sample_10029_01_original_or_image.png" alt="Original floorplan">
+        <img src="work13/sample_10029_01_original_or_image.png?v=20260629" alt="Original floorplan">
         <span class="img-label">Original</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_02_preprocessed_input.png" alt="Preprocessed 512px input">
+        <img src="work13/sample_10029_02_preprocessed_input.png?v=20260629" alt="Preprocessed 512px input">
         <span class="img-label">Preprocessed input</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_03_7class_segmentation.png" alt="7-class segmentation">
+        <img src="work13/sample_10029_03_7class_segmentation.png?v=20260629" alt="7-class segmentation">
         <span class="img-label">7-class segmentation</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_04_graph_pred.svg" alt="Raster-to-Graph wall graph">
+        <img src="work13/sample_10029_04_graph_pred.svg?v=20260629" alt="Raster-to-Graph wall graph">
         <span class="img-label">Wall graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_05_graph_overlay.png" alt="Graph overlay on input">
+        <img src="work13/sample_10029_05_graph_overlay.png?v=20260629" alt="Graph overlay on input">
         <span class="img-label">Graph overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_06_graph_overlay_orthogonal.png" alt="Orthogonally aligned graph">
+        <img src="work13/sample_10029_06_graph_overlay_orthogonal.png?v=20260629" alt="Orthogonally aligned graph">
         <span class="img-label">Aligned graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_07_debug_overlay.png" alt="Debug overlay">
+        <img src="work13/sample_10029_07_debug_overlay.png?v=20260629" alt="Debug overlay">
         <span class="img-label">Debug overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_08_final_vector.svg" alt="Final vector output">
+        <img src="work13/sample_10029_08_final_vector.svg?v=20260629" alt="Final vector output">
         <span class="img-label">Final vector</span>
       </div>
     </div>
@@ -686,7 +686,7 @@
           <b>Failed:</b> opening type was indistinguishable; vector accuracy was extremely low.
         </div>
         <div class="img-card">
-          <img src="work13/phase1_output.svg" alt="Phase 1 output">
+          <img src="work13/phase1_output.svg?v=20260629" alt="Phase 1 output">
           <span class="img-label">Phase 1 output</span>
         </div>
       </div>
@@ -701,7 +701,7 @@
           conversion remained unstable.
         </div>
         <div class="img-card">
-          <img src="work13/phase2_output.svg" alt="Phase 2 output">
+          <img src="work13/phase2_output.svg?v=20260629" alt="Phase 2 output">
           <span class="img-label">Phase 2 output</span>
         </div>
       </div>
@@ -716,7 +716,7 @@
           caused graph construction to collapse.
         </div>
         <div class="img-card">
-          <img src="work13/phase3_output.svg" alt="Phase 3 output">
+          <img src="work13/phase3_output.svg?v=20260629" alt="Phase 3 output">
           <span class="img-label">Phase 3 output</span>
         </div>
       </div>

@@ -92,7 +92,7 @@ main {
 
 .main-image {
   aspect-ratio: 2 / 1;
-  background: url('title.png') no-repeat center center;
+  background: url('title.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;

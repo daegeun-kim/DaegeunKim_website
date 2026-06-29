@@ -85,7 +85,7 @@ main {
 .main-image {
   aspect-ratio: 10 / 6;
   width: 100%;
-  background: url('Spiral Dwelling.jpg') no-repeat center center;
+  background: url('Spiral Dwelling.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 0px;
@@ -109,7 +109,7 @@ main {
 .robotic {
   aspect-ratio: 1 / 1;
   width: 100%;
-  background: url('Spiral Dwelling3.jpg') no-repeat center center;
+  background: url('Spiral Dwelling3.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -132,7 +132,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Spiral Dwelling4.jpg') no-repeat center center;
+  background: url('Spiral Dwelling4.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -142,7 +142,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Spiral Dwelling5.jpg') no-repeat center center;
+  background: url('Spiral Dwelling5.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -152,7 +152,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Spiral Dwelling2.jpg') no-repeat center center;
+  background: url('Spiral Dwelling2.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -162,7 +162,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Spiral Dwelling6.jpg') no-repeat center center;
+  background: url('Spiral Dwelling6.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -172,7 +172,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Spiral Dwelling7.jpg') no-repeat center center;
+  background: url('Spiral Dwelling7.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -182,7 +182,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Spiral Dwelling8.jpg') no-repeat center center;
+  background: url('Spiral Dwelling8.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -192,7 +192,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Spiral Dwelling9.jpg') no-repeat center center;
+  background: url('Spiral Dwelling9.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -223,7 +223,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Spiral Dwelling10.jpg') no-repeat center center;
+  background: url('Spiral Dwelling10.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -242,7 +242,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Spiral Dwelling11.jpg') no-repeat center center;
+  background: url('Spiral Dwelling11.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -286,7 +286,7 @@ main {
   flex: 1 1 0;
   min-width: 300px;
   height: 100%; 
-  background: url('Cruciform2.jpg') no-repeat center center;
+  background: url('Cruciform2.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -296,7 +296,7 @@ main {
   margin-top: 50px;
   clear: both;
   height: 1000px;
-  background: url('Cruciform3.jpg') no-repeat center center;
+  background: url('Cruciform3.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -306,7 +306,7 @@ main {
   margin-top: 50px;
   clear: both;
   height: 1000px;
-  background: url('Cruciform5.jpg') no-repeat center center;
+  background: url('Cruciform5.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -315,7 +315,7 @@ main {
   margin-top: 50px;
   clear: both;
   height: 1000px;
-  background: url('Cruciform6.jpg') no-repeat center center;
+  background: url('Cruciform6.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -334,7 +334,7 @@ main {
   margin-top: 50px;
   clear: both;
   height: 1000px;
-  background: url('Cruciform7.jpg') no-repeat center center;
+  background: url('Cruciform7.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -343,7 +343,7 @@ main {
   margin-top: 50px;
   clear: both;
   height: 1000px;
-  background: url('Cruciform8.jpg') no-repeat center center;
+  background: url('Cruciform8.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -352,7 +352,7 @@ main {
   margin-top: 50px;
   clear: both;
   height: 1000px;
-  background: url('Cruciform9.jpg') no-repeat center center;
+  background: url('Cruciform9.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -361,7 +361,7 @@ main {
   margin-top: 50px;
   clear: both;
   height: 1000px;
-  background: url('Cruciform10.jpg') no-repeat center center;
+  background: url('Cruciform10.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;

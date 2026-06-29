@@ -92,7 +92,7 @@ main {
 
 .main-image {
   aspect-ratio: 2 / 1;
-  background: url('title.png') no-repeat center center;
+  background: url('title.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -146,7 +146,7 @@ main {
 .workflow {  
   aspect-ratio: 2 / 1;
   width: 100%;
-  background: url('train_val_test.png') no-repeat center center;
+  background: url('train_val_test.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -158,7 +158,7 @@ main {
   flex: 1 1 0;
   aspect-ratio: 3 / 4;
   width: 100%;
-  background: url('data_type.png') no-repeat center center;
+  background: url('data_type.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 60px;
@@ -167,7 +167,7 @@ main {
   flex: 3 1 0;
   aspect-ratio: 5 / 3;
   width: 100%;
-  background: url('graph_diagram.png') no-repeat center center;
+  background: url('graph_diagram.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 60px;
@@ -175,7 +175,7 @@ main {
 .nn_diagram {  
   aspect-ratio: 1 / 1;
   width: 100%;
-  background: url('NN_diagram.png') no-repeat center center;
+  background: url('NN_diagram.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -183,14 +183,14 @@ main {
 .imbalanced {  
   aspect-ratio: 5 / 3;
   width: 100%;
-  background: url('imbalanced.png') no-repeat center center;
+  background: url('imbalanced.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
 }
 .final_pred {  
   aspect-ratio: 5 / 3;
   width: 100%;
-  background: url('philly_pred.png') no-repeat center center;
+  background: url('philly_pred.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
 }
@@ -201,7 +201,7 @@ main {
   flex: 1 1 0;
   aspect-ratio: 3 / 2;
   width: 100%;
-  background: url('lr_confusion_matrix.png') no-repeat center center;
+  background: url('lr_confusion_matrix.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -210,7 +210,7 @@ main {
   flex: 1 1 0;
   aspect-ratio: 3 / 2;
   width: 100%;
-  background: url('nn_confusion_matrix.png') no-repeat center center;
+  background: url('nn_confusion_matrix.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -218,14 +218,14 @@ main {
 .sample1 {  
   aspect-ratio: 7 / 4;
   width: 100%;
-  background: url('suburbNJ.png') no-repeat center center;
+  background: url('suburbNJ.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
 }
 .sample2 {  
   aspect-ratio: 7 / 4;
   width: 100%;
-  background: url('Bay.png') no-repeat center center;
+  background: url('Bay.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
 }

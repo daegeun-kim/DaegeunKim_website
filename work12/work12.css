@@ -1,4 +1,4 @@
-﻿body {
+body {
   margin: 0;
   padding: 0;
 }
@@ -87,7 +87,7 @@ main {
 
 .main-image {
   aspect-ratio: 5 / 2;
-  background: #111 url('m4_hero_detail.jpg?v=20260511') no-repeat center center;
+  background: #111 url('m4_hero_detail.jpg?v=20260629') no-repeat center center;
   background-size: cover;
   margin-bottom: 20px;
   margin-top: clamp(60px, 10vw, 100px);

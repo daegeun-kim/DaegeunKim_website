@@ -85,7 +85,7 @@ main {
 .main-image {
   aspect-ratio: 3 / 2;
   width: 100%;
-  background: url('title.png') no-repeat center center;
+  background: url('title.png?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 0px;
@@ -108,7 +108,7 @@ main {
 .design-logic {
   aspect-ratio: 2 / 3;
   width: 100%;
-  background: url('Cruciform.jpg') no-repeat center center;
+  background: url('Cruciform.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -137,7 +137,7 @@ main {
 .egressimage {
   flex: 3 1 0;  
   height: 100%; 
-  background: url('Cruciform2.jpg') no-repeat center center;
+  background: url('Cruciform2.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -148,7 +148,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Cruciform3.jpg') no-repeat center center;
+  background: url('Cruciform3.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -159,7 +159,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Cruciform5.jpg') no-repeat center center;
+  background: url('Cruciform5.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -169,7 +169,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Cruciform6.jpg') no-repeat center center;
+  background: url('Cruciform6.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -188,7 +188,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Cruciform7.jpg') no-repeat center center;
+  background: url('Cruciform7.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -198,7 +198,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Cruciform8.jpg') no-repeat center center;
+  background: url('Cruciform8.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -208,7 +208,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Cruciform9.jpg') no-repeat center center;
+  background: url('Cruciform9.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;
@@ -218,7 +218,7 @@ main {
   width: 100%;
   margin-top: 50px;
   clear: both;
-  background: url('Cruciform10.jpg') no-repeat center center;
+  background: url('Cruciform10.jpg?v=20260629') no-repeat center center;
   background-size: contain;
   background-position: center;
   margin-bottom: 20px;

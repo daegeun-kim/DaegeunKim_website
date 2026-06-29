@@ -79,7 +79,7 @@ main {
 
 .main-image {
   aspect-ratio: 5 / 2;
-  background: #e8e8e8 url('title1.png?v=20260502') no-repeat center center;
+  background: #e8e8e8 url('title1.png?v=20260629') no-repeat center center;
   background-size: cover;
   background-position: center;
   margin-bottom: 20px;
@@ -349,19 +349,19 @@ a:has(#github) {
 }
 
 .UX-process1 {
-  background: url('UX1.png?v=20260221') no-repeat center center;
+  background: url('UX1.png?v=20260629') no-repeat center center;
   background-size: contain;
 }
 .UX-process2 {
-  background: url('UX2.png?v=20260221') no-repeat center center;
+  background: url('UX2.png?v=20260629') no-repeat center center;
   background-size: contain;
 }
 .UX-process3 {
-  background: url('UX3.png?v=20260221') no-repeat center center;
+  background: url('UX3.png?v=20260629') no-repeat center center;
   background-size: contain;
 }
 .UX-process4 {
-  background: url('UX4.png?v=20260221') no-repeat center center;
+  background: url('UX4.png?v=20260629') no-repeat center center;
   background-size: contain;
 }
 

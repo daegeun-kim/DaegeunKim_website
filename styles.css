@@ -290,59 +290,59 @@ main {
 
 
 #work1-image {
-  background: url('image/clusters.png') no-repeat center center;
+  background: url('image/clusters.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work2-image {
-  background: url('image/work2.png') no-repeat center center;
+  background: url('image/work2.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work3-image {
-  background: url('image/work3.png?v=20260205') no-repeat center center;
+  background: url('image/work3.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work4-image {
-  background: url('image/work4.png') no-repeat center center;
+  background: url('image/work4.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work5-image {
-  background: url('image/work5-2.png?v=20260221') no-repeat center center;
+  background: url('image/work5-2.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work6-image {
-  background: url('image/work6.png') no-repeat center center;
+  background: url('image/work6.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work7-image {
-  background: url('image/mergeprep.png') no-repeat center center;
+  background: url('image/mergeprep.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work8-image {
-  background: url('image/work8.png?v=20260205') no-repeat center center;
+  background: url('image/work8.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work9-image {
-  background: url('image/work9.png') no-repeat center center;
+  background: url('image/work9.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work10-image {
-  background: url('image/work10.png') no-repeat center center;
+  background: url('image/work10.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work11-image {
-  background: url('image/work11.png?v=20260221') no-repeat center center;
+  background: url('image/work11.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work12-image {
-  background: url('image/work12.jpg?v=20260221') no-repeat center center;
+  background: url('image/work12.jpg?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work13-image {
-  background: url('image/work13.png?v=20260221') no-repeat center center;
+  background: url('image/work13.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 #work14-image {
-  background: url('image/work14.png?v=20260606') no-repeat center center;
+  background: url('image/work14.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
 .footer {

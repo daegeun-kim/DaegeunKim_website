@@ -425,10 +425,10 @@ html, body {
 }
 
 .notes { margin-top: 1rem; }
-.cluster#bg-evolutionary  { background-image: url("cluster_evolutionary.png"); }
-.cluster#bg-architectural { background-image: url("cluster_architectural.png"); }
-.cluster#bg-socio         { background-image: url("cluster_sociospatial.png"); }
-.cluster#bg-economic      { background-image: url("cluster_ecofin.png"); }
+.cluster#bg-evolutionary  { background-image: url("cluster_evolutionary.png?v=20260629"); }
+.cluster#bg-architectural { background-image: url("cluster_architectural.png?v=20260629"); }
+.cluster#bg-socio         { background-image: url("cluster_sociospatial.png?v=20260629"); }
+.cluster#bg-economic      { background-image: url("cluster_ecofin.png?v=20260629"); }
 
 g.label.button:hover {
   transform: translateY(4px);

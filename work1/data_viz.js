@@ -6,17 +6,17 @@ const SPOT_NORTH =  40.878143492702;
 
 // Slides: only key + src (no captions)
 const SLIDES = [
-  { key: 'BLD_STORY',          src: 'work1/analysis_image/BLD_STORY.png' },
-  { key: 'construction_year',  src: 'work1/analysis_image/construction_year.png' },
-  { key: 'height_roof',        src: 'work1/analysis_image/height_roof.png' },
-  { key: 'station_time_taken', src: 'work1/analysis_image/station_time_taken.png' },
-  { key: 'CURMRKTOT',          src: 'work1/analysis_image/CURMRKTOT.png' },
-  { key: 'price_per_sqft',     src: 'work1/analysis_image/price_per_sqft.png' },
-  { key: 'price_inc',          src: 'work1/analysis_image/price_inc.png' },
-  { key: 'BLDG_CLASS',         src: 'work1/analysis_image/BLDG_CLASS.png' },
-  { key: 'elevator',           src: 'work1/analysis_image/elevator.png' },
-  { key: 'res_area',           src: 'work1/analysis_image/residential_area.png' },
-  { key: 'res_share',          src: 'work1/analysis_image/res_share.png' },
+  { key: 'BLD_STORY',          src: 'work1/analysis_image/BLD_STORY.png?v=20260629' },
+  { key: 'construction_year',  src: 'work1/analysis_image/construction_year.png?v=20260629' },
+  { key: 'height_roof',        src: 'work1/analysis_image/height_roof.png?v=20260629' },
+  { key: 'station_time_taken', src: 'work1/analysis_image/station_time_taken.png?v=20260629' },
+  { key: 'CURMRKTOT',          src: 'work1/analysis_image/CURMRKTOT.png?v=20260629' },
+  { key: 'price_per_sqft',     src: 'work1/analysis_image/price_per_sqft.png?v=20260629' },
+  { key: 'price_inc',          src: 'work1/analysis_image/price_inc.png?v=20260629' },
+  { key: 'BLDG_CLASS',         src: 'work1/analysis_image/BLDG_CLASS.png?v=20260629' },
+  { key: 'elevator',           src: 'work1/analysis_image/elevator.png?v=20260629' },
+  { key: 'res_area',           src: 'work1/analysis_image/residential_area.png?v=20260629' },
+  { key: 'res_share',          src: 'work1/analysis_image/res_share.png?v=20260629' },
 ];
 
 // ===== DOM =====
