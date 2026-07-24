@@ -1,230 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css?v=20260207" rel="stylesheet"/> 
-    <title>Daegeun Kim</title>
-    <link rel="icon" type="image/png" href="image/favicon.png?v=20260531">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daegeun Kim: AI and Computational Design for Buildings, Cities, and Spatial Systems</title>
+  <meta name="description" content="Daegeun Kim is a design technologist and ML engineer building AI, computational, and data-driven tools for buildings, cities, and spatial systems across architecture, engineering, and construction.">
+  <link rel="icon" type="image/png" href="image/favicon.png?v=20260531">
+  <link href="shared/site.css?v=20260724" rel="stylesheet"/>
+  <link href="home.css?v=20260724" rel="stylesheet"/>
 </head>
 <body>
-  <main>                                                        
-    <div class="header" id="header">
-      <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-      <div class="nav">
-        <a href="index.html"><button class="subpage" id="subpage1" style="color: black;">Works</button></a>
-        <!-- <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
-          <button class="subpage" id="subpage3">Resume</button>
-        </a> -->
-        <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-          <button class="subpage" id="subpage4">LinkedIn</button>
-        </a>
-        <a href="https://github.com/daegeun-kim" target="_blank">
-          <button class="subpage" id="subpage5">Github</button>
-        </a>
-        <a href="about.html"><button class="subpage" id="subpage2">About</button></a>
-      </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html" aria-current="page">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="intro">
-      <p class="bigname-description"><span class="bigname">Daegeun Kim </span><br>
-        develops computational, data-driven methods to<br> solve complex problems and inform decision-making.
+  </header>
+
+  <main id="main" class="home-main">
+
+    <!-- Hero -->
+    <section class="hero container" aria-labelledby="hero-title">
+      <p class="eyebrow hero__roles reveal">Design Technologist <span class="sep" aria-hidden="true">&middot;</span> AL/ML Engineer <span class="sep" aria-hidden="true">&middot;</span> Computational Designer</p>
+      <h1 class="hero__title reveal" id="hero-title">
+        I build <span class="accent">AI and computational tools</span> for buildings, cities, and spatial systems.
+      </h1>
+      <p class="hero__lead reveal">
+        <br>I work where architecture, engineering, and construction meet AI, machine learning,
+        geospatial analysis, and data-driven design. I turn spatial problems into systems,
+        tools, and models that inform how we plan, design, and build.
       </p>
-      <p class="bigname-description"><b><br>
-        <!-- A Data Driven Designer<br>
-        A Data Scientiest<br>
-        A Computational Designer<br>
-        A Geospatial Analytics<br></b></p> -->
-    </div>
-    <div class="branches">
-      <button data-filter="all">All</button>
-      <button data-filter="comp">Computational Design & Automation</button>
-      <button data-filter="data">Data Science & Machine Learning</button>
-    </div>
 
-    <div class="work-grid">
-
-      <div class="work-item" data-category="data comp">
-        <a href="bim_rag.html" class="image-link"><div class="image" id="work15-image" role="button"></div></a>
-        <div class="work" id="work15">
-          <div class="work-text">
-            <span class="work-title"><b>BIM RAG</b></span>
-            <p>Research-driven BIM retrieval combining validated SQL, semantic RAG, and IFC graph search to answer natural-language questions and highlight grounded results in a 3D viewer.</p>
-          </div>
-          <div class="work-tool"><b>SQL + Semantic RAG<br>IFC Graph Search<br>LLM Query Planning</b></div>
+      <div class="focus reveal">
+        <div class="focus__group">
+          <p class="focus__num">01</p>
+          <h2>AI &amp; Machine Learning</h2>
+          <p>Retrieval systems, computer vision, and LLM-driven workflows applied to design and spatial data.</p>
+        </div>
+        <div class="focus__group">
+          <p class="focus__num">02</p>
+          <h2>Computational Design</h2>
+          <p>Parametric modeling, generative systems, and automation across the design and construction process.</p>
+        </div>
+        <div class="focus__group">
+          <p class="focus__num">03</p>
+          <h2>Geospatial &amp; Data</h2>
+          <p>Spatial analysis, mapping, and data pipelines that make urban and building data legible.</p>
         </div>
       </div>
-      
-      <div class="work-item" data-category="data comp">
-        <a href="neural_floorplan.html" class="image-link"><div class="image" id="work13-image" role="button"></div></a>
-        <div class="work" id="work13">
-          <div class="work-text">
-            <span class="work-title"><b>Neural Floorplan</b></span>
-            <p>Deep-learning pipeline converting raster floorplans into classified vector CAD via SegFormer semantic segmentation — frozen-backbone transfer learning on CubiCasa5K.</p>
-          </div>
-          <div class="work-tool"><b>Semantic Segmentation<br>Transfer Learning (SegFormer)<br>CAD Automation</b></div>
+    </section>
+
+    <!-- Selected work -->
+    <section class="work container" aria-labelledby="work-title">
+      <div class="work__head">
+        <h2 class="work__title" id="work-title">Selected work<span class="work__count">Curated</span></h2>
+        <div class="filters" data-filters role="group" aria-label="Filter projects by focus">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="comp" aria-pressed="false">Computational Design &amp; Automation</button>
+          <button type="button" data-filter="data" aria-pressed="false">Data Science &amp; Machine Learning</button>
         </div>
       </div>
 
-      <div class="work-item" data-category="data comp">
-        <a href="explorentory.html" class="image-link"><div class="image" id="work11-image" role="button"></div></a>
-        <div class="work" id="work11">
-          <div class="work-text">
-            <span class="work-title"><b>Explorentory</b></span>
-            <p>An AI-powered NYC rental discovery platform that replaces rigid filtering
-              with trade-off exploration through machine learning personalization and
-              conversational LLM explanations across 4 million synthetic property records.</p>
-          </div>
-          <div class="work-tool"><b>Machine Learning<br>LLM Integration<br>Geospatial Visualization</b></div>
-        </div>
-      </div>
-      
-      <div class="work-item" data-category="data">
-        <a href="streetblock.html" class="image-link"><div class="image" id="work6-image" role="button"></div></a>
-        <div class="work" id="work6">
-          <div class="work-text">
-            <span class="work-title"><b>Street-Block Urbanity Prediction</b></span>
-            <p>Through Linear Regression, Logistic Regression, and Graph Neural Network, the project predicts how much we can find out about a city,
-              only through the analysis of Street Block Geometry.</p>
-          </div>
-          <div class="work-tool"><b>Geospatial Data Science<br>Linear Model<br>Graph Neural Network</b> </div>
-        </div>
-      </div>
+      <div class="work-index" data-work-grid>
 
-      <div class="work-item" data-category="comp">
-        <a href="transitmapping.html" class="image-link"><div class="image" id="work3-image" role="button"></div></a>
-        <div class="work" id="work3">
-          <div class="work-text">
-            <span class="work-title"><b>Manhattan Transit Accessibility Mapping</b></span>
-            <p>Using Rhino Grasshopper and C#, the project calculates and maps the walking time from each building in Manhattan to its nearest subway station, 
-              based on shortest-path analysis of the pedestrian street network. </p>
+        <article class="project reveal" data-category="data comp">
+          <div class="project__media">
+            <img src="image/work15.png?v=20260629" alt="BIM RAG interface showing a 3D building model with highlighted query results" loading="lazy">
           </div>
-          <div class="work-tool"><b>Parametric Modeling<br>Network-Based Spatial Analysis<br>Performance-Driven Urban Metrics</b> </div>
-        </div>
-      </div>
-
-      <div class="work-item" data-category="data comp">
-        <a href="geoestatechat.html" class="image-link"><div class="image" id="work2-image" role="button"></div></a>
-        <div class="work" id="work2">
-          <div class="work-text">
-            <span class="work-title"><b>GeoEstateChat</b></span>
-            <p>GeoEstateChat explores how LLMs connects real estate with 
-              multi-scale geospatial analysis. It investigates how user 
-              intent can mediate between spatial data, analytical workflows, 
-              and real-estate reasoning.</p>
-            </div>
-          <div class="work-tool"><b>Spatial Data Workflow<br>LLM Automation<br>Geospatial Analysis & Visualization<br></b> </div>
-        </div>
-      </div>
-<!-- 
-      <div class="work-item" data-category="data">
-        <a href="streetblockDL.html" class="image-link"><div class="image" id="work8-image" role="button"></div></a>
-        <div class="work" id="work8">
-          <div class="work-text">
-            <span class="work-title"><b>Street-Block GNN Prediction</b></span>
-            <p>As an extension of Street-Block Urbanity Prediction project, the project predicts urban characteristics by 
-              learning relational patterns embedded in street block geometry through Graph Neural Networks.</p>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">AI &middot; Retrieval Systems</span>
           </div>
-          <div class="work-tool"><b>Graph Neural Network<br>Geometric Deep Learning<br>Geospatial Data Science</b> </div>
-        </div>
-      </div> -->
+          <h3 class="project__title"><a class="project__link" href="bim_rag.html">BIM RAG</a></h3>
+          <p class="project__summary">Research-driven BIM retrieval combining validated SQL, semantic RAG, and IFC graph search to answer natural-language questions and highlight grounded results in a 3D viewer.</p>
+          <ul class="project__tags">
+            <li>SQL + Semantic RAG</li>
+            <li>IFC Graph Search</li>
+            <li>LLM Query Planning</li>
+          </ul>
+        </article>
 
-      <div class="work-item" data-category="comp">
-        <a href="cruciform.html" class="image-link"><div class="image" id="work4-image" role="button"></div></a>
-        <div class="work" id="work4">
-          <div class="work-text">
-            <span class="work-title"><b>Parametric Study of Hong Kong Cruciform Towers</b></span>
-            <p>Architectural design project that redefines Hong Kong's cruciform tower typology through in-depth parametric analysis of building codes, design grammar, and view corridors.</p>
+        <article class="project reveal" data-category="data comp">
+          <div class="project__media">
+            <img src="image/work13.png?v=20260629" alt="Raster floorplan converted into a classified vector CAD drawing" loading="lazy">
           </div>
-          <div class="work-tool"><b>Parametric Analysis<br>Architectural Design<br>Spatial Optimization Strategy</b> </div>
-        </div>
-      </div>
-
-      <div class="work-item" data-category="comp">
-        <a href="spiraldwelling.html" class="image-link"><div class="image" id="work5-image" role="button"></div></a>
-        <div class="work" id="work5">
-          <div class="work-text">
-            <span class="work-title"><b>Spiral Dwelling</b></span>
-            <p>Architectural design project reimagining Hong Kong's podium tower through generative iterations, exploring spiral geometries and walkability analysis.</p><br>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">AI &middot; Computer Vision</span>
           </div>
-          <div class="work-tool"><b>Algorithmic Massing System<br>Parametric Density Modeling<br>Circulation & Walkability Analysis</b> </div>
-        </div>
-      </div>
+          <h3 class="project__title"><a class="project__link" href="neural_floorplan.html">Neural Floorplan</a></h3>
+          <p class="project__summary">A deep-learning pipeline that converts raster floorplans into classified vector CAD via SegFormer semantic segmentation, using frozen-backbone transfer learning on CubiCasa5K.</p>
+          <ul class="project__tags">
+            <li>Semantic Segmentation</li>
+            <li>Transfer Learning (SegFormer)</li>
+            <li>CAD Automation</li>
+          </ul>
+        </article>
 
-      <div class="work-item" data-category="comp">
-        <a href="parametricCity.html" class="image-link"><div class="image" id="work9-image" role="button"></div></a>
-        <div class="work" id="work9">
-          <div class="work-text">
-            <span class="work-title"><b>Parametric City Generation & Analysis</b></span>
-            <p>A parametric city was generated in Grasshopper using street networks, building
-              geometry, and density inputs to produce adaptable urban forms, with solar
-              and view analyses.</p>
+        <article class="project reveal" data-category="data comp">
+          <div class="project__media">
+            <img src="image/work11.png?v=20260629" alt="Explorentory rental discovery platform with map and trade-off controls" loading="lazy">
           </div>
-          <div class="work-tool"><b>Generative Design<br>Parametric Modeling<br>Solar & View Analysis</b> </div>
-        </div>
-      </div>
-
-      <div class="work-item" data-category="comp">
-        <a href="no_true_north.html" class="image-link"><div class="image" id="work14-image" role="button"></div></a>
-        <div class="work" id="work14">
-          <div class="work-text">
-            <span class="work-title"><b>No True North</b></span>
-            <p>An interactive cartographic visualization tool that redefines the Earth's north pole to generate 
-              alternative world maps, revealing how projection geometry, seam placement, distortion reshape the way the world is represented.</p>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">AI &middot; Product</span>
           </div>
-          <div class="work-tool"><b>Cartographic Projection<br>Geospatial Visualization<br>Distortion Analysis</b></div>
-        </div>
-      </div>
+          <h3 class="project__title"><a class="project__link" href="explorentory.html">Explorentory</a></h3>
+          <p class="project__summary">An AI-powered NYC rental discovery platform that replaces rigid filtering with trade-off exploration, combining machine-learning personalization and conversational LLM explanations across 4&nbsp;million synthetic property records.</p>
+          <ul class="project__tags">
+            <li>Machine Learning</li>
+            <li>LLM Integration</li>
+            <li>Geospatial Visualization</li>
+          </ul>
+        </article>
 
-      <div class="work-item" data-category="comp">
-        <a href="bryantparksolar.html" class="image-link"><div class="image" id="work10-image" role="button"></div></a>
-        <div class="work" id="work10">
-          <div class="work-text">
-            <span class="work-title"><b>Bryant Park Solar Mapping</b></span>
-            <p>Parametric analysis of solar radiation in Bryant Park for 1 year duration,
-            analyzed with Grasshopper + Ladybug and DeCodingSpace plugin.</p><br>
+        <article class="project reveal" data-category="data">
+          <div class="project__media">
+            <img src="image/work6.png?v=20260629" alt="Street-block geometry analysis maps predicting urban characteristics" loading="lazy">
           </div>
-          <div class="work-tool"><b>Parametric Modeling<br>Urban Data Analysis</b> </div>
-        </div>
-      </div>
-
-      <div class="work-item" data-category="data">
-        <a href="residentialclustering.html" class="image-link"><div class="image" id="work1-image" role="button"></div></a>
-        <div class="work" id="work1">
-          <div class="work-text">
-            <span class="work-title"><b>Manhattan Residential Clustering</b></span>
-            <p>The project uses K-Mean clustering for grouping Manhattan's residential buildings with different themes based on 11 different residential dataset.</p><br>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Machine Learning &middot; Geospatial</span>
           </div>
-          <div class="work-tool"><b>K-Mean Clustering<br>Urban Analysis<br>Data Visualization</b> </div>
-        </div>
-      </div>
+          <h3 class="project__title"><a class="project__link" href="streetblock.html">Street-Block Urbanity Prediction</a></h3>
+          <p class="project__summary">Using linear regression, logistic regression, and a graph neural network, this project tests how much of a city's character can be predicted from street-block geometry alone.</p>
+          <ul class="project__tags">
+            <li>Geospatial Data Science</li>
+            <li>Linear Models</li>
+            <li>Graph Neural Network</li>
+          </ul>
+        </article>
 
-      <div class="work-item" data-category="data">
-        <a href="mergeprep.html" class="image-link"><div class="image" id="work7-image" role="button"></div></a>
-        <div class="work" id="work7">
-          <div class="work-text">
-            <span class="work-title"><b>Mergeprep</b></span>
-            <p>A Python package that helps row-wise merging of messy tables reliably.
-            It prepares tables for merging, finds matching columns, suggests merge keys, and explains why merges succeed or fail.</p>
+        <article class="project reveal" data-category="comp">
+          <div class="project__media">
+            <img src="image/work3.png?v=20260629" alt="Manhattan map colored by walking time to the nearest subway station" loading="lazy">
           </div>
-          <div class="work-tool"><b>Python Package<br>Data Wrangling<br>Data Pipeline Tooling</b></div>
-        </div>
-      </div>
-
-    <!-- <div class="work-item" data-category="data comp">
-        <a href="moireshade.html" class="image-link"><div class="image" id="work12-image" role="button"></div></a>
-        <div class="work" id="work11">
-          <div class="work-text">
-            <span class="work-title"><b>Moir&#233;Shade</b></span>
-            <p>A transforming shading device experimented and iterated through the survival mechanism of dragon fruit stem.</p>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Computational &middot; Geospatial</span>
           </div>
-          <div class="work-tool"><b>Biomimicry Design<br>Architectural Design<br>Kinetic Design</b></div>
-        </div>
+          <h3 class="project__title"><a class="project__link" href="transitmapping.html">Manhattan Transit Accessibility Mapping</a></h3>
+          <p class="project__summary">Built in Rhino Grasshopper and C#, this tool calculates and maps the walking time from every building in Manhattan to its nearest subway station through shortest-path analysis of the pedestrian network.</p>
+          <ul class="project__tags">
+            <li>Parametric Modeling</li>
+            <li>Network Spatial Analysis</li>
+            <li>Performance-Driven Metrics</li>
+          </ul>
+        </article>
+
+        <article class="project reveal" data-category="data comp">
+          <div class="project__media">
+            <img src="image/work2.png?v=20260629" alt="GeoEstateChat interface linking real estate queries to geospatial maps" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">AI &middot; Geospatial</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="geoestatechat.html">GeoEstateChat</a></h3>
+          <p class="project__summary">An exploration of how LLMs can connect real estate with multi-scale geospatial analysis, mediating between spatial data, analytical workflows, and real-estate reasoning through user intent.</p>
+          <ul class="project__tags">
+            <li>Spatial Data Workflow</li>
+            <li>LLM Automation</li>
+            <li>Geospatial Analysis</li>
+          </ul>
+        </article>
+
+<!--
+        <article class="project" data-category="data">
+          <div class="project__media">
+            <img src="image/work8.png?v=20260629" alt="Graph neural network predictions over street-block geometry" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">GNN &middot; Geospatial</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="streetblockDL.html">Street-Block GNN Prediction</a></h3>
+          <p class="project__summary">An extension of Street-Block Urbanity Prediction that predicts urban characteristics by learning relational patterns embedded in street-block geometry through graph neural networks.</p>
+          <ul class="project__tags">
+            <li>Graph Neural Network</li>
+            <li>Geometric Deep Learning</li>
+            <li>Geospatial Data Science</li>
+          </ul>
+        </article>
+-->
+
+        <article class="project reveal" data-category="comp">
+          <div class="project__media">
+            <img src="image/work4.png?v=20260629" alt="Parametric study of Hong Kong cruciform residential towers" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Computational &middot; Architecture</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="cruciform.html">Parametric Study of Hong Kong Cruciform Towers</a></h3>
+          <p class="project__summary">An architectural design project that redefines Hong Kong's cruciform tower typology through in-depth parametric analysis of building codes, design grammar, and view corridors.</p>
+          <ul class="project__tags">
+            <li>Parametric Analysis</li>
+            <li>Architectural Design</li>
+            <li>Spatial Optimization</li>
+          </ul>
+        </article>
+
+        <article class="project reveal" data-category="comp">
+          <div class="project__media">
+            <img src="image/work5-2.png?v=20260629" alt="Spiral Dwelling generative massing iterations for a podium tower" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Computational &middot; Architecture</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="spiraldwelling.html">Spiral Dwelling</a></h3>
+          <p class="project__summary">An architectural design project reimagining Hong Kong's podium tower through generative iterations, exploring spiral geometries and walkability analysis.</p>
+          <ul class="project__tags">
+            <li>Algorithmic Massing</li>
+            <li>Parametric Density Modeling</li>
+            <li>Walkability Analysis</li>
+          </ul>
+        </article>
+
+        <article class="project reveal" data-category="comp">
+          <div class="project__media">
+            <img src="image/work9.png?v=20260629" alt="Parametric city generated from street networks and density inputs" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Generative &middot; Urban</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="parametricCity.html">Parametric City Generation &amp; Analysis</a></h3>
+          <p class="project__summary">A parametric city generated in Grasshopper from street networks, building geometry, and density inputs to produce adaptable urban forms, paired with solar and view analyses.</p>
+          <ul class="project__tags">
+            <li>Generative Design</li>
+            <li>Parametric Modeling</li>
+            <li>Solar &amp; View Analysis</li>
+          </ul>
+        </article>
+
+        <article class="project reveal" data-category="comp">
+          <div class="project__media">
+            <img src="image/work14.png?v=20260629" alt="No True North alternative world map with a redefined north pole" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Cartography &middot; Visualization</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="no_true_north.html">No True North</a></h3>
+          <p class="project__summary">An interactive cartographic tool that redefines the Earth's north pole to generate alternative world maps, revealing how projection geometry, seam placement, and distortion reshape how the world is represented.</p>
+          <ul class="project__tags">
+            <li>Cartographic Projection</li>
+            <li>Geospatial Visualization</li>
+            <li>Distortion Analysis</li>
+          </ul>
+        </article>
+
+        <article class="project reveal" data-category="comp">
+          <div class="project__media">
+            <img src="image/work10.png?v=20260629" alt="Solar radiation map of Bryant Park over one year" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Parametric &middot; Analysis</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="bryantparksolar.html">Bryant Park Solar Mapping</a></h3>
+          <p class="project__summary">A parametric analysis of one year of solar radiation in Bryant Park, modeled with Grasshopper, Ladybug, and the DeCodingSpaces toolbox.</p>
+          <ul class="project__tags">
+            <li>Parametric Modeling</li>
+            <li>Urban Data Analysis</li>
+          </ul>
+        </article>
+
+        <article class="project reveal" data-category="data">
+          <div class="project__media">
+            <img src="image/clusters.png?v=20260629" alt="Manhattan residential buildings grouped into color-coded clusters" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Machine Learning &middot; Urban</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="residentialclustering.html">Manhattan Residential Clustering</a></h3>
+          <p class="project__summary">K-means clustering that groups Manhattan's residential buildings into interpretable themes, drawing on eleven residential datasets.</p>
+          <ul class="project__tags">
+            <li>K-Means Clustering</li>
+            <li>Urban Analysis</li>
+            <li>Data Visualization</li>
+          </ul>
+        </article>
+
+        <article class="project reveal" data-category="data">
+          <div class="project__media">
+            <img src="image/mergeprep.png?v=20260629" alt="Mergeprep Python package diagram for reliable table merging" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Tooling &middot; Data</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="mergeprep.html">Mergeprep</a></h3>
+          <p class="project__summary">A Python package for reliable row-wise merging of messy tables. It prepares tables for merging, finds matching columns, suggests merge keys, and explains why merges succeed or fail.</p>
+          <ul class="project__tags">
+            <li>Python Package</li>
+            <li>Data Wrangling</li>
+            <li>Data Pipeline Tooling</li>
+          </ul>
+        </article>
+
+<!--
+        <article class="project" data-category="data comp">
+          <div class="project__media">
+            <img src="image/work12.jpg?v=20260629" alt="Moir&eacute;Shade transforming shading device prototype" loading="lazy">
+          </div>
+          <div class="project__meta">
+            <span class="project__index"></span>
+            <span class="project__cat">Biomimicry &middot; Kinetic</span>
+          </div>
+          <h3 class="project__title"><a class="project__link" href="moireshade.html">Moir&eacute;Shade</a></h3>
+          <p class="project__summary">A transforming shading device iterated through the survival mechanism of the dragon-fruit stem.</p>
+          <ul class="project__tags">
+            <li>Biomimicry Design</li>
+            <li>Architectural Design</li>
+            <li>Kinetic Design</li>
+          </ul>
+        </article>
+-->
+
       </div>
-    </div> -->
-
-  <div class="footer">________________________________<br>&copy; Daegeun Kim</div>
-
+    </section>
   </main>
-  <script src="main.js"></script>                      
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <p class="site-footer__brand">Daegeun Kim</p>
+        <p class="site-footer__tag">AI, computational, and data-driven tools for buildings, cities, and spatial systems.</p>
+      </div>
+      <ul class="site-footer__links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        <li><a href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+      </ul>
+      <p class="site-footer__legal">&copy; <span id="year">2026</span> Daegeun Kim</p>
+    </div>
+  </footer>
+
+  <script src="shared/site.js?v=20260724"></script>
 </body>
 </html>
