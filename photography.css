@@ -1,8 +1,8 @@
 body{
   margin:0;
-  font-family:Helvetica,Arial,sans-serif;
-  background:#fff;
-  color:#111;
+  font-family:var(--font-sans);
+  background:var(--bg);
+  color:var(--ink-2);
 }
 /*----------------------------------------------------------------*/
 /* Header --------------------------------------------------------*/
@@ -86,37 +86,49 @@ body{
 .intro {
   max-width: 1400px;
   width: 97%;
-  margin: 50px auto;
+  margin: clamp(2.5rem, 1.5rem + 3vw, 4rem) auto;
   text-align: center;
 }
 .photo-filter {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(10px, 3vw, 50px);
+  gap: clamp(0.5rem, 0.3rem + 1vw, 0.9rem);
+  margin-top: clamp(1.5rem, 1rem + 2vw, 2.5rem);
   margin-bottom: 30px;
 }
 .continent {
+  font-family: inherit;
+  font-size: var(--fs-small);
+  font-weight: var(--w-medium);
+  color: var(--ink-2);
   background: transparent;
-  font-size: clamp(9px, 1.8vw, 18px);
-  text-align: left;
-  gap: clamp(5px, 5vw, 50px);
-  /* border: 1px solid #929292; */
-  border: none;
-  background-color: #cdd6dd;
-  border-radius: 1vh;
-  padding: 5px 30px;
-  color: #363636;
-  cursor:pointer;
-  transition:transform 0.2s ease;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.4rem 1.15rem;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              background var(--dur) var(--ease);
 }
-.continent:hover{
-  transform:translateY(6px);
+.continent:hover {
+  color: var(--ink);
+  border-color: var(--ink-3);
+}
+.photo-filter button.active {
+  color: var(--ink);
+  background: #fff;
+  border-color: var(--ink);
+  font-weight: var(--w-semi);
 }
 
 .text {
-  font-size: clamp(12px, 2vw, 20px);
-  font-family: Helvetica, Arial, sans-serif;
-  color: #868686;
+  font-size: var(--fs-lead);
+  font-weight: var(--w-regular);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 46ch;
+  margin: 0 auto;
 }
 
 .topbar{
@@ -134,11 +146,12 @@ body{
 
 .hero{
   position:relative;
-  margin-top:100px;
+  margin-top:24px;
   margin-bottom:50px;
   width:100%;
   overflow:hidden;
   aspect-ratio: 3/1;
+  border-radius: var(--radius);
 }
 @media (max-width:768px){
   .hero{ aspect-ratio:3/2; }
@@ -149,24 +162,40 @@ body{
   object-fit:cover;
   object-position:center;
 }
+/* Scrim so the overlaid title stays legible over any photo. */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0 0;
+  height:55%;
+  background:linear-gradient(to top, rgba(10,12,15,.62), rgba(10,12,15,0));
+  pointer-events:none;
+}
 
 .heroText{
   position:absolute;
-  left:32px;
-  bottom:28px;
+  left:clamp(20px, 3vw, 40px);
+  bottom:clamp(20px, 3vw, 34px);
+  z-index:1;
   color:#fff;
 }
 
 .heroTitle{
   margin:0;
-  font-size:clamp(14px, 4vw, 40px);
-  font-weight:300;
+  color:#fff;
+  font-size:clamp(22px, 4vw, 42px);
+  font-weight:var(--w-bold);
+  letter-spacing:-0.015em;
+  line-height:1.05;
 }
 
 .heroSub{
-  font-size:clamp(9px, 1.5vw, 15px);
-  margin-top:10px;
-  letter-spacing:.06em;
+  font-size:var(--fs-meta);
+  font-weight:var(--w-semi);
+  margin-top:0.5rem;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:rgba(255,255,255,.85);
 }
 .gallery {
   max-width: 1800px;
@@ -249,13 +278,15 @@ body{
   text-align:center;
   margin-top:100px;
   padding:10px 0;
-  color:#000000;
-  font-size:clamp(9px, 1.8vw, 18px);
+  color:var(--ink-3);
+  font-size:var(--fs-small);
 }
 .footer {
   text-align:center;
-  padding:10px 0;
-  margin-bottom: 30px;
-  color:#000000;
-  font-size:clamp(9px, 1.8vw, 18px);
+  margin-top: clamp(3rem, 2rem + 3vw, 5rem);
+  padding: var(--space-4) 0 var(--space-5);
+  border-top: 1.4px solid var(--line-strong);
+  color: var(--ink-3);
+  font-size: var(--fs-meta);
+  letter-spacing: 0.04em;
 }

@@ -3,30 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="photography.css?v=20260207" rel="stylesheet"/> 
-    <title>Daegeun Kim</title>
+    <link href="shared/site.css?v=20260724" rel="stylesheet"/>
+    <link href="photography.css?v=20260724" rel="stylesheet"/>
+    <title>Photography: Daegeun Kim</title>
     <link rel="icon" type="image/png" href="image/favicon.png?v=20260629">
 </head>
 <body>
-  <main>                                                        
-    <div class="header" id="header">
-      <div class="header-inner">
-        <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-        <div class="nav">
-          <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-          <!-- <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
-            <button class="subpage" id="subpage3">Resume</button>
-          </a> -->
-          <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-            <button class="subpage" id="subpage4">LinkedIn</button>
-          </a>
-          <a href="https://github.com/daegeun-kim" target="_blank">
-            <button class="subpage" id="subpage5">Github</button>
-          </a>
-          <a href="about.html"><button class="subpage" id="subpage2">About</button></a>
-        </div>
-      </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
+
+  <main id="main">
   <div class="wrap">
     <section class="hero">
       <img id="heroImg" src="photographs/full/amer_thumbnail.webp?v=20260629">
@@ -37,9 +41,9 @@
       </div>
     </section>
     <section class="intro">
-      <p class="text"><il>I capture what others overlook, distilling fleeting moments into images that endure.</il></p>
+      <p class="text">I capture what others overlook, distilling fleeting moments into images that endure.</p>
       <div class="photo-filter">
-        <button class="continent">All</button>
+        <button class="continent active">All</button>
         <button class="continent">America</button>
         <button class="continent">Asia</button>
         <button class="continent">Europe</button>
@@ -157,10 +161,10 @@
     </div>
   </div>
 
-  <div class="footer">________________________________<br>&copy; Daegeun Kim</div>
+  <div class="footer">&copy; 2026 Daegeun Kim</div>
 
   </main>
-  <script src="main.js"></script>
-  <script src="photography.js"></script>   
+  <script src="shared/site.js?v=20260724"></script>
+  <script src="photography.js"></script>
 </body>
 </html>
