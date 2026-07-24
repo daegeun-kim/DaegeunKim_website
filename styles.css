@@ -345,6 +345,10 @@ main {
   background: url('image/work14.png?v=20260629') no-repeat center center;
   background-size: cover;
 }
+#work15-image {
+  background: url('image/work15.png?v=20260629') no-repeat center center;
+  background-size: cover;
+}
 .footer {
   font-size: clamp(10px, 1.5vw, 15px);
   line-height: 1.5;
