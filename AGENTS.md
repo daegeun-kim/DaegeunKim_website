@@ -40,67 +40,67 @@ When in doubt, use the named HTML entity (`&mdash;`, `&deg;`, etc.) rather than 
 
 ---
 
-## 3. CSS Scope
+## 3. Shared Design System and CSS Scope
 
-Only two files use the shared `styles.css` in the root folder:
-- `index.html`
-- `about.html`
+The site is built on a shared design system in `shared/`:
 
-All subpage HTML files load their own CSS from their corresponding `work##/` folder. Do not reference or modify root `styles.css` for any subpage.
+- `shared/site.css` — design tokens (color, typography, spacing, dividers), header/nav, footer, buttons, focus states, motion, and light/dark theme variables.
+- `shared/site.js` — sticky-header behavior, accessible mobile menu, scroll reveals, and (homepage only) project filtering.
+
+Every page loads `shared/site.css` and `shared/site.js`, then a page- or project-specific stylesheet that builds on the shared tokens:
+
+- `index.html` → `shared/site.css` + `home.css`
+- `about.html` → `shared/site.css` + `styles.css`
+- each project subpage → `shared/site.css` + `<project-slug>/<project-slug>.css`
+- `photography.html` → `shared/site.css` + `photography.css`
+
+Do not duplicate the shared header, footer, or token CSS into project folders. Keep only project-specific styles in the project folder. Do not reference the old root `styles.css` from any subpage (it is now the About-page stylesheet only).
 
 ---
 
 ## 4. File Structure for New Projects
 
-Each project consists of exactly two things:
+Each project is exactly two things:
 
 **A. A single HTML file at the root level:**
 ```
 <projectname>.html
 ```
-The filename should be lowercase, no spaces (use hyphens or camelCase to match existing convention).
+Lowercase filename (hyphens or camelCase to match existing convention). Root project HTML filenames are permanent public URLs — never rename an existing one.
 
-**B. A work folder containing all supporting assets:**
+**B. A project folder named with a lowercase kebab-case slug**, holding all of that project's assets:
 ```
-work##/
-  work##.css
-  work##.js         (if needed)
-  *.png / *.jpg     (images)
-  other assets...
+<project-slug>/
+  <project-slug>.css
+  <project-slug>.js      (only if needed)
+  images / data / svg / video / etc.
 ```
 
-The `##` number is determined by sequence — always use the next number after the highest existing `work##` folder. As of the current state of the repo, `work13` is the highest, so the next project uses `work14`.
-
-The HTML file links to its CSS as:
+Folders are named by **project**, not by number. There is no `work##` sequence anymore. Link the CSS as:
 ```html
-<link href="work##/work##.css" rel="stylesheet"/>
+<link href="<project-slug>/<project-slug>.css" rel="stylesheet"/>
 ```
 
-Do not place any subpage assets in the root folder or in another project's `work##` folder.
+Keep already-meaningful filenames (e.g. `map.js`, `config.js`, data files) rather than renaming them to the slug. Do not place subpage assets in the root folder or in another project's folder.
 
 ---
 
-## 5. Subpage Style Consistency
+## 5. Subpage Consistency (shared subpage system)
 
-All subpages should look visually consistent with each other. The canonical style references are:
+All subpages use the shared design system and a common case-study structure so the site reads as one system. Match:
 
-- `neural_floorplan.html` + `work13/work13.css`
-- `explorentory.html` + its corresponding work folder CSS
+- the **shared header** (`.site-header` with the wordmark + `.site-nav`: Work / About / Contact / LinkedIn / GitHub) and the **shared footer**
+- the shared tokens for color, typography, spacing, and dividers
+- a case-study section order where applicable: summary, tools/technologies, problem, approach, process, outcome, links
+- large figures with clear captions; secondary technical detail in smaller supporting text
 
-When creating a new subpage, refer to these two files for the expected structure and style patterns. Key elements to match:
+Most pages use the bright theme. A project may use the **dark theme** by setting `data-theme="dark"` on the `<html>` element (used by `geoestatechat.html`, `residentialclustering.html`, `mergeprep.html`). Dark pages use the same system and a dark header — never a bright header placed over a dark page.
 
-- **Header:** `<div class="header">` with `id="header"`, containing `<p id="name">` and `<div class="nav">` with navigation buttons (Works, LinkedIn, Github, About)
-- **Main content width:** use `<main>` with max-width and margin as in the reference pages
-- **Background and font colors:** match existing subpages
-- **Typography:** font family, size scale, and weight as in the references
-- **Section structure:** `.intro`, `.section-title`, `.subsection-title`, `.text` class pattern
-- **Footer:** simple text footer at the bottom of `<main>`
-
-Style may vary slightly per project type — specific deviations will be noted in the `task.md` file provided with each new project task.
+Canonical references: `bim_rag.html` + `bim-rag/`, and `neural_floorplan.html` + `neural-floorplan/`.
 
 ### Responsive Design
 
-All subpages must work on both desktop and mobile. Use `clamp()` for font sizes, widths, padding, and any other properties that need to scale with viewport. Do not use fixed pixel sizes for layout-critical dimensions. Reference the existing `work##.css` files for `clamp()` usage patterns.
+All subpages must work on desktop and mobile. Use `clamp()` (many sizes are already shared tokens) for scalable typography, spacing, and widths; avoid layout-critical fixed pixel dimensions. No unintended horizontal overflow. Honor `prefers-reduced-motion`.
 
 ---
 
@@ -108,15 +108,13 @@ All subpages must work on both desktop and mobile. Use `clamp()` for font sizes,
 
 When given a new project to add:
 
-1. Read the original project repository to understand the content (what the project does, its technical stack, key results, visuals, etc.). Do not modify anything there.
-2. Determine the next `work##` number by checking the highest existing folder.
-3. Create `work##/work##.css` with all styles for the new subpage.
-4. Create `<projectname>.html` at the root, following the style patterns of `neural_floorplan.html` and `explorentory.html`.
-5. Place all images and other assets referenced by the HTML into `work##/`.
-6. Do not update `index.html` — the owner handles that manually.
-7. Refer to `task.md` (provided at task time) for any project-specific instructions or style deviations.
+1. Read the original project repository to understand the content (what it does, its stack, key results, visuals). Do not modify anything there.
+2. Create `<project-slug>/` and place all of the project's assets in it. Add `<project-slug>.css` (and `.js` if needed), building on the shared tokens.
+3. Create `<projectname>.html` at the root, loading `shared/site.css` + the project CSS + `shared/site.js`, and following the shared header/footer and case-study template (see the canonical references above).
+4. Do not update `index.html` — the owner maintains project visibility manually.
+5. Refer to any provided `task.md` for project-specific instructions or style deviations.
 
-For the implementation approach, look at existing subpages that are technically similar to the new project (e.g. if the project involves data visualization, reference subpages that use D3 or canvas; if it's a static writeup, use a simpler reference).
+For implementation approach, look at an existing subpage that is technically similar (D3/Mapbox/SVG for interactive projects; a simpler static page for writeups).
 
 ---
 

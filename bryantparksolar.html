@@ -1,89 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="work10/work10.css?v=20260207" rel="stylesheet"/> 
-    <title>Daegeun Kim</title>
-    <link rel="icon" type="image/png" href="image/favicon.png?v=20260629">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bryant Park Solar Mapping</title>
+  <meta name="description" content="A parametric study of one year of solar radiation across Bryant Park, isolating how surrounding building height, orientation, and street alignment shape sunlight at the surface level.">
+  <link rel="icon" type="image/png" href="image/favicon.png?v=20260725">
+  <link href="shared/site.css?v=20260724" rel="stylesheet"/>
+  <link href="bryant-park-solar-mapping/bryant-park-solar-mapping.css?v=20260724" rel="stylesheet"/>
 </head>
-<body>                                                      
-    <div class="header" id="header">
-      <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-      <div class="nav">
-        <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-        <!-- <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
-          <button class="subpage">Resume</button>
-        </a> -->
-        <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-          <button class="subpage">LinkedIn</button>
-        </a>
-        <a href="https://github.com/daegeun-kim" target="_blank">
-          <button class="subpage">Github</button>
-        </a>
-        <a href="about.html"><button class="subpage" id="subpage1">About</button></a>
-      </div>
-    </div>
-  <main>
-    <div class="main-image"></div>
-    <div class="intro">
-      <span class="title">Bryant Park Solar Mapping</span><br>
-      <p>
-        Parametric Modeling<br>
-        Urban Data Analysis<br>
-        <br>
-        Tools:<br>
-        Rhino3D + Grasshopper<br>
-        Plugin:<br>
-        - ClimateStudio<br>
-        - DeCodingSpaces<br>
-        - Ladybug<br>
-        <br>
-      </p>
-    </div>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="atlas-wrapper">
-      <div class="text">
-        Bryant Park was selected as the testing site to evaluate how surrounding
-        urban form influences solar access at the block and surface level. For
-        each subdivided surface block within the park, total annual solar radiation
-        was calculated while treating adjacent buildings as fixed obstructions
-        that cast shadows throughout the day and across seasons. This setup
-        isolates the geometric impact of the built context, allowing sunlight
-        distribution to be understood primarily as a function of building height,
-        orientation, and street alignment rather than material or vegetation effects.<br>
-        <br>
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="subpage">
+    <figure class="proj-media">
+      <img src="bryant-park-solar-mapping/title.png?v=20260725" alt="Solar radiation map of Bryant Park with surrounding buildings as obstructions." loading="eager" decoding="async">
+    </figure>
+
+    <section class="proj-hero">
+      <p class="eyebrow">Parametric &middot; Analysis</p>
+      <h1 class="proj-hero__title">Bryant Park Solar Mapping</h1>
+      <p class="proj-hero__summary">
+        A parametric study of one year of solar radiation across Bryant Park, isolating how the
+        surrounding urban form, building height, orientation, and street alignment, shapes sunlight
+        at the surface level.
+      </p>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Parametric modeling &middot; Urban data analysis</p>
+        </div>
+        <div>
+          <h2>Tools</h2>
+          <p class="val">Rhino3D + Grasshopper &middot; ClimateStudio &middot; DeCodingSpaces &middot; Ladybug</p>
+        </div>
       </div>
-      <img src="work10/image1.png?v=20260629" style="width:100%;" />
-      <div class="text">
-        Input 1: Target Surface<br>
-        Input 2: Obstruction Building Geometry<br>
-        Input 3: NYC Sun Path Data<br>
-        <br>
-        Surface-level solar radiation was simulated with surrounding buildings
-        treated as obstructions, showing reduced sunlight on the south and west sides and greater
-        exposure toward the central north. Real conditions vary due to trees and smaller structures
-        not captured in the model.<br><br>
-      </div>
-      <img src="work10/image2.png?v=20260629" style="width:100%;" />
-      <div class="text">
-        Another trade-off point during the process if result precision vs computational
-        capacity. For every half the square size, the computational capacity
-        quadruples. The computational capacity and time of the last image is 64
-        times the first image (4 x 4 x 4).<br><br>
-      </div>
-      <img src="work10/image3.png?v=20260629" style="width:100%;" />
-      <img src="work10/image4.png?v=20260629" style="width:100%; margin-bottom: 100px;" />
-      <div class="text">
-        Grasshopper Analysis result:<br>
-        Average Daylight Hours: 6.4978<br>
-        Average % of Day with Daylight: 59.0705%<br>
-        % Above Minimum Daylight Hours: 98.1819%<br>
-        <br>
-      </div>
-      
-    <div class="footer">________________________________<br>Bryant Park Solar Mapping<br>&copy; Daegeun Kim</div>
+    </section>
+
+    <p class="section-title">Isolating the built context</p>
+    <div class="text">
+      Bryant Park was chosen to test how surrounding urban form influences solar access at the block and
+      surface level. For each subdivided surface block in the park, total annual solar radiation was
+      computed while treating the adjacent buildings as fixed obstructions that cast shadows through
+      the day and across seasons. This isolates the geometric effect of the built context, so sunlight
+      distribution reads mainly as a function of building height, orientation, and street alignment,
+      rather than material or vegetation.
+    </div>
+    <figure class="shot shot-wide">
+      <img src="bryant-park-solar-mapping/image1.png?v=20260725" alt="Surface-level solar radiation across Bryant Park." loading="lazy" decoding="async">
+      <figcaption><b>Surface radiation.</b> Annual solar radiation per subdivided block.</figcaption>
+    </figure>
+
+    <p class="section-title">Inputs and results</p>
+    <div class="text">
+      The simulation takes three inputs: the target surface, the obstruction building geometry, and NYC
+      sun-path data. With the surroundings treated as obstructions, the result shows reduced sunlight on
+      the south and west sides and greater exposure toward the central north. Real conditions vary,
+      since trees and smaller structures are not in the model.
+    </div>
+    <figure class="shot shot-wide">
+      <img src="bryant-park-solar-mapping/image2.png?v=20260725" alt="Solar exposure pattern across the park surface." loading="lazy" decoding="async">
+      <figcaption><b>Exposure pattern.</b> Lower sun on the south and west, higher toward the center-north.</figcaption>
+    </figure>
+
+    <p class="section-title">Precision vs. compute</p>
+    <div class="text">
+      One real trade-off was precision against computational capacity: halving the grid-square size
+      quadruples the compute. The finest analysis below costs 64 times the coarsest (4 &times; 4 &times; 4).
+    </div>
+    <div class="shot-2col">
+      <figure class="shot">
+        <img src="bryant-park-solar-mapping/image3.png?v=20260725" alt="Coarser solar analysis grid." loading="lazy" decoding="async">
+        <figcaption><b>Coarser grid.</b> Faster, lower resolution.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="bryant-park-solar-mapping/image4.png?v=20260725" alt="Finer solar analysis grid at higher resolution." loading="lazy" decoding="async">
+        <figcaption><b>Finer grid.</b> 64&times; the compute for the detail.</figcaption>
+      </figure>
+    </div>
+    <div class="arch-box">
+      <b>Grasshopper analysis result</b>
+      Average daylight hours: 6.4978<br>
+      Average share of day with daylight: 59.0705%<br>
+      Above minimum daylight hours: 98.1819%
+    </div>
   </main>
-  <script src="main.js"></script>  
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Bryant Park Solar Mapping</p>
+      <p class="subpage-footer__sub">&copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="index.html"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <script src="shared/site.js?v=20260724"></script>
 </body>
 </html>

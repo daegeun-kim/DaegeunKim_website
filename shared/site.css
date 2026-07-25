@@ -414,3 +414,296 @@ a { color: var(--accent); text-decoration: none; }
     scroll-behavior: auto !important;
   }
 }
+
+/* =================================================================
+   7. Subpage / case-study components
+   Shared layer for project pages: standardized top (hero + meta) and
+   common content components. Token-based, so the dark theme
+   (data-theme="dark") works automatically. Scoped under .subpage so
+   these never touch home / about / photography.
+   ================================================================= */
+.subpage {
+  max-width: 1080px;
+  margin-inline: auto;
+  padding-inline: var(--pad-x);
+  padding-top: clamp(1.5rem, 1rem + 2vw, 3rem);
+}
+
+/* --- Standardized hero / top --- */
+.proj-hero { position: relative; padding-bottom: var(--space-4); }
+/* Gradient accent bar (teal -> blue) ties the hero to the brand. */
+.proj-hero::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(100deg, var(--teal) 0%, #0e93a8 45%, var(--blue) 100%);
+  margin-bottom: var(--space-3);
+}
+.proj-hero .eyebrow { color: var(--accent-strong); }
+.proj-hero__title {
+  font-size: clamp(2.3rem, 1.4rem + 3.6vw, 4.2rem);
+  font-weight: var(--w-bold);
+  letter-spacing: -0.028em;
+  line-height: 1.02;
+  color: var(--ink);
+  margin-top: var(--space-2);
+}
+.proj-hero__summary {
+  font-size: var(--fs-lead);
+  font-weight: var(--w-regular);
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 56ch;
+  margin-top: var(--space-3);
+}
+.proj-hero__meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+  gap: var(--space-4) var(--space-5);
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1.4px solid var(--line-strong);
+}
+.proj-hero__meta h2 {
+  font-size: var(--fs-meta);
+  font-weight: var(--w-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.45rem;
+}
+.proj-hero__meta .val,
+.proj-hero__meta p {
+  font-size: var(--fs-small);
+  font-weight: var(--w-regular);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.proj-hero__meta a {
+  color: var(--accent);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.3em;
+}
+.proj-hero__meta a:hover { text-decoration: underline; }
+
+/* Hero image sits first (above the title block): tight top, gap below. */
+.proj-media { margin: 0 0 var(--space-5); }
+.proj-media img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.proj-media figcaption,
+.subpage figure.shot figcaption {
+  font-size: var(--fs-small);
+  color: var(--ink-3);
+  line-height: 1.5;
+  margin-top: 0.6rem;
+}
+.subpage figcaption b { color: var(--ink-2); font-weight: var(--w-semi); }
+
+/* --- Section headings --- */
+.subpage .section-title {
+  font-size: var(--fs-h2);
+  font-weight: var(--w-bold);
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: clamp(3rem, 2rem + 3vw, 5rem) 0 var(--space-3);
+}
+.subpage .subsection-title {
+  font-size: var(--fs-h3);
+  font-weight: var(--w-bold);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: var(--space-5) 0 var(--space-2);
+}
+
+/* --- Body text --- */
+.subpage .text {
+  font-size: var(--fs-body);
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+.subpage .text + .text { margin-top: var(--space-3); }
+.subpage .text a,
+.subpage .references-list a,
+.subpage .adoption-note a {
+  color: var(--accent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.subpage .text a:hover { border-bottom-color: var(--accent); }
+
+.subpage code, .subpage .text code {
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  background: color-mix(in srgb, var(--ink) 7%, var(--bg-elev));
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--ink);
+}
+
+.subpage .tight-list {
+  margin: var(--space-2) 0 0 1.25rem;
+  padding: 0;
+  font-size: var(--fs-small);
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+.subpage .tight-list li { margin-bottom: 0.5rem; }
+
+/* --- Callouts --- */
+.subpage .callout {
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  background: color-mix(in srgb, var(--accent) 7%, var(--bg-elev));
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-4) 0;
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  color: var(--ink);
+}
+.subpage .callout.rule {
+  border-color: color-mix(in srgb, var(--teal) 34%, var(--line));
+  background: color-mix(in srgb, var(--teal) 8%, var(--bg-elev));
+}
+.subpage .callout .lead {
+  display: block;
+  font-size: var(--fs-meta);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: var(--w-bold);
+  color: var(--ink-3);
+  margin-bottom: 0.4rem;
+}
+
+/* --- Info box + chip row + note strip + adoption note --- */
+.subpage .arch-box, .subpage .note-strip, .subpage .adoption-note {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-4) 0;
+  font-size: var(--fs-small);
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+.subpage .arch-box b { color: var(--ink); display: block; margin-bottom: 0.6rem; }
+.subpage .chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; }
+.subpage .chip-row code {
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-elev));
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+  color: var(--accent-strong);
+}
+
+/* --- Tables --- */
+.subpage .table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  margin: var(--space-4) 0;
+  -webkit-overflow-scrolling: touch;
+}
+.subpage .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+  min-width: 520px;
+}
+.subpage .data-table th, .subpage .data-table td {
+  padding: 0.55rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-2);
+  vertical-align: top;
+  line-height: 1.45;
+}
+.subpage .data-table th {
+  color: var(--ink);
+  font-weight: var(--w-semi);
+  border-bottom: 1.5px solid var(--line-strong);
+  white-space: nowrap;
+}
+.subpage .data-table td.num, .subpage .data-table th.num { text-align: right; white-space: nowrap; }
+.subpage .data-table tbody tr:hover { background: color-mix(in srgb, var(--ink) 3%, transparent); }
+.subpage .data-table caption {
+  caption-side: bottom; text-align: left;
+  font-size: var(--fs-meta); color: var(--ink-3);
+  padding-top: 0.6rem; line-height: 1.5;
+}
+.subpage .tech-table {
+  width: 100%; border-collapse: collapse; margin: var(--space-3) 0; font-size: var(--fs-small);
+}
+.subpage .tech-table tbody tr { border-bottom: 1px solid var(--line); }
+.subpage .tech-table tbody tr:first-child { border-top: 1px solid var(--line); }
+.subpage .tech-table td { padding: 0.5rem 0.85rem; color: var(--ink-2); vertical-align: top; line-height: 1.45; }
+.subpage .tech-table td:first-child { font-weight: var(--w-semi); color: var(--ink); width: 30%; white-space: nowrap; }
+
+/* --- Figures --- */
+.subpage figure.shot { margin: 0; display: flex; flex-direction: column; }
+.subpage figure.shot img {
+  width: 100%; display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.subpage .shot-2col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin: var(--space-4) 0; }
+.subpage .shot-wide { margin: var(--space-4) 0; }
+@media (max-width: 640px) { .subpage .shot-2col { grid-template-columns: 1fr; } }
+
+/* --- References --- */
+.subpage .references-list {
+  margin: var(--space-3) 0 0 1.25rem; padding: 0;
+  font-size: var(--fs-small); color: var(--ink-2); line-height: 1.65;
+}
+.subpage .references-list li + li { margin-top: var(--space-3); }
+.subpage .references-list a { word-break: break-word; }
+.subpage .references-list b { color: var(--ink); }
+
+/* --- Section separator --- */
+.subpage .section-separator {
+  border: none;
+  border-top: 1.4px solid var(--line-strong);
+  margin: clamp(4rem, 3rem + 3vw, 7rem) 0 var(--space-5);
+}
+
+/* --- Subpage footer (case-study) --- */
+.subpage-footer {
+  border-top: 1.4px solid var(--line-strong);
+  margin-top: var(--space-8);
+  padding-block: var(--space-5) var(--space-6);
+}
+.subpage-footer .container { max-width: 1080px; }
+.subpage-footer__title { font-size: var(--fs-h3); font-weight: var(--w-bold); color: var(--ink); }
+.subpage-footer__sub { font-size: var(--fs-small); color: var(--ink-3); margin-top: 0.3rem; }
+.subpage-footer__back {
+  display: inline-flex; align-items: center; gap: 0.4em;
+  margin-top: var(--space-3); font-size: var(--fs-small); color: var(--accent);
+}
+.subpage-footer__back:hover { text-decoration: underline; }
+
+/* -----------------------------------------------------------------
+   Bright subpages: pure-white ground.
+   Many project images are white-background themselves and are meant
+   to blend seamlessly into the page, so bright project pages use a
+   white ground (page, header, figure backgrounds) and their images
+   drop the frame and rounded corners. Dark project pages and the
+   home / about / photography pages are unaffected.
+   ----------------------------------------------------------------- */
+:root:not([data-theme="dark"]):has(.subpage) {
+  --bg: #ffffff;
+  --bg-elev: #ffffff;
+}
+:root:not([data-theme="dark"]) .subpage .proj-media img,
+:root:not([data-theme="dark"]) .subpage figure.shot img,
+:root:not([data-theme="dark"]) .subpage .img-card img,
+:root:not([data-theme="dark"]) .subpage .image-wide img {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}

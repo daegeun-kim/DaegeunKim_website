@@ -3,58 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="work15/work15.css" rel="stylesheet">
-  <title>BIM RAG &#8212; Daegeun Kim</title>
-  <link rel="icon" type="image/png" href="image/favicon.png">
+  <title>BIM RAG: Natural-Language Access to BIM</title>
+  <meta name="description" content="BIM RAG lets you query a building information model in plain language using validated SQL, semantic retrieval, and IFC graph search, with results shown in a 3D viewer.">
+  <link rel="icon" type="image/png" href="image/favicon.png?v=20260725">
+  <link href="shared/site.css?v=20260724" rel="stylesheet">
+  <link href="bim-rag/bim-rag.css?v=20260724" rel="stylesheet">
   <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
 
-  <div class="header" id="header">
-    <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-    <div class="nav">
-      <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-      <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">
-        <button class="subpage">LinkedIn</button>
-      </a>
-      <a href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">
-        <button class="subpage">Github</button>
-      </a>
-      <a href="about.html"><button class="subpage">About</button></a>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <!-- Hero: 3D BIM model with blue highlighted doors + chat panel.
-       Implemented as a CSS background; text alternative below. -->
-  <div class="main-image" role="img"
-       aria-label="The BIM RAG viewer showing a semi-transparent 3D building model with door
-       objects highlighted in blue, beside a chat panel answering &quot;show me all the doors&quot;
-       with &quot;There are 551 door objects (IfcDoor) in the active model.&quot;"></div>
+  <main id="main" class="subpage">
+    <!-- Hero image first, then the standardized title block. -->
+    <figure class="proj-media">
+      <img src="bim-rag/title.png?v=20260725" alt="The BIM RAG viewer showing a semi-transparent 3D building model with door objects highlighted in blue, beside a chat panel answering a question about how many doors are in the model." loading="eager" decoding="async">
+    </figure>
 
-  <main>
-    <!-- ── Intro ──────────────────────────────────────────────── -->
-    <div class="intro">
-      <span class="title">BIM RAG</span><br>
-      <a href="https://github.com/daegeun-kim/BIM_RAG" target="_blank" rel="noopener noreferrer">
-        <p id="github">Github</p>
-      </a>
-      <span class="subtitle">
+    <section class="proj-hero">
+      <p class="eyebrow">AI &middot; Retrieval Systems &middot; BIM</p>
+      <h1 class="proj-hero__title">BIM RAG</h1>
+      <p class="proj-hero__summary">
         Natural-language access to BIM through validated SQL, semantic retrieval,
         IFC graph search, and synchronized 3D results.
-      </span>
-      <div class="meta">
-        <span class="cat">BIM &middot; RAG &middot; Text-to-SQL &middot; Graph Retrieval &middot; 3D Visualization</span><br>
-        Stack:<br>
-        Python 3.11 &middot; IfcOpenShell &middot; PostgreSQL + pgvector &middot; FastAPI<br>
-        BAAI/bge-m3 &middot; gpt-5.4-nano / gpt-5.4-mini &middot; React + That Open + Three.js &middot; D3.js v7
+      </p>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Text-to-SQL &middot; RAG &middot; IFC graph retrieval &middot; 3D visualization</p>
+        </div>
+        <div>
+          <h2>Stack</h2>
+          <p class="val">Python 3.11 &middot; IfcOpenShell &middot; PostgreSQL + pgvector &middot; FastAPI &middot; BAAI/bge-m3 &middot; gpt-5.4-nano / mini &middot; React + Three.js &middot; D3.js</p>
+        </div>
+        <div>
+          <h2>Code</h2>
+          <p class="val"><a href="https://github.com/daegeun-kim/BIM_RAG" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&#8599;</span></a></p>
+        </div>
       </div>
-    </div>
+    </section>
 
     <!-- ── 1. Overview ────────────────────────────────────────── -->
     <p class="section-title">Overview</p>
     <div class="text">
       A BIM (Building Information Model) is a digital building, not just a 3D mesh. An IFC file
-      stores typed objects &mdash; walls, doors, spaces, storeys &mdash; each with properties,
+      stores typed objects, walls, doors, spaces, storeys, each with properties,
       quantities, materials, and relationships to other objects. That information is spread across
       a graph of references and can run to tens or hundreds of thousands of records. To make it
       harder, two authoring tools can export the same real-world idea in completely different
@@ -63,7 +75,7 @@
     <div class="text">
       Someone should be able to ask &ldquo;Which floor has the most doors?&rdquo; or
       &ldquo;What materials are associated with exterior walls?&rdquo; without first learning the
-      IFC schema. BIM RAG is a system that answers questions like these in plain language, and
+      IFC schema. BIM RAG answers questions like these in plain language, and
       shows the matching objects in a 3D viewer so the answer can be checked in place.
     </div>
     <div class="callout">
@@ -79,7 +91,7 @@
       <li><b>SQL</b> is authoritative for exact filters, counts, grouping, and aggregation.</li>
       <li><b>RAG</b> (retrieval-augmented generation) finds semantically related evidence when the
           wording of a question and the model&rsquo;s own terminology do not match exactly.</li>
-      <li><b>Graph search</b> follows IFC relationships &mdash; containment, filling, voiding,
+      <li><b>Graph search</b> follows IFC relationships, containment, filling, voiding,
           aggregation, material association, and spatial membership.</li>
       <li><b>LLMs</b> interpret the question and write the final explanation, but deterministic
           code stays responsible for validation and execution.</li>
@@ -146,7 +158,7 @@
     <!-- ── 3. Project Pipeline ────────────────────────────────── -->
     <p class="section-title">Project Pipeline</p>
 
-    <p class="subsection-title">Ingestion &mdash; run once per model</p>
+    <p class="subsection-title">Ingestion, run once per model</p>
     <div class="text">
       Ingestion turns one IFC file into the structured, semantic, vector, and viewer artifacts the
       query side depends on. Each step exists to remove a specific ambiguity later:
@@ -170,7 +182,7 @@
       </li>
       <li>
         <span class="pl-title">Build the semantic manifest (v002)</span>
-        <span class="pl-desc">One validated JSON artifact per model describes queryable concepts, operations, applicability, coverage, and access paths &mdash; a capability map, not a dump of every object.</span>
+        <span class="pl-desc">One validated JSON artifact per model describes queryable concepts, operations, applicability, coverage, and access paths, a capability map, not a dump of every object.</span>
       </li>
       <li>
         <span class="pl-title">Generate RAG documents and embeddings</span>
@@ -200,7 +212,7 @@
       </div>
     </div>
 
-    <p class="subsection-title">Query Backend &mdash; run per question</p>
+    <p class="subsection-title">Query Backend, run per question</p>
     <div class="text">
       A normal question moves through the backend as a sequence of deterministic checkpoints, with
       the LLM confined to interpretation and prose:
@@ -230,7 +242,7 @@
     <!-- ── Full Information Flow ──────────────────────────────── -->
     <p class="subsection-title">Full information flow</p>
     <div class="text">
-      The whole system is one connected graph across three regions &mdash; ingestion, binding and
+      The whole system is one connected graph across three regions, ingestion, binding and
       validation, and execution. Arrows carry data and control from the original IFC files through
       to the grounded answer and the synchronized 3D viewer.
     </div>
@@ -249,18 +261,18 @@
 
     <details class="diagram-summary">
       <summary>Text summary of the diagram</summary>
-      <p><b>Region 1 &mdash; ingestion.</b> Original IFC files are read by the IfcOpenShell parser,
+      <p><b>Region 1, ingestion.</b> Original IFC files are read by the IfcOpenShell parser,
       which writes PostgreSQL BIM facts and prepares viewer fragments. PostgreSQL feeds the
       relationship / spatial-membership tables, the templated RAG documents (embedded by BGE-M3
-      into pgvector), the semantic manifest, and &mdash; later &mdash; SQL execution, stored-value
+      into pgvector), the semantic manifest, and, later, SQL execution, stored-value
       linking, and graph traversal. The manifest produces the semantic access contract.</p>
-      <p><b>Region 2 &mdash; binding and validation.</b> A user query and conversation/selection
+      <p><b>Region 2, binding and validation.</b> A user query and conversation/selection
       context build a constraint ledger and drive parallel recommendation channels. The ledger, the
       channels, and a compact binder projection converge at the LLM binder (Call&nbsp;1), which emits
       a typed logical plan. A validation gate either passes the plan to the compiler, routes a
       correctable gap through one optional correction LLM call and back to the plan, or returns an
       unavailable / clarification response toward the answer packet.</p>
-      <p><b>Region 3 &mdash; execution, answer, and viewer.</b> The predicate compiler branches into
+      <p><b>Region 3, execution, answer, and viewer.</b> The predicate compiler branches into
       SQL execution, scoped RAG retrieval, and bounded IFC graph traversal, which merge into
       operation-specific results. Results feed both the grounded answer packet and the 3D viewer
       highlights using the same predicate. The packet feeds the final LLM (Call&nbsp;2), then answer
@@ -281,7 +293,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>Call 1 &mdash; semantic binder</td>
+            <td>Call 1, semantic binder</td>
             <td><code>gpt-5.4-nano</code></td>
             <td>medium</td>
             <td>Maps natural language and ledger requirements to semantic IDs and a typed logical query plan. It cannot write raw SQL, invent schema paths, or decide that similarity proves an exact fact.</td>
@@ -293,15 +305,15 @@
             <td>Used only for a proven, recoverable binding gap. It receives focused failures and candidates, not the full duplicated universe. At most one correction is allowed.</td>
           </tr>
           <tr>
-            <td>Call 2 &mdash; grounded answer writer</td>
+            <td>Call 2, grounded answer writer</td>
             <td><code>gpt-5.4-mini</code></td>
             <td>low</td>
-            <td>Receives the compact adjudicated answer packet &mdash; not the full manifest, raw database, raw SQL, graph dumps, or viewer ID list &mdash; and turns validated evidence into readable prose. A deterministic validator rejects unsupported counts, claims, terminology, or citations and can replace the text with a factual fallback.</td>
+            <td>Receives the compact adjudicated answer packet, not the full manifest, raw database, raw SQL, graph dumps, or viewer ID list, and turns validated evidence into readable prose. A deterministic validator rejects unsupported counts, claims, terminology, or citations and can replace the text with a factual fallback.</td>
           </tr>
           <tr>
             <td>Embedding model (not a generative call)</td>
             <td><code>BAAI/bge-m3</code></td>
-            <td>&mdash;</td>
+            <td>, </td>
             <td>A local model that creates normalized 1,024-dimensional vectors for stored RAG documents and query/concept text. It supports semantic and multilingual recall, but similarity is treated as a candidate signal, never as proof.</td>
           </tr>
         </tbody>
@@ -324,7 +336,7 @@
       The same 42-question benchmark was carried through every iteration. It mixes exact counts,
       floor scoping, compound constraints, qualitative questions, deliberately unsupported
       questions, conversation follow-ups, malformed input, and multilingual queries. The versions
-      below show how the architecture changed &mdash; not a marketing curve.
+      below show how the architecture changed, not a marketing curve.
     </div>
 
     <div class="version-grid">
@@ -353,7 +365,7 @@
           Ingestion generated a complete semantic manifest; a typed ledger and validation gate
           checked the binding. Judged PASS results rose substantially.
         </div>
-        <div class="vweak"><b>Weakness:</b> the whole manifest was sent to the binder &mdash; roughly 130k-token prompts for the large evaluated model, and expensive corrections.</div>
+        <div class="vweak"><b>Weakness:</b> the whole manifest was sent to the binder, roughly 130k-token prompts for the large evaluated model, and expensive corrections.</div>
       </div>
       <div class="version-card current">
         <div class="vtag">v4</div>
@@ -435,7 +447,7 @@
           <tr><td>Reported mean LLM cost</td><td>not recorded</td><td>not recorded</td><td>$0.009653 / query (n=40)</td><td>$0.007122 / query (41/42 priced)</td></tr>
         </tbody>
         <caption>
-          v3&rsquo;s token/cost figures are a partial, cost-conscious measured run &mdash; not a
+          v3&rsquo;s token/cost figures are a partial, cost-conscious measured run, not a
           complete 42-case cost total. v4 priced 41 of 42 cases, so the reported mean is the fairer
           comparison. v1/v2 dollar costs are not inferred from current pricing.
         </caption>
@@ -452,22 +464,22 @@
     <div class="text">
       Across the available metric rows, v4&rsquo;s average prompt tokens were about
       <b>83.4% lower</b> than v3, and its reported mean LLM cost about <b>26.2% lower</b>. v4 latency
-      was <em>higher</em> than v3 despite the smaller prompts &mdash; this is a deliberate tradeoff
+      was <em>higher</em> than v3 despite the smaller prompts, this is a deliberate tradeoff
       (more validation and tracing work), not a hidden regression.
     </div>
 
     <p class="subsection-title">What v4 fixed deterministically</p>
     <div class="text">
       These are typed-plan execution assertions verified across all four models. They show
-      structural repairs &mdash; correct target sets and honest zeros &mdash; which is a different
+      structural repairs, correct target sets and honest zeros, which is a different
       question from whether every generated sentence reads perfectly.
     </div>
     <ul class="fixed-list">
-      <li>Model&nbsp;2 spaces on the first floor: <b>76</b> &mdash; not a false zero.</li>
-      <li>Fire-rated walls: <b>720</b> &mdash; not all 1,981 walls.</li>
-      <li>Floor with the most doors: <b>floor 3 with 142</b> &mdash; not the global 551.</li>
+      <li>Model&nbsp;2 spaces on the first floor: <b>76</b>, not a false zero.</li>
+      <li>Fire-rated walls: <b>720</b>, not all 1,981 walls.</li>
+      <li>Floor with the most doors: <b>floor 3 with 142</b>, not the global 551.</li>
       <li>One sample door: eligible set 551, answer/viewer set <b>1</b>.</li>
-      <li>Model&nbsp;3 spaces on the first floor: <b>95</b> &mdash; resolved through aggregation membership.</li>
+      <li>Model&nbsp;3 spaces on the first floor: <b>95</b>, resolved through aggregation membership.</li>
       <li>Model&nbsp;4 walls on the top occupiable floor: <b>16</b>.</li>
     </ul>
 
@@ -476,8 +488,8 @@
       as proven when the requested floor or scope is simply unavailable.
     </div>
     <figure class="shot shot-wide">
-      <img src="work15/research-exact-zero-example.png" alt="A query result where an apparent zero is flagged as unproven because the requested floor scope is unavailable in the model, rather than being reported as a confident zero." loading="lazy" decoding="async">
-      <figcaption><b>Research failure that shaped v4.</b> An apparent zero that could not be proven, because the requested scope was unavailable &mdash; the case that motivated the exact-zero rule.</figcaption>
+      <img src="bim-rag/research-exact-zero-example.png?v=20260725" alt="A query result where an apparent zero is flagged as unproven because the requested floor scope is unavailable in the model, rather than being reported as a confident zero." loading="lazy" decoding="async">
+      <figcaption><b>Research failure that shaped v4.</b> An apparent zero that could not be proven, because the requested scope was unavailable, the case that motivated the exact-zero rule.</figcaption>
     </figure>
 
     <!-- ── 7. Frontend ────────────────────────────────────────── -->
@@ -492,7 +504,7 @@
       <li>blue highlights on query-result geometry, with non-result geometry dimmed to keep spatial context;</li>
       <li>object picking and a component-detail panel;</li>
       <li>viewer identities derived from the same executed result used by the answer;</li>
-      <li>the backend HTTP API only &mdash; the browser never connects directly to PostgreSQL or OpenAI.</li>
+      <li>the backend HTTP API only, the browser never connects directly to PostgreSQL or OpenAI.</li>
     </ul>
     <div class="callout">
       <span class="lead">Why the viewer matters</span>
@@ -504,7 +516,7 @@
     <div class="note-strip">
       The following screenshots were captured during earlier frontend iterations and illustrate the
       interaction design. The v4 benchmark above describes the later backend pipeline and should be
-      treated separately &mdash; not every answer shown here is a v4 result.
+      treated separately, not every answer shown here is a v4 result.
     </div>
 
     <!-- ── 8. Example Uses ────────────────────────────────────── -->
@@ -517,11 +529,11 @@
     </div>
     <div class="shot-2col">
       <figure class="shot">
-        <img src="work15/usecase-windows-model2.png" alt="The viewer highlighting all window objects in a building model in blue, with a chat answer giving the exact window count." loading="lazy" decoding="async">
+        <img src="bim-rag/usecase-windows-model2.png?v=20260725" alt="The viewer highlighting all window objects in a building model in blue, with a chat answer giving the exact window count." loading="lazy" decoding="async">
         <figcaption><b>Windows.</b> Exact class filtering and counting, with the matching windows highlighted.</figcaption>
       </figure>
       <figure class="shot">
-        <img src="work15/usecase-roof-elements.png" alt="The viewer isolating roof elements of a building model, with other geometry dimmed." loading="lazy" decoding="async">
+        <img src="bim-rag/usecase-roof-elements.png?v=20260725" alt="The viewer isolating roof elements of a building model, with other geometry dimmed." loading="lazy" decoding="async">
         <figcaption><b>Roof elements.</b> Exact object retrieval, with roof elements isolated from the rest of the model.</figcaption>
       </figure>
     </div>
@@ -532,22 +544,22 @@
     </div>
     <div class="shot-2col">
       <figure class="shot">
-        <img src="work15/usecase-vertical-circulation.png" alt="A chat answer about vertical circulation combining stairs, doors, and related evidence, with the relevant elements highlighted." loading="lazy" decoding="async">
+        <img src="bim-rag/usecase-vertical-circulation.png?v=20260725" alt="A chat answer about vertical circulation combining stairs, doors, and related evidence, with the relevant elements highlighted." loading="lazy" decoding="async">
         <figcaption><b>Vertical circulation.</b> A qualitative question drawing on stairs, doors, and related evidence.</figcaption>
       </figure>
       <figure class="shot">
-        <img src="work15/usecase-circulation-analysis.png" alt="A longer evidence-based answer analyzing circulation in the model, with supporting elements shown in the viewer." loading="lazy" decoding="async">
+        <img src="bim-rag/usecase-circulation-analysis.png?v=20260725" alt="A longer evidence-based answer analyzing circulation in the model, with supporting elements shown in the viewer." loading="lazy" decoding="async">
         <figcaption><b>Circulation analysis.</b> A longer, evidence-based answer built from the grounded packet.</figcaption>
       </figure>
     </div>
 
     <p class="subsection-title">Object-level inspection</p>
     <div class="text">
-      Picking an object shows its stored details &mdash; and, where the data does not support a
+      Picking an object shows its stored details, and, where the data does not support a
       firm conclusion, the answer says so.
     </div>
     <figure class="shot shot-wide">
-      <img src="work15/usecase-component-insulation.png" alt="A selected building component with its detail panel open, alongside a grounded answer noting a limitation about what cannot be concluded from the available insulation data." loading="lazy" decoding="async">
+      <img src="bim-rag/usecase-component-insulation.png?v=20260725" alt="A selected building component with its detail panel open, alongside a grounded answer noting a limitation about what cannot be concluded from the available insulation data." loading="lazy" decoding="async">
       <figcaption><b>Component insulation.</b> Selected component details, paired with a grounded statement of what cannot be concluded from the available data.</figcaption>
     </figure>
 
@@ -583,7 +595,7 @@
         <a href="https://openifcmodel.cs.auckland.ac.nz/" target="_blank" rel="noopener noreferrer">openifcmodel.cs.auckland.ac.nz</a>
       </li>
       <li>
-        <b>BIMData Research and Development &mdash; IFC files</b><br>
+        <b>BIMData Research and Development, IFC files</b><br>
         <a href="https://github.com/bimdata/BIMData-Research-and-Development" target="_blank" rel="noopener noreferrer">github.com/bimdata/BIMData-Research-and-Development</a>
         &middot;
         <a href="https://github.com/bimdata/BIMData-Research-and-Development/blob/master/pages/IFC_FILES.md" target="_blank" rel="noopener noreferrer">curated IFC file list</a>
@@ -668,9 +680,17 @@
       from these conceptual research references.
     </div>
 
-    <div class="footer">________________________________<br>BIM RAG &mdash; Natural-language access to BIM<br>&copy; Daegeun Kim</div>
   </main>
 
-  <script src="work15/work15.js"></script>
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">BIM RAG</p>
+      <p class="subpage-footer__sub">Natural-language access to BIM. &copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="index.html"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <script src="shared/site.js?v=20260724"></script>
+  <script src="bim-rag/bim-rag.js"></script>
 </body>
 </html>

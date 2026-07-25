@@ -3,47 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="work11/work11.css?v=20260408" rel="stylesheet"/>
-    <title>Daegeun Kim</title>
-    <link rel="icon" type="image/png" href="image/favicon.png?v=20260629">
+    <title>Explorentory: AI-Powered NYC Rental Discovery</title>
+    <meta name="description" content="An AI-powered NYC rental discovery platform that replaces rigid filtering with trade-off exploration, combining machine-learning personalization and conversational LLM explanations.">
+    <link rel="icon" type="image/png" href="image/favicon.png?v=20260725">
+    <link href="shared/site.css?v=20260724" rel="stylesheet"/>
+    <link href="explorentory/explorentory.css?v=20260725" rel="stylesheet"/>
     <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
-    <div class="header" id="header">
-      <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-      <div class="nav">
-        <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-        <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-          <button class="subpage">LinkedIn</button>
-        </a>
-        <a href="https://github.com/daegeun-kim" target="_blank">
-          <button class="subpage">Github</button>
-        </a>
-        <a href="about.html"><button class="subpage">About</button></a>
-      </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-  
+  <main id="main" class="subpage">
+    <figure class="proj-media">
+      <img src="explorentory/title1.png?v=20260725" alt="Explorentory rental-discovery platform with a live map and trade-off controls." loading="eager" decoding="async">
+    </figure>
 
-    <!-- ── Hero ───────────────────────────────────────────────── -->
-    <div class="main-image"></div>
-  <main>
-    <div class="intro">
-      <span class="title">Explorentory</span><br>
-      <a href="https://github.com/daegeun-kim/Explorentory" target="_blank">
-        <p id="github">Github<br></p>
-      </a>
-      <p>
-        AI-Powered Rental Discovery Platform<br>
-        Machine Learning &nbsp;·&nbsp; LLM Integration &nbsp;·&nbsp; Geospatial Visualization<br>
-        <br>
-        Stack:<br>
-        FastAPI &nbsp;·&nbsp; PostgreSQL + PostGIS<br>
-        scikit-learn &nbsp;·&nbsp; OpenAI API<br>
-        MapLibre GL &nbsp;·&nbsp; Vanilla JavaScript<br>
-        <br>
+    <section class="proj-hero">
+      <p class="eyebrow">AI &middot; Product</p>
+      <h1 class="proj-hero__title">Explorentory</h1>
+      <p class="proj-hero__summary">
+        An AI-powered NYC rental discovery platform that replaces rigid filtering with trade-off
+        exploration, combining machine-learning personalization and conversational LLM explanations
+        across millions of synthetic property records.
       </p>
-    </div>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Machine learning &middot; LLM integration &middot; Geospatial visualization</p>
+        </div>
+        <div>
+          <h2>Stack</h2>
+          <p class="val">FastAPI &middot; PostgreSQL + PostGIS &middot; scikit-learn &middot; OpenAI API &middot; MapLibre GL &middot; Vanilla JS</p>
+        </div>
+        <div>
+          <h2>Code</h2>
+          <p class="val"><a href="https://github.com/daegeun-kim/Explorentory" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&#8599;</span></a></p>
+        </div>
+      </div>
+    </section>
 
     <!-- ── Overview ───────────────────────────────────────────── -->
     <p class="section-title">Overview</p>
@@ -59,7 +75,7 @@
       rendering up to 5,000 results as an interactive choropleth map across 9 data dimensions.
     </div>
 
-    <video src="work11/explorentory.mp4" style="width:100%; display:block; margin: 28px 0;" autoplay loop muted playsinline controls></video>
+    <video src="explorentory/explorentory.mp4" style="width:100%; display:block; margin: 28px 0;" autoplay loop muted playsinline controls></video>
 
     <!-- ── Research Questions ─────────────────────────────────── -->
     <p class="section-title">Research Questions</p>
@@ -115,7 +131,7 @@
       including ones the user never explicitly stated.
     </div>
 
-    <img src="work11/rethinking_rental_search.png?v=20260629" alt="Rethinking Rental Search" style="width:100%; aspect-ratio:2/1; object-fit:cover; display:block; margin: 28px 0;">
+    <img src="explorentory/rethinking_rental_search.png?v=20260725" alt="Rethinking Rental Search" style="width:100%; aspect-ratio:2/1; object-fit:cover; display:block; margin: 28px 0;">
 
     <!-- D3 Diagram 1 — Comparison Flow -->
     <div class="diagram-container" id="comparison-diagram"></div>
@@ -187,18 +203,22 @@
     </div>
 
     <div class="screenshots-grid">
-      <div class="UX-process1" style="aspect-ratio: 16/9;">
-        <span>Step 1 — Preferences Modal</span>
-      </div>
-      <div class="UX-process2" style="aspect-ratio: 16/9;">
-        <span>Step 2 — Neighborhood Selection Map</span>
-      </div>
-      <div class="UX-process3" style="aspect-ratio: 16/9;">
-        <span>Step 3 — Property Rating Survey</span>
-      </div>
-      <div class="UX-process4" style="aspect-ratio: 16/9;">
-        <span>Step 4 — Results Panel &amp; Chat</span>
-      </div>
+      <figure class="screenshot">
+        <img src="explorentory/UX1.png?v=20260725" alt="Step 1 &mdash; Preferences Modal" loading="lazy" decoding="async">
+        <figcaption>Step 1 &mdash; Preferences Modal</figcaption>
+      </figure>
+      <figure class="screenshot">
+        <img src="explorentory/UX2.png?v=20260725" alt="Step 2 &mdash; Neighborhood Selection Map" loading="lazy" decoding="async">
+        <figcaption>Step 2 &mdash; Neighborhood Selection Map</figcaption>
+      </figure>
+      <figure class="screenshot">
+        <img src="explorentory/UX3.png?v=20260725" alt="Step 3 &mdash; Property Rating Survey" loading="lazy" decoding="async">
+        <figcaption>Step 3 &mdash; Property Rating Survey</figcaption>
+      </figure>
+      <figure class="screenshot">
+        <img src="explorentory/UX4.png?v=20260725" alt="Step 4 &mdash; Results Panel &amp; Chat" loading="lazy" decoding="async">
+        <figcaption>Step 4 &mdash; Results Panel &amp; Chat</figcaption>
+      </figure>
     </div>
 
     <!-- D3 Diagram 2 — 4-step User Flow -->
@@ -215,7 +235,7 @@
     </div>
 
     <div class="diagram-container">
-      <img src="work11/system_architecture.svg?v=20260629" alt="System Architecture Diagram" style="width:100%; height:auto; display:block;">
+      <img src="explorentory/system_architecture.svg?v=20260725" alt="System Architecture Diagram" style="width:100%; height:auto; display:block;">
     </div>
 
     <!-- ── UI Features ───────────────────────────────────────── -->
@@ -236,7 +256,7 @@
           server round-trip. A reset button restores the original recommendation order.
         </div>
       </div>
-      <img src="work11/natural_language_chat.png?v=20260629" alt="Natural Language Chat" style="width:100%; object-fit:cover; display:block;">
+      <img src="explorentory/natural_language_chat.png?v=20260725" alt="Natural Language Chat" style="width:100%; object-fit:cover; display:block;">
     </div>
 
     <p class="subsection-title">02 &nbsp; Dark and Bright Mode</p>
@@ -253,7 +273,7 @@
           cohesive visual inversion with no partial repaints.
         </div>
       </div>
-      <img src="work11/dark_and_bright_mode.png?v=20260629" alt="Dark and Bright Mode" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
+      <img src="explorentory/dark_and_bright_mode.png?v=20260725" alt="Dark and Bright Mode" style="width:100%; aspect-ratio:3/2; object-fit:cover; display:block;">
     </div>
 
     <p class="subsection-title">03 &nbsp; Property Cards and AI Explanations</p>
@@ -272,7 +292,7 @@
           "Your ratings suggest proximity to parks matters more to you than building age."
         </div>
       </div>
-      <img src="work11/property_cards_and_AI_experimentation.png?v=20260629" alt="Property Cards and AI Explanations" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
+      <img src="explorentory/property_cards_and_AI_experimentation.png?v=20260725" alt="Property Cards and AI Explanations" style="width:100%; aspect-ratio:1/1; object-fit:cover; display:block;">
     </div>
 
     <p class="subsection-title">04 &nbsp; Choropleth Mode Selector</p>
@@ -290,7 +310,7 @@
           sync with each other.
         </div>
       </div>
-      <img src="work11/choropleth_mode_selector.png?v=20260629" alt="Choropleth Mode Selector" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
+      <img src="explorentory/choropleth_mode_selector.png?v=20260725" alt="Choropleth Mode Selector" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
     </div>
 
     <!-- ── LLM Response Modes ───────────────────────────────────── -->
@@ -366,7 +386,7 @@
       </div>
     </div>
 
-    <img src="work11/chat_modes.png?v=20260629" alt="LLM Response Modes" style="width:100%; aspect-ratio:3/1; object-fit:cover; display:block; margin: 24px 0;">
+    <img src="explorentory/chat_modes.png?v=20260725" alt="LLM Response Modes" style="width:100%; aspect-ratio:3/1; object-fit:cover; display:block; margin: 24px 0;">
 
     <!-- ── Filtering Iteration & State History ───────────────────── -->
     <p class="subsection-title">06 &nbsp; Filtering Iteration &amp; State History</p>
@@ -434,7 +454,7 @@
     <div class="chart-row" style="grid-template-columns: 1fr 1fr 1fr;">
       <div class="chart-block">
         <p class="subsection-title">Choropleth Map</p>
-        <img src="work11/choropleth_map.png?v=20260629" alt="Choropleth Map" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
+        <img src="explorentory/choropleth_map.png?v=20260725" alt="Choropleth Map" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
         <div class="text" style="margin-top: 14px;">
           MapLibre GL renders up to 5,000 recommended properties as a WebGL choropleth
           layer. Nine data dimensions are available: recommendation score, rent, sqft,
@@ -446,7 +466,7 @@
       </div>
       <div class="chart-block">
         <p class="subsection-title">Histogram</p>
-        <img src="work11/histogram.png?v=20260629" alt="Histogram" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
+        <img src="explorentory/histogram.png?v=20260725" alt="Histogram" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
         <div class="text" style="margin-top: 14px;">
           Shows the distribution of the active choropleth field across all 5,000 results.
           Bin width adapts per field: $10 per bin for rent, 50 sqft per bin for floor area.
@@ -457,7 +477,7 @@
       </div>
       <div class="chart-block">
         <p class="subsection-title">Radar Chart</p>
-        <img src="work11/radar_chart.png?v=20260629" alt="Radar Chart" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
+        <img src="explorentory/radar_chart.png?v=20260725" alt="Radar Chart" style="width:100%; aspect-ratio:6/5; object-fit:cover; display:block;">
         <div class="text" style="margin-top: 14px;">
           A multi-axis polygon chart with a configurable number of dimensions: Rent,
           Location Distance, Sqft, Subway Distance, Green Space, and Noise Level. Each
@@ -549,18 +569,24 @@
         </tr>
       </tbody>
     </table>
-    <a href="work11/presentation.html"><button class="subpage">Presentation Page</button></a>
-    <div class="footer">________________________________<br>Explorentory<br>&copy; Daegeun Kim</div>
-    
+    <p><a class="btn" href="explorentory/presentation.html">Presentation page <span aria-hidden="true">&#8599;</span></a></p>
   </main>
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Explorentory</p>
+      <p class="subpage-footer__sub">AI-powered NYC rental discovery. &copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="index.html"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
 
   <!-- ============================================================ -->
   <!-- D3 Diagrams                                                  -->
   <!-- ============================================================ -->
-  <script src="work11/diagram-helpers.js"></script>
-  <script src="work11/diagram-comparison.js"></script>
-  <script src="work11/diagram-pipeline.js"></script>
-  <script src="work11/diagram-ml.js"></script>
-  <script src="main.js"></script>
+  <script src="explorentory/diagram-helpers.js"></script>
+  <script src="explorentory/diagram-comparison.js"></script>
+  <script src="explorentory/diagram-pipeline.js"></script>
+  <script src="explorentory/diagram-ml.js"></script>
+  <script src="shared/site.js?v=20260724"></script>
 </body>
 </html>

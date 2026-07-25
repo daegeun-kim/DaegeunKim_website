@@ -30,10 +30,10 @@
 /* Teal-to-blue gradient across the key phrase. */
 .hero__title .accent {
   background: linear-gradient(100deg,
-    #00a595 0%,
-    #00b9ce 26%,
-    #0565c5 62%,
-    #0221ad 90%);
+    #0e9595 5%,
+    #00a0d5 33%,
+    #0058b0 67%,
+    #2c21c9 87%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

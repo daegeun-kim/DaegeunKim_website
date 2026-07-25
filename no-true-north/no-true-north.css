@@ -1,0 +1,123 @@
+/* ============================================================
+   No True North. Project-specific components only; the hero,
+   sections, text, tables, and footer come from the shared
+   subpage layer (shared/site.css). Token-based.
+   ============================================================ */
+
+/* "Open interactive map" button, sitting below the hero meta. */
+.hero-actions { margin-top: var(--space-4); }
+.btn-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-size: var(--fs-small);
+  font-weight: var(--w-medium);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.btn-map:hover { background: var(--bg-elev); border-color: var(--accent); color: var(--accent-strong); }
+
+/* Formula blocks */
+.subpage .formula-block {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  margin: var(--space-4) 0;
+  font-family: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+  font-size: var(--fs-small);
+  color: var(--ink);
+  line-height: 1.9;
+}
+.subpage .formula-label {
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: var(--w-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 0.4rem;
+  display: block;
+}
+.subpage .formula-label.label-wrong { color: #c0392b; }
+.subpage .formula-label.label-correct { color: var(--teal-strong); }
+.subpage .formula-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+}
+@media (max-width: 640px) { .subpage .formula-compare { grid-template-columns: 1fr; } }
+
+/* Process step list */
+.subpage .step-list {
+  list-style: none;
+  margin: var(--space-3) 0;
+  padding: 0;
+}
+.subpage .step-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-small);
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+.subpage .step-list li:last-child { border-bottom: none; }
+.subpage .step-num {
+  font-weight: var(--w-bold);
+  font-size: var(--fs-meta);
+  color: var(--accent);
+  min-width: 26px;
+  padding-top: 1px;
+  font-variant-numeric: tabular-nums;
+}
+.subpage .step-text { color: var(--ink-2); }
+
+/* Decision list */
+.subpage .decision-list { list-style: none; margin: var(--space-3) 0; padding: 0; }
+.subpage .decision-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-small);
+  color: var(--ink-2);
+  line-height: 1.6;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.subpage .decision-list li:last-child { border-bottom: none; }
+.subpage .decision-marker {
+  min-width: 14px;
+  height: 2px;
+  margin-top: 0.65em;
+  background: linear-gradient(100deg, var(--teal), var(--blue));
+  border-radius: 2px;
+}
+.subpage .decision-text { color: var(--ink-2); }
+.subpage .decision-text b { color: var(--ink); }
+
+/* Image grids */
+.subpage .image-2col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin: var(--space-4) 0; }
+.subpage .image-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin: var(--space-4) 0; }
+.subpage .image-wide { margin: var(--space-4) 0; }
+@media (max-width: 640px) {
+  .subpage .image-2col, .subpage .image-3col { grid-template-columns: 1fr; }
+}
+.subpage .img-card { display: flex; flex-direction: column; gap: 0.5rem; }
+.subpage .img-card img,
+.subpage .image-wide img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+}
+.subpage .img-label { font-size: var(--fs-meta); color: var(--ink-3); line-height: 1.4; }
+.subpage .img-caption { font-size: var(--fs-small); color: var(--ink-3); line-height: 1.5; margin-top: 0.6rem; }

@@ -1,0 +1,123 @@
+/* ============================================================
+   BIM RAG — project-specific styles.
+   Only the bespoke visualizations live here; the standardized
+   hero, sections, text, callouts, tables, figures, and footer
+   come from shared/site.css (.subpage layer).
+   ============================================================ */
+
+/* --- Numbered pipeline list (index | title | description) --- */
+.pipeline-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-4) 0;
+  counter-reset: pipeline-counter;
+}
+.pipeline-list li {
+  display: grid;
+  grid-template-columns: 2.4em clamp(120px, 22%, 210px) 1fr;
+  gap: 0 14px;
+  align-items: baseline;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+  counter-increment: pipeline-counter;
+}
+.pipeline-list li:last-child { border-bottom: none; }
+.pipeline-list li::before {
+  content: counter(pipeline-counter, decimal-leading-zero);
+  font-weight: var(--w-bold);
+  color: var(--accent);
+  font-size: var(--fs-meta);
+  font-variant-numeric: tabular-nums;
+  padding-top: 1px;
+}
+.pl-title { font-size: var(--fs-small); font-weight: var(--w-semi); color: var(--ink); line-height: 1.45; }
+.pl-desc  { font-size: var(--fs-small); color: var(--ink-3); line-height: 1.55; }
+
+@media (max-width: 640px) {
+  .pipeline-list li {
+    grid-template-columns: 2.4em 1fr;
+    grid-template-rows: auto auto;
+    gap: 0 10px;
+  }
+  .pl-title { grid-column: 2; grid-row: 1; }
+  .pl-desc  { grid-column: 2; grid-row: 2; margin-top: 2px; }
+}
+
+/* --- Pipeline flowchart (D3) container --- */
+.pipeline-flowchart {
+  width: 100%;
+  margin: var(--space-4) 0 0.4rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.pipeline-flowchart svg { display: block; width: 100%; height: auto; min-width: 900px; }
+.diagram-note { font-size: var(--fs-meta); color: var(--ink-3); text-align: center; margin: 0.4rem 0 var(--space-3); }
+.diagram-summary {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  margin-top: 0.5rem;
+  font-size: var(--fs-small);
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+.diagram-summary summary { cursor: pointer; font-weight: var(--w-semi); color: var(--ink); }
+.diagram-summary[open] summary { margin-bottom: 0.5rem; }
+
+/* Legend for diagram categories (labeled, not colour-only) */
+.legend {
+  display: flex; flex-wrap: wrap; gap: 6px 16px;
+  margin-top: var(--space-3);
+  font-size: var(--fs-meta); color: var(--ink-2);
+}
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 13px; height: 13px; border-radius: 3px; border: 1.5px solid; display: inline-block; flex: none; }
+.lg-sql   { background: #e8f0fe; border-color: #2563eb; }
+.lg-rag   { background: #e7f5f2; border-color: #0d9488; }
+.lg-graph { background: #f1ebfb; border-color: #7c3aed; }
+.lg-llm   { background: #fdf1e3; border-color: #b45309; }
+.lg-det   { background: #f4f4f5; border-color: #71717a; }
+.lg-store { background: #eef1f5; border-color: #8a9bb0; }
+
+/* --- Version evolution cards (v1 -> v4) --- */
+.version-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: var(--space-4) 0; }
+@media (max-width: 860px) { .version-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .version-grid { grid-template-columns: 1fr; } }
+.version-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1rem 1.1rem;
+  background: var(--bg-elev);
+  display: flex; flex-direction: column;
+}
+.version-card .vtag { font-size: var(--fs-h3); font-weight: var(--w-bold); color: var(--accent); }
+.version-card.current { border-color: color-mix(in srgb, var(--teal) 40%, var(--line)); background: color-mix(in srgb, var(--teal) 6%, var(--bg-elev)); }
+.version-card.current .vtag { color: var(--teal-strong); }
+.version-card .vname { font-size: var(--fs-small); color: var(--ink); font-weight: var(--w-semi); margin: 0.3rem 0 0.6rem; line-height: 1.4; }
+.version-card .vbody { font-size: var(--fs-small); color: var(--ink-2); line-height: 1.55; }
+.version-card .vweak { margin-top: 0.6rem; font-size: var(--fs-meta); color: var(--ink-3); line-height: 1.5; }
+
+/* --- Benchmark verdict bars --- */
+.verdict-bars {
+  display: grid; grid-template-columns: clamp(28px, 6vw, 40px) 1fr;
+  gap: 10px 12px; align-items: center; margin: var(--space-3) 0 0.4rem; max-width: 560px;
+}
+.verdict-bars .vb-label { font-size: var(--fs-small); font-weight: var(--w-bold); color: var(--ink); }
+.verdict-bars .vb-track { display: flex; height: clamp(18px, 3vw, 22px); border-radius: 3px; overflow: hidden; border: 1px solid var(--line); }
+.verdict-bars .seg { display: flex; align-items: center; justify-content: center; font-size: var(--fs-meta); color: #fff; white-space: nowrap; overflow: hidden; }
+.seg-pass    { background: var(--blue); }
+.seg-partial { background: #9db4d8; color: #22314a; }
+.seg-fail    { background: #d8dbe0; color: #4a4a4a; }
+.bench-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 0.6rem; font-size: var(--fs-meta); color: var(--ink-2); }
+.bench-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.bench-legend i { width: 13px; height: 13px; border-radius: 2px; flex: none; }
+
+/* --- Deterministic fixes list --- */
+.fixed-list { margin: var(--space-3) 0 0; padding: 0; list-style: none; font-size: var(--fs-small); color: var(--ink-2); }
+.fixed-list li { padding: 0.5rem 0; border-bottom: 1px solid var(--line); line-height: 1.55; }
+.fixed-list li:last-child { border-bottom: none; }
+.fixed-list b { color: var(--teal-strong); }
