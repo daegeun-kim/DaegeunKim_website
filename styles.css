@@ -19,8 +19,8 @@
 
 .about-portrait {
   position: relative;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   overflow: hidden;
   background: var(--bg-elev);
   border: 1px solid var(--line);
@@ -50,7 +50,7 @@
   margin-bottom: var(--space-4);
 }
 .about-bio {
-  max-width: 62ch;
+  max-width: 80ch;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -61,7 +61,7 @@
   line-height: 1.6;
   color: var(--ink-2);
 }
-.about-bio strong { color: var(--ink); font-weight: var(--w-semi); }
+.about-bio strong { color: #000; font-weight: var(--w-semi); }
 
 @media (max-width: 760px) {
   .about-intro { grid-template-columns: 1fr; }
