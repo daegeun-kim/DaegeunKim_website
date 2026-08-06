@@ -96,7 +96,7 @@ All subpages use the shared design system and a common case-study structure so t
 
 Most pages use the bright theme. A project may use the **dark theme** by setting `data-theme="dark"` on the `<html>` element (used by `geoestatechat.html`, `residentialclustering.html`, `mergeprep.html`). Dark pages use the same system and a dark header — never a bright header placed over a dark page.
 
-Canonical references: `bim_rag.html` + `bim-rag/`, and `neural_floorplan.html` + `neural-floorplan/`.
+Canonical references: `bim_rag.html` + `bimtrieval/`, and `neural_floorplan.html` + `neural-floorplan/`.
 
 ### Responsive Design
 
