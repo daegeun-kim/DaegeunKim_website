@@ -66,7 +66,7 @@ Each project is exactly two things:
 ```
 <projectname>.html
 ```
-Lowercase filename (hyphens or camelCase to match existing convention). Root project HTML filenames are permanent public URLs — never rename an existing one.
+Lowercase filename (hyphens or camelCase to match existing convention). Root project HTML filenames are public URLs — never rename an existing one on your own initiative. Only the owner may authorize a rename (as with `bim_rag.html` &rarr; `bimtrieval.html`), and the old filename is then deleted outright rather than kept as a redirect.
 
 **B. A project folder named with a lowercase kebab-case slug**, holding all of that project's assets:
 ```
@@ -96,7 +96,7 @@ All subpages use the shared design system and a common case-study structure so t
 
 Most pages use the bright theme. A project may use the **dark theme** by setting `data-theme="dark"` on the `<html>` element (used by `geoestatechat.html`, `residentialclustering.html`, `mergeprep.html`). Dark pages use the same system and a dark header — never a bright header placed over a dark page.
 
-Canonical references: `bim_rag.html` + `bimtrieval/`, and `neural_floorplan.html` + `neural-floorplan/`.
+Canonical references: `bimtrieval.html` + `bimtrieval/`, and `neural_floorplan.html` + `neural-floorplan/`.
 
 ### Responsive Design
 
