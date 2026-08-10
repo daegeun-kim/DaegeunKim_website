@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="photography.css?v=20260207" rel="stylesheet"/> 
-    <title>Daegeun Kim</title>
-    <link rel="icon" type="image/png" href="image/favicon.png?v=20260629">
+    <link href="shared/site.css?v=20260724" rel="stylesheet"/>
+    <link href="photography.css?v=20260724" rel="stylesheet"/>
+    <title>Photography: Daegeun Kim</title>
+    <link rel="icon" type="image/png" href="image/favicon.png?v=20260725">
 </head>
 <body>
-  <main>                                                        
-    <div class="header" id="header">
-      <div class="header-inner">
-        <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-        <div class="nav">
-          <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-          <!-- <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
-            <button class="subpage" id="subpage3">Resume</button>
-          </a> -->
-          <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-            <button class="subpage" id="subpage4">LinkedIn</button>
-          </a>
-          <a href="https://github.com/daegeun-kim" target="_blank">
-            <button class="subpage" id="subpage5">Github</button>
-          </a>
-          <a href="about.html"><button class="subpage" id="subpage2">About</button></a>
-        </div>
-      </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
+
+  <main id="main">
   <div class="wrap">
     <section class="hero">
-      <img id="heroImg" src="photographs/full/amer_thumbnail.webp?v=20260629">
+      <img id="heroImg" src="photographs/full/amer_thumbnail.webp?v=20260725">
 
       <div class="heroText">
         <h1 class="heroTitle"><b>Photography Portfolio</b></h1>
@@ -37,9 +41,9 @@
       </div>
     </section>
     <section class="intro">
-      <p class="text"><il>I capture what others overlook, distilling fleeting moments into images that endure.</il></p>
+      <p class="text">I capture what others overlook, distilling fleeting moments into images that endure.</p>
       <div class="photo-filter">
-        <button class="continent">All</button>
+        <button class="continent active">All</button>
         <button class="continent">America</button>
         <button class="continent">Asia</button>
         <button class="continent">Europe</button>
@@ -48,100 +52,100 @@
 
     <section class="gallery">
         <div class="masonry" id="masonry">
-          <div class="item" data-cat="asia"><img src="photographs/thumb/moon & airplane-01135.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09412.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09381.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-5959.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09335.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-2749.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/sunrise-09290.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/sunrise-09258.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01761.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01768.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Best-03137.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/sunrise-09047.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-09008.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-08658.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-08569.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-08534.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01771.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01795.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/winter-08089.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/winter-08124.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07835.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07865.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-3636.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07861.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/top of the rock-06969.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-5669.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/dominopark-06934.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/Independence Day-06266.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/Manhattan Bridge-05994.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03186.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02224.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Best-04688.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/China-01334.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02251.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-4.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/staten island-07531.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-04172.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03799.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03959.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02824.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-9682.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00126.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00105.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02805.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00046.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-08112.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-08021.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/eunpyeong.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/suwon.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-00985.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-00420.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-00311.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-12.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/NYC-00828-2.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/london-04251.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-01165.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-02127.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01871.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/NYC-00916.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/yeosu.webp?v=20260629" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07805.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07882.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/everland-09433.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju-05573.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju-05727.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju-06861.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju-07076.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Hong Kong-00654.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Hong Kong-00671.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/IMG_9096-10.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03066 (s).webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03270 (s).webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03560.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/Seattle2-0247.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall--2.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00084.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00141.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00157.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00798.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-08175.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/seoul-04755.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul-07886.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/staten island-07451.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/staten island-07494.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09013.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/suwon-4.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/suwon-07288.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/suwon-07671.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/yeosu-04900.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
-          <div class="item" data-cat="asia"><img src="photographs/thumb/yeosu-04964.webp?v=20260629" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/moon & airplane-01135.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09412.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09381.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-5959.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09335.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-2749.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunrise-09290.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunrise-09258.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01761.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01768.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Best-03137.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunrise-09047.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-09008.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-08658.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-08569.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/midtown-08534.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01771.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01795.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/winter-08089.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/winter-08124.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07835.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07865.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-3636.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07861.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/top of the rock-06969.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-5669.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/dominopark-06934.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Independence Day-06266.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Manhattan Bridge-05994.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03186.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02224.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Best-04688.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/China-01334.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02251.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-4.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/staten island-07531.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-04172.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03799.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03959.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02824.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-9682.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00126.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00105.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-02805.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00046.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-08112.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-08021.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/eunpyeong.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/suwon.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-00985.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-00420.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-00311.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Best-12.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/NYC-00828-2.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/london-04251.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Best-01165.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-02127.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/budapest-01871.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/NYC-00916.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/yeosu.webp?v=20260725" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07805.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/centralpark-07882.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/everland-09433.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju-05573.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju-05727.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju-06861.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/gyeongju-07076.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Hong Kong-00654.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Hong Kong-00671.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/IMG_9096-10.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03066 (s).webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03270 (s).webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="euro"><img src="photographs/thumb/Rome-03560.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/Seattle2-0247.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall--2.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00084.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00141.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00157.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-00798.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul Fall-08175.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/seoul-04755.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/Seoul-07886.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/staten island-07451.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/staten island-07494.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="amer"><img src="photographs/thumb/sunset-09013.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/suwon-4.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/suwon-07288.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/suwon-07671.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/yeosu-04900.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
+          <div class="item" data-cat="asia"><img src="photographs/thumb/yeosu-04964.webp?v=20260725" loading="lazy" decoding="async" alt=""></div>
         </div>
     </section>
   </div>
@@ -157,10 +161,10 @@
     </div>
   </div>
 
-  <div class="footer">________________________________<br>&copy; Daegeun Kim</div>
+  <div class="footer">&copy; 2026 Daegeun Kim</div>
 
   </main>
-  <script src="main.js"></script>
-  <script src="photography.js"></script>   
+  <script src="shared/site.js?v=20260724"></script>
+  <script src="photography.js"></script>
 </body>
 </html>

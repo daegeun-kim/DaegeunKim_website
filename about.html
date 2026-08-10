@@ -1,99 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css?v=20260207" rel="stylesheet"/> 
-    <title>Daegeun Kim</title>
-    <link rel="icon" type="image/png" href="image/favicon.png?v=20260629">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Daegeun Kim</title>
+  <meta name="description" content="Daegeun Kim is a design technologist and ML engineer working at the intersection of AI, computation, and the built environment. Education, experience, skills, and contact.">
+  <link rel="icon" type="image/png" href="image/favicon.png?v=20260725">
+  <link href="shared/site.css?v=20260724" rel="stylesheet"/>
+  <link href="styles.css?v=20260724" rel="stylesheet"/>
 </head>
 <body>
-  <main>                                                        
-    <div class="header" id="header">
-      <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-      <div class="nav">
-        <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-        <!-- <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
-          <button class="subpage" id="subpage3">Resume</button>
-        </a> -->
-        <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-          <button class="subpage" id="subpage4">LinkedIn</button>
-        </a>
-        <a href="https://github.com/daegeun-kim" target="_blank">
-          <button class="subpage" id="subpage5">Github</button>
-        </a>
-        <a href="about.html"><button class="subpage" id="subpage2" style="color: black;">About</button></a>
-      </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html" aria-current="page">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="intro">
-      <div class="about">
-        <p class="about-image"></p>
-        <div class="description">
-          <!-- <p class="bigname-about">Daegeun Kim</p> -->
-          <p class="bigname-description-about">
-            Daegeun Kim is a computational designer and data scientist currently pursuing an M.S. in Computational 
-            Design Practices at Columbia University. His work focuses on data-driven, geospatial, and machine learning based 
-            analysis for urban and real estate decision-making.<br>
-            <br>
-            He develops computational systems that translate complex spatial and urban data into actionable insights, 
-            bridging design thinking with analytics, modeling, and automation in the built environment.<br>
-            <br>
-            He also practices urban and landscape photography.<br>
-            <b>Visit Photography Page</b> →
-            <a href="photography.html"><button class="photography" id="subpage6"><b><u>Photography Portfolio</u></b></button></a>
-            </p>
-          </div>
-      </div>
-    </div>
-    <section id="about-cv">
-      <h3>Education</h3>
-      <div class="row">
-        <div class="date">Jun 2025 – May 2026</div>
-        <div class="info"><strong>Columbia University</strong> | M.S. Computational Design Practices | New York, NY</div>
-      </div>
-      <div class="row">
-        <div class="date">Sep 2017 – May 2023</div>
-        <div class="info"><strong>The University of Hong Kong</strong> | B.A. Architectural Studies | Hong Kong</div>
-      </div>
+  </header>
 
-      <h3>Experience</h3>
-      <div class="row">
-        <div class="date">Mar 2024 – May 2025</div>
-        <div class="info"><strong>HanmiGlobal</strong> | Assistant Construction Manager/Inspector | Pyeongtaek, Korea</div>
-      </div>
-      <div class="row">
-        <div class="date">Nov 2023 – Feb 2024</div>
-        <div class="info"><strong>HanmiGlobal</strong> | Assistant Project Manager | Budapest, Hungary</div>
-      </div>
-      <div class="row">
-        <div class="date">Aug 2023 – Nov 2023</div>
-        <div class="info"><strong>OTAK</strong> | On-the-Job Training | Portland, OR, USA</div>
-      </div>
-      <div class="row">
-        <div class="date">Jun 2022 – Aug 2022</div>
-        <div class="info"><strong>SOSU Architects</strong> | Architectural Intern | Seoul, Korea</div>
-      </div>
-      <div class="row">
-        <div class="date">Aug 2019 – Mar 2021</div>
-        <div class="info"><strong>Republic of Korea Military Service</strong> | Artillerist | Paju, Korea</div>
-      </div>
-      <br>
-      <h3>Qualifications</h3>
-      Korean Certified Architectural Engineer<br>
-      LEED Green Associate
+  <main id="main" class="about-main">
 
-      <h3>Languages</h3>
-      English, Korean, Mandarin Chinese
-
-      <h3>Skills</h3>
-      Python, JavaScript, SQL<br>
-      Pandas, NumPy, Matplotlib, scikit-learn, GeoPandas, shapely, D3.js<br>
-      Rhino + Grasshopper, QGIS, Revit, AutoCAD, SketchUp<br>
-      Adobe Illustrator, InDesign, Photoshop, Lightroom, Premiere Pro
+    <!-- Intro -->
+    <section class="about-intro container" aria-labelledby="about-name">
+      <div class="about-portrait reveal">
+        <img src="DaegeunKim.JPG?v=20260725" alt="Portrait of Daegeun Kim" width="1576" height="1576">
+      </div>
+      <div class="reveal">
+        <p class="about-lead">About</p>
+        <h1 class="about-name" id="about-name">Daegeun Kim</h1>
+        <div class="about-bio">
+          <p>I am a design technologist exploring how <strong>AI</strong>, <strong>computation</strong>, and <strong>data-driven methods</strong> can create new possibilities for AEC industries. My work focuses on developing technologies for spatial problems across scales, from buildings and BIM systems to cities and geospatial environments, transforming complex spatial data into tools, insights, and more informed design decisions.</p>
+        </div>
+      </div>
     </section>
 
-  <div class="footer">________________________________<br>&copy; Daegeun Kim</div>
+    <!-- Education -->
+    <section class="about-section container" aria-labelledby="edu-title">
+      <div class="about-section__head reveal">
+        <p class="about-section__eyebrow">01</p>
+        <h2 class="about-section__title" id="edu-title">Education</h2>
+      </div>
+      <div class="cv-list reveal">
+        <div class="cv-item">
+          <div class="cv-item__date">Jun 2025 &ndash; May 2026</div>
+          <div>
+            <p class="cv-item__org">Columbia University</p>
+            <p class="cv-item__role">M.S. Computational Design Practices &middot; <span class="cv-item__place">New York, NY</span></p>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item__date">Sep 2017 &ndash; May 2023</div>
+          <div>
+            <p class="cv-item__org">The University of Hong Kong</p>
+            <p class="cv-item__role">B.A. Architectural Studies &middot; <span class="cv-item__place">Hong Kong</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  </main>                  
+    <!-- Experience -->
+    <section class="about-section container" aria-labelledby="exp-title">
+      <div class="about-section__head reveal">
+        <p class="about-section__eyebrow">02</p>
+        <h2 class="about-section__title" id="exp-title">Experience</h2>
+      </div>
+      <div class="cv-list reveal">
+        <div class="cv-item">
+          <div class="cv-item__date">Mar 2024 &ndash; May 2025</div>
+          <div>
+            <p class="cv-item__org">HanmiGlobal</p>
+            <p class="cv-item__role">Assistant Construction Manager / Inspector &middot; <span class="cv-item__place">Pyeongtaek, Korea</span></p>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item__date">Nov 2023 &ndash; Feb 2024</div>
+          <div>
+            <p class="cv-item__org">HanmiGlobal</p>
+            <p class="cv-item__role">Assistant Project Manager &middot; <span class="cv-item__place">Budapest, Hungary</span></p>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item__date">Aug 2023 &ndash; Nov 2023</div>
+          <div>
+            <p class="cv-item__org">OTAK</p>
+            <p class="cv-item__role">On-the-Job Training &middot; <span class="cv-item__place">Portland, OR, USA</span></p>
+          </div>
+        </div>
+        <div class="cv-item">
+          <div class="cv-item__date">Jun 2022 &ndash; Aug 2022</div>
+          <div>
+            <p class="cv-item__org">SOSU Architects</p>
+            <p class="cv-item__role">Architectural Intern &middot; <span class="cv-item__place">Seoul, Korea</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qualifications & Languages -->
+    <section class="about-section container" aria-labelledby="quals-title">
+      <div class="about-section__head reveal">
+        <p class="about-section__eyebrow">03</p>
+        <h2 class="about-section__title" id="quals-title">Qualifications &amp; Languages</h2>
+      </div>
+      <div class="facts reveal">
+        <div>
+          <h3>Qualifications</h3>
+          <ul>
+            <li>Korean Certified Architectural Engineer</li>
+            <li>LEED Green Associate</li>
+            <li>Republic of Korea Army (Artillerist)</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Languages</h3>
+          <ul>
+            <li>English</li>
+            <li>Korean</li>
+            <li>Mandarin Chinese</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="about-section container" aria-labelledby="skills-title">
+      <div class="about-section__head reveal">
+        <p class="about-section__eyebrow">04</p>
+        <h2 class="about-section__title" id="skills-title">Skills &amp; Tools</h2>
+      </div>
+      <div class="skills reveal">
+        <div class="skills__group">
+          <h3>Programming</h3>
+          <ul><li>Python</li><li>JavaScript</li><li>C#</li><li>SQL</li></ul>
+        </div>
+        <div class="skills__group">
+          <h3>Data &amp; Machine Learning</h3>
+          <ul><li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li><li>Pandas</li><li>NumPy</li><li>Matplotlib</li></ul>
+        </div>
+        <div class="skills__group">
+          <h3>Geospatial &amp; Visualization</h3>
+          <ul><li>GeoPandas</li><li>Shapely</li><li>QGIS</li><li>ArcGIS</li><li>D3.js</li><li>three.js</li><li>p5.js</li><li>Tableau</li></ul>
+        </div>
+        <div class="skills__group">
+          <h3>Computational Design &amp; BIM</h3>
+          <ul><li>Rhino + Grasshopper</li><li>Revit</li><li>AutoCAD</li><li>SketchUp</li></ul>
+        </div>
+        <div class="skills__group">
+          <h3>Design &amp; Media</h3>
+          <ul><li>Figma</li><li>Illustrator</li><li>InDesign</li><li>Photoshop</li><li>Lightroom</li><li>Premiere Pro</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photography (low profile) -->
+    <section class="about-section container" aria-labelledby="photo-title">
+      <div class="about-section__head reveal">
+        <p class="about-section__eyebrow">05</p>
+        <h2 class="about-section__title" id="photo-title">Beyond the work</h2>
+      </div>
+      <div class="photo-note reveal">
+        <p>Outside of my technical work, I photograph cities and landscapes.</p>
+        <a href="photography.html">Photography portfolio &#8594;</a>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="about-section container" id="contact" aria-labelledby="contact-title">
+      <div class="about-section__head reveal">
+        <p class="about-section__eyebrow">06</p>
+        <h2 class="about-section__title" id="contact-title">Contact</h2>
+      </div>
+      <p class="contact__intro reveal">The best way to reach me is by email. I'm always glad to talk about AI, computation, and design in the built environment.</p>
+      <ul class="contact-list reveal">
+        <li class="contact-item">
+          <p class="contact-item__label">Email</p>
+          <a href="mailto:daegeun.kim@columbia.edu">daegeun.kim@columbia.edu</a>
+        </li>
+        <li class="contact-item">
+          <p class="contact-item__label">LinkedIn</p>
+          <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">in/daegeunkim<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a>
+        </li>
+        <li class="contact-item">
+          <p class="contact-item__label">GitHub</p>
+          <a href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">daegeun-kim<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div>
+        <p class="site-footer__brand">Daegeun Kim</p>
+        <p class="site-footer__tag">AI, computational, and data-driven tools for buildings, cities, and spatial systems.</p>
+      </div>
+      <ul class="site-footer__links">
+        <li><a href="index.html">Work</a></li>
+        <li><a href="about.html#contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        <li><a href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+      </ul>
+      <p class="site-footer__legal">&copy; 2026 Daegeun Kim</p>
+    </div>
+  </footer>
+
+  <script src="shared/site.js?v=20260724"></script>
 </body>
 </html>

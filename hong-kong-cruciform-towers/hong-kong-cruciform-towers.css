@@ -1,0 +1,85 @@
+/* ============================================================
+   Parametric Study of Hong Kong Cruciform Towers.
+   Header, hero, footer, fonts, colors, and .text typography come
+   from the shared subpage system (shared/site.css). This file
+   restores the project's original body composition: full-width
+   image boards and the egress / view layouts. Images live in the
+   HTML as <img> tags; this file only handles layout.
+   ============================================================ */
+
+/* Section rhythm for the board + text pairs (original spacing). */
+.subpage > .text { margin-bottom: clamp(3rem, 2rem + 3vw, 6.25rem); }
+
+/* Bold lead-in titles inside body text read as black, not body grey. */
+.subpage .text b { color: var(--ink); }
+
+/* Image "boards" -------------------------------------------- */
+.subpage figure.board {
+  margin: 0 0 20px;
+}
+.subpage figure.board img {
+  width: 100%;
+  display: block;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+.subpage figure.isoperi,
+.subpage figure.plan,
+.subpage figure.view,
+.subpage figure.res-type,
+.subpage figure.matrix,
+.subpage figure.model,
+.subpage figure.structure { margin-top: 50px; }
+
+/* Egress: image + text side by side (original two-column).
+   Cruciform2 is shown larger than the other boards (~175%). */
+.egressdistance {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
+  margin-bottom: clamp(3rem, 2rem + 3vw, 6.25rem);
+}
+.subpage figure.egressimage {
+  flex: 3 1 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.subpage figure.egressimage img {
+  width: 100%;
+  max-height: 630px;
+  object-fit: contain;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+#egress {
+  flex: 2 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+@media (max-width: 768px) {
+  .egressdistance { flex-direction: column; }
+  .subpage figure.egressimage img { max-height: none; }
+}
+
+/* Visibility board with text overlaid bottom-right. */
+.subpage figure.view { position: relative; }
+.view #view {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: min(48ch, 60%);
+  margin: 0;
+  padding: var(--space-3) var(--space-4);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  border-radius: var(--radius-sm);
+}
+@media (max-width: 640px) {
+  .view #view { position: static; max-width: none; background: none; backdrop-filter: none; padding: var(--space-3) 0 0; }
+}

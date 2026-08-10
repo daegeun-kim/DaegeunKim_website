@@ -1,97 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="work4/work4.css" rel="stylesheet"/> 
-    <title>Daegeun Kim</title>
-    <link rel="icon" type="image/png" href="image/favicon.png?v=20260629">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parametric Study of Hong Kong Cruciform Towers</title>
+  <meta name="description" content="A parametric redesign of Hong Kong's Concord-type cruciform housing tower, using shape, egress, ventilation, view, and structural analysis to replace one repeated floor plan with varied, livable units.">
+  <link rel="icon" type="image/png" href="image/favicon.png?v=20260725">
+  <link href="shared/site.css?v=20260724" rel="stylesheet"/>
+  <link href="hong-kong-cruciform-towers/hong-kong-cruciform-towers.css?v=20260725" rel="stylesheet"/>
 </head>
 <body>
-  <main>                                                        
-    <div class="header" id="header">
-      <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-      <div class="nav">
-        <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-        <!-- <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
-          <button class="subpage">Resume</button>
-        </a> -->
-        <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-          <button class="subpage">LinkedIn</button>
-        </a>
-        <a href="https://github.com/daegeun-kim" target="_blank">
-          <button class="subpage">Github</button>
-        </a>
-        <a href="about.html"><button class="subpage" id="subpage1">About</button></a>
-      </div>
-    </div>
-    <div class="main-image"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="intro">
-      <span class="title">Parametric Study of Hong Kong Cruciform Towers</span><br>
-      <p>
-        Parametric Analysis<br>
-        Architectural Design<br>
-        Digital Fabrication<br>
-        <br>
-        Tools:<br>
-        ABB IRB 1200 Robotic Arm<br>
-        Grasshopper HAL plugin<br>
-      </p>
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
     </div>
-    <div class="design-logic"></div>
+  </header>
+
+  <main id="main" class="subpage">
+    <figure class="proj-media">
+      <img src="hong-kong-cruciform-towers/title.png?v=20260725" alt="Title rendering of the parametric Hong Kong cruciform tower study." loading="eager" decoding="async">
+    </figure>
+
+    <section class="proj-hero">
+      <p class="eyebrow">Computational Design &middot; Architecture</p>
+      <h1 class="proj-hero__title">Parametric Study of Hong Kong Cruciform Towers</h1>
+      <p class="proj-hero__summary">
+        A parametric redesign of Hong Kong's Concord-type cruciform housing tower. Shape, egress,
+        ventilation, view, and structural analysis were used to break one repeated floor plan into
+        varied, livable units.
+      </p>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Parametric analysis &middot; Digital fabrication &middot; Architectural design</p>
+        </div>
+        <div>
+          <h2>Tools</h2>
+          <p class="val">Rhino + Grasshopper (HAL) &middot; ABB IRB 1200 robotic arm</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Original body composition, restyled with the template typography. -->
+    <figure class="board design-logic">
+      <img src="hong-kong-cruciform-towers/Cruciform.jpg?v=20260725" alt="Diagram of the Concord 1 cruciform floor plan with eight identical units around a central core." loading="lazy" decoding="async">
+    </figure>
     <div class="text">
       <b>Hong Kong Cruciform Housing: Shape Analysis</b><br><br>
-      The cruciform-type housing design is straightforward, relying on the repetition of identical floor plans. Each unit is mirrored or rotated to create symmetry, 
-      with no variation. For instance, the Concord 1 type features eight identical units per floor, arranged symmetrically and extruded into towers of over 40 stories. 
-      These units are designed to accommodate 3-4 person nuclear families.
-      This approach prioritizes efficiency and speed of construction but overlooks the diverse lifestyles and needs of residents. The uniformity of the design reflects a 
+      The cruciform-type housing design is straightforward, relying on the repetition of identical floor plans. Each unit is mirrored or rotated to create symmetry,
+      with no variation. For instance, the Concord 1 type features eight identical units per floor, arranged symmetrically and extruded into towers of over 40 stories.
+      These units are designed to accommodate three- to four-person nuclear families.
+      This approach prioritizes efficiency and speed of construction but overlooks the diverse lifestyles and needs of residents. The uniformity of the design reflects a
       one-size-fits-all mindset, failing to adapt to the varying demands of Hong Kong's dynamic population.
     </div>
+
     <div class="egressdistance">
-      <div class="egressimage" aria-hidden="true"></div>
+      <figure class="egressimage">
+        <img src="hong-kong-cruciform-towers/Cruciform2.jpg?v=20260725" alt="Egress travel-distance analysis mapped across the cruciform floor plan." loading="lazy" decoding="async">
+      </figure>
       <div class="text" id="egress">
         <span>
           <b>Egress Travel Distance Analysis</b><br><br>
-          Code of Practice for The Provision of Means of Escape in Case of Fire by Building Authority of Hong Kong states that for buildings with 2 staircases where the exit route
-          is not along balcony approach should be 30m Maximum. The analysis shows that the maximum egress travel distance for Concord 1 type is far below 30m, thanks to its efficient
+          The Code of Practice for the Provision of Means of Escape in Case of Fire, by the Building Authority of Hong Kong, states that for buildings with two staircases where the exit route
+          is not along a balcony approach the distance should be 30&nbsp;m maximum. The analysis shows that the maximum egress travel distance for the Concord 1 type is far below 30&nbsp;m, thanks to its efficient
           radial layout, leaving much more room for extension of floor area.
         </span>
       </div>
     </div>
-    <div class="isoperi"></div>
+
+    <figure class="board isoperi">
+      <img src="hong-kong-cruciform-towers/Cruciform3.jpg?v=20260725" alt="Iterative variations of the residential unit perimeter and their isoperimetric quotients." loading="lazy" decoding="async">
+    </figure>
     <div class="text">
       <b>Residential Unit Perimeter Research and Variation</b><br><br>
-      Research shows that as the climate warms, building perimeters tend to increase relative to their area, as measured by the isoperimetric quotient. <br><br>
+      Research shows that as the climate warms, building perimeters tend to increase relative to their area, as measured by the isoperimetric quotient.<br><br>
       Iterative tests on the Concord 1 residential units adjusted their external perimeters, revealing key trade-offs. Larger perimeters improve natural ventilation but also increase heat loss and spatial inefficiency. These changes impact privacy, circulation, and insulation, requiring a careful balance between thermal performance, ventilation, and space utilization.
     </div>
-    <div class="plan"></div>
+
+    <figure class="board plan">
+      <img src="hong-kong-cruciform-towers/Cruciform5.jpg?v=20260725" alt="New plan arrangement attaching unit clusters to the central core." loading="lazy" decoding="async">
+    </figure>
     <div class="text">
       <b>Plan Arrangement</b><br><br>
-      The next generation of crucifix towers is designed by attaching finalized unit clusters to a central core. These clusters form a cohesive community within a single residential tower, 
-      creating a new identity through the integration of units, communal spaces, structural systems, and circulation pathways. While introducing innovation, the design retains the traditional 
+      The next generation of cruciform towers is designed by attaching finalized unit clusters to a central core. These clusters form a cohesive community within a single residential tower,
+      creating a new identity through the integration of units, communal spaces, structural systems, and circulation pathways. While introducing innovation, the design retains the traditional
       principle of cruciform towers: units are connected to the central core via the shortest horizontal circulation routes.
     </div>
-    <div class="view"></div>
-    <div class='text' id='view'>
-      <p><b>Visibility Analysis</b><br><br>
-      One of the important reason for a crucifix type plan is that it ensures a good view from all of the units evenly. However, the problem with Concord 1 type housing is 
-      that it is possible to see from one unit to another, hindering the privacy. The new plan suggests to rotate the rooms 45degree alternatively, so that the view from 
-      adjacent rooms are parallel to each other, ensuring a much better privacy.
-      The visibility is calculated by the percent of the angle of the outside view out of 360°. For example, a 30% view rate means 108° out of 360° is open toward outside.
-      Overall, the updated plan provides a higher general visibility rate, while its visibility is less even than the original Concord 1 plan. Which means the updated plan 
-      is consisted of either rooms with very high or very low visibility rate.</p></div>
-  
-    <div class="res-type"></div>
-    <div class="matrix"></div>
+
+    <figure class="board view">
+      <img src="hong-kong-cruciform-towers/Cruciform6.jpg?v=20260725" alt="Visibility analysis comparing the original and rotated room arrangements." loading="lazy" decoding="async">
+      <div class="text" id="view">
+        <p><b>Visibility Analysis</b><br><br>
+        One important reason for a cruciform-type plan is that it ensures a good view from all of the units evenly. However, the problem with the Concord 1 type is
+        that it is possible to see from one unit into another, hindering privacy. The new plan rotates the rooms 45&deg; alternately, so that the views from
+        adjacent rooms run parallel to each other, ensuring much better privacy.
+        Visibility is calculated as the percentage of the outside view angle out of 360&deg;. For example, a 30% view rate means 108&deg; out of 360&deg; is open toward the outside.
+        Overall, the updated plan provides a higher general visibility rate, while its visibility is less even than the original Concord 1 plan, meaning the updated plan
+        consists of either rooms with very high or very low visibility.</p>
+      </div>
+    </figure>
+
+    <figure class="board res-type">
+      <img src="hong-kong-cruciform-towers/Cruciform7.jpg?v=20260725" alt="Standard and non-standard residential unit types." loading="lazy" decoding="async">
+    </figure>
+    <figure class="board matrix">
+      <img src="hong-kong-cruciform-towers/Cruciform8.jpg?v=20260725" alt="Combination matrix mixing standard and non-standard unit types." loading="lazy" decoding="async">
+    </figure>
     <div class="text">
       <b>Unit Types and Combination</b><br><br>
-      The final unit design is consisted of 2 types of spaces: Standard type and non-standard types. The purpose of the standard type is to provide appropriate number of necessary spaces: bedroom, bathroom, and kitchen. The non standard type spaces are seving for more specific activities for people with different lifestyle. Standard and Non-standard types are mixed up in a matrix so that appropriate combinations can be created.
+      The final unit design consists of two types of space: standard and non-standard. The purpose of the standard type is to provide the necessary spaces: bedroom, bathroom, and kitchen. The non-standard types serve more specific activities for people with different lifestyles. Standard and non-standard types are mixed in a matrix so that appropriate combinations can be created.
     </div>
-    <div class="model"></div>
-    <div class="structure"></div>
-    <div class="footer">________________________________________<br>Parametric Study of Hong Kong Cruciform Towers<br>&copy; Daegeun Kim</div>
+
+    <figure class="board model">
+      <img src="hong-kong-cruciform-towers/Cruciform9.jpg?v=20260725" alt="Physical and digital model of the redesigned cruciform tower." loading="lazy" decoding="async">
+    </figure>
+    <figure class="board structure">
+      <img src="hong-kong-cruciform-towers/Cruciform10.jpg?v=20260725" alt="Structural system of the redesigned cruciform tower." loading="lazy" decoding="async">
+    </figure>
   </main>
-  <script src="main.js"></script>  
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Parametric Study of Hong Kong Cruciform Towers</p>
+      <p class="subpage-footer__sub">&copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="index.html"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <script src="shared/site.js?v=20260724"></script>
 </body>
 </html>

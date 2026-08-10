@@ -1,0 +1,127 @@
+/* ============================================================
+   BIMtrieval — project-specific styles.
+   Only the bespoke visualizations live here; the standardized
+   hero, sections, text, callouts, tables, figures, and footer
+   come from shared/site.css (.subpage layer).
+   ============================================================ */
+
+/* --- Emphasis inside body copy ------------------------------
+   Body text sits on --ink-2; bold runs step up to full --ink so an
+   emphasized phrase reads as emphasis rather than as more grey. */
+.subpage .text b,
+.subpage .tight-list b,
+.subpage .version-block .vbody b,
+.subpage .version-block .vweak b { color: var(--ink); }
+
+/* .tight-list carries no bottom margin, so a paragraph resuming after
+   one needs the same separation two paragraphs get. */
+.subpage .tight-list + .text { margin-top: var(--space-3); }
+
+/* --- Diagram frames (D3-rendered SVG) ---------------------- */
+.diagram {
+  width: 100%;
+  margin: var(--space-4) 0 0.4rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.diagram svg { display: block; width: 100%; height: auto; }
+
+/* The roles map keeps the smallest min-width that stays legible and
+   scrolls inside its own frame, so the page never scrolls sideways.
+   It carries no frame of its own — the role boxes are the only outline. */
+.diagram--roles svg   { min-width: 860px; }
+.diagram--version svg { min-width: 760px; }
+.diagram--roles {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* The full pipeline carries no min-width: its viewBox is tuned to the
+   subpage column, so it scales down with its container instead of
+   producing a horizontal scrollbar. Its three region bands supply the
+   only boundaries, so the frame is dropped here too. */
+.diagram--pipeline {
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* Version flowcharts sit directly in their version block — no frame,
+   no rounded corner, no white plate behind the nodes. */
+.diagram--version {
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.diagram-note { font-size: var(--fs-meta); color: var(--ink-3); text-align: center; margin: 0.4rem 0 var(--space-3); }
+
+/* Legend for diagram categories (labeled, not colour-only) */
+.legend {
+  display: flex; flex-wrap: wrap; gap: 6px 16px;
+  margin-top: var(--space-3);
+  font-size: var(--fs-meta); color: var(--ink-2);
+}
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 13px; height: 13px; border-radius: 3px; border: 1.5px solid; display: inline-block; flex: none; }
+.lg-sql   { background: #e8f0fe; border-color: #2563eb; }
+.lg-rag   { background: #e7f5f2; border-color: #0d9488; }
+.lg-graph { background: #f1ebfb; border-color: #7c3aed; }
+.lg-llm   { background: #fdf1e3; border-color: #b45309; }
+.lg-det   { background: #f4f4f5; border-color: #71717a; }
+.lg-store { background: #eef1f5; border-color: #8a9bb0; }
+
+/* --- Version evolution blocks (v1 -> final v3) ------------- */
+.version-block {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+  padding: 1rem 1.1rem 1.2rem;
+  margin: var(--space-4) 0;
+}
+.version-block.current {
+  border-color: color-mix(in srgb, var(--teal) 40%, var(--line));
+  background: color-mix(in srgb, var(--teal) 6%, var(--bg-elev));
+}
+.version-block .vhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.75rem; }
+.version-block .vtag { font-size: var(--fs-h3); font-weight: var(--w-bold); color: var(--accent); }
+.version-block.current .vtag { color: var(--teal-strong); }
+.version-block .vname { font-size: var(--fs-small); font-weight: var(--w-semi); color: var(--ink); line-height: 1.4; }
+.version-block .vbody { font-size: var(--fs-small); color: var(--ink-2); line-height: 1.6; margin-top: 0.5rem; }
+.version-block .vweak { margin-top: 0.55rem; font-size: var(--fs-meta); color: var(--ink-3); line-height: 1.5; }
+.version-block .vweak b { color: var(--ink-2); }
+
+/* --- LLM usage table ---------------------------------------
+   Scoped to this one table: model names such as gpt-5.4-nano must
+   never wrap, so the Model and Reasoning columns take only the width
+   they need and the long "Responsibility" column absorbs the rest.
+   .table-wrap still scrolls the table at narrow widths. */
+.subpage .data-table.llm-table { table-layout: auto; }
+.subpage .data-table.llm-table th:nth-child(1),
+.subpage .data-table.llm-table td:nth-child(1) { width: 20%; }
+.subpage .data-table.llm-table th:nth-child(2),
+.subpage .data-table.llm-table td:nth-child(2) { width: 1%; white-space: nowrap; }
+.subpage .data-table.llm-table th:nth-child(3),
+.subpage .data-table.llm-table td:nth-child(3) { width: 1%; white-space: nowrap; }
+
+/* --- Benchmark verdict bars --- */
+.verdict-bars {
+  display: grid; grid-template-columns: clamp(52px, 12vw, 78px) 1fr;
+  gap: 10px 12px; align-items: center; margin: var(--space-3) 0 0.4rem; max-width: 640px;
+}
+.verdict-bars .vb-label { font-size: var(--fs-small); font-weight: var(--w-bold); color: var(--ink); }
+.verdict-bars .vb-track { display: flex; height: clamp(18px, 3vw, 22px); border-radius: 3px; overflow: hidden; border: 1px solid var(--line); }
+.verdict-bars .seg { display: flex; align-items: center; justify-content: center; font-size: var(--fs-meta); color: #fff; white-space: nowrap; overflow: hidden; }
+.seg-pass    { background: var(--blue); }
+.seg-partial { background: #9db4d8; color: #22314a; }
+.seg-fail    { background: #d8dbe0; color: #4a4a4a; }
+.bench-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 0.6rem; font-size: var(--fs-meta); color: var(--ink-2); }
+.bench-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.bench-legend i { width: 13px; height: 13px; border-radius: 2px; flex: none; }

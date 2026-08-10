@@ -1,0 +1,29 @@
+/* ============================================================
+   Spiral Dwelling.
+   Header, hero, footer, fonts, colors, and .text typography come
+   from the shared subpage system (shared/site.css). This file
+   restores the project's original body composition: full-width
+   image boards. Images live in the HTML as <img> tags; this file
+   only handles layout.
+   ============================================================ */
+
+.subpage > .text { margin-bottom: clamp(3rem, 2rem + 3vw, 6.25rem); }
+
+.subpage figure.board {
+  margin: 50px 0 20px;
+}
+.subpage figure.board img {
+  width: 100%;
+  display: block;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+.subpage figure.robotic { margin-top: 0; }
+.subpage figure.generative { margin-top: 20px; }
+
+/* Spiral Dwelling2 (comparison board): 75% of full width, centered. */
+.subpage figure.comparison img {
+  width: 75%;
+  margin-inline: auto;
+}

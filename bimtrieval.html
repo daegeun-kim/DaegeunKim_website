@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BIMtrieval: Natural-Language Access to BIM</title>
+  <meta name="description" content="BIMtrieval helps architecture teams understand complex BIM information through natural-language questions, hybrid SQL, RAG and IFC graph retrieval, grounded answers, and synchronized visual evidence.">
+  <link rel="icon" type="image/png" href="image/favicon.png?v=20260725">
+  <link href="shared/site.css?v=20260724" rel="stylesheet">
+  <link href="bimtrieval/bimtrieval.css?v=20260805" rel="stylesheet">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="subpage">
+    <!-- Hero image first, then the standardized title block. -->
+    <figure class="proj-media">
+      <img src="bimtrieval/title.png?v=20260805" alt="The BIMtrieval viewer showing a semi-transparent 3D building model with door objects highlighted in blue, beside a chat panel answering a question about how many doors are in the model." loading="eager" decoding="async">
+    </figure>
+
+    <section class="proj-hero">
+      <p class="eyebrow">AI &middot; Retrieval Systems &middot; BIM</p>
+      <h1 class="proj-hero__title">BIMtrieval</h1>
+      <p class="proj-hero__summary">
+        BIMtrieval helps architecture teams understand complex BIM information through
+        natural-language questions, hybrid SQL / RAG / graph retrieval, grounded answers,
+        and synchronized visual evidence.
+      </p>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Typed text-to-plan &middot; RAG &middot; IFC graph retrieval &middot; 3D visualization</p>
+        </div>
+        <div>
+          <h2>Stack</h2>
+          <p class="val">Python 3.11 &middot; IfcOpenShell &middot; PostgreSQL + pgvector &middot; FastAPI &middot; BAAI/bge-m3 &middot; gpt-5.4-nano / mini &middot; React + Three.js &middot; D3.js</p>
+        </div>
+        <div>
+          <h2>Code</h2>
+          <p class="val"><a href="https://github.com/daegeun-kim/BIMtrieval" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&#8599;</span></a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 1. Overview ────────────────────────────────────────── -->
+    <p class="section-title">Overview</p>
+    <div class="text">
+      A BIM (Building Information Model) is a digital building, not just a 3D mesh. An IFC file
+      stores typed objects &mdash; walls, doors, spaces, storeys &mdash; each with properties,
+      quantities, materials, and relationships to other objects, spread across a graph of references
+      that can run to hundreds of thousands of records, and two authoring tools can export the same
+      real-world idea in completely different structures.
+    </div>
+    <div class="text">
+      In an architectural office that one model is read by people with very different
+      responsibilities and technical depth, who do not share the same understanding of what it
+      contains or how reliable each element is. Practitioners describe the familiar version: a
+      visually detailed model that one person reads as complete enough for its intended use and
+      another reads as missing the data that use requires &mdash; a disagreement that surfaces as a
+      scope and schedule argument rather than an information one.
+    </div>
+
+    <div id="roles-diagram" class="diagram diagram--roles"></div>
+    <p class="diagram-note">Five roles, one model &middot; swipe to see the full map on a narrow screen</p>
+    <div class="text">
+      Each arrow is a translation step, and the Job Captain and BIM Coordinator carry most of that
+      burden: they are the people who have to restate what is in the model in terms of design, scope,
+      cost, and schedule. The more an answer depends on inspecting the model directly, the more it
+      depends on whoever happens to know how to interrogate it.
+    </div>
+
+    <div class="callout">
+      <span class="lead">Research question</span>
+      Can natural-language access to a building model reduce that translation burden, by letting
+      each role ask the same model a direct question and receive an answer that is grounded,
+      bounded, and visible in place?
+    </div>
+
+    <div class="text">
+      BIMtrieval is this project&rsquo;s answer: a backend-centred BIM information and explanation
+      system. Someone should be able to ask &ldquo;which floor has the most doors?&rdquo; without
+      first learning the IFC schema, and should see the objects behind that answer highlighted in the
+      model. The retrieval and validation pipeline is the substance of the project; the frontend
+      exists so a person can inspect what it decided. No single technique handles a BIM question well
+      alone, so the work is divided:
+    </div>
+    <ul class="tight-list">
+      <li><b>SQL</b> is authoritative for exact filters, counts, grouping, and aggregation.</li>
+      <li><b>RAG</b> (retrieval-augmented generation) carries semantic intent and terminology, and
+          finds related evidence when the wording of a question and the model&rsquo;s own vocabulary
+          do not match.</li>
+      <li><b>Graph search</b> follows IFC relationships, containment, filling, voiding, aggregation,
+          material association, and spatial membership.</li>
+      <li><b>LLMs</b> interpret the question and write the final explanation, but deterministic code
+          stays responsible for validation and execution.</li>
+    </ul>
+    <div class="text">
+      A second goal shapes that same division of labour: <b>minimizing LLM token usage</b>. Every
+      step deterministic code can own is a step the model never has to read, so the raw IFC file, the
+      full object tables, and the untrimmed retrieval results stay out of the prompt entirely. What
+      this project proposes is therefore a <b>lightweight BIM searching model</b> &mdash; one that
+      answers from a bounded, adjudicated packet on a small model roster, rather than one that
+      scales by feeding a larger model more of the building.
+    </div>
+    <div class="callout rule">
+      <span class="lead">Guiding principle</span>
+      The LLM decides what the question means; deterministic code decides what the data proves.
+    </div>
+    <div class="text">
+      The LLM never queries the raw IFC file, never writes the SQL that runs in production, and
+      similarity is never treated as proof. This is a research prototype: the intended benefit is
+      clearer communication about a model, not a measured productivity result.
+    </div>
+
+    <!-- ── 2. Pipeline evolution ──────────────────────────────── -->
+    <p class="section-title">Pipeline Evolution</p>
+    <div class="text">
+      The backend went through three architectures, and the difference between them is really one
+      question: <b>how much evidence should reach the final LLM, and who decides what is relevant?</b>
+      The same 42-question benchmark was carried through every iteration.
+    </div>
+
+    <div class="version-block">
+      <div class="vhead"><span class="vtag">v1</span><span class="vname">Broad retrieval, late narrowing</span></div>
+      <div class="vbody">
+        An LLM chose the retrieval route, the backend gathered broad evidence groups, and the final
+        LLM received group summaries plus up to fifty sample rows and had to work out which of them
+        answered the question.
+      </div>
+      <div id="v1-diagram" class="diagram diagram--version"></div>
+      <div class="vweak"><b>Weakness:</b> too much responsibility landed on the final LLM. Constraints
+        could be lost in the noise, or a broad group relabelled as the requested concept.</div>
+    </div>
+
+    <div class="version-block">
+      <div class="vhead"><span class="vtag">v2</span><span class="vname">Strict early planning</span></div>
+      <div class="vbody">
+        Planning moved to the front. A deterministic slate proposed a small bounded set of subject,
+        property, value, and location candidates; the binder could select only from that slate, each
+        typed answer part was executed once, and the final LLM wrote from a compact packet.
+      </div>
+      <div id="v2-diagram" class="diagram diagram--version"></div>
+      <div class="vweak"><b>Weakness:</b> the overload was gone, but so was information. A bounded
+        slate could omit a valid concept entirely, leaving the final LLM with no way to answer
+        flexibly &mdash; only with what the slate had already allowed.</div>
+    </div>
+
+    <div class="version-block current">
+      <div class="vhead"><span class="vtag">final v3</span><span class="vname">Complete semantics, bounded evidence</span></div>
+      <div class="vbody">
+        Ingestion writes one complete, validated semantic manifest per model, and the binder sees all
+        of it &mdash; nothing is pre-filtered away from interpretation. What is bounded instead is the
+        <em>evidence</em>: a typed constraint ledger records every requirement in the question, a
+        deterministic gate proves the binding covers them, and only adjudicated results reach the
+        final LLM. Enough context for a flexible answer; few enough facts to stay checkable.
+      </div>
+      <div id="v3-diagram" class="diagram diagram--version"></div>
+      <div class="vweak"><b>Cost of the middle ground:</b> the complete manifest is a large prompt.
+        It is sent as a cacheable prefix and paired with a small binder model, which is how the
+        accuracy machinery survived the move to a cost-reduced roster.</div>
+    </div>
+
+    <p class="diagram-note">Later experimental directions were built and then discarded; the project
+      kept an updated v3.</p>
+
+    <!-- ── 3. The final v3 pipeline ───────────────────────────── -->
+    <p class="section-title">The Final v3 Pipeline</p>
+    <div class="text">
+      The chart below is the explanation; these notes only frame it. <b>Ingestion</b> runs once per
+      model: a SHA-256 fingerprint makes it idempotent, IfcOpenShell parses objects, properties,
+      quantities, materials, and relationships into PostgreSQL, a validated semantic manifest
+      describes what is queryable, deterministic templates become RAG documents embedded into
+      pgvector, and the geometry is converted once into viewer fragments &mdash; with a model
+      accepting questions only when all four artifacts match its identity. Ingestion also preserves
+      typed IFC measurements and their source units, so supported numeric filters and aggregations
+      can be executed deterministically.
+    </div>
+    <div class="text">
+      <b>Per question</b>, the backend runs as deterministic checkpoints. Interpretation turns the
+      question and its inherited context into a typed constraint ledger; the binder maps it onto the
+      complete manifest as typed answer parts, without writing SQL. A validation gate proves the
+      binding covers the ledger before anything executes, allowing at most one focused correction.
+      Retrieval and execution then run each part once by the method that owns it, and the results are
+      adjudicated as <code>exact</code>, <code>zero</code>, <code>partial</code>,
+      <code>unavailable</code>, or <code>ambiguous</code>. Only that compact packet reaches the answer
+      writer, whose prose is checked back against it before the viewer presents the same executed
+      predicate as a highlight.
+    </div>
+
+    <div class="callout rule">
+      <span class="lead">Zero is a result, not a default</span>
+      A zero is reported as real only when the target, the filters, and the coverage were actually
+      executed and proven; a failed semantic search, an unavailable field, or a scope the model does
+      not contain returns an honest unavailable or a clarification.
+    </div>
+
+    <!-- ── Full information flow ──────────────────────────────── -->
+    <p class="subsection-title">Full information flow</p>
+    <div class="text">
+      One connected graph across three regions, carrying data and control from the original IFC file
+      through to the grounded answer and the synchronized 3D viewer.
+    </div>
+
+    <div class="legend" aria-hidden="true">
+      <span><i class="lg-store"></i> Ingestion store</span>
+      <span><i class="lg-det"></i> Deterministic core</span>
+      <span><i class="lg-llm"></i> LLM call</span>
+      <span><i class="lg-sql"></i> SQL</span>
+      <span><i class="lg-rag"></i> RAG</span>
+      <span><i class="lg-graph"></i> Graph</span>
+    </div>
+
+    <div id="pipeline-flowchart" class="diagram diagram--pipeline"></div>
+    <p class="diagram-note">SQL, RAG, and graph paths are labeled, not colour-only.</p>
+
+    <!-- ── 4. LLM usage ───────────────────────────────────────── -->
+    <p class="subsection-title">LLM usage</p>
+    <div class="text">
+      A successful query uses two generative calls plus a local embedding model, each with a narrow,
+      bounded role. Every model name is configuration-driven.
+    </div>
+
+    <div class="table-wrap">
+      <table class="data-table llm-table">
+        <thead>
+          <tr><th>Role</th><th>Model</th><th>Reasoning</th><th>Responsibility &amp; hard limits</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Call 1, semantic binder</td>
+            <td><code>gpt-5.4-nano</code></td>
+            <td>medium</td>
+            <td>Maps the question and its ledger requirements to semantic IDs and typed answer parts. It cannot write raw SQL, invent access paths, or decide that similarity proves a fact.</td>
+          </tr>
+          <tr>
+            <td>Optional corrective call</td>
+            <td><code>gpt-5-mini</code></td>
+            <td>high</td>
+            <td>Used only for a proven, recoverable binding gap, and receives the failed ledger items and focused candidates rather than a duplicated universe. At most one correction.</td>
+          </tr>
+          <tr>
+            <td>Call 2, grounded answer writer</td>
+            <td><code>gpt-5.4-mini</code></td>
+            <td>low</td>
+            <td>Turns the compact adjudicated packet into readable prose. A deterministic validator rejects unsupported counts, claims, or citations and can replace the text with a factual fallback.</td>
+          </tr>
+          <tr>
+            <td>Embedding model (not a generative call)</td>
+            <td><code>BAAI/bge-m3</code></td>
+            <td>&mdash;</td>
+            <td>A local model producing normalized 1,024-dimensional vectors for stored RAG documents and query text, supporting semantic and multilingual recall. Similarity is a candidate signal, never proof.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <span class="lead">Call budget</span>
+      Normal successful active-model query: <b>2 LLM calls</b>.
+      Proven recoverable binding gap: <b>maximum 3 total calls</b>.
+    </div>
+
+    <!-- ── 5. Evaluation ──────────────────────────────────────── -->
+    <p class="section-title">Evaluation</p>
+    <div class="text">
+      The benchmark is 42 human-assessed questions carried unchanged through every iteration: exact
+      counts, floor scoping, compound constraints, qualitative questions, deliberately unsupported
+      questions, conversation follow-ups, prompt injection, malformed input, and a non-English query.
+      Verdicts were assigned against database ground truth; a clarification passes only when ambiguity
+      genuinely prevents a reliable answer, and a confident but wrong answer always fails.
+    </div>
+
+    <div class="verdict-bars">
+      <div class="vb-label">v1</div>
+      <div class="vb-track">
+        <div class="seg seg-pass" style="width:33.3%;">33.3% pass</div>
+        <div class="seg seg-partial" style="width:16.7%;" title="16.7% partial"></div>
+        <div class="seg seg-fail" style="width:50.0%;">50.0% fail</div>
+      </div>
+      <div class="vb-label">v2</div>
+      <div class="vb-track">
+        <div class="seg seg-pass" style="width:50.0%;">50.0% pass</div>
+        <div class="seg seg-partial" style="width:7.1%;" title="7.1% partial"></div>
+        <div class="seg seg-fail" style="width:42.9%;">42.9% fail</div>
+      </div>
+      <div class="vb-label">final v3</div>
+      <div class="vb-track">
+        <div class="seg seg-pass" style="width:71.4%;">71.4% pass</div>
+        <div class="seg seg-partial" style="width:7.1%;" title="7.1% partial"></div>
+        <div class="seg seg-fail" style="width:21.4%;">21.4% fail</div>
+      </div>
+    </div>
+    <div class="bench-legend">
+      <span><i style="background:#1d4ed8;"></i> PASS</span>
+      <span><i style="background:#9db4d8;"></i> PARTIAL</span>
+      <span><i style="background:#d8dbe0;"></i> FAIL</span>
+    </div>
+
+    <div class="text" style="margin-top:var(--space-3);">
+      Raw verdicts, PASS / PARTIAL / FAIL out of 42: <b>v1</b> 14 / 7 / 21, <b>v2</b> 21 / 3 / 18,
+      <b>final v3</b> 30 / 3 / 9. The v3 figures are the latest run, captured live on 2026-07-27 with
+      the cost-reduced roster. Only recorded, comparable verdicts are compared here &mdash; the three
+      runs did not record cost, latency, and token figures on the same basis.
+    </div>
+
+    <div class="text">
+      The shape of the improvement matters more than the number. v1 and v2 sit on opposite sides of
+      one tradeoff: v1 gave the final LLM too much and it selected badly; v2 gave it too little and it
+      could not answer questions the data would have supported. v3&rsquo;s remaining failures are
+      informative rather than random &mdash; a binding correction that did not recover, a wall count
+      returned where a thermal property was asked for, and 45 storey entities reported as 45 floors.
+    </div>
+
+    <!-- ── 6. Frontend ────────────────────────────────────────── -->
+    <p class="section-title">The Application</p>
+    <div class="text">
+      The frontend is the delivery surface, not the source of truth: a React / TypeScript / Vite
+      application using That Open Components and Fragments with Three.js, talking only to the backend
+      HTTP API. The browser never connects to PostgreSQL or to OpenAI, and one prepared model is
+      active at a time.
+    </div>
+
+    <p class="subsection-title">3D viewer and query-result highlighting</p>
+    <div class="text">
+      Query-result geometry is highlighted while the rest is dimmed rather than hidden, so the answer
+      keeps its spatial context, and a truncated highlight set is disclosed rather than implied away.
+      A compact <b>Fine / Standard / Fast</b> control changes only the visibility and edge-detail
+      thresholds, so a large model stays navigable without being reloaded or reconverted.
+    </div>
+    <div class="shot-2col">
+      <figure class="shot">
+        <img src="bimtrieval/usecase-windows-model2.png?v=20260805" alt="The viewer highlighting all window objects in a building model in blue, with a chat answer giving the exact window count." loading="lazy" decoding="async">
+        <figcaption><b>Windows.</b> Exact class filtering and counting, with the matching windows highlighted.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="bimtrieval/usecase-roof-elements.png?v=20260805" alt="The viewer isolating roof elements of a building model, with other geometry dimmed." loading="lazy" decoding="async">
+        <figcaption><b>Roof elements.</b> Exact object retrieval, with roof elements isolated from the rest of the model.</figcaption>
+      </figure>
+    </div>
+
+    <p class="subsection-title">Chat panel</p>
+    <div class="text">
+      A floating conversational panel carries the question, the concise prose answer, the exact total,
+      and a compact class summary. The exact total, the viewer highlight count, and the bounded
+      evidence list stay three independent numbers. Evidence disclosure is collapsed by default, and
+      clicking an entity citation selects that object in the viewer without asking the model
+      anything.
+    </div>
+    <div class="shot-2col">
+      <figure class="shot">
+        <img src="bimtrieval/usecase-vertical-circulation.png?v=20260805" alt="A chat answer about vertical circulation combining stairs, doors, and related evidence, with the relevant elements highlighted." loading="lazy" decoding="async">
+        <figcaption><b>Vertical circulation.</b> A qualitative question drawing on stairs, doors, and related evidence.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="bimtrieval/usecase-circulation-analysis.png?v=20260805" alt="A viewer showing every window and door in the model highlighted in blue at once, beside a long evidence-based chat answer listing the door, stair, and railing counts behind it." loading="lazy" decoding="async">
+        <figcaption><b>Windows and doors together.</b> One question highlights both classes at once, with a longer evidence-based answer built from the grounded packet.</figcaption>
+      </figure>
+    </div>
+
+    <p class="subsection-title">Synchronized Query Explanation panel</p>
+    <div class="text">
+      When a completed result is worth inspecting, a Query Explanation card opens above the chat and
+      stays synchronized with what is highlighted in the viewer. The backend chooses the presentation
+      deterministically from the accepted operation and its already-computed result &mdash; a bounded
+      table, a horizontal bar chart, or a grouped relationship diagram &mdash; so the frontend never
+      infers a visualization from prose, and a scalar answer opens no panel at all. Selecting a group
+      re-highlights only that subgroup, with an <b>All results</b> action to restore the full answer;
+      neither issues a query or an LLM call.
+    </div>
+    <div class="shot-2col">
+      <figure class="shot">
+        <img src="bimtrieval/explanation-result-table.png?v=20260805" alt="The Query Explanation panel for a stair-assembly question: a headline count of 90 connected objects, class bars for IfcRailing and IfcStair, and a scrollable table of object, class, and storey columns showing 50 of 90 results." loading="lazy" decoding="async">
+        <figcaption><b>Result table.</b> A count or list answer: object, class, and storey columns,
+          the caption distinguishing displayed rows from the true total, and the information region
+          beside it.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="bimtrieval/explanation-distribution.png?v=20260805" alt="The Query Explanation panel showing windows counted per floor level as a horizontal bar chart, each bar labeled with its storey name and exact count, beside the viewer with the matching windows highlighted." loading="lazy" decoding="async">
+        <figcaption><b>Distribution.</b> A group distribution as a horizontal bar chart, every bar
+          carrying its exact label and value, with the viewer highlight in frame.</figcaption>
+      </figure>
+    </div>
+    <figure class="shot shot-wide">
+      <img src="bimtrieval/explanation-relationship-diagram.png?v=20260805" alt="The grouped relationship diagram: a single IfcTask seed node on the left connected by labeled arrows to endpoint groups such as IfcCovering, IfcSlab, and IfcWallStandardCase with their object counts, with the IfcSlab group selected and the viewer showing only those 16 objects." loading="lazy" decoding="async">
+      <figcaption><b>Relationship diagram.</b> The grouped node-link diagram: the seed object at the
+        left, endpoint groups with their entity counts, arrows labeled with the IFC relationship, and
+        one group selected so the viewer shows only that subgroup &mdash; the clearest demonstration
+        of viewer synchronization.</figcaption>
+    </figure>
+
+    <p class="subsection-title">Component-detail panel</p>
+    <div class="text">
+      Clicking an object, or a citation in an answer, opens a component card with an isolated preview
+      of that instance and a bounded, read-only detail list &mdash; class, name, type, storey,
+      materials, allowlisted properties &mdash; with absent fields omitted rather than shown empty.
+      <b>Same type</b> and <b>Same family</b> highlight every exactly matching object; when the source
+      IFC supplies no type data those actions are disabled with the concrete reason instead of
+      guessing a grouping from names.
+    </div>
+    <div class="shot-2col">
+      <figure class="shot">
+        <img src="bimtrieval/usecase-component-waterslag.png?v=20260805" alt="A waterslag sill selected in the viewer with every matching waterslag element highlighted in blue, its component card showing the isolated sill preview and an IfcCovering detail list, and Same type and Same family disabled because the model carries no IFC type data for the object." loading="lazy" decoding="async">
+        <figcaption><b>Waterslag detail.</b> A selected <i>waterslag</i> window sill, an
+          <code>IfcCovering</code> instance: the bounded detail list is all the source file supplies,
+          so <b>Same type</b> and <b>Same family</b> are disabled with that reason stated.</figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="bimtrieval/usecase-component-panel.png?v=20260805" alt="The component panel for a selected exterior double door: an isolated preview of the door above Instance, Same type, and Same family buttons, followed by instance, type, family, material, and property rows." loading="lazy" decoding="async">
+        <figcaption><b>Component panel.</b> The isolated single-instance preview above the detail
+          list, with Instance / Same type / Same family available because this model does carry type
+          data.</figcaption>
+      </figure>
+    </div>
+
+    <p class="subsection-title">Floor-plan mode</p>
+    <div class="text">
+      The viewer can switch from perspective 3D to a top-down orthographic plan of one logical floor,
+      cut about 1.2&nbsp;m above it and bounded below so lower floors do not show through openings. The
+      floor buttons come from the same elevation-band clustering that resolves &ldquo;the second
+      floor&rdquo; in a question, so the control and the language can never disagree &mdash; which is
+      why a 45-storey file offers 9 floor buttons. A <b>3D</b> button restores the exact camera view
+      that was active before, and model, selection, highlights, and conversation are all preserved.
+    </div>
+    <figure class="shot shot-wide">
+      <img src="bimtrieval/usecase-floor-plan-mode.png?v=20260805" alt="Floor-plan mode on a 45-storey file: a vertical control at the left listing 3D and Floor 1 to Floor 9 with Floor 5 selected, and a top-down orthographic plan of that floor with walls cut and furniture visible." loading="lazy" decoding="async">
+      <figcaption><b>Floor-plan mode.</b> A multi-storey model with the vertical 3D /
+        Floor&nbsp;1&hellip;Floor&nbsp;9 control at the left, one floor selected, and the horizontal
+        cut visible. The nine buttons on this 45-storey file come from the same elevation-band
+        clustering that resolves a floor named in a question.</figcaption>
+    </figure>
+
+    <!-- ── 7. Outcome and limitations ─────────────────────────── -->
+    <p class="section-title">Outcome and Limitations</p>
+    <div class="text">
+      The project shows that a large, messy, inconsistently structured BIM model can be opened to
+      plain-language questions. Roughly seven of ten benchmark questions return a correct grounded
+      answer.
+    </div>
+    <ul class="tight-list">
+      <li>The intended benefit is <b>communication</b>: someone who cannot interrogate the model
+          directly can ask it a question and see the objects behind the answer. That benefit is argued
+          from the practitioner accounts above, not measured &mdash; no user study was run.</li>
+      <li>Answer quality is bounded by the source file. When a model does not carry the data a
+          question needs, the honest response is unavailable, not an estimate.</li>
+      <li>Roughly half the remaining failures are visible &mdash; a binding gap the single correction
+          could not repair, ending as a clarification. The other half are confident but wrong, and
+          those are the ones that matter.</li>
+      <li>It is a local, single-user prototype: no IFC upload, authentication, or model editing.</li>
+    </ul>
+
+    <!-- ── 8. Technical stack ─────────────────────────────────── -->
+    <p class="section-title">Technical Stack</p>
+    <div class="table-wrap">
+      <table class="tech-table">
+        <tbody>
+          <tr><td>Source format</td><td>IFC2X3</td></tr>
+          <tr><td>IFC parsing</td><td>Python 3.11, IfcOpenShell</td></tr>
+          <tr><td>Structured storage</td><td>PostgreSQL, SQLAlchemy, psycopg2</td></tr>
+          <tr><td>Vector retrieval</td><td>pgvector with cosine / HNSW search</td></tr>
+          <tr><td>Embeddings</td><td><code>BAAI/bge-m3</code>, Sentence Transformers, PyTorch / CUDA, 1,024 dimensions</td></tr>
+          <tr><td>Query backend</td><td>FastAPI, Pydantic, parameterized read-only SQL</td></tr>
+          <tr><td>Generative models</td><td><code>gpt-5.4-nano</code> binder, <code>gpt-5-mini</code> correction, <code>gpt-5.4-mini</code> grounded answer</td></tr>
+          <tr><td>Query methods</td><td>typed SQL, SQL-scoped RAG, bounded IFC graph traversal</td></tr>
+          <tr><td>Frontend</td><td>React 18, TypeScript, Vite 6, Zustand</td></tr>
+          <tr><td>3D BIM viewer</td><td>That Open Components / Fragments 3.4.6, Three.js 0.185.1, web-ifc 0.0.77</td></tr>
+          <tr><td>Explanation visuals</td><td>plain React, CSS, and SVG &mdash; no charting dependency</td></tr>
+          <tr><td>Backend tests</td><td>pytest, ruff</td></tr>
+          <tr><td>Frontend tests</td><td>Vitest, Playwright, ESLint</td></tr>
+          <tr><td>Portfolio diagrams</td><td>D3.js v7</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="section-separator">
+
+    <!-- ── 9. References ──────────────────────────────────────── -->
+    <p class="section-title" style="margin-top:40px;">References</p>
+    <ol class="references-list">
+      <li>
+        <b>OpenIFC Model Repository</b><br>
+        <a href="https://openifcmodel.cs.auckland.ac.nz/" target="_blank" rel="noopener noreferrer">openifcmodel.cs.auckland.ac.nz</a>
+      </li>
+      <li>
+        <b>BIMData Research and Development, IFC files</b><br>
+        <a href="https://github.com/bimdata/BIMData-Research-and-Development" target="_blank" rel="noopener noreferrer">github.com/bimdata/BIMData-Research-and-Development</a>
+        &middot;
+        <a href="https://github.com/bimdata/BIMData-Research-and-Development/blob/master/pages/IFC_FILES.md" target="_blank" rel="noopener noreferrer">curated IFC file list</a>
+      </li>
+      <li>
+        <b>IfcOpenShell</b><br>
+        <a href="https://docs.ifcopenshell.org/" target="_blank" rel="noopener noreferrer">docs.ifcopenshell.org</a>
+        &middot;
+        <a href="https://github.com/IfcOpenShell/IfcOpenShell" target="_blank" rel="noopener noreferrer">github.com/IfcOpenShell/IfcOpenShell</a>
+      </li>
+      <li>
+        <b>pgvector</b><br>
+        <a href="https://github.com/pgvector/pgvector" target="_blank" rel="noopener noreferrer">github.com/pgvector/pgvector</a>
+      </li>
+      <li>
+        <b>BGE-M3</b><br>
+        <a href="https://arxiv.org/abs/2402.03216" target="_blank" rel="noopener noreferrer">arXiv:2402.03216</a>
+        &middot;
+        <a href="https://huggingface.co/BAAI/bge-m3" target="_blank" rel="noopener noreferrer">huggingface.co/BAAI/bge-m3</a>
+      </li>
+      <li>
+        <b>That Open Engine</b><br>
+        <a href="https://github.com/ThatOpen/engine_components" target="_blank" rel="noopener noreferrer">engine_components</a>
+        &middot;
+        <a href="https://github.com/ThatOpen/engine_fragment" target="_blank" rel="noopener noreferrer">engine_fragment</a>
+      </li>
+      <li>
+        <b>R2RML and Ontop</b><br>
+        <a href="https://www.w3.org/TR/r2rml/" target="_blank" rel="noopener noreferrer">W3C R2RML</a>
+        &middot;
+        <a href="https://ontop-vkg.org/guide/" target="_blank" rel="noopener noreferrer">ontop-vkg.org/guide</a><br>
+        BIMtrieval adopts the explicit semantic-to-relational mapping principle, not an RDF / SPARQL stack.
+      </li>
+      <li>
+        <b>IRNet / SemQL</b><br>
+        Guo et al., &ldquo;Towards Complex Text-to-SQL in Cross-Domain Database with Intermediate
+        Representation,&rdquo; ACL 2019.
+        <a href="https://aclanthology.org/P19-1444/" target="_blank" rel="noopener noreferrer">aclanthology.org/P19-1444</a><br>
+        Relates to schema linking, a typed intermediate representation, and deterministic SQL generation.
+      </li>
+      <li>
+        <b>DIN-SQL</b><br>
+        Pourreza and Rafiei, &ldquo;DIN-SQL: Decomposed In-Context Learning of Text-to-SQL with
+        Self-Correction,&rdquo; NeurIPS 2023.
+        <a href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/72223cc66f63ca1aa59edaec1b3670e6-Abstract-Conference.html" target="_blank" rel="noopener noreferrer">proceedings.neurips.cc</a><br>
+        Relates to stage separation and targeted correction.
+      </li>
+      <li>
+        <b>BIRD</b><br>
+        Li et al., &ldquo;Can LLM Already Serve as A Database Interface? A BIg Bench for Large-Scale
+        Database Grounded Text-to-SQLs,&rdquo; NeurIPS 2023.
+        <a href="https://proceedings.neurips.cc/paper_files/paper/2023/hash/83fc8fab1710363050bbd1d4b8cc0021-Abstract-Datasets_and_Benchmarks.html" target="_blank" rel="noopener noreferrer">proceedings.neurips.cc</a><br>
+        Relates to database-value understanding and real / dirty data.
+      </li>
+      <li>
+        <b>KG-supplemented RAG</b><br>
+        Zhu et al., &ldquo;Knowledge Graph-Guided Retrieval Augmented Generation,&rdquo; NAACL 2025.
+        <a href="https://aclanthology.org/2025.naacl-long.449/" target="_blank" rel="noopener noreferrer">aclanthology.org/2025.naacl-long.449</a>
+        &middot;
+        <a href="https://microsoft.github.io/graphrag/query/local_search/" target="_blank" rel="noopener noreferrer">GraphRAG local search</a><br>
+        Relates to semantic seeds followed by graph expansion and associated text.
+      </li>
+    </ol>
+
+    <div class="adoption-note">
+      These papers and projects informed the architecture. BIMtrieval uses its own IFC relationship
+      graph, PostgreSQL schema, and RAG documents; it imports no RDF stack, no second graph database,
+      and no external GraphRAG indexing stack.
+    </div>
+
+  </main>
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">BIMtrieval</p>
+      <p class="subpage-footer__sub">Natural-language access to BIM. &copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="index.html"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <script src="shared/site.js?v=20260724"></script>
+  <script src="bimtrieval/bimtrieval.js?v=20260805"></script>
+</body>
+</html>

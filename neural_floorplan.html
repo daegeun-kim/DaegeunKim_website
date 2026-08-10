@@ -3,51 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="work13/work13.css" rel="stylesheet"/>
-  <title>Neural Floorplan &#8212; Daegeun Kim</title>
-  <link rel="icon" type="image/png" href="image/favicon.png?v=20260629">
+  <title>Neural Floorplan: Raster Drawings to Editable Vector CAD</title>
+  <meta name="description" content="A deep-learning pipeline that converts raster floorplans into editable, CAD-like vector geometry, combining SegFormer semantic segmentation with graph-based wall-topology inference.">
+  <link rel="icon" type="image/png" href="image/favicon.png?v=20260725">
+  <link href="shared/site.css?v=20260724" rel="stylesheet"/>
+  <link href="neural-floorplan/neural-floorplan.css?v=20260725" rel="stylesheet"/>
   <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="header" id="header">
-    <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-    <div class="nav">
-      <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-      <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-        <button class="subpage">LinkedIn</button>
-      </a>
-      <a href="https://github.com/daegeun-kim" target="_blank">
-        <button class="subpage">Github</button>
-      </a>
-      <a href="about.html"><button class="subpage">About</button></a>
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="main-image"></div>
+  <main id="main" class="subpage">
+    <figure class="proj-media">
+      <img src="neural-floorplan/title.png?v=20260725" alt="Raster floorplan converted into a classified vector CAD drawing." loading="eager" decoding="async">
+    </figure>
 
-  <main>
-    <!-- ── Intro ──────────────────────────────────────────────── -->
-    <div class="intro">
-      <span class="title">Neural Floorplan</span><br>
-      <a href="https://github.com/daegeun-kim/neural_floorplan" target="_blank">
-        <p id="github">Github</p>
-      </a>
-      <p>
-        Raster floorplan &rarr; semantic segmentation + wall graph inference &rarr; editable CAD-like SVG / JSON<br>
-        Deep Learning &nbsp;&middot;&nbsp; Semantic Segmentation &nbsp;&middot;&nbsp; Graph Prediction &nbsp;&middot;&nbsp; CAD Automation<br>
-        <br>
-        Stack:<br>
-        Python 3.11 &nbsp;&middot;&nbsp; PyTorch &nbsp;&middot;&nbsp; HuggingFace Transformers (SegFormer)<br>
-        Raster-to-Graph (Hu et al., 2024) &nbsp;&middot;&nbsp; OpenCV &nbsp;&middot;&nbsp; Shapely &nbsp;&middot;&nbsp; pytest &nbsp;&middot;&nbsp; ruff<br>
+    <section class="proj-hero">
+      <p class="eyebrow">AI &middot; Computer Vision</p>
+      <h1 class="proj-hero__title">Neural Floorplan</h1>
+      <p class="proj-hero__summary">
+        A deep-learning pipeline that converts raster floorplans into editable, CAD-like vector geometry,
+        combining SegFormer semantic segmentation with graph-based wall-topology inference.
       </p>
-    </div>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Semantic segmentation &middot; Graph prediction &middot; CAD automation</p>
+        </div>
+        <div>
+          <h2>Stack</h2>
+          <p class="val">Python 3.11 &middot; PyTorch &middot; HuggingFace SegFormer &middot; Raster-to-Graph &middot; OpenCV &middot; Shapely</p>
+        </div>
+        <div>
+          <h2>Code</h2>
+          <p class="val"><a href="https://github.com/daegeun-kim/neural_floorplan" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&#8599;</span></a></p>
+        </div>
+      </div>
+    </section>
 
     <!-- ── 1. Overview ────────────────────────────────────────── -->
     <p class="section-title">Overview</p>
     <div class="text">
       Architectural drawings exist in two fundamentally different forms. Vector formats
-      (DWG, SVG, IFC) encode walls, doors, and rooms as typed geometry&mdash;queryable,
+      (DWG, SVG, IFC) encode walls, doors, and rooms as typed geometry, queryable,
       editable, machine-readable. Raster formats (scanned blueprints, photo-captured sketches,
       rendered PNGs) are just pixels, stripped of semantic identity. The raster form is far
       more common in practice: older documents were never digitized properly, architects sketch
@@ -59,7 +76,7 @@
       exported as <code>final_vector.svg</code> and <code>final_vector.json</code>.
     </div>
     <div class="text" style="margin-top:16px;">
-      The hard problem is not pixel classification&mdash;it is spatial reconstruction.
+      The hard problem is not pixel classification, it is spatial reconstruction.
       Recovering wall topology (which wall segments connect at which junctions), hosting doors
       and windows on the right wall segments, and generating clean geometry from noisy pixel
       evidence turned out to be the real bottleneck. The current pipeline addresses this by
@@ -71,7 +88,7 @@
     <!-- ── 2. Input Data ──────────────────────────────────────── -->
     <p class="section-title">Input Data</p>
 
-    <p class="subsection-title">Dataset &mdash; CubiCasa5K</p>
+    <p class="subsection-title">Dataset, CubiCasa5K</p>
     <div class="text">
       The primary dataset is
       <a href="https://github.com/cubicasa/cubicasa5k" target="_blank" style="color:#0051ff;">CubiCasa5K</a>,
@@ -100,11 +117,11 @@
 
     <div class="image-2col" style="margin-top:24px;">
       <div class="img-card">
-        <img src="work13/data_F1_scaled.png?v=20260629" alt="Original raster floorplan from CubiCasa5K" style="object-fit:contain; height:auto;">
+        <img src="neural-floorplan/data_F1_scaled.png?v=20260725" alt="Original raster floorplan from CubiCasa5K" style="object-fit:contain; height:auto;">
         <span class="img-label">Original raster (CubiCasa5K)</span>
       </div>
       <div class="img-card">
-        <img src="work13/data_model_clean.png?v=20260629" alt="SVG-rendered clean raster" style="object-fit:contain; height:auto;">
+        <img src="neural-floorplan/data_model_clean.png?v=20260725" alt="SVG-rendered clean raster" style="object-fit:contain; height:auto;">
         <span class="img-label">SVG-rendered clean raster (model_clean.png?v=20260629)</span>
       </div>
     </div>
@@ -118,7 +135,7 @@
 
     <div class="strategy-grid" style="margin-top:24px;">
       <div class="strategy-card">
-        <div class="strategy-card-title">SegFormer &mdash; Semantic Evidence</div>
+        <div class="strategy-card-title">SegFormer, Semantic Evidence</div>
         <div class="strategy-card-body">
           A 7-class segmentation model trained on CubiCasa5K. It identifies what each pixel
           represents: wall, floor, background, and three door sub-classes (arc, leaf, origin)
@@ -128,23 +145,23 @@
         </div>
         <div class="strategy-card-img">
           <div class="strategy-card-img-frame">
-            <img src="work13/segformer_semantic_evidence.png?v=20260629" alt="SegFormer 7-class segmentation output">
+            <img src="neural-floorplan/segformer_semantic_evidence.png?v=20260725" alt="SegFormer 7-class segmentation output">
           </div>
           <span class="img-label" style="margin-top:6px; display:block;">7-class semantic prediction</span>
         </div>
       </div>
       <div class="strategy-card">
-        <div class="strategy-card-title">Raster-to-Graph &mdash; Wall Topology</div>
+        <div class="strategy-card-title">Raster-to-Graph, Wall Topology</div>
         <div class="strategy-card-body">
           A pretrained autoregressive graph-prediction model. Given the clean rasterized
           floorplan as input, it predicts wall junction nodes and orthogonal wall segment
-          edges directly&mdash;without requiring hand-written rules for detecting wall lines
+          edges directly, without requiring hand-written rules for detecting wall lines
           or junctions from pixels.<br><br>
           <b>Output:</b> wall graph nodes and edges on the same canvas
         </div>
         <div class="strategy-card-img">
           <div class="strategy-card-img-frame">
-            <img src="work13/raster2graph_wall_topology.png?v=20260629" alt="Raster-to-Graph wall graph prediction">
+            <img src="neural-floorplan/raster2graph_wall_topology.png?v=20260725" alt="Raster-to-Graph wall graph prediction">
           </div>
           <span class="img-label" style="margin-top:6px; display:block;">Wall graph overlay</span>
         </div>
@@ -161,7 +178,7 @@
 
     <p class="subsection-title">Full pipeline</p>
     <div style="margin:16px 0 20px 0; text-align:center;">
-      <img src="work13/full_pipeline_flowchart.svg?v=20260629" alt="Full pipeline flowchart" style="max-width:800px; width:100%; height:auto; display:inline-block;">
+      <img src="neural-floorplan/full_pipeline_flowchart.svg?v=20260725" alt="Full pipeline flowchart" style="max-width:800px; width:100%; height:auto; display:inline-block;">
     </div>
     <ol class="pipeline-list">
       <li>
@@ -227,24 +244,24 @@
 
     <div class="image-3col-compare" style="margin-top:20px;">
       <div class="img-card">
-        <img src="work13/5-class_mask.png?v=20260629" alt="5-class segmentation mask">
+        <img src="neural-floorplan/5-class_mask.png?v=20260725" alt="5-class segmentation mask">
         <span class="img-label">5-class mask (background, wall, opening, room, icon)</span>
       </div>
       <div class="img-card">
-        <img src="work13/7-class_mask.png?v=20260629" alt="7-class segmentation mask">
-        <span class="img-label">7-class mask (current &mdash; run3)</span>
+        <img src="neural-floorplan/7-class_mask.png?v=20260725" alt="7-class segmentation mask">
+        <span class="img-label">7-class mask (current, run3)</span>
       </div>
       <div style="background:#fff; display:flex; align-items:center; padding:16px 18px;">
         <div style="text-align:left;">
           <div style="font-size:clamp(8px,1.1vw,11px); color:#aaa; font-weight:bold; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:10px;">7 classes and their role</div>
           <div style="font-size:clamp(8px,1.15vw,11px); color:#555; line-height:1.9; font-family:'Courier New',monospace;">
-            0 &mdash; background &nbsp;&nbsp; context<br>
-            1 &mdash; floor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; separates from wall<br>
-            2 &mdash; wall &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pixel evidence<br>
-            3 &mdash; <span style="color:#2563EB;">window</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; opening, no swing<br>
-            4 &mdash; <span style="color:#DC2626;">door_arc</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swing, scale cue<br>
-            5 &mdash; <span style="color:#EA580C;">door_leaf</span> &nbsp;&nbsp;&nbsp;&nbsp; open panel, hinge<br>
-            6 &mdash; <span style="color:#7C3AED;">door_origin</span> &nbsp; hinge/threshold
+            0, background &nbsp;&nbsp; context<br>
+            1, floor &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; separates from wall<br>
+            2, wall &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pixel evidence<br>
+            3, <span style="color:#2563EB;">window</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; opening, no swing<br>
+            4, <span style="color:#DC2626;">door_arc</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swing, scale cue<br>
+            5, <span style="color:#EA580C;">door_leaf</span> &nbsp;&nbsp;&nbsp;&nbsp; open panel, hinge<br>
+            6, <span style="color:#7C3AED;">door_origin</span> &nbsp; hinge/threshold
           </div>
         </div>
       </div>
@@ -259,48 +276,48 @@
 
     <div class="arch-box" style="margin-top:20px;">
       <b>Augmentation pipeline</b>
-      horizontal flip (50&nbsp;% prob) &nbsp;&mdash; floor plans are equally valid mirrored<br>
-      vertical flip (50&nbsp;% prob) &nbsp;&nbsp;&nbsp;&mdash; same rationale<br>
-      90&deg; rotation (k &isin; {0,1,2,3}) &mdash; plans at any cardinal orientation<br>
-      translation &plusmn;10&nbsp;px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&mdash; imprecise scan simulation<br>
-      Gaussian blur r &isin; [0.3, 1.0] &mdash; scan softness, low-resolution input<br>
-      brightness &times; [0.85, 1.15] &nbsp;&nbsp;&nbsp;&mdash; exposure variation
+      horizontal flip (50&nbsp;% prob) &nbsp;,  floor plans are equally valid mirrored<br>
+      vertical flip (50&nbsp;% prob) &nbsp;&nbsp;&nbsp;,  same rationale<br>
+      90&deg; rotation (k &isin; {0,1,2,3}), plans at any cardinal orientation<br>
+      translation &plusmn;10&nbsp;px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;,  imprecise scan simulation<br>
+      Gaussian blur r &isin; [0.3, 1.0], scan softness, low-resolution input<br>
+      brightness &times; [0.85, 1.15] &nbsp;&nbsp;&nbsp;,  exposure variation
     </div>
 
     <div class="image-6strip" style="margin-top:16px;">
       <div class="img-card">
-        <img src="work13/aug_original.png?v=20260629" alt="Original">
+        <img src="neural-floorplan/aug_original.png?v=20260725" alt="Original">
         <span class="img-label">Original</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_flip_h.png?v=20260629" alt="Horizontal flip">
+        <img src="neural-floorplan/aug_flip_h.png?v=20260725" alt="Horizontal flip">
         <span class="img-label">H-flip</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_flip_v.png?v=20260629" alt="Vertical flip">
+        <img src="neural-floorplan/aug_flip_v.png?v=20260725" alt="Vertical flip">
         <span class="img-label">V-flip</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_rotate90.png?v=20260629" alt="90 degree rotation">
+        <img src="neural-floorplan/aug_rotate90.png?v=20260725" alt="90 degree rotation">
         <span class="img-label">Rotate 90&deg;</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_blur.png?v=20260629" alt="Gaussian blur">
+        <img src="neural-floorplan/aug_blur.png?v=20260725" alt="Gaussian blur">
         <span class="img-label">Blur</span>
       </div>
       <div class="img-card">
-        <img src="work13/aug_brightness.png?v=20260629" alt="Brightness">
+        <img src="neural-floorplan/aug_brightness.png?v=20260725" alt="Brightness">
         <span class="img-label">Brightness</span>
       </div>
     </div>
 
-    <p class="subsection-title">Model architecture &mdash; SegFormer-B0 + FloorplanDecoder</p>
+    <p class="subsection-title">Model architecture, SegFormer-B0 + FloorplanDecoder</p>
     <div class="text">
       <a href="https://huggingface.co/docs/transformers/model_doc/segformer" target="_blank" style="color:#0051ff;">SegFormer-B0</a>
       (<code>nvidia/mit-b0</code>) is used as a frozen backbone. Its hierarchical Mix
       Transformer encoder produces multi-scale feature maps at 1/4, 1/8, 1/16, and 1/32
       of the input. Because the backbone is frozen, features are extracted once per image
-      and cached to disk&mdash;training runs only the custom decoder head.
+      and cached to disk, training runs only the custom decoder head.
     </div>
     <div class="text" style="margin-top:12px;">
       A custom <b>FloorplanDecoder</b> fuses the four feature maps, refines with two
@@ -326,7 +343,7 @@
       <tbody>
         <tr><td>Variant</td><td>SegFormer-B0 (<code>nvidia/mit-b0</code>), frozen backbone</td></tr>
         <tr><td>Input size</td><td>512 &times; 512 px</td></tr>
-        <tr><td>Classes</td><td>7 &mdash; background, floor, wall, window, door_arc, door_leaf, door_origin</td></tr>
+        <tr><td>Classes</td><td>7, background, floor, wall, window, door_arc, door_leaf, door_origin</td></tr>
         <tr><td>Loss</td><td>CrossEntropy</td></tr>
         <tr><td>Optimizer</td><td>AdamW &nbsp;&middot;&nbsp; lr = 6&times;10<sup>&minus;5</sup> &nbsp;&middot;&nbsp; weight decay 0.01</td></tr>
         <tr><td>Schedule</td><td>CosineAnnealingLR &middot; 50 epochs &middot; batch 4</td></tr>
@@ -335,48 +352,48 @@
       </tbody>
     </table>
 
-    <p class="subsection-title">Segmentation training results &mdash; 7-class (run3, epoch 50)</p>
+    <p class="subsection-title">Segmentation training results, 7-class (run3, epoch 50)</p>
     <div class="text">
       Preview images from run3 epoch 50. Each row: input raster, ground-truth target, 7-class prediction, overlay.
     </div>
     <div class="result-row">
-      <div class="result-row-label">Sample A &mdash; run3 epoch 50, 7-class</div>
+      <div class="result-row-label">Sample A, run3 epoch 50, 7-class</div>
       <div class="image-4col">
         <div class="img-card">
-          <img src="work13/run3_000_input.png?v=20260629" alt="Input">
+          <img src="neural-floorplan/run3_000_input.png?v=20260725" alt="Input">
           <span class="img-label">Input</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_000_target.png?v=20260629" alt="Ground truth target">
+          <img src="neural-floorplan/run3_000_target.png?v=20260725" alt="Ground truth target">
           <span class="img-label">Target</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_000_prediction.png?v=20260629" alt="7-class prediction">
+          <img src="neural-floorplan/run3_000_prediction.png?v=20260725" alt="7-class prediction">
           <span class="img-label">Prediction</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_000_overlay.png?v=20260629" alt="Overlay">
+          <img src="neural-floorplan/run3_000_overlay.png?v=20260725" alt="Overlay">
           <span class="img-label">Overlay</span>
         </div>
       </div>
     </div>
     <div class="result-row">
-      <div class="result-row-label">Sample B &mdash; run3 epoch 50, 7-class</div>
+      <div class="result-row-label">Sample B, run3 epoch 50, 7-class</div>
       <div class="image-4col">
         <div class="img-card">
-          <img src="work13/run3_001_input.png?v=20260629" alt="Input">
+          <img src="neural-floorplan/run3_001_input.png?v=20260725" alt="Input">
           <span class="img-label">Input</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_001_target.png?v=20260629" alt="Ground truth target">
+          <img src="neural-floorplan/run3_001_target.png?v=20260725" alt="Ground truth target">
           <span class="img-label">Target</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_001_prediction.png?v=20260629" alt="7-class prediction">
+          <img src="neural-floorplan/run3_001_prediction.png?v=20260725" alt="7-class prediction">
           <span class="img-label">Prediction</span>
         </div>
         <div class="img-card">
-          <img src="work13/run3_001_overlay.png?v=20260629" alt="Overlay">
+          <img src="neural-floorplan/run3_001_overlay.png?v=20260725" alt="Overlay">
           <span class="img-label">Overlay</span>
         </div>
       </div>
@@ -400,7 +417,7 @@
       preprocessing and inference settings to improve graph production rate on CubiCasa renders.
     </div>
 
-    <p class="subsection-title">Preprocessing &mdash; crop512_margin20_truepad</p>
+    <p class="subsection-title">Preprocessing, crop512_margin20_truepad</p>
     <div class="arch-box">
       <b>Input preparation</b>
       detect dark content bounding box in <code>model_clean.png</code><br>
@@ -465,13 +482,13 @@
     <div class="primitive-intro-grid" style="margin-top:24px;">
       <div class="primitive-pair-cell">
         <div class="primitive-pair-img">
-          <img src="work13/door_window_primitives.svg?v=20260629" alt="Door and window primitive diagram">
+          <img src="neural-floorplan/door_window_primitives.svg?v=20260725" alt="Door and window primitive diagram">
         </div>
         <span class="img-label" style="display:block; margin-top:6px;">Door and window semantic primitives</span>
       </div>
       <div class="primitive-pair-cell">
         <div class="primitive-pair-img">
-          <img src="work13/semantic_debug_overlay_openings.png?v=20260629" alt="Debug overlay showing door and window primitives in context">
+          <img src="neural-floorplan/semantic_debug_overlay_openings.png?v=20260725" alt="Debug overlay showing door and window primitives in context">
         </div>
         <span class="img-label" style="display:block; margin-top:6px;">Pipeline debug overlay (same primitives in context)</span>
       </div>
@@ -479,10 +496,10 @@
 
     <div class="text" style="margin-top:8px;">
       The four color-coded classes used in vectorization:
-      <b style="color:#DC2626;">door_arc (red)</b>&mdash;the swing arc of an open door, used for scale inference and swing-side detection;&nbsp;
-      <b style="color:#EA580C;">door_leaf (orange)</b>&mdash;the open door panel, used to identify the hinge endpoint;&nbsp;
-      <b style="color:#7C3AED;">door_origin (purple)</b>&mdash;the threshold/hinge edge where the door attaches to the wall;&nbsp;
-      <b style="color:#2563EB;">window (blue)</b>&mdash;a wall opening with no swing geometry.
+      <b style="color:#DC2626;">door_arc (red)</b>, the swing arc of an open door, used for scale inference and swing-side detection;&nbsp;
+      <b style="color:#EA580C;">door_leaf (orange)</b>, the open door panel, used to identify the hinge endpoint;&nbsp;
+      <b style="color:#7C3AED;">door_origin (purple)</b>, the threshold/hinge edge where the door attaches to the wall;&nbsp;
+      <b style="color:#2563EB;">window (blue)</b>, a wall opening with no swing geometry.
     </div>
 
     <!-- Graph Alignment -->
@@ -499,7 +516,7 @@
         </div>
       </div>
       <div class="subsection-img">
-        <img src="work13/graph_alignment_example.png?v=20260629" alt="Orthogonally aligned wall graph">
+        <img src="neural-floorplan/graph_alignment_example.png?v=20260725" alt="Orthogonally aligned wall graph">
         <span class="img-label">Orthogonally aligned graph</span>
       </div>
     </div>
@@ -514,7 +531,7 @@
           windows). A strict constraint applies: <b>both endpoints of one opening must attach
           to the same wall segment</b>. If they were allowed to snap to two different,
           disconnected wall fragments, the opening would jump across parts of the plan that are
-          not physically adjacent&mdash;producing spatially incorrect geometry.
+          not physically adjacent, producing spatially incorrect geometry.
         </div>
         <div class="text" style="margin-top:10px;">
           Door swing direction is inferred by counting red door_arc pixels on each signed side
@@ -522,7 +539,7 @@
         </div>
       </div>
       <div class="subsection-img">
-        <img src="work13/opening_hosting_same_edge_example.png?v=20260629" alt="Opening hosting debug overlay">
+        <img src="neural-floorplan/opening_hosting_same_edge_example.png?v=20260725" alt="Opening hosting debug overlay">
         <span class="img-label">Door/window hosting debug overlay</span>
       </div>
     </div>
@@ -535,7 +552,7 @@
           After hosting, opening intervals are inserted into the wall graph and the centerline
           segment inside each gap is removed. The remaining wall centerline segments are then
           connected into continuous chains. Buffering runs on the connected chain system rather
-          than on individual segments&mdash;this ensures corners and T-junctions render as clean
+          than on individual segments, this ensures corners and T-junctions render as clean
           joins rather than overlapping capped rectangles. Wall thickness targets 200&nbsp;mm when
           scale is resolved from door evidence.
         </div>
@@ -544,7 +561,7 @@
         </div>
       </div>
       <div class="subsection-img">
-        <img src="work13/wall_trimming_buffering_example.png?v=20260629" alt="Final vector output showing buffered walls">
+        <img src="neural-floorplan/wall_trimming_buffering_example.png?v=20260725" alt="Final vector output showing buffered walls">
         <span class="img-label">Final vector output</span>
       </div>
     </div>
@@ -557,112 +574,112 @@
     </div>
 
     <!-- Sample 01 -->
-    <p class="subsection-title">Sample 01 &mdash; simple plan, best current result</p>
+    <p class="subsection-title">Sample 01, simple plan, best current result</p>
     <div class="process-grid">
       <div class="img-card">
-        <img src="work13/sample_1316_01_original_or_image.png?v=20260629" alt="Original floorplan">
+        <img src="neural-floorplan/sample_1316_01_original_or_image.png?v=20260725" alt="Original floorplan">
         <span class="img-label">Original</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_02_preprocessed_input.png?v=20260629" alt="Preprocessed 512px input">
+        <img src="neural-floorplan/sample_1316_02_preprocessed_input.png?v=20260725" alt="Preprocessed 512px input">
         <span class="img-label">Preprocessed input</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_03_7class_segmentation.png?v=20260629" alt="7-class segmentation">
+        <img src="neural-floorplan/sample_1316_03_7class_segmentation.png?v=20260725" alt="7-class segmentation">
         <span class="img-label">7-class segmentation</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_04_graph_pred.svg?v=20260629" alt="Raster-to-Graph wall graph">
+        <img src="neural-floorplan/sample_1316_04_graph_pred.svg?v=20260725" alt="Raster-to-Graph wall graph">
         <span class="img-label">Wall graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_05_graph_overlay.png?v=20260629" alt="Graph overlay on input">
+        <img src="neural-floorplan/sample_1316_05_graph_overlay.png?v=20260725" alt="Graph overlay on input">
         <span class="img-label">Graph overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_06_graph_overlay_orthogonal.png?v=20260629" alt="Orthogonally aligned graph">
+        <img src="neural-floorplan/sample_1316_06_graph_overlay_orthogonal.png?v=20260725" alt="Orthogonally aligned graph">
         <span class="img-label">Aligned graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_07_debug_overlay.png?v=20260629" alt="Debug overlay">
+        <img src="neural-floorplan/sample_1316_07_debug_overlay.png?v=20260725" alt="Debug overlay">
         <span class="img-label">Debug overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_1316_08_final_vector.svg?v=20260629" alt="Final vector output">
+        <img src="neural-floorplan/sample_1316_08_final_vector.svg?v=20260725" alt="Final vector output">
         <span class="img-label">Final vector</span>
       </div>
     </div>
 
     <!-- Sample 02 -->
-    <p class="subsection-title">Sample 02 &mdash; more complex plan</p>
+    <p class="subsection-title">Sample 02, more complex plan</p>
     <div class="process-grid">
       <div class="img-card">
-        <img src="work13/sample_10026_01_original_or_image.png?v=20260629" alt="Original floorplan">
+        <img src="neural-floorplan/sample_10026_01_original_or_image.png?v=20260725" alt="Original floorplan">
         <span class="img-label">Original</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_02_preprocessed_input.png?v=20260629" alt="Preprocessed 512px input">
+        <img src="neural-floorplan/sample_10026_02_preprocessed_input.png?v=20260725" alt="Preprocessed 512px input">
         <span class="img-label">Preprocessed input</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_03_7class_segmentation.png?v=20260629" alt="7-class segmentation">
+        <img src="neural-floorplan/sample_10026_03_7class_segmentation.png?v=20260725" alt="7-class segmentation">
         <span class="img-label">7-class segmentation</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_04_graph_pred.svg?v=20260629" alt="Raster-to-Graph wall graph">
+        <img src="neural-floorplan/sample_10026_04_graph_pred.svg?v=20260725" alt="Raster-to-Graph wall graph">
         <span class="img-label">Wall graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_05_graph_overlay.png?v=20260629" alt="Graph overlay on input">
+        <img src="neural-floorplan/sample_10026_05_graph_overlay.png?v=20260725" alt="Graph overlay on input">
         <span class="img-label">Graph overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_06_graph_overlay_orthogonal.png?v=20260629" alt="Orthogonally aligned graph">
+        <img src="neural-floorplan/sample_10026_06_graph_overlay_orthogonal.png?v=20260725" alt="Orthogonally aligned graph">
         <span class="img-label">Aligned graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_07_debug_overlay.png?v=20260629" alt="Debug overlay">
+        <img src="neural-floorplan/sample_10026_07_debug_overlay.png?v=20260725" alt="Debug overlay">
         <span class="img-label">Debug overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10026_08_final_vector.svg?v=20260629" alt="Final vector output">
+        <img src="neural-floorplan/sample_10026_08_final_vector.svg?v=20260725" alt="Final vector output">
         <span class="img-label">Final vector</span>
       </div>
     </div>
 
     <!-- Sample 03 -->
-    <p class="subsection-title">Sample 03 &mdash; more complex plan</p>
+    <p class="subsection-title">Sample 03, more complex plan</p>
     <div class="process-grid">
       <div class="img-card">
-        <img src="work13/sample_10029_01_original_or_image.png?v=20260629" alt="Original floorplan">
+        <img src="neural-floorplan/sample_10029_01_original_or_image.png?v=20260725" alt="Original floorplan">
         <span class="img-label">Original</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_02_preprocessed_input.png?v=20260629" alt="Preprocessed 512px input">
+        <img src="neural-floorplan/sample_10029_02_preprocessed_input.png?v=20260725" alt="Preprocessed 512px input">
         <span class="img-label">Preprocessed input</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_03_7class_segmentation.png?v=20260629" alt="7-class segmentation">
+        <img src="neural-floorplan/sample_10029_03_7class_segmentation.png?v=20260725" alt="7-class segmentation">
         <span class="img-label">7-class segmentation</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_04_graph_pred.svg?v=20260629" alt="Raster-to-Graph wall graph">
+        <img src="neural-floorplan/sample_10029_04_graph_pred.svg?v=20260725" alt="Raster-to-Graph wall graph">
         <span class="img-label">Wall graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_05_graph_overlay.png?v=20260629" alt="Graph overlay on input">
+        <img src="neural-floorplan/sample_10029_05_graph_overlay.png?v=20260725" alt="Graph overlay on input">
         <span class="img-label">Graph overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_06_graph_overlay_orthogonal.png?v=20260629" alt="Orthogonally aligned graph">
+        <img src="neural-floorplan/sample_10029_06_graph_overlay_orthogonal.png?v=20260725" alt="Orthogonally aligned graph">
         <span class="img-label">Aligned graph</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_07_debug_overlay.png?v=20260629" alt="Debug overlay">
+        <img src="neural-floorplan/sample_10029_07_debug_overlay.png?v=20260725" alt="Debug overlay">
         <span class="img-label">Debug overlay</span>
       </div>
       <div class="img-card">
-        <img src="work13/sample_10029_08_final_vector.svg?v=20260629" alt="Final vector output">
+        <img src="neural-floorplan/sample_10029_08_final_vector.svg?v=20260725" alt="Final vector output">
         <span class="img-label">Final vector</span>
       </div>
     </div>
@@ -686,7 +703,7 @@
           <b>Failed:</b> opening type was indistinguishable; vector accuracy was extremely low.
         </div>
         <div class="img-card">
-          <img src="work13/phase1_output.svg?v=20260629" alt="Phase 1 output">
+          <img src="neural-floorplan/phase1_output.svg?v=20260725" alt="Phase 1 output">
           <span class="img-label">Phase 1 output</span>
         </div>
       </div>
@@ -701,7 +718,7 @@
           conversion remained unstable.
         </div>
         <div class="img-card">
-          <img src="work13/phase2_output.svg?v=20260629" alt="Phase 2 output">
+          <img src="neural-floorplan/phase2_output.svg?v=20260725" alt="Phase 2 output">
           <span class="img-label">Phase 2 output</span>
         </div>
       </div>
@@ -716,7 +733,7 @@
           caused graph construction to collapse.
         </div>
         <div class="img-card">
-          <img src="work13/phase3_output.svg?v=20260629" alt="Phase 3 output">
+          <img src="neural-floorplan/phase3_output.svg?v=20260725" alt="Phase 3 output">
           <span class="img-label">Phase 3 output</span>
         </div>
       </div>
@@ -724,10 +741,10 @@
 
     <!-- Phase 4 full-width -->
     <div class="phase-block-current">
-      <p class="subsection-title" style="margin-top:0;">Phase 4 &mdash; Hybrid Graph + Semantic Vectorization <span class="status-badge status-done">Current</span></p>
+      <p class="subsection-title" style="margin-top:0;">Phase 4, Hybrid Graph + Semantic Vectorization <span class="status-badge status-done">Current</span></p>
       <div class="text">
         Phase&nbsp;4 replaces hand-written keypoint detection with a pretrained graph-prediction
-        model. Raster-to-Graph predicts wall topology directly&mdash;nodes are wall endpoints and
+        model. Raster-to-Graph predicts wall topology directly, nodes are wall endpoints and
         junctions, edges are orthogonal wall segments. The 7-class segmentation runs in parallel
         on the same preprocessed canvas. Opening points are snapped onto the predicted wall graph
         edges, wall intervals are trimmed at each hosted opening, and the connected wall chains
@@ -770,7 +787,7 @@
       <tbody>
         <tr><td>Language</td><td>Python 3.11</td></tr>
         <tr><td>Deep learning</td><td>PyTorch (mixed-precision via <code>torch.amp</code>)</td></tr>
-        <tr><td>Segmentation</td><td>HuggingFace Transformers &mdash; SegFormer-B0 (<code>nvidia/mit-b0</code>)</td></tr>
+        <tr><td>Segmentation</td><td>HuggingFace Transformers, SegFormer-B0 (<code>nvidia/mit-b0</code>)</td></tr>
         <tr><td>Wall graph</td><td>Raster-to-Graph pretrained checkpoint (Hu et al., 2024)</td></tr>
         <tr><td>Raster processing</td><td>OpenCV, Pillow</td></tr>
         <tr><td>Vector geometry</td><td>Shapely (chains, buffering, topology)</td></tr>
@@ -811,8 +828,15 @@
       </li>
     </ol>
 
-    <div class="footer">________________________________<br>Neural Floorplan &mdash; Hybrid Vectorization<br>&copy; Daegeun Kim</div>
   </main>
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Neural Floorplan</p>
+      <p class="subpage-footer__sub">Hybrid vectorization of raster floorplans. &copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="index.html"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
 
   <!-- ============================================================ -->
   <!-- FloorplanDecoder diagram (7 classes)                         -->
@@ -887,6 +911,6 @@
   })();
   </script>
 
-  <script src="main.js"></script>
+  <script src="shared/site.js?v=20260724"></script>
 </body>
 </html>

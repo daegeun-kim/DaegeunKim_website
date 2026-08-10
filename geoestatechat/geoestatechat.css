@@ -1,0 +1,124 @@
+/* ============================================================
+   GeoEstateChat (dark theme). Project-specific components only;
+   hero, sections, text, tech-table, and footer come from the
+   shared subpage layer (shared/site.css) with data-theme="dark".
+   All token-based.
+   ============================================================ */
+
+.subpage .sub-title {
+  font-size: var(--fs-h3);
+  font-weight: var(--w-bold);
+  color: var(--ink);
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+/* Research question callout */
+.subpage #research-question {
+  max-width: 640px;
+  margin: var(--space-6) auto;
+  font-size: var(--fs-lead);
+  color: var(--ink);
+  line-height: 1.6;
+  text-align: center;
+}
+.subpage #highlight { color: var(--accent-strong); font-weight: var(--w-semi); }
+
+/* Research cards */
+.subpage .research-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin: var(--space-3) 0 var(--space-5);
+}
+.subpage .research-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+}
+.subpage .card-num {
+  font-size: clamp(1.6rem, 1rem + 2vw, 2.2rem);
+  font-weight: var(--w-bold);
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  font-variant-numeric: tabular-nums;
+}
+.subpage .card-title { font-size: var(--fs-small); font-weight: var(--w-bold); color: var(--ink); margin-bottom: 0.6rem; }
+.subpage .card-question { font-size: var(--fs-meta); color: var(--ink-3); font-style: italic; margin-bottom: 0.85rem; line-height: 1.55; }
+.subpage .feature-bullets { font-size: var(--fs-meta); color: var(--ink-2); padding-left: 1.1rem; margin: 0; line-height: 1.7; }
+.subpage .feature-bullets li { margin-bottom: 0.35rem; }
+
+/* Comparison table */
+.subpage .comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-4) 0;
+  font-size: var(--fs-meta);
+  text-align: left;
+}
+.subpage .comparison-table th {
+  background: var(--bg-elev);
+  color: var(--ink);
+  padding: 0.6rem 0.85rem;
+  border: 1px solid var(--line);
+  font-weight: var(--w-semi);
+}
+.subpage .comparison-table td {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--line);
+  color: var(--ink-2);
+  vertical-align: top;
+}
+
+/* Data features (image + list) */
+.subpage .data { display: flex; gap: var(--space-4); width: 100%; align-items: flex-start; margin: var(--space-3) 0; }
+.subpage .data .shot { flex: 1 1 58%; }
+.subpage .data-list { flex: 1 1 42%; font-size: var(--fs-small); text-align: left; color: var(--ink-2); line-height: 1.7; }
+@media (max-width: 700px) { .subpage .data { flex-direction: column; } }
+
+/* LLM query pipeline steps */
+.subpage .pipeline-steps { display: flex; align-items: stretch; gap: 8px; margin: var(--space-4) 0; flex-wrap: wrap; }
+.subpage .pipeline-step {
+  flex: 1;
+  min-width: 110px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  text-align: center;
+}
+.subpage .pipeline-step .step-num { font-size: clamp(1.4rem, 1rem + 1.5vw, 2rem); font-weight: var(--w-bold); color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+.subpage .pipeline-step .step-label { font-size: var(--fs-small); font-weight: var(--w-semi); color: var(--ink); margin-bottom: 0.5rem; }
+.subpage .pipeline-step .step-detail { font-size: var(--fs-meta); color: var(--ink-3); line-height: 1.45; }
+.subpage .pipeline-arrow { font-size: 1.2rem; color: var(--accent); align-self: center; }
+@media (max-width: 700px) {
+  .subpage .pipeline-steps { flex-direction: column; }
+  .subpage .pipeline-arrow { transform: rotate(90deg); }
+}
+
+/* Design principles */
+.subpage .principles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin: var(--space-3) 0 var(--space-5); }
+.subpage .principle-card { background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: var(--space-4); }
+.subpage .principle-title { font-size: var(--fs-small); font-weight: var(--w-bold); color: var(--ink); margin-bottom: 0.6rem; }
+.subpage .principle-body { font-size: var(--fs-meta); color: var(--ink-2); line-height: 1.65; }
+
+@media (max-width: 700px) {
+  .subpage .research-grid, .subpage .principles-grid { grid-template-columns: 1fr; }
+}
+
+/* Transparent-background PNGs (diagrams, mode charts) should blend into
+   the dark page: no frame, no background fill. */
+.subpage .proj-media img,
+.subpage figure.shot img,
+.subpage .data .shot img {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+/* Overview diagram: 75% width, centered. */
+.subpage .diagram-figure img {
+  width: 75%;
+  margin-inline: auto;
+}

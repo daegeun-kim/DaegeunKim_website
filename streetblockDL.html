@@ -1,206 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="work8/work8.css?v=20260207" rel="stylesheet"/> 
-    <title>Daegeun Kim</title>
-    <link rel="icon" type="image/png" href="image/favicon.png?v=20260629">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Street-Block GNN Prediction</title>
+  <meta name="description" content="A graph neural network that predicts the urbanity of a street block directly from its polygon geometry, extending the street-block machine-learning study with end-to-end geometric learning.">
+  <link rel="icon" type="image/png" href="image/favicon.png?v=20260725">
+  <link href="shared/site.css?v=20260724" rel="stylesheet"/>
+  <link href="street-block-gnn-prediction/street-block-gnn-prediction.css?v=20260725" rel="stylesheet"/>
 </head>
 <body>
-    <div class="header" id="header">
-      <p id="name"><a href="index.html"><b>Daegeun Kim</b></a></p>
-      <div class="nav">
-        <a href="index.html"><button class="subpage" id="subpage1">Works</button></a>
-        <!-- <a href="https://drive.google.com/file/d/1jB4kKGi-GXmDXWhXqs5MlFViK1d8c4pj/view?usp=sharing" target="_blank">
-          <button class="subpage">Resume</button>
-        </a> -->
-        <a href="https://www.linkedin.com/in/daegeunkim/" target="_blank">
-          <button class="subpage">LinkedIn</button>
-        </a>
-        <a href="https://github.com/daegeun-kim" target="_blank">
-          <button class="subpage">Github</button>
-        </a>
-        <a href="about.html"><button class="subpage" id="subpage1">About</button></a>
-      </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="index.html">Work</a></li>
+          <li><a class="nav-link" href="about.html">About</a></li>
+          <li><a class="nav-link" href="about.html#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
     </div>
-  <main>
-    <div class="main-image"></div>
-    <div class="intro">
-      <span class="title">Street-Block GNN Prediction</span><br>
-      <a href="https://github.com/daegeun-kim/street_block_DL" target="_blank">
-        <p id="github">Github<br></p>
-      </a>
-      <p>
-        Graph Neural Network<br>
-        Geometric Deep Learning<br>
-        Geospatial Data Science<br>
-        <br>
-        Tools:<br>
-        Python + Pytorch<br>
-        PostgreSQL Database<br>
-        QGIS<br>
-        <br>
+  </header>
+
+  <main id="main" class="subpage">
+    <figure class="proj-media">
+      <img src="street-block-gnn-prediction/title.png?v=20260725" alt="Graph neural network prediction over street-block geometry." loading="eager" decoding="async">
+    </figure>
+
+    <section class="proj-hero">
+      <p class="eyebrow">GNN &middot; Geospatial</p>
+      <h1 class="proj-hero__title">Street-Block GNN Prediction</h1>
+      <p class="proj-hero__summary">
+        A graph neural network that predicts the urbanity of a street block directly from its polygon
+        geometry, extending the street-block machine-learning study with end-to-end geometric learning.
       </p>
-    </div>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Graph neural network &middot; Geometric deep learning &middot; Geospatial data science</p>
+        </div>
+        <div>
+          <h2>Tools</h2>
+          <p class="val">Python + PyTorch Geometric &middot; PostgreSQL / PostGIS &middot; QGIS</p>
+        </div>
+        <div>
+          <h2>Code</h2>
+          <p class="val"><a href="https://github.com/daegeun-kim/street_block_DL" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&#8599;</span></a></p>
+        </div>
+      </div>
+    </section>
 
     <p class="section-title">Abstract</p>
     <div class="text">
-      This project extends the Street-Block Machine Learning study under the same fundamental premise: 
-      how much urban structure can be inferred solely from street-block geometry, independent of 
-      socioeconomic or land-use data. Using street-block data from the United States Census Bureau, 
-      the study focuses on the top 10 U.S. metropolitan areas by GDP, ensuring both economic relevance 
-      and geometric diversity. The ground-truth label is the UR20 attribute from census street-block data, 
-      framing the task as a binary classification problem (urban vs. rural). While the previous ML approach 
-      relied on four handcrafted geometric features—area, isoperimetric quotient, rectangularity, 
-      and solidity—this project asks a more fundamental question: can a model learn urbanity directly 
-      from geometry itself? Street blocks are therefore represented as graphs derived from polygon 
-      topology and geometry, and a Graph Neural Network (GNN) is trained to classify urban versus 
-      rural blocks based purely on learned geometric representations. By replacing feature engineering 
-      with end-to-end geometric learning, the project evaluates the expressive limits of deep learning 
-      for urban form inference and clarifies what information is intrinsically embedded in street-block geometry alone.
+      This project extends the Street-Block Machine Learning study under the same premise: how much urban
+      structure can be inferred solely from street-block geometry, independent of socioeconomic or land-use
+      data. Using street-block data from the United States Census Bureau, the study focuses on the top ten
+      U.S. metropolitan areas by GDP. The ground-truth label is the UR20 attribute, framing the task as a
+      binary classification (urban vs. rural). Where the previous approach relied on four handcrafted
+      geometric features (area, isoperimetric quotient, rectangularity, and solidity), this project asks a
+      more fundamental question: can a model learn urbanity directly from geometry itself? Street blocks are
+      represented as graphs derived from polygon topology, and a Graph Neural Network is trained to classify
+      urban versus rural blocks from purely learned geometric representations.
     </div>
-    <div class="streetblock-container">
-      <div class="streetblock"></div>
-      <div class="streetblock"></div>
-      <div class="streetblock"></div>
-      <div class="streetblock"></div>
-      <div class="streetblock"></div>
-      <div class="streetblock"></div>
+    <div class="sb-grid-3">
+      <img src="street-block-gnn-prediction/streetblock1.png?v=20260725" alt="Sample street block 1" loading="lazy">
+      <img src="street-block-gnn-prediction/streetblock2.png?v=20260725" alt="Sample street block 2" loading="lazy">
+      <img src="street-block-gnn-prediction/streetblock3.png?v=20260725" alt="Sample street block 3" loading="lazy">
+      <img src="street-block-gnn-prediction/streetblock4.png?v=20260725" alt="Sample street block 4" loading="lazy">
+      <img src="street-block-gnn-prediction/streetblock5.png?v=20260725" alt="Sample street block 5" loading="lazy">
+      <img src="street-block-gnn-prediction/streetblock6.png?v=20260725" alt="Sample street block 6" loading="lazy">
     </div>
-    <p class="section-title">Data Sources</p>
+
+    <p class="section-title">Data sources</p>
     <div class="text">
-      <span style="font-weight: bold; color: #000;">Original Data Source:</span>
-      United States Census Bureau<br>
-      <span style="font-weight: bold; color: #000;">Study Scope:</span>
-      Top 10 U.S. Metropolitan Areas by GDP<br>
-      <a href="https://www2.census.gov/geo/tiger/TIGER2025/TABBLOCK20/" target="_blank" style="color: #000; text-decoration: none;">
-      https://www2.census.gov/geo/tiger/TIGER2025/TABBLOCK20/<br></a>
-      <span style="font-weight: bold; color: #000;">Spatial Extent:</span>
-      Blocks within a 30-mile radius from each city center
+      <b>Original data source:</b> United States Census Bureau<br>
+      <b>Study scope:</b> top ten U.S. metropolitan areas by GDP<br>
+      <b>Spatial extent:</b> blocks within a 30-mile radius of each city center<br>
+      <a href="https://www2.census.gov/geo/tiger/TIGER2025/TABBLOCK20/" target="_blank" rel="noopener noreferrer">census.gov TIGER 2025 tabblock20</a>
     </div>
 
     <p class="section-title">Workflow</p>
     <div class="text">
-      <span style="font-weight: bold; color: #000;">QGIS:</span>
-      Loaded shapefiles, clipped 30-mile radius per city, calculated base geometric attributes, and exported processed layers.<br>
-      <span style="font-weight: bold; color: #000;">PostgreSQL/PostGIS:</span>
-      Stored city-wise processed street-block geometries and UR20 labels, enabling consistent querying and reproducible splits.<br>
-      <span style="font-weight: bold; color: #000;">Python + PyTorch Geometric:</span>
-      Loaded 10 cities, converted blocks into graph representations, trained a GNN on 9 cities, used Houston as a fixed (non-random) validation set, and tested generalization on a new unseen city: Philadelphia.
+      <b>QGIS:</b> shapefiles loaded, clipped to a 30-mile radius per city, base geometric attributes calculated, and processed layers exported.<br>
+      <b>PostgreSQL / PostGIS:</b> city-wise processed geometries and UR20 labels stored, enabling consistent querying and reproducible splits.<br>
+      <b>Python + PyTorch Geometric:</b> ten cities loaded, blocks converted into graph representations, a GNN trained on nine cities with Houston as a fixed validation set, and generalization tested on an unseen city, Philadelphia.
     </div>
-    <div class="workflow"></div>
-    <p class="section-title">Street Block to Graph</p>
+    <figure class="shot shot-wide">
+      <img src="street-block-gnn-prediction/train_val_test.png?v=20260725" alt="Train / validation / test split across cities." loading="lazy">
+    </figure>
+
+    <p class="section-title">Street block to graph</p>
     <div class="text">
-      Street blocks can be modeled either as rasterized images or as graphs. An image representation forces a grid-based 
-      approximation and often loses precise corner-to-corner structure, while a graph preserves the true topology of the 
-      polygon, capturing the explicit relationships between corners (nodes) and edges (connections).<br>
-      <br>
-    </div>
-    <div class="text">
-      Each street block is 
-      converted into a planar graph where polygon vertices become nodes and consecutive boundary segments become edges. 
-      Node features are stored in an N×5 matrix, where each of the N vertices contains five attributes: (x, y) coordinates, 
-      turning angle θ at the vertex, and the lengths of the two adjacent boundary edges (l1, l2).<br>
-      <br>
-      The conversion pipeline 
-      standardizes vertex ordering, removes duplicate/near-duplicate points, computes angles and edge lengths from the 
-      cleaned polygon boundary, builds the edge index from sequential vertex connectivity (including wrap-around from 
-      last to first), and outputs a graph object consisting of x ∈ ℝ^(N×5) and edge_index ∈ ℕ^(2×E) for GNN training.
-    </div>
-    <div class="graph">
-      <div class="image_vs_graph">
-        <div class="text"><br>image vs graph</div>
-      </div>
-      <div class="graphstructure">
-        <div class="text"><br>graph structure</div>
-      </div>
-    </div>
-    <p class="section-title">Neural Network Iteration</p>
-    <div class="text">
-      The deep learning model is built around a Graph Neural Network (GNN) that learns hierarchical geometric 
-      representations of street-block graphs. In Iteration 1, node embeddings are projected through a graph 
-      convolution layer into an N × 64 latent space, followed by a graph-level readout and a multilayer 
-      perceptron (MLP) with architecture 64 → 128 → 256 → 1 for binary classification. This configuration 
-      prioritizes rapid convergence and controlled model capacity to establish a stable performance baseline.<br>
-      <br>
-      In Iteration 2, model capacity is increased to test whether richer geometric abstractions improve generalization. 
-      Graph convolution layers output N × 128 node embeddings, and the downstream MLP is restructured as 128 → 128 → 128 → 128 → 1, 
-      emphasizing deeper but more uniform feature transformations. Across both iterations, the network is trained end-to-end 
-      using supervised learning with a binary classification objective, global pooling to aggregate node-level information 
-      into block-level embeddings, and consistent training protocols to isolate the impact of architectural changes. 
-      This iterative setup enables a direct comparison between compact and high-capacity graph representations 
-      and clarifies the trade-off between expressiveness and overfitting when learning urban form purely from geometry.
-    </div>
-    <div class="nn_diagram">
-      <div class="text"><br>Neural Network Model Building Process (Graph Convolutional + Neural Network)</div>
-    </div>
-    <p class="section-title">Treating Imbalanced Data</p>
-    <div class="imbalanced">
-      <div class="text"><br>Imbalanced data: by count vs by area</div>
+      Street blocks can be modeled either as rasterized images or as graphs. An image representation forces a
+      grid-based approximation and often loses precise corner-to-corner structure, while a graph preserves
+      the true topology of the polygon, capturing the explicit relationships between corners (nodes) and
+      edges (connections).
     </div>
     <div class="text">
-      The dataset exhibits a severe class imbalance: urban blocks account for approximately 98% of all street blocks, 
-      while rural blocks represent a small minority. However, when evaluated by total area rather than count, the 
-      imbalance is less extreme—urban blocks cover roughly twice the total area of rural blocks, reflecting the 
-      much larger size of rural street blocks. This discrepancy highlights that block count alone is a misleading 
-      indicator of spatial dominance.<br>
-      <br>
-      Synthetic oversampling methods such as SMOTE were intentionally not used. Street-block geometry is highly 
-      sensitive to small perturbations, and generating synthetic samples risks producing geometries that are 
-      topologically invalid or physically implausible, which would corrupt the learning signal in a graph-based model.<br>
-      <br>
-      Instead, class imbalance is addressed by imposing area-based weighting during loss computation, so that misclassification 
-      penalties are proportional to the spatial footprint of each block rather than the raw number of samples. 
-      This approach aligns the optimization objective with spatial reality, reduces bias toward over-predicting 
-      the majority urban class, and preserves the integrity of original geometries. By separating data representation 
-      from error weighting, the model maintains consistent graph inputs while correcting imbalance at the learning stage, 
-      enabling more meaningful generalization to unseen cities.<br>
+      Each street block is converted into a planar graph where polygon vertices become nodes and consecutive
+      boundary segments become edges. Node features are stored in an N&times;5 matrix, where each vertex
+      carries five attributes: (x, y) coordinates, turning angle at the vertex, and the lengths of the two
+      adjacent boundary edges. The conversion pipeline standardizes vertex ordering, removes duplicate points,
+      computes angles and edge lengths, builds the edge index from sequential connectivity (including
+      wrap-around), and outputs a graph object for training.
+    </div>
+    <div class="shot-2col">
+      <figure class="shot"><img src="street-block-gnn-prediction/data_type.png?v=20260725" alt="Image vs. graph representation of a street block." loading="lazy"><figcaption>Image vs. graph representation.</figcaption></figure>
+      <figure class="shot"><img src="street-block-gnn-prediction/graph_diagram.png?v=20260725" alt="Sample graph structure with node features." loading="lazy"><figcaption>Sample graph structure.</figcaption></figure>
     </div>
 
-    
-    <p class="section-title">Final Result and Implication</p>
-    <div class="final_pred">
-      <div class="text"><br>Final Prediction (Philadelphia street block)</div>
+    <p class="section-title">Neural network iterations</p>
+    <div class="text">
+      The model is a GNN that learns hierarchical geometric representations of street-block graphs. In
+      Iteration 1, node embeddings are projected through a graph convolution into an N&times;64 latent space,
+      followed by a graph-level readout and an MLP (64 &rarr; 128 &rarr; 256 &rarr; 1) for binary
+      classification, prioritizing rapid convergence and controlled capacity. In Iteration 2, capacity is
+      increased: convolution layers output N&times;128 embeddings, and the MLP is restructured as
+      128 &rarr; 128 &rarr; 128 &rarr; 128 &rarr; 1, emphasizing deeper but uniform transformations. Both are
+      trained end-to-end with global pooling, isolating the impact of the architectural change.
+    </div>
+    <figure class="shot shot-wide">
+      <img src="street-block-gnn-prediction/NN_diagram.png?v=20260725" alt="Graph convolutional network architecture diagram." loading="lazy">
+    </figure>
+
+    <p class="section-title">Treating imbalanced data</p>
+    <figure class="shot shot-wide">
+      <img src="street-block-gnn-prediction/imbalanced.png?v=20260725" alt="Class imbalance by count versus by area." loading="lazy">
+    </figure>
+    <div class="text">
+      The dataset is severely imbalanced: urban blocks make up roughly 98% of all street blocks by count,
+      while rural blocks are a small minority. By total area, though, the imbalance is milder, since rural
+      blocks are much larger, so block count alone is a misleading indicator of spatial dominance.
     </div>
     <div class="text">
-      The deep learning approach achieves a 94.55% accuracy, only marginally improving over the 93.74% accuracy obtained 
-      from the previous logistic regression model. A closer examination of the confusion matrices reveals where this 
-      difference originates. Logistic regression strongly favors the majority class, predicting urban blocks far more 
-      aggressively due to the overwhelming class count imbalance. This behavior results in very high urban recall but 
-      weak rural recognition, with a large number of rural blocks incorrectly classified as urban.<br>
-      <br>
+      Synthetic oversampling such as SMOTE was intentionally avoided: street-block geometry is highly
+      sensitive to small perturbations, and synthetic samples risk topologically invalid or physically
+      implausible shapes that corrupt the learning signal. Instead, imbalance is addressed with area-based
+      loss weighting, so misclassification penalties scale with each block's spatial footprint rather than
+      raw counts. This aligns the objective with spatial reality, reduces bias toward the majority urban
+      class, and preserves the original geometries.
     </div>
-    <div class="conf_matrix">
-      <div class="conf_matrix1"></div>
-      <div class="conf_matrix2"></div>
+
+    <p class="section-title">Final result and implication</p>
+    <figure class="shot shot-wide">
+      <img src="street-block-gnn-prediction/philly_pred.png?v=20260725" alt="Final GNN prediction over Philadelphia street blocks." loading="lazy">
+    </figure>
+    <div class="text">
+      The deep-learning approach reaches 94.55% accuracy, only marginally above the 93.74% of the earlier
+      logistic-regression model. The confusion matrices show where the difference lies: logistic regression
+      strongly favors the majority class, giving high urban recall but weak rural recognition, with many
+      rural blocks misclassified as urban.
+    </div>
+    <div class="image-2col image-2col-sm">
+      <div><img src="street-block-gnn-prediction/lr_confusion_matrix.png?v=20260725" alt="Logistic regression confusion matrix." loading="lazy"><p class="img-caption">Logistic regression confusion matrix.</p></div>
+      <div><img src="street-block-gnn-prediction/nn_confusion_matrix.png?v=20260725" alt="Graph neural network confusion matrix." loading="lazy"><p class="img-caption">Graph neural network confusion matrix.</p></div>
     </div>
     <div class="text">
-      The neural network demonstrates a more balanced error distribution. While overall accuracy gains are modest, 
-      the NN improves both precision and recall for the minority rural class, reducing false urban predictions and 
-      yielding a cleaner separation between urban and rural blocks. This indicates that the GNN is better at 
-      extracting subtle geometric signals that distinguish large rural blocks from dense urban fabrics, even under severe imbalance.<br>
-      <br>
+      The GNN shows a more balanced error distribution, improving precision and recall for the minority rural
+      class and yielding a cleaner separation, evidence that it extracts subtle geometric signals that
+      distinguish large rural blocks from dense urban fabric. But the gains are bounded: across 50 epochs the
+      loss and error plateau after roughly 20, with little further improvement. Street-block geometry alone
+      has a limited explanatory ceiling for urban classification; the GNN refines results within that limit
+      rather than overcoming it, and richer contextual or semantic data would be needed for larger gains.
     </div>
-    <div class="text">
-      Despite this improvement, the results also expose a clear limitation. Across 50 training epochs and 
-      architectural iterations, the loss and error plateau quickly and do not decrease substantially. (No significant 
-      error rate / loss improvement after ~20 epochs). This suggests 
-      that street-block geometry alone has a bounded explanatory power for urban classification. While the GNN is 
-      more expressive than logistic regression, it is also less efficient and more computationally expensive, 
-      delivering only incremental gains. The outcome implies that deep learning does not fundamentally overcome 
-      the information ceiling imposed by geometry-only inputs; rather, it slightly refines classification within 
-      those limits. This reinforces the conclusion that urbanity is only partially encoded in block shape, and 
-      that richer contextual or semantic data would be required for significant performance gains beyond this threshold.<br>
+    <div class="image-2col image-2col-lg">
+      <div><img src="street-block-gnn-prediction/suburbNJ.png?v=20260725" alt="Ambiguous street-block patterns in suburban New Jersey." loading="lazy"><p class="img-caption">Ambiguous patterns: suburban New Jersey.</p></div>
+      <div><img src="street-block-gnn-prediction/Bay.png?v=20260725" alt="Ambiguous street-block patterns in the Bay Area." loading="lazy"><p class="img-caption">Ambiguous patterns: Bay Area.</p></div>
     </div>
-    <div class="sample1">
-      <div class="text"><br>Ambiguous street block geometric patterns: Suburb New Jersey</div>
-    </div>
-    <div class="sample2">
-      <div class="text"><br>Ambiguous street block geometric patterns: Bay Area</div>
-    </div>
-    <div class="footer">________________________________<br>Street-Block GNN Prediction<br>&copy; Daegeun Kim</div>
   </main>
-  <script src="main.js"></script>  
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Street-Block GNN Prediction</p>
+      <p class="subpage-footer__sub">&copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="index.html"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <script src="shared/site.js?v=20260724"></script>
 </body>
 </html>
