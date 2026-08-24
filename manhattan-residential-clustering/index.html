@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manhattan Residential Clustering</title>
+  <meta name="description" content="An interactive map that classifies Manhattan's residential buildings from eleven NYC datasets, using weighted K-means to reveal socio-spatial, architectural, evolutionary, and economic clusters.">
+  <link rel="icon" type="image/png" href="/image/favicon.png?v=20260725">
+  <link href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"></script>
+  <link href="/shared/site.css?v=20260724" rel="stylesheet" />
+  <link href="/manhattan-residential-clustering/manhattan-residential-clustering.css?v=20260725" rel="stylesheet" />
+  <link rel="canonical" href="https://daegeunkim.com/manhattan-residential-clustering/">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="/">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="/">Work</a></li>
+          <li><a class="nav-link" href="/about/">About</a></li>
+          <li><a class="nav-link" href="/about/#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="subpage">
+    <section class="proj-hero">
+      <p class="eyebrow">Machine Learning &middot; Urban</p>
+      <h1 class="proj-hero__title">Manhattan Residential Clustering</h1>
+      <p class="proj-hero__summary">
+        An interactive map that classifies Manhattan's residential buildings from eleven NYC datasets,
+        using weighted K-means to reveal socio-spatial, architectural, evolutionary, and economic patterns.
+      </p>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Weighted K-means clustering &middot; Geospatial analysis &middot; Data visualization</p>
+        </div>
+        <div>
+          <h2>Data</h2>
+          <p class="val">Eleven NYC building &amp; street-block datasets</p>
+        </div>
+        <div>
+          <h2>Tools &amp; Stack</h2>
+          <p class="val">Python (pandas, GeoPandas, scikit-learn) &middot; Rhino + Grasshopper &middot; Mapbox GL JS</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="section-title">Overview</p>
+    <div class="text">
+      Manhattan's residential buildings can be described by characteristics such as construction year,
+      height, and transit access. Eleven building- and street-block-level datasets were combined, merged at
+      the building level using the BIN (Building Identification Number) as the key, so each building can be
+      reasoned about across form, value, and access at once.
+    </div>
+    <div class="text">
+      The scope is Manhattan's residential stock: Tax Class 1 (mostly residential property of up to three
+      units) and all other primarily residential property outside Class 1.
+    </div>
+
+    <p class="section-title">Data ingestion</p>
+    <div class="text">
+      The dataset was assembled from several public sources and merged at the building level on the BIN.
+      Records provided at the tax-lot level were expanded to individual buildings, and building attributes
+      were joined to street blocks for neighborhood-scale context. Subway travel time was computed
+      separately in Rhino + Grasshopper as a shortest-path analysis to the nearest station.
+    </div>
+    <div class="text">
+      The eleven variables, their sources, and headline statistics are summarized below.
+    </div>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr><th>Variable</th><th>Source</th><th>Key statistic</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Building stories</td><td>DOF Property Valuation</td><td>Median 5 &middot; Max 71</td></tr>
+          <tr><td>Construction year</td><td>OTI Building</td><td>Median 1910 &middot; 1795&ndash;2025</td></tr>
+          <tr><td>Building height</td><td>OTI Building</td><td>Median 61.5 ft &middot; up to 900 ft</td></tr>
+          <tr><td>Time to subway</td><td>Rhino + Grasshopper</td><td>Median 4.93 min</td></tr>
+          <tr><td>Average value</td><td>DOF Property Valuation</td><td>Median $441,500</td></tr>
+          <tr><td>Value per sqft</td><td>DOF Property Valuation</td><td>Median $261</td></tr>
+          <tr><td>Value change 2024&ndash;25</td><td>DOF Property Valuation</td><td>Median +3.6% (-23% to +64%)</td></tr>
+          <tr><td>Building class</td><td>DOF Property Valuation</td><td>Mostly elevator / mixed-use</td></tr>
+          <tr><td>Elevator access</td><td>DOB elevator permits</td><td>38.1% with &middot; 61.9% without</td></tr>
+          <tr><td>Residential area</td><td>DOF Property Valuation</td><td>Median 1,995 sqft</td></tr>
+          <tr><td>Residential share</td><td>DOF Property Valuation</td><td>Median 91%</td></tr>
+        </tbody>
+        <caption>Sources: NYC OpenData. Department of Finance (DOF), Office of Technology and Innovation (OTI), Department of Buildings (DOB).</caption>
+      </table>
+    </div>
+    <p class="section-title">Explore the building data</p>
+    <div class="text">
+      Each layer is a building-footprint map of one variable, aligned to Manhattan on the basemap below.
+      Switch layers to see how form, value, and access vary across the island.
+    </div>
+    <div class="map-explorer map-explorer--split">
+      <div class="map-explorer__controls" id="data-controls" role="group" aria-label="Select a data layer"></div>
+      <div class="map-explorer__frame">
+        <div class="map-explorer__map" id="data-map"></div>
+      </div>
+      <p class="map-explorer__caption" id="data-caption"></p>
+    </div>
+
+    <p class="section-title">Method: weighted K-means</p>
+    <div class="text">
+      K-means clustering was applied to the assembled features. Variables were normalized and given custom
+      weights so that the most relevant factors drove each grouping. Four weighting schemes were run, each
+      emphasizing a different lens, and the resulting groups were interpreted qualitatively and given
+      descriptive, context-specific names.
+    </div>
+
+    <p class="section-title">Clustering results</p>
+    <div class="text">
+      Four clustering lenses each tell a different story about the same building stock. Switch between them
+      to compare how the weighting changes which patterns emerge.
+    </div>
+    <div class="map-explorer">
+      <div class="map-explorer__controls" id="cluster-controls" role="group" aria-label="Select a clustering lens"></div>
+      <figure class="cluster-figure">
+        <img id="cluster-img" alt="Selected clustering of Manhattan residential buildings">
+      </figure>
+      <p class="map-explorer__caption" id="cluster-caption"></p>
+    </div>
+  </main>
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Manhattan Residential Clustering</p>
+      <p class="subpage-footer__sub">Clustering Manhattan's residential buildings. &copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="/"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <script src="/manhattan-residential-clustering/config.js"></script>
+  <script src="/manhattan-residential-clustering/manhattan-residential-clustering.js"></script>
+  <script src="/shared/site.js?v=20260724"></script>
+</body>
+</html>

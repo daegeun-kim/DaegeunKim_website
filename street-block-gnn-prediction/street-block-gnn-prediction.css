@@ -1,0 +1,24 @@
+/* ============================================================
+   Street-Block GNN Prediction. Header, hero, footer, sections,
+   text, and figures come from the shared subpage system
+   (shared/site.css). This file adds the image grids the page uses.
+   ============================================================ */
+
+.sb-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: var(--space-4) 0 0.5rem;
+}
+.sb-grid-3 img { width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover; }
+@media (max-width: 620px) { .sb-grid-3 { grid-template-columns: repeat(2, 1fr); } }
+
+.image-2col { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); margin: var(--space-4) 0; align-items: start; }
+.image-2col img { width: 100%; display: block; }
+.image-2col-sm img { max-height: clamp(140px, 18vw, 320px); width: 100%; object-fit: contain; display: block; }
+.image-2col-lg { grid-template-columns: 1fr; }
+.image-2col-lg .img-caption { text-align: left; }
+.image-2col-lg img { aspect-ratio: 5 / 2; width: 100%; object-fit: contain; display: block; }
+@media (max-width: 640px) { .image-2col { grid-template-columns: 1fr; } }
+
+.img-caption { font-size: var(--fs-meta); color: var(--ink-3); margin: 0.5rem 0 0; text-align: center; line-height: 1.5; }

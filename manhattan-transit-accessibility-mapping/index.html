@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manhattan Transit Accessibility Mapping</title>
+  <meta name="description" content="Walking time from every building in Manhattan to its nearest subway station, calculated by shortest-path analysis over the pedestrian street network and mapped across the island.">
+  <link rel="icon" type="image/png" href="/image/favicon.png?v=20260725">
+  <link href="/shared/site.css?v=20260724" rel="stylesheet"/>
+  <link href="/manhattan-transit-accessibility-mapping/manhattan-transit-accessibility-mapping.css?v=20260725" rel="stylesheet"/>
+  <link rel="canonical" href="https://daegeunkim.com/manhattan-transit-accessibility-mapping/">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="/">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="/">Work</a></li>
+          <li><a class="nav-link" href="/about/">About</a></li>
+          <li><a class="nav-link" href="/about/#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="subpage">
+    <figure class="proj-media">
+      <img src="/manhattan-transit-accessibility-mapping/main-image2.jpg?v=20260725" alt="Manhattan map colored by walking time from each building to its nearest subway station." loading="eager" decoding="async">
+    </figure>
+
+    <section class="proj-hero">
+      <p class="eyebrow">Computational &middot; Geospatial</p>
+      <h1 class="proj-hero__title">Manhattan Transit Accessibility Mapping</h1>
+      <p class="proj-hero__summary">
+        Walking time from every building in Manhattan to its nearest subway station, calculated by
+        shortest-path analysis over the pedestrian street network and mapped across the island.
+      </p>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Parametric modeling &middot; Shortest-path calculation &middot; Urban data visualization</p>
+        </div>
+        <div>
+          <h2>Tools</h2>
+          <p class="val">Python (data preparation &amp; wrangling) &middot; Rhino + Grasshopper (modeling &amp; visualization)</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="section-title">Flow chart &amp; Grasshopper script</p>
+    <figure class="shot shot-wide">
+      <img src="/manhattan-transit-accessibility-mapping/flow-chart.png?v=20260725" alt="Flow chart of the data preparation and shortest-path pipeline." loading="lazy" decoding="async">
+    </figure>
+    <figure class="shot shot-wide">
+      <img src="/manhattan-transit-accessibility-mapping/grasshopper.png?v=20260725" alt="Grasshopper definition driving the analysis and visualization." loading="lazy" decoding="async">
+    </figure>
+
+    <p class="section-title">Datasets</p>
+    <figure class="shot shot-wide">
+      <img src="/manhattan-transit-accessibility-mapping/rhinodata.jpg?v=20260725" alt="Source geometry assembled in Rhino from the input datasets." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      Five public datasets feed the model:
+    </div>
+    <div class="data-row">
+      <div class="table-wrap">
+        <table class="tech-table">
+          <tbody>
+            <tr><td>Subway station locations (GeoJSON)</td><td>NYC.gov 3D Model by Community District &middot; station points</td></tr>
+            <tr><td>Pedestrian street network</td><td>OpenStreetMap &middot; graph for distance calculation</td></tr>
+            <tr><td>Building footprints (GeoJSON)</td><td>NYC OpenData Buildings &middot; building geometry</td></tr>
+            <tr><td>Building height (CSV)</td><td>NYC OpenData Buildings &middot; building geometry</td></tr>
+            <tr><td>Building volume (CSV)</td><td>NYC OpenData Buildings &middot; weighted floor-area average</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="shot data-row__img">
+        <img src="/manhattan-transit-accessibility-mapping/initial-data.png?v=20260725" alt="Initial data assembled for the analysis." loading="lazy" decoding="async">
+      </figure>
+    </div>
+
+    <p class="section-title">Process</p>
+    <p class="subsection-title">Distance calculation (street network only)</p>
+    <div class="text">
+      The streets are converted into a weighted graph, where nodes are intersections, edges are street
+      segments, and each weight is the segment length. Each building centroid is snapped to the nearest
+      street and assigned to a graph node <code>v_b</code>, and each station is snapped and assigned to a
+      node <code>v_s</code>. Distance is computed only along the street network using the shortest path:
+    </div>
+    <div class="callout">
+      <span class="lead">Distance</span>
+      <code>d(b, s) = &Sigma; L_e</code> over the edges in the shortest path (<code>v_b &rarr; v_s</code>).
+    </div>
+    <figure class="shot shot-wide">
+      <img src="/manhattan-transit-accessibility-mapping/satellite_shortest_path.png?v=20260725" alt="Shortest paths from buildings to stations over the street network." loading="lazy" decoding="async">
+    </figure>
+    <p class="subsection-title">Nearest station per building</p>
+    <div class="text">
+      A multi-source shortest path is run from all station nodes, and each building is assigned to its
+      nearest station <code>s* = argmin_s d(b, s)</code>. The shortest-path edges are extracted and
+      allocated to that building, and edge-usage counts are aggregated to give each street a &ldquo;flow&rdquo;
+      intensity.
+    </div>
+    <p class="subsection-title">Coloring</p>
+    <div class="text">
+      Streets vary in thickness by edge flow and are colored by nearest-station catchment or flow intensity;
+      buildings are colored by distance to their assigned station.
+    </div>
+    <div class="shot-2col">
+      <figure class="shot"><img src="/manhattan-transit-accessibility-mapping/street3.jpg?v=20260725" alt="Streets colored by flow intensity." loading="lazy" decoding="async"></figure>
+      <figure class="shot"><img src="/manhattan-transit-accessibility-mapping/street2.jpg?v=20260725" alt="Buildings colored by distance to nearest station." loading="lazy" decoding="async"></figure>
+    </div>
+
+    <p class="section-title">Outcome &amp; statistics</p>
+    <figure class="shot shot-wide">
+      <img src="/manhattan-transit-accessibility-mapping/plan.png?v=20260725" alt="Full Manhattan plan colored by walking time to the nearest station." loading="lazy" decoding="async">
+    </figure>
+    <div class="shot-2col">
+      <figure class="shot"><img src="/manhattan-transit-accessibility-mapping/histogram.png?v=20260725" alt="Histogram of walking times across all buildings." loading="lazy" decoding="async"></figure>
+      <div>
+        <div class="table-wrap">
+          <table class="tech-table">
+            <tbody>
+              <tr><td>Average walking time</td><td>5.132 min</td></tr>
+              <tr><td>Median walking time</td><td>4.687 min</td></tr>
+              <tr><td>Maximum walking time</td><td>21.18 min</td></tr>
+              <tr><td>Under 5 min</td><td>55.40%</td></tr>
+              <tr><td>5 to 10 min</td><td>39.45%</td></tr>
+              <tr><td>Over 10 min</td><td>5.15%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-title">Regional analysis</p>
+    <figure class="shot shot-wide">
+      <img src="/manhattan-transit-accessibility-mapping/lower-manhattan.png?v=20260725" alt="Lower Manhattan walking-time map." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      Lower Manhattan has the highest concentration of subway stations, while the East Village has the
+      lowest. Almost every building in the Financial District is within three minutes of a station, while
+      the majority of buildings in the East Village require up to twenty minutes.
+    </div>
+    <figure class="shot shot-wide">
+      <img src="/manhattan-transit-accessibility-mapping/midtown.png?v=20260725" alt="Midtown walking-time map." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      Midtown shows a clear contrast between the densely served central area and the less connected
+      waterfront. Because stations concentrate in the commercial districts, residential zones are
+      underserved for transit access.
+    </div>
+    <figure class="shot shot-wide">
+      <img src="/manhattan-transit-accessibility-mapping/upper-manhattan.png?v=20260725" alt="Upper Manhattan walking-time map." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      Upper Manhattan shows the most even distribution of stations. The majority of buildings are within
+      fifteen minutes of a station, even those closer to the waterfront.
+    </div>
+  </main>
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Manhattan Transit Accessibility Mapping</p>
+      <p class="subpage-footer__sub">&copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="/"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <script src="/shared/site.js?v=20260724"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spiral Dwelling</title>
+  <meta name="description" content="Spiral Dwelling reimagines the Hong Kong podium tower by stacking traditional Tong Lau blocks into a spiral of homes, shops, and public space, tuned through generative iteration and walkability analysis.">
+  <link rel="icon" type="image/png" href="/image/favicon.png?v=20260725">
+  <link href="/shared/site.css?v=20260724" rel="stylesheet"/>
+  <link href="/spiral-dwelling/spiral-dwelling.css?v=20260725" rel="stylesheet"/>
+  <link rel="canonical" href="https://daegeunkim.com/spiral-dwelling/">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="/">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="/">Work</a></li>
+          <li><a class="nav-link" href="/about/">About</a></li>
+          <li><a class="nav-link" href="/about/#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="subpage">
+    <figure class="proj-media">
+      <img src="/spiral-dwelling/Spiral%20Dwelling.jpg?v=20260725" alt="Rendering of the Spiral Dwelling tower, with stacked Tong Lau blocks winding around a central core." loading="eager" decoding="async">
+    </figure>
+
+    <section class="proj-hero">
+      <p class="eyebrow">Computational Design &middot; Architecture</p>
+      <h1 class="proj-hero__title">Spiral Dwelling</h1>
+      <p class="proj-hero__summary">
+        The Hong Kong podium tower is reimagined by stacking traditional Tong Lau blocks into a
+        spiral of homes, shops, and public space, tuned through generative iteration and
+        walkability analysis.
+      </p>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Generative design &middot; Digital fabrication &middot; Architectural design</p>
+        </div>
+        <div>
+          <h2>Tools</h2>
+          <p class="val">Rhino + Grasshopper (HAL) + Python &middot; ABB IRB 1200 robotic arm</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Original body composition, restyled with the template typography. -->
+    <figure class="board robotic">
+      <img src="/spiral-dwelling/Spiral%20Dwelling3.jpg?v=20260725" alt="Robotic hot-wire cutting of foam massing models." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      <b>Robotic Arm Model Generation</b><br><br>
+      The studio employs robotic manufacturing to drive design thinking, using robotic hot-wire cutting to create foam models.
+      The process begins by inputting a line in Rhino3D, which is then linked to an ABB robotic arm via the HAL plugin. With a hot wire attached,
+      the robotic arm follows the specified line precisely, cutting the foam into the desired shape. Once cut, individual foam pieces are extracted.
+    </div>
+
+    <figure class="board tonglau">
+      <img src="/spiral-dwelling/Spiral%20Dwelling4.jpg?v=20260725" alt="Site analysis contrasting Tong Lau buildings and podium towers." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      <b>Site Analysis: Podium Tower and Tong Lau</b><br><br>
+      Located on a site in the middle of the slope of Hong Kong Island, this project aims to bridge the gap between two distinct regions: the area characterized by Tong Lau buildings,
+      and the region dominated by podium towers. Tong Lau buildings are traditional Hong Kong buildings with the advantage of active street-level interaction.
+      They are not suited to the high-density requirements of the city, which the recent podium towers have successfully addressed.<br><br>
+      As a result, the project seeks to address the following questions: How can the next generation of residential tower in Hong Kong combine the advantages of Tong Lau and podium towers harmoniously?
+      Is it possible to bring back the traditional street culture of Hong Kong in the form of vertical living?
+    </div>
+
+    <figure class="board stacking">
+      <img src="/spiral-dwelling/Spiral%20Dwelling5.jpg?v=20260725" alt="Tong Lau blocks stacked into a spiral around a central core." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      <b>Tong Lau Stacking</b><br><br>
+      The solution for merging Tong Lau buildings and podium towers is proposed by stacking the typical Tong Lau buildings vertically. As the block is stacked upward around a core, the Tong Lau blocks are connected to create a spiral circulation around the tower.
+      In contrast to the original building, which placed all facilities below the residential floors, the new design integrates public facilities around the tower, blending them with the residential spaces rather than separating the two.
+    </div>
+
+    <figure class="board comparison">
+      <img src="/spiral-dwelling/Spiral%20Dwelling2.jpg?v=20260725" alt="Comparison of spiral options against walkability metrics." loading="lazy" decoding="async">
+    </figure>
+    <figure class="board generative">
+      <img src="/spiral-dwelling/Spiral%20Dwelling6.jpg?v=20260725" alt="Generative iterations of the spiral circulation." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      <b>Spiral Generation</b><br><br>
+      Tools: Grasshopper + Python<br>
+      Using Grasshopper, the spiral circulation formed by stacking Tong Lau buildings was iterated and adjusted. The height of each spiral cycle was controlled by
+      manipulating the z-coordinates of the vertices. Each iteration was then evaluated for aesthetic quality and functional efficiency, analyzing the ratio between
+      the areas allocated for spiral circulation, public facilities, and residential floors. The objective is to achieve a balanced distribution of floor area among these three programmatic elements.<br><br>
+      <b>Walkability Analysis</b><br><br>
+      It is crucial that both residents and the public find the spiral circulation walkable to access the public facilities effectively.
+      Walkability is assessed using two variables, cumulative distance and stair slope: the walkability score increases by 1 for every 200 meters traveled, and a 0-degree slope scores 0 while a 45-degree slope scores 1.
+      The overall walkability value starts at 0, with higher values indicating decreased walkability. The formula is weighted to give greater importance to slope over distance, meaning shorter spirals with steeper stairs result in higher walkability scores.
+      Interestingly, walkability tends to improve near the top of the tower, where gentler slopes make circulation easier, even though the total walking distance increases.
+    </div>
+
+    <figure class="board pinwheel">
+      <img src="/spiral-dwelling/Spiral%20Dwelling7.jpg?v=20260725" alt="Pinwheel arrangement of unit clusters around the core." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      <b>Pinwheel Plan</b><br><br>
+      The arrangement positions each unit cluster to face different orientations: two sides of each cluster facing the building's perimeter and the other two sides facing inward.
+      Served spaces of rooms and living areas are placed along the building's perimeter, while servant spaces of kitchen and toilet are placed inside, enabling natural ventilation.<br><br>
+      Each cluster is equipped with its own lifts that provide access to the spiral levels, and they are structurally supported by core shear walls. Additionally, the clusters partially
+      cantilever out from these structural walls to accommodate spiral staircases that rotate around them.
+    </div>
+
+    <figure class="board cluster">
+      <img src="/spiral-dwelling/Spiral%20Dwelling8.jpg?v=20260725" alt="Unit-type combinations within a cluster." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      <b>Unit Types and Combination</b><br><br>
+      The final unit design consists of two types of space: standard and non-standard. The purpose of the standard type is to provide the necessary spaces: bedroom, bathroom, and kitchen. The non-standard types serve more specific activities for people with different lifestyles. Standard and non-standard types are mixed in a matrix so that appropriate combinations can be created.
+    </div>
+
+    <figure class="board circulation">
+      <img src="/spiral-dwelling/Spiral%20Dwelling9.jpg?v=20260725" alt="Public and private lift circulation diagram." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      <b>Circulation: Public and Private Lift</b><br><br>
+      The building features four core lifts that interconnect all the spiral levels. Both the public and residents are directed to access these spiral levels,
+      with residents subsequently using their private lifts within their unit clusters. This design encourages residents to interact with the surrounding amenities.
+      By intentionally avoiding direct entry to their flats through the central lift, the arrangement fosters interaction among shops, residents, and the public,
+      resulting in a vibrant and interconnected neighborhood.
+    </div>
+
+    <figure class="board siteplan">
+      <img src="/spiral-dwelling/Spiral%20Dwelling10.jpg?v=20260725" alt="Site plan of the Spiral Dwelling tower in context." loading="lazy" decoding="async">
+    </figure>
+    <div class="text">
+      <b>Site Plan</b><br><br>
+      The tower sits within its mid-slope context, negotiating the level change between the Tong Lau district below and the podium-tower region above, with the spiral bringing public program to the street.
+    </div>
+
+    <figure class="board section">
+      <img src="/spiral-dwelling/Spiral%20Dwelling11.jpg?v=20260725" alt="Section through the Spiral Dwelling tower." loading="lazy" decoding="async">
+    </figure>
+  </main>
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Spiral Dwelling</p>
+      <p class="subpage-footer__sub">&copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="/"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <script src="/shared/site.js?v=20260724"></script>
+</body>
+</html>

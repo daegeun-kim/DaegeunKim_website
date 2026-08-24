@@ -1,0 +1,289 @@
+/* =================================================================
+   Homepage styles. Builds on shared/site.css tokens.
+   Sections: hero, capability strip, selected-work index.
+   ================================================================= */
+
+/* --- Page rhythm --- */
+.home-main { padding-top: clamp(3rem, 1.5rem + 6vw, 6rem); }
+
+/* -----------------------------------------------------------------
+   Hero
+   ----------------------------------------------------------------- */
+.hero { padding-bottom: var(--space-8); }
+
+/* Role line: same grey as body copy, with wider gaps between roles. */
+.hero__roles { color: var(--ink-2); }
+.hero__roles .sep {
+  margin: 0 clamp(0.5rem, 0.2rem + 0.9vw, 1.1rem);
+  color: var(--ink-3);
+}
+
+.hero__title {
+  font-size: var(--fs-display);
+  font-weight: var(--w-bold);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  max-width: 22ch;
+  margin-top: var(--space-4);
+}
+/* Teal-to-blue gradient across the key phrase. */
+.hero__title .accent {
+  background: linear-gradient(100deg,
+    #0e9595 5%,
+    #00a0d5 33%,
+    #0058b0 67%,
+    #2c21c9 87%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero__title .accent {
+    color: var(--blue-strong);
+    -webkit-text-fill-color: currentColor;
+  }
+}
+
+.hero__lead {
+  font-size: var(--fs-lead);
+  font-weight: var(--w-regular);
+  line-height: 1.55;
+  color: var(--ink-2);
+  max-width: 60ch;
+  margin-top: var(--space-4);
+}
+
+/* -----------------------------------------------------------------
+   Capability strip. A numbered, divided set of focus areas.
+   ----------------------------------------------------------------- */
+.focus {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 0.5rem + 2.6vw, 3.5rem);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: 1.4px solid var(--line-strong);
+}
+.focus__group { display: flex; flex-direction: column; }
+.focus__num {
+  font-size: var(--fs-meta);
+  font-weight: var(--w-bold);
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.35rem;
+}
+.focus__group h2 {
+  font-size: clamp(1.02rem, 0.98rem + 0.3vw, 1.2rem);
+  font-weight: var(--w-bold);
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+.focus__group p {
+  font-size: var(--fs-small);
+  font-weight: var(--w-regular);
+  color: var(--ink-2);
+  line-height: 1.5;
+  max-width: 36ch;
+}
+
+@media (max-width: 700px) {
+  .focus {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .focus__group {
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--line);
+  }
+  .focus__group:first-child { border-top: 0; padding-top: var(--space-3); }
+  .focus__group p { max-width: none; }
+}
+
+/* -----------------------------------------------------------------
+   Selected work
+   ----------------------------------------------------------------- */
+.work { padding-top: var(--space-6); }
+
+.work__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-5);
+  margin-bottom: var(--space-5);
+  padding-bottom: var(--space-3);
+  border-bottom: 1.4px solid var(--line-strong);
+}
+.work__title {
+  font-size: var(--fs-h2);
+  font-weight: var(--w-bold);
+  color: var(--ink);
+  letter-spacing: -0.015em;
+}
+.work__count {
+  font-size: var(--fs-meta);
+  font-weight: var(--w-semi);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-left: 0.6rem;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.8rem, 0.4rem + 1vw, 1.6rem);
+}
+/* Filters use a constant weight so the active state never changes a
+   button's width and shifts its neighbours. Selection is shown by
+   colour only (backed by aria-pressed for assistive tech). */
+.filters button {
+  font-family: inherit;
+  font-size: var(--fs-small);
+  font-weight: var(--w-regular);
+  color: var(--ink-3);
+  background: none;
+  border: 0;
+  padding: 0.2rem 0;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease);
+}
+.filters button:hover { color: var(--ink-2); }
+.filters button.is-active { color: var(--ink); }
+
+/* Work grid */
+.work-index {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: clamp(1.5rem, 0.5rem + 3vw, 4rem);
+  row-gap: clamp(3.5rem, 2rem + 5vw, 6.5rem);
+  counter-reset: project;
+  align-items: stretch;
+}
+@media (max-width: 820px) {
+  .work-index { grid-template-columns: 1fr; }
+}
+
+/* Each card is a full-height flex column so tag rows align at a
+   common baseline across a row (see .project__tags margin-top). */
+.project {
+  position: relative;
+  counter-increment: project;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+/* Author rule needed because .project sets display:flex, which would
+   otherwise override the UA [hidden] { display:none } while filtering. */
+.work-index .project[hidden] { display: none; }
+
+.project__media {
+  position: relative;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: var(--space-3);
+  transition: border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease);
+}
+.project__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* 2:1 image in 2:1 frame: no meaningful crop */
+}
+/* Hover affordance that does not crop the image. */
+@media (hover: hover) {
+  .project:hover .project__media {
+    border-color: var(--blue);
+    box-shadow: 0 8px 26px rgba(20, 24, 29, 0.09);
+  }
+}
+
+.project__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+.project__index {
+  font-size: var(--fs-meta);
+  font-weight: var(--w-bold);
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.project__index::before { content: counter(project, decimal-leading-zero); }
+.project__cat {
+  font-size: var(--fs-meta);
+  font-weight: var(--w-medium);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.project__title {
+  font-size: var(--fs-h3);
+  font-weight: var(--w-bold);
+  letter-spacing: -0.012em;
+  margin-bottom: 0.55rem;
+}
+.project__title a {
+  color: var(--ink);
+  transition: color var(--dur) var(--ease);
+}
+.project__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.project:hover .project__title a { color: var(--blue-strong); }
+
+.project__summary {
+  font-size: var(--fs-small);
+  font-weight: var(--w-regular);
+  line-height: 1.55;
+  color: var(--ink-2);
+  padding-bottom: var(--space-3);   /* keep the tag line off the last text line */
+}
+
+.project__tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.9rem;
+  margin: var(--space-3) 0 0;
+  margin-top: auto;          /* pin tags to the bottom of the card */
+  padding: 0.85rem 0 0;
+  border-top: 1px solid var(--line);
+}
+.project__tags li {
+  font-size: var(--fs-meta);
+  font-weight: var(--w-medium);
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+  position: relative;
+  padding-left: 0.85rem;
+}
+.project__tags li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+/* The tag border sits directly under the summary on single cards, so
+   give a little breathing room before it when tags are pinned low. */
+.project__summary + .project__tags { margin-top: auto; }

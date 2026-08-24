@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Street-Block Urbanity Prediction</title>
+    <meta name="description" content="How much of a city's character can be predicted from street-block geometry alone? Linear regression, logistic regression, and a graph neural network across the top ten U.S. metros.">
+    <link rel="icon" type="image/png" href="/image/favicon.png?v=20260725">
+    <link href="/shared/site.css?v=20260724" rel="stylesheet"/>
+    <link href="/street-block-urbanity-prediction/street-block-urbanity-prediction.css?v=20260725" rel="stylesheet"/>
+  <link rel="canonical" href="https://daegeunkim.com/street-block-urbanity-prediction/">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="/">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="/">Work</a></li>
+          <li><a class="nav-link" href="/about/">About</a></li>
+          <li><a class="nav-link" href="/about/#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="subpage">
+    <figure class="proj-media">
+      <img src="/street-block-urbanity-prediction/title.png?v=20260725" alt="Street-block geometry analysis across ten U.S. cities." loading="eager" decoding="async">
+    </figure>
+
+    <section class="proj-hero">
+      <p class="eyebrow">Machine Learning &middot; Geospatial</p>
+      <h1 class="proj-hero__title">Street-Block Urbanity Prediction</h1>
+      <p class="proj-hero__summary">
+        How much of a city's character can be predicted from street-block geometry alone? Linear
+        regression, logistic regression, and a graph neural network test the question across the top
+        ten U.S. metropolitan areas.
+      </p>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Linear regression &middot; Logistic regression &middot; Graph neural network</p>
+        </div>
+        <div>
+          <h2>Tools</h2>
+          <p class="val">QGIS &middot; PostgreSQL / PostGIS &middot; scikit-learn &middot; PyTorch Geometric</p>
+        </div>
+        <div>
+          <h2>Code</h2>
+          <p class="val">
+            <a href="https://github.com/daegeun-kim/street_block_ML" target="_blank" rel="noopener noreferrer">Github (classical ML)<span aria-hidden="true">&#8599;</span></a><br>
+            <a href="https://github.com/daegeun-kim/street_block_DL" target="_blank" rel="noopener noreferrer">Github (GNN)<span aria-hidden="true">&#8599;</span></a>
+          </p>
+        </div>
+      </div>
+    </section>
+    <div class="abstract">
+      <p class="sb-heading">Abstract</p>
+      <p class="sb-body">
+        This project presents a quantitative geometric analysis of street blocks across the top ten U.S. metropolitan areas by GDP: New York, Los Angeles, Chicago, Dallas, Washington D.C., San Francisco Bay Area, Boston, Houston, Atlanta, and Seattle. Focusing purely on physical geometry, four shape-based metrics — Area, Isoperimetric Quotient, Rectangularity, and Solidity — were derived from each block to characterize its form and compactness. An exponential regression model was developed to evaluate which of these four geometric indicators best predicts population density, and to assess the independent usefulness of each metric as a predictor. In parallel, a logistic regression model was trained to classify the urbanity of each block using the dataset's original UR20 label, which defines urban versus non-urban areas based on criteria such as population concentration, adjacency of developed blocks, and built environment continuity. Model reliability and generalization were validated through 10-fold cross-validation, ensuring robustness against sample bias. This study aims to isolate geometric form as an explanatory variable in urban analysis, demonstrating that the morphology of street blocks alone can provide meaningful insight into patterns of density and urbanization across major U.S. cities.
+      </p>
+
+      <p class="sb-heading">Data Sources</p>
+      <p class="sb-body">
+        Original Data Source: United States Census Bureau<br>
+        Study Scope: Top 10 U.S. Metropolitan Areas by GDP<br>
+        <a href="https://www2.census.gov/geo/tiger/TIGER2025/TABBLOCK20/" target="_blank">https://www2.census.gov/geo/tiger/TIGER2025/TABBLOCK20/</a><br>
+        Spatial Extent: Blocks within a 30-mile radius from each city center
+      </p>
+
+      <p class="sb-heading">Workflow</p>
+      <p class="sb-body">
+        <b>QGIS:</b> Loaded shapefiles, clipped 30 mi radius, calculated four geometric features.<br>
+        <b>PostgreSQL/PostGIS:</b> Stored processed data and linked to Python environment.<br>
+        <b>Python Notebook:</b> Performed statistical and machine-learning analyses (linear/logistic regression, bootstrapping, 10-fold CV).
+      </p>
+
+      <p class="sb-heading">Projection</p>
+      <p class="sb-body">City-specific CRS applied to minimize geometric distortion.</p>
+      <table class="crs-table">
+        <tr><td>New York City</td><td>EPSG: 2263</td><td>NAD83 / New York Long Island (ftUS)</td></tr>
+        <tr><td>Los Angeles</td><td>EPSG: 2229</td><td>NAD83 / California zone V (ftUS)</td></tr>
+        <tr><td>Dallas</td><td>EPSG: 2277</td><td>NAD83 / Texas North Central (ftUS)</td></tr>
+        <tr><td>Houston</td><td>EPSG: 32140</td><td>NAD83 / Texas South Central (ftUS)</td></tr>
+        <tr><td>Chicago</td><td>EPSG: 3435</td><td>NAD83 / Illinois East (ftUS)</td></tr>
+        <tr><td>San Francisco Bay Area</td><td>EPSG: 26910</td><td>NAD83 / UTM zone 10N (m)</td></tr>
+        <tr><td>Washington D.C.</td><td>EPSG: 26918</td><td>NAD83 / UTM zone 18N (m)</td></tr>
+        <tr><td>Boston</td><td>EPSG: 26986</td><td>NAD83 / Massachusetts Mainland (ftUS)</td></tr>
+        <tr><td>Atlanta</td><td>EPSG: 26916</td><td>NAD83 / Georgia West (ftUS)</td></tr>
+        <tr><td>Seattle</td><td>EPSG: 2285</td><td>NAD83 / Washington North (ftUS)</td></tr>
+      </table>
+      <p class="sb-body crs-note">*All spatial analyses, metric derivations, and model inputs were computed within these localized projections to minimize distortion in area and perimeter calculations.</p>
+    </div>
+
+    <div class="terms">
+      <div class="terms-grid">
+        <div class="term-card">
+          <p class="sb-heading">Isoperimetric Quotient</p>
+          <p class="sb-body">
+            <b>Definition:</b><br>
+            The ratio of the curve area to the area of a circle with the same perimeter as the curve<br><br>
+            <b>Formula:</b><br>
+            (4&pi; &times; Area) / (Perimeter&sup2;)<br><br>
+            <b>Range:</b> 0 – 1<br><br>
+            <b>Explanation:</b><br>
+            The Isoperimetric Quotient (IQ) is a numerical measure of how compact a shape is. A perfect circle has an IQ of 1.0, representing the most compact possible shape for a given perimeter. As a shape becomes more elongated, irregular, or fragmented, its perimeter increases relative to its area, causing the IQ value to decrease. In urban geometry analysis, a higher IQ indicates more efficient, compact street blocks, while lower values suggest irregular or stretched urban forms.
+          </p>
+        </div>
+        <div class="term-card">
+          <p class="sb-heading">Rectangularity</p>
+          <p class="sb-body">
+            <b>Definition:</b><br>
+            The ratio between the area of the shape and the area of its minimum bounding rectangle (MBR)<br><br>
+            <b>Formula:</b><br>
+            Area / Smallest Fit Rectangle<br><br>
+            <b>Range:</b> 0 – 1<br><br>
+            <b>Explanation:</b><br>
+            A value of 1.0 indicates a perfect rectangle, while lower values signify shapes that deviate from rectangular form, such as irregular, curved, or indented geometries. A triangle has exactly 0.5 rectangularity. In urban geometry analysis, higher rectangularity values correspond to well-aligned grid blocks, while lower values often reflect organic or historical street patterns with more complex boundaries.
+          </p>
+        </div>
+        <div class="term-card">
+          <p class="sb-heading">Solidity</p>
+          <p class="sb-body">
+            <b>Definition:</b><br>
+            The ratio between the area of the shape and the area of its convex hull<br><br>
+            <b>Formula:</b><br>
+            Area / Convex Hull Area<br><br>
+            <b>Range:</b> 0 – 1<br><br>
+            <b>Explanation:</b><br>
+            A value of 1.0 indicates that the shape is perfectly convex, meaning all of its boundary points lie on or outside a convex hull with no inward curves. As the value decreases, the shape becomes increasingly concave or fragmented, showing deeper indentations, gaps, or irregular protrusions along its perimeter. In the context of urban geometry, high solidity values correspond to compact, uniform blocks that efficiently occupy space within their boundaries.
+          </p>
+        </div>
+      </div>
+      <img src="/street-block-urbanity-prediction/terms_explanation.png?v=20260725" alt="Terms Explanation" class="terms-full-img no-lightbox">
+    </div>
+
+    <div class="overview">
+      <p class="sb-heading">Overview: Top 10 U.S. Cities</p>
+      <p class="sb-body"><b>Top 10 Cities Population Density Heatmap — by GDP</b></p>
+
+      <div class="popden-grid">
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/nyc_popden.png?v=20260725" alt="New York City"></div>
+          <p class="city-label"><b>New York City</b><br>GDP: 2,298,868 M<br>population: 19,940,274</p>
+        </div>
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/la_popden.png?v=20260725" alt="Los Angeles"></div>
+          <p class="city-label"><b>Los Angeles</b><br>GDP: 1,295,361 M<br>population: 12,927,614</p>
+        </div>
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/chicago_popden.png?v=20260725" alt="Chicago"></div>
+          <p class="city-label"><b>Chicago</b><br>GDP: 894,862 M<br>population: 9,408,576</p>
+        </div>
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/bay_popden.png?v=20260725" alt="Bay Area"></div>
+          <p class="city-label"><b>Bay Area</b><br>GDP: 778,878 M<br>population: 4,648,486</p>
+        </div>
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/dallas_popden.png?v=20260725" alt="Dallas"></div>
+          <p class="city-label"><b>Dallas</b><br>GDP: 744,654 M<br>population: 8,344,032</p>
+        </div>
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/dc_popden.png?v=20260725" alt="Washington DC"></div>
+          <p class="city-label"><b>Washington DC</b><br>GDP: 714,685 M<br>population: 6,436,489</p>
+        </div>
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/houston_popden.png?v=20260725" alt="Houston"></div>
+          <p class="city-label"><b>Houston</b><br>GDP: 696,999 M<br>population: 7,796,182</p>
+        </div>
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/boston_popden.png?v=20260725" alt="Boston"></div>
+          <p class="city-label"><b>Boston</b><br>GDP: 610,486 M<br>population: 5,025,517</p>
+        </div>
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/atlanta_popden.png?v=20260725" alt="Atlanta"></div>
+          <p class="city-label"><b>Atlanta</b><br>GDP: 570,663 M<br>population: 6,411,149</p>
+        </div>
+        <div class="city-card">
+          <div class="city-img-box"><img src="/street-block-urbanity-prediction/seattle_popden.png?v=20260725" alt="Seattle"></div>
+          <p class="city-label"><b>Seattle</b><br>GDP: 566,742 M<br>population: 4,145,494</p>
+        </div>
+      </div>
+
+      <div class="colorbar colorbar-full">
+        <div class="colorbar-bar" style="background: linear-gradient(to right, rgba(4,90,140,1) 0%, rgba(72,161,209,1) 25%, rgba(255,255,255,1) 50%, rgba(224,70,70,1) 75%, rgba(128,0,31,1) 100%)"></div>
+        <div class="colorbar-labels">
+          <span>0 people/sq mi</span>
+          <span>50,000+ people/sq mi</span>
+        </div>
+      </div>
+
+      <div class="metrics-table">
+        <div class="metrics-col-header"></div>
+        <div class="metrics-col-header">Area</div>
+        <div class="metrics-col-header">Isoperimetric Quotient</div>
+        <div class="metrics-col-header">Rectangularity</div>
+        <div class="metrics-col-header">Solidity</div>
+
+        <div class="metrics-row-header">New York City</div>
+        <img src="/street-block-urbanity-prediction/nyc_area.jpg?v=20260725" alt="NYC Area">
+        <img src="/street-block-urbanity-prediction/nyc_iso.jpg?v=20260725" alt="NYC IQ">
+        <img src="/street-block-urbanity-prediction/nyc_rec.jpg?v=20260725" alt="NYC Rect">
+        <img src="/street-block-urbanity-prediction/nyc_sol.jpg?v=20260725" alt="NYC Sol">
+
+        <div class="metrics-row-header">Los Angeles</div>
+        <img src="/street-block-urbanity-prediction/la_area.jpg?v=20260725" alt="LA Area">
+        <img src="/street-block-urbanity-prediction/la_iso.jpg?v=20260725" alt="LA IQ">
+        <img src="/street-block-urbanity-prediction/la_rec.jpg?v=20260725" alt="LA Rect">
+        <img src="/street-block-urbanity-prediction/la_sol.jpg?v=20260725" alt="LA Sol">
+
+        <div class="metrics-row-header">Chicago</div>
+        <img src="/street-block-urbanity-prediction/chicago_area.jpg?v=20260725" alt="Chicago Area">
+        <img src="/street-block-urbanity-prediction/chicago_iso.jpg?v=20260725" alt="Chicago IQ">
+        <img src="/street-block-urbanity-prediction/chicago_rec.jpg?v=20260725" alt="Chicago Rect">
+        <img src="/street-block-urbanity-prediction/chicago_sol.jpg?v=20260725" alt="Chicago Sol">
+
+        <div class="metrics-row-header">Bay Area</div>
+        <img src="/street-block-urbanity-prediction/bay_area.jpg?v=20260725" alt="Bay Area">
+        <img src="/street-block-urbanity-prediction/bay_iso.jpg?v=20260725" alt="Bay IQ">
+        <img src="/street-block-urbanity-prediction/bay_rec.jpg?v=20260725" alt="Bay Rect">
+        <img src="/street-block-urbanity-prediction/bay_sol.jpg?v=20260725" alt="Bay Sol">
+
+        <div class="metrics-row-header">Dallas</div>
+        <img src="/street-block-urbanity-prediction/dallas_area.jpg?v=20260725" alt="Dallas Area">
+        <img src="/street-block-urbanity-prediction/dallas_iso.jpg?v=20260725" alt="Dallas IQ">
+        <img src="/street-block-urbanity-prediction/dallas_rec.jpg?v=20260725" alt="Dallas Rect">
+        <img src="/street-block-urbanity-prediction/dallas_sol.jpg?v=20260725" alt="Dallas Sol">
+
+        <div class="metrics-row-header">Washington DC</div>
+        <img src="/street-block-urbanity-prediction/dc_area.jpg?v=20260725" alt="DC Area">
+        <img src="/street-block-urbanity-prediction/dc_iso.jpg?v=20260725" alt="DC IQ">
+        <img src="/street-block-urbanity-prediction/dc_rec.jpg?v=20260725" alt="DC Rect">
+        <img src="/street-block-urbanity-prediction/dc_sol.jpg?v=20260725" alt="DC Sol">
+
+        <div class="metrics-row-header">Houston</div>
+        <img src="/street-block-urbanity-prediction/houston_area.jpg?v=20260725" alt="Houston Area">
+        <img src="/street-block-urbanity-prediction/houston_iso.jpg?v=20260725" alt="Houston IQ">
+        <img src="/street-block-urbanity-prediction/houston_rec.jpg?v=20260725" alt="Houston Rect">
+        <img src="/street-block-urbanity-prediction/houston_sol.jpg?v=20260725" alt="Houston Sol">
+
+        <div class="metrics-row-header">Boston</div>
+        <img src="/street-block-urbanity-prediction/boston_area.jpg?v=20260725" alt="Boston Area">
+        <img src="/street-block-urbanity-prediction/boston_iso.jpg?v=20260725" alt="Boston IQ">
+        <img src="/street-block-urbanity-prediction/boston_rec.jpg?v=20260725" alt="Boston Rect">
+        <img src="/street-block-urbanity-prediction/boston_sol.jpg?v=20260725" alt="Boston Sol">
+
+        <div class="metrics-row-header">Atlanta</div>
+        <img src="/street-block-urbanity-prediction/atlanta_area.jpg?v=20260725" alt="Atlanta Area">
+        <img src="/street-block-urbanity-prediction/atlanta_iso.jpg?v=20260725" alt="Atlanta IQ">
+        <img src="/street-block-urbanity-prediction/atlanta_rec.jpg?v=20260725" alt="Atlanta Rect">
+        <img src="/street-block-urbanity-prediction/atlanta_sol.jpg?v=20260725" alt="Atlanta Sol">
+
+        <div class="metrics-row-header">Seattle</div>
+        <img src="/street-block-urbanity-prediction/seattle_area.jpg?v=20260725" alt="Seattle Area">
+        <img src="/street-block-urbanity-prediction/seattle_iso.jpg?v=20260725" alt="Seattle IQ">
+        <img src="/street-block-urbanity-prediction/seattle_rec.jpg?v=20260725" alt="Seattle Rect">
+        <img src="/street-block-urbanity-prediction/seattle_sol.jpg?v=20260725" alt="Seattle Sol">
+
+        <div></div>
+        <div class="colorbar">
+          <div class="colorbar-bar" style="background: linear-gradient(to right, rgba(128,0,31,1) 0%, rgba(224,70,70,1) 25%, rgba(255,255,255,1) 50%, rgba(72,161,209,1) 75%, rgba(4,90,140,1) 100%)"></div>
+          <div class="colorbar-labels"><span>0</span><span>10+ sq mi</span></div>
+        </div>
+        <div class="colorbar">
+          <div class="colorbar-bar" style="background: linear-gradient(to right, rgba(4,90,140,1) 0%, rgba(72,161,209,1) 25%, rgba(255,255,255,1) 50%, rgba(224,70,70,1) 75%, rgba(128,0,31,1) 100%)"></div>
+          <div class="colorbar-labels"><span>0</span><span>1</span></div>
+        </div>
+        <div class="colorbar">
+          <div class="colorbar-bar" style="background: linear-gradient(to right, rgba(4,90,140,1) 0%, rgba(72,161,209,1) 25%, rgba(255,255,255,1) 50%, rgba(224,70,70,1) 75%, rgba(128,0,31,1) 100%)"></div>
+          <div class="colorbar-labels"><span>0</span><span>1</span></div>
+        </div>
+        <div class="colorbar">
+          <div class="colorbar-bar" style="background: linear-gradient(to right, rgba(4,90,140,1) 0%, rgba(72,161,209,1) 25%, rgba(255,255,255,1) 50%, rgba(224,70,70,1) 75%, rgba(128,0,31,1) 100%)"></div>
+          <div class="colorbar-labels"><span>0</span><span>1</span></div>
+        </div>
+      </div>
+
+      <div class="streetblock-samples">
+        <div class="sb-grid-3">
+          <img src="/street-block-urbanity-prediction/streetblock1.png?v=20260725" alt="Sample Street Block 1">
+          <img src="/street-block-urbanity-prediction/streetblock2.png?v=20260725" alt="Sample Street Block 2">
+          <img src="/street-block-urbanity-prediction/streetblock3.png?v=20260725" alt="Sample Street Block 3">
+          <img src="/street-block-urbanity-prediction/streetblock4.png?v=20260725" alt="Sample Street Block 4">
+          <img src="/street-block-urbanity-prediction/streetblock5.png?v=20260725" alt="Sample Street Block 5">
+          <img src="/street-block-urbanity-prediction/streetblock6.png?v=20260725" alt="Sample Street Block 6">
+        </div>
+        <p class="img-caption">sample streetblocks</p>
+      </div>
+    </div>
+    <div class="linearregression">
+      <p class="sb-heading">Linear Regression: Geometry as Predictor of Population</p>
+      <p class="sb-body">
+        Log-transformed linear regression was applied to evaluate whether each of the four geometric features is a meaningful predictor of population density. The analysis was conducted with all 10 cities combined, totaling <b>746,049 street blocks</b>.
+      </p>
+      <p class="sb-body">
+        The model was fitted using a logarithmic transformation on the dependent variable, allowing linear regression to capture the exponential relationship between block geometry and density. Scikit-learn's <b>Linear Regression</b> (Ordinary Least Squares, no regularization) was used.
+      </p>
+      <p class="formula">population density = e<sup>(&beta;<sub>0</sub> + &beta;<sub>1</sub> &middot; log(area))</sup></p>
+      <p class="formula">population density = e<sup>(&beta;<sub>0</sub> + &beta;<sub>1</sub> &middot; feature)</sup>&emsp;(Isoperimetric Quotient, Rectangularity, Solidity)</p>
+
+      <p class="sb-body">Model applied to each feature independently:</p>
+      <div class="lr-grid">
+        <div class="lr-item">
+          <img src="/street-block-urbanity-prediction/LR-area.png?v=20260725" alt="LR Area">
+          <p class="img-stats">Area<br>MSE = 0.889 &nbsp;&middot;&nbsp; R&sup2; = 0.436 (Moderate)</p>
+        </div>
+        <div class="lr-item">
+          <img src="/street-block-urbanity-prediction/LR-IQ.png?v=20260725" alt="LR Isoperimetric Quotient">
+          <p class="img-stats">Isoperimetric Quotient<br>MSE = 1.499 &nbsp;&middot;&nbsp; R&sup2; = 0.048 (Very Weak)</p>
+        </div>
+        <div class="lr-item">
+          <img src="/street-block-urbanity-prediction/LR-rec.png?v=20260725" alt="LR Rectangularity">
+          <p class="img-stats">Rectangularity<br>MSE = 1.382 &nbsp;&middot;&nbsp; R&sup2; = 0.123 (Weak)</p>
+        </div>
+        <div class="lr-item">
+          <img src="/street-block-urbanity-prediction/LR-sol.png?v=20260725" alt="LR Solidity">
+          <p class="img-stats">Solidity<br>MSE = 1.419 &nbsp;&middot;&nbsp; R&sup2; = 0.099 (Weak)</p>
+        </div>
+      </div>
+
+      <p class="sb-heading">Combined Model</p>
+      <p class="formula">population density = e<sup>(&beta;<sub>0</sub> + &beta;<sub>1</sub>&middot;log(area) + &beta;<sub>2</sub>&middot;IQ + &beta;<sub>3</sub>&middot;Rectangularity + &beta;<sub>4</sub>&middot;Solidity)</sup></p>
+      <table class="crs-table">
+        <tr><td>Area Coefficient</td><td>&minus;631.634</td></tr>
+        <tr><td>Isoperimetric Quotient Coefficient</td><td>&minus;59.216</td></tr>
+        <tr><td>Rectangularity Coefficient</td><td>163.857</td></tr>
+        <tr><td>Solidity Coefficient</td><td>&minus;91.977</td></tr>
+        <tr><td>Mean Squared Error</td><td>0.873</td></tr>
+        <tr><td>R&sup2;</td><td>0.446</td></tr>
+      </table>
+      <p class="sb-body">
+        Geometric variables alone explain approximately 44.6% of the variance in log-transformed population density (R&sup2; = 0.446). While this is limited relative to the full complexity of urban density — shaped by socioeconomic, infrastructural, and historical factors — it confirms that block geometry captures a statistically meaningful portion of urban form variation correlated with density.
+      </p>
+      <p class="sb-body">
+        The p-values for all four variables are near zero, confirming that the observed relationships are statistically significant — a finding made reliable by the large sample size of 746,049 street blocks.
+      </p>
+    </div>
+
+    <div class="logisticregression">
+      <p class="sb-heading">Logistic Regression: Geometry as Classifier of Urbanity</p>
+      <p class="sb-body">
+        The original dataset includes an urbanity indicator (UR20) that classifies each street block as Urban or Rural. This classification, defined by the U.S. Census Bureau, is based on factors such as population density and spatial continuity — not on any geometric attributes. The objective of this analysis is to evaluate whether the four geometric features (Area, Isoperimetric Quotient, Rectangularity, and Solidity) can effectively predict this label.
+      </p>
+      <p class="sb-body">
+        A logistic regression model was trained on data from all ten metropolitan areas, using bootstrapping and 10-fold cross-validation to ensure robustness and generalization. The trained model was subsequently tested on an unseen city (Philadelphia) to evaluate transferability.
+      </p>
+      <p class="formula">
+        log <span class="frac"><span class="num">P(UR20 = 1)</span><span class="den">1 &minus; P(UR20 = 1)</span></span> = &beta;<sub>0</sub> + &beta;<sub>1</sub>&middot;area + &beta;<sub>2</sub>&middot;IQ + &beta;<sub>3</sub>&middot;rectangularity + &beta;<sub>4</sub>&middot;solidity
+      </p>
+      <table class="crs-table">
+        <tr><td>Intercept (&beta;<sub>0</sub>)</td><td>3.940</td></tr>
+        <tr><td>Area (&beta;<sub>1</sub>)</td><td>&minus;1.023</td></tr>
+        <tr><td>Isoperimetric Quotient (&beta;<sub>2</sub>)</td><td>&minus;0.028</td></tr>
+        <tr><td>Rectangularity (&beta;<sub>3</sub>)</td><td>&minus;0.330</td></tr>
+        <tr><td>Solidity (&beta;<sub>4</sub>)</td><td>0.988</td></tr>
+      </table>
+      <table class="crs-table">
+        <tr><td>Error Rate (10 training cities)</td><td>0.0299 &nbsp;(97.01% accuracy)</td></tr>
+        <tr><td>Error Rate (Philadelphia, unseen)</td><td>0.0626 &nbsp;(93.74% accuracy)</td></tr>
+      </table>
+      <p class="sb-body">
+        The model achieved 97.01% accuracy across the ten training cities and 93.74% accuracy on the unseen city of Philadelphia. These results demonstrate that street-block geometry alone provides a strong predictive basis for distinguishing urban from rural classifications, and that the learned relationships generalize well beyond the training data.
+      </p>
+      <div class="image-2col">
+        <div>
+          <img src="/street-block-urbanity-prediction/logit_pred_ur.png?v=20260725" alt="Philadelphia Predicted">
+          <p class="img-caption">Philadelphia: Predicted Urban vs. Rural Blocks</p>
+        </div>
+        <div>
+          <img src="/street-block-urbanity-prediction/philadelphia_ur.png?v=20260725" alt="Philadelphia Ground Truth">
+          <p class="img-caption">Philadelphia: Urban vs. Rural Blocks (Ground Truth)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="graphneuralnetwork">
+      <p class="sb-heading">Graph Neural Network</p>
+
+      <p class="sb-heading">Abstract</p>
+      <p class="sb-body">
+        This project extends the Street-Block Machine Learning study under the same fundamental premise: how much urban structure can be inferred solely from street-block geometry, independent of socioeconomic or land-use data. Using street-block data from the United States Census Bureau, the study focuses on the top 10 U.S. metropolitan areas by GDP. The ground-truth label is the UR20 attribute, framing the task as a binary classification problem (urban vs. rural).
+      </p>
+      <p class="sb-body">
+        While the previous ML approach relied on four handcrafted geometric features, this project asks a more fundamental question: can a model learn urbanity directly from raw geometry? Street blocks are represented as graphs derived from polygon topology, and a Graph Neural Network (GNN) is trained to classify urban versus rural blocks based purely on learned geometric representations. By replacing feature engineering with end-to-end geometric learning, the project evaluates the expressive limits of deep learning for urban form inference and clarifies what information is intrinsically embedded in street-block geometry alone.
+      </p>
+
+      <p class="sb-heading">Workflow</p>
+      <p class="sb-body">
+        <b>QGIS:</b> Loaded shapefiles, clipped to a 30-mile radius per city, calculated base geometric attributes, and exported processed layers.<br>
+        <b>PostgreSQL/PostGIS:</b> Stored city-wise processed street-block geometries and UR20 labels, enabling consistent querying and reproducible splits.<br>
+        <b>Python + PyTorch Geometric:</b> Loaded all 10 cities, converted blocks into graph representations, trained a GNN on 9 cities with Houston as a fixed validation set, and tested generalization on an unseen city: Philadelphia.
+      </p>
+      <img src="/street-block-urbanity-prediction/train_val_test.png?v=20260725" alt="Train/Validation/Test Split" class="img-full no-lightbox">
+
+      <p class="sb-heading">Street Block to Graph</p>
+      <p class="sb-body">
+        Street blocks can be modeled either as rasterized images or as graphs. An image representation forces a grid-based approximation and often loses precise corner-to-corner structure, while a graph preserves the true topology of the polygon — capturing explicit relationships between corners (nodes) and edges (connections).
+      </p>
+      <p class="sb-body">
+        Each street block is converted into a planar graph where polygon vertices become nodes and consecutive boundary segments become edges. Node features are stored in an N &times; 5 matrix, where each of the N vertices contains five attributes: (x, y) coordinates, turning angle &theta; at the vertex, and the lengths of the two adjacent boundary edges (l<sub>1</sub>, l<sub>2</sub>).
+      </p>
+      <p class="sb-body">
+        The conversion pipeline standardizes vertex ordering, removes duplicate and near-duplicate points, computes angles and edge lengths from the cleaned polygon boundary, builds the edge index from sequential vertex connectivity (including wrap-around from last to first vertex), and outputs a graph object: x &isin; &#8477;<sup>N&times;5</sup> and edge_index &isin; &#8469;<sup>2&times;E</sup>.
+      </p>
+      <div class="image-2col-equal">
+        <div>
+          <div class="img-frame"><img src="/street-block-urbanity-prediction/data_type.png?v=20260725" alt="Image vs Graph Representation" class="no-lightbox"></div>
+          <p class="img-caption">Image vs. Graph representation of a street block</p>
+        </div>
+        <div>
+          <div class="img-frame"><img src="/street-block-urbanity-prediction/graph_diagram.png?v=20260725" alt="Sample Graph Structure" class="no-lightbox"></div>
+          <p class="img-caption">Sample graph structure (x, y, &theta;, l<sub>1</sub>, l<sub>2</sub>)</p>
+        </div>
+      </div>
+
+      <p class="sb-heading">Neural Network Iterations</p>
+      <p class="sb-body">
+        The deep learning model is built around a GNN that learns hierarchical geometric representations of street-block graphs. Two architectural configurations were tested to evaluate the effect of model capacity on generalization.
+      </p>
+      <p class="sb-body"><b>Iteration 1</b> — Node embeddings are projected through a graph convolution layer into a 64-dimensional latent space, followed by global pooling and a multilayer perceptron (MLP) for binary classification:</p>
+      <p class="formula">Graph Conv &rarr; N &times; 64 &rarr; Global Pooling &rarr; MLP: 64 &rarr; 128 &rarr; 256 &rarr; 1</p>
+      <p class="sb-body"><b>Iteration 2</b> — Model capacity is increased to test whether richer geometric abstractions improve generalization. The convolution output is expanded to 128 dimensions, and the MLP uses a deeper but uniform architecture:</p>
+      <p class="formula">Graph Conv &rarr; N &times; 128 &rarr; Global Pooling &rarr; MLP: 128 &rarr; 128 &rarr; 128 &rarr; 128 &rarr; 1</p>
+      <p class="sb-body">
+        Across both iterations, the network is trained end-to-end using supervised learning with a binary classification objective. This iterative setup enables a direct comparison between compact and high-capacity architectures, clarifying the trade-off between expressiveness and overfitting when learning urban form purely from geometry.
+      </p>
+
+      <p class="sb-heading">Neural Network Architecture</p>
+      <img src="/street-block-urbanity-prediction/NN_diagram.png?v=20260725" alt="Neural Network Architecture Diagram" class="img-full no-lightbox">
+
+      <p class="sb-heading">Treating Imbalanced Data</p>
+      <img src="/street-block-urbanity-prediction/imbalanced.png?v=20260725" alt="Class Imbalance: Count vs Area" class="img-full">
+      <p class="sb-body">
+        The dataset exhibits severe class imbalance: urban blocks account for approximately 98% of all street blocks by count, while rural blocks represent a small minority. However, when evaluated by total area, the imbalance is less extreme — urban blocks cover roughly twice the area of rural blocks, reflecting the much larger spatial footprint of rural street blocks. Block count alone is therefore a misleading indicator of spatial dominance.
+      </p>
+      <p class="sb-body">
+        Synthetic oversampling methods such as SMOTE were intentionally not used. Street-block geometry is highly sensitive to small perturbations, and generating synthetic samples risks producing geometries that are topologically invalid or physically implausible — corrupting the learning signal in a graph-based model.
+      </p>
+      <p class="sb-body">
+        Instead, class imbalance is addressed through area-based loss weighting, so that misclassification penalties are proportional to the spatial footprint of each block rather than raw sample counts. This aligns the optimization objective with spatial reality, reduces bias toward over-predicting the majority urban class, and preserves the integrity of original geometries. By decoupling data representation from error weighting, the model maintains consistent graph inputs while correcting imbalance at the learning stage — enabling more meaningful generalization to unseen cities.
+      </p>
+    </div>
+
+    <div class="conclusion">
+      <p class="sb-heading">Conclusion</p>
+      <img src="/street-block-urbanity-prediction/philly_pred.png?v=20260725" alt="Philadelphia Final Prediction" class="img-full">
+      <p class="sb-body">
+        The deep learning approach achieves 94.55% accuracy, only marginally improving over the 93.74% accuracy obtained from the logistic regression model. A closer examination of the confusion matrices reveals where this difference originates. Logistic regression strongly favors the majority class, predicting urban blocks far more aggressively due to the overwhelming count imbalance. This results in very high urban recall but poor rural recognition, with many rural blocks incorrectly classified as urban.
+      </p>
+      <div class="image-2col image-2col-sm">
+        <div>
+          <img src="/street-block-urbanity-prediction/lr_confusion_matrix.png?v=20260725" alt="Logistic Regression Confusion Matrix">
+          <p class="img-caption">Logistic Regression Confusion Matrix</p>
+        </div>
+        <div>
+          <img src="/street-block-urbanity-prediction/nn_confusion_matrix.png?v=20260725" alt="Neural Network Confusion Matrix">
+          <p class="img-caption">Neural Network (GNN) Confusion Matrix</p>
+        </div>
+      </div>
+      <p class="sb-body">
+        The GNN demonstrates a more balanced error distribution. While overall accuracy gains are modest, the network improves both precision and recall for the minority rural class — reducing false urban predictions and yielding a cleaner separation between urban and rural blocks. This indicates that the GNN is better at extracting subtle geometric signals that distinguish large rural blocks from dense urban fabrics, even under severe class imbalance.
+      </p>
+      <p class="sb-body">
+        Despite this improvement, the results expose a clear limitation. Across 50 training epochs and both architectural iterations, the loss and error rate plateau after approximately 20 epochs without further meaningful improvement. This suggests that street-block geometry alone has bounded explanatory power for urban classification. While the GNN is more expressive than logistic regression, it is also less efficient and more computationally expensive, delivering only incremental gains. The outcome implies that deep learning does not fundamentally overcome the information ceiling imposed by geometry-only inputs — rather, it slightly refines classification within those limits. This reinforces the conclusion that urbanity is only partially encoded in block shape, and that richer contextual or semantic data would be required for significant performance gains beyond this threshold.
+      </p>
+      <div class="image-2col image-2col-lg">
+        <div>
+          <img src="/street-block-urbanity-prediction/suburbNJ.png?v=20260725" alt="Suburb New Jersey Ambiguous Patterns">
+          <p class="img-caption">Ambiguous street block geometric patterns: Suburb New Jersey</p>
+        </div>
+        <div>
+          <img src="/street-block-urbanity-prediction/Bay.png?v=20260725" alt="Bay Area Ambiguous Patterns">
+          <p class="img-caption">Ambiguous street block geometric patterns: Bay Area</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Street-Block Urbanity Prediction</p>
+      <p class="subpage-footer__sub">&copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="/"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <div id="lightbox"><img id="lightbox-img" src="" alt=""></div>
+
+  <script src="/shared/site.js?v=20260724"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+
+      document.querySelectorAll('main img:not(.no-lightbox)').forEach(img => {
+        img.addEventListener('click', () => {
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('active');
+        });
+      });
+
+      lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') lightbox.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>

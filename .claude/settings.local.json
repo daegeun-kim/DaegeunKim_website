@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(curl -s \"https://raw.githubusercontent.com/daegeun-kim/Explorentory/main/frontend/index.html\")",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "PowerShell(\\(Get-Command python -ErrorAction SilentlyContinue\\).Source; \\(Get-Command py -ErrorAction SilentlyContinue\\).Source; \\(Get-Command node -ErrorAction SilentlyContinue\\).Source)",
+      "Bash(python *)",
+      "Bash(git check-ignore *)"
     ]
   }
 }

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parametric City Generation &amp; Analysis</title>
+  <meta name="description" content="A procedural city generated in Grasshopper from street networks, building geometry, and density inputs, then evaluated with solar and view analysis across 27 variations.">
+  <link rel="icon" type="image/png" href="/image/favicon.png?v=20260725">
+  <link href="/shared/site.css?v=20260724" rel="stylesheet"/>
+  <link href="/parametric-city-generation/parametric-city-generation.css?v=20260724" rel="stylesheet"/>
+  <link rel="canonical" href="https://daegeunkim.com/parametric-city-generation/">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="container site-header__inner">
+      <a class="wordmark" href="/">Daegeun&nbsp;Kim</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" data-site-nav aria-label="Primary">
+        <ul class="site-nav__list">
+          <li><a class="nav-link" href="/">Work</a></li>
+          <li><a class="nav-link" href="/about/">About</a></li>
+          <li><a class="nav-link" href="/about/#contact">Contact</a></li>
+          <li aria-hidden="true"><span class="nav-divider"></span></li>
+          <li><a class="nav-link" href="https://www.linkedin.com/in/daegeunkim/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+          <li><a class="nav-link" href="https://github.com/daegeun-kim" target="_blank" rel="noopener noreferrer">GitHub<span class="nav-link__ext" aria-hidden="true">&#8599;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="subpage">
+    <figure class="proj-media">
+      <img src="/parametric-city-generation/title.png?v=20260725" alt="Parametrically generated city model with varied block and building forms." loading="eager" decoding="async">
+    </figure>
+
+    <section class="proj-hero">
+      <p class="eyebrow">Generative &middot; Urban</p>
+      <h1 class="proj-hero__title">Parametric City Generation &amp; Analysis</h1>
+      <p class="proj-hero__summary">
+        A procedural city was built in Grasshopper from three inputs, street network, building geometry,
+        and density, then evaluated with solar and view analysis across 27 variations.
+      </p>
+      <div class="proj-hero__meta">
+        <div>
+          <h2>Methods</h2>
+          <p class="val">Generative design &middot; Parametric modeling &middot; Solar &amp; view analysis</p>
+        </div>
+        <div>
+          <h2>Tools</h2>
+          <p class="val">Rhino3D + Grasshopper &middot; Ladybug &middot; DeCodingSpaces</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="section-title">Generating the city</p>
+    <div class="text">
+      Using Rhino3D and parametric plugins, a procedural city model was developed from three primary
+      inputs: the street network, building geometry, and density allocation. The street network sets
+      block boundaries and overall structure; buildings are generated to fit each block; and density is
+      driven by attraction points, so building height, footprint, and massing adapt to location.
+    </div>
+    <figure class="shot shot-wide">
+      <img src="/parametric-city-generation/image1.png?v=20260725" alt="City model generated from street network, building geometry, and density inputs." loading="lazy" decoding="async">
+      <figcaption><b>Procedural city.</b> Blocks and buildings driven by street network and density points.</figcaption>
+    </figure>
+
+    <p class="section-title">27 variations</p>
+    <div class="text">
+      Combining inputs 1 and 2, buildings fill the street grid under different density-allocation points
+      that decide which areas read as downtown and which as suburb, giving each city a contextual
+      identity. Running three iterations of each input produces 3 &times; 3 &times; 3 = 27 generated cities.
+    </div>
+    <figure class="shot shot-wide">
+      <img src="/parametric-city-generation/image2.png?v=20260725" alt="Grasshopper script and generated city variations." loading="lazy" decoding="async">
+      <figcaption><b>Grasshopper script.</b> One definition, twenty-seven cities.</figcaption>
+    </figure>
+    <figure class="shot shot-wide">
+      <img src="/parametric-city-generation/image3.png?v=20260725" alt="Grid of the generated city variations." loading="lazy" decoding="async">
+      <figcaption><b>Variation set.</b> Density and geometry combinations across the run.</figcaption>
+    </figure>
+
+    <p class="section-title">Solar analysis</p>
+    <div class="text">
+      The solar analysis shows a clear pattern: south-facing facades receive the most light, while
+      surfaces with high obstruction get less. For solar exposure, orientation usually matters more than
+      the surroundings.
+    </div>
+    <figure class="shot shot-wide">
+      <img src="/parametric-city-generation/image4.png?v=20260725" alt="Solar radiation analysis across the generated city." loading="lazy" decoding="async">
+      <figcaption><b>Solar radiation.</b> Orientation dominates a facade's exposure.</figcaption>
+    </figure>
+
+    <p class="section-title">View analysis</p>
+    <div class="text">
+      For view, the pattern flips: higher floors are almost always better, and the result depends far
+      more on the surroundings than on solar. Nearby taller buildings affect the view more than a
+      building's own height or orientation.
+    </div>
+  </main>
+
+  <footer class="subpage-footer">
+    <div class="container">
+      <p class="subpage-footer__title">Parametric City Generation &amp; Analysis</p>
+      <p class="subpage-footer__sub">&copy; 2026 Daegeun Kim</p>
+      <a class="subpage-footer__back" href="/"><span aria-hidden="true">&#8592;</span> Back to all work</a>
+    </div>
+  </footer>
+
+  <script src="/shared/site.js?v=20260724"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+/* ============================================================
+   Manhattan Residential Clustering (dark theme).
+   Uses the shared subpage system for hero, sections, and text.
+   This file styles only the interactive map explorer component.
+   ============================================================ */
+
+.map-explorer { margin: var(--space-4) 0 var(--space-6); }
+
+.map-explorer__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: var(--space-3);
+}
+.map-explorer__controls button {
+  font-family: inherit;
+  font-size: var(--fs-meta);
+  font-weight: var(--w-medium);
+  color: var(--ink-2);
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.35rem 0.85rem;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              background var(--dur) var(--ease);
+}
+.map-explorer__controls button:hover { color: var(--ink); border-color: var(--line-strong); }
+.map-explorer__controls button.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.map-explorer__frame {
+  position: relative;
+  width: 100%;
+  height: clamp(420px, 72vh, 760px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #0b0e12;
+}
+.map-explorer__map { position: absolute; inset: 0; }
+
+.map-explorer__caption {
+  margin-top: var(--space-3);
+  font-size: var(--fs-small);
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+/* Split layout: a tall, narrow map on the left with the layer buttons
+   stacked in a column at the right, centered against the map height. */
+.map-explorer--split {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(150px, 1fr);
+  column-gap: var(--space-4);
+  align-items: center;
+}
+.map-explorer--split .map-explorer__frame {
+  grid-column: 1;
+  grid-row: 1;
+  height: clamp(480px, 82vh, 860px);
+}
+.map-explorer--split .map-explorer__controls {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;   /* every pill spans the column, so all borders match */
+  margin-bottom: 0;
+}
+.map-explorer--split .map-explorer__caption {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+@media (max-width: 720px) {
+  .map-explorer--split {
+    display: block;
+  }
+  .map-explorer--split .map-explorer__frame {
+    height: clamp(420px, 72vh, 760px);
+  }
+  .map-explorer--split .map-explorer__controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: var(--space-3);
+  }
+}
+
+.map-explorer__caption b { color: var(--ink); }
+.map-explorer__caption .me-stat { color: var(--accent-strong); font-weight: var(--w-medium); }
+.map-explorer__caption .me-weights { color: var(--ink-3); font-size: var(--fs-meta); }
+
+/* Keep Mapbox's own controls legible on the dark frame */
+.map-explorer .mapboxgl-ctrl-attrib { font-size: 10px; }
+
+/* Cluster figure (pre-composed maps, button-switched) */
+.cluster-figure { margin: 0; }
+.cluster-figure img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0b0e12;
+}

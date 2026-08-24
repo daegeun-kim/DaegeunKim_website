@@ -1,0 +1,21 @@
+/* ============================================================
+   Manhattan Transit Accessibility Mapping. Uses the shared
+   subpage system (shared/site.css). Only a small layout helper
+   below places the datasets table next to its preview image.
+   ============================================================ */
+
+/* Datasets: table (narrower, left) beside the initial-data image (right). */
+.subpage .data-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  margin: var(--space-4) 0;
+}
+.subpage .data-row .table-wrap { flex: 1 1 62%; }
+.subpage .data-row .table-wrap .tech-table { margin: 0; }
+.subpage .data-row__img { flex: 0 0 34%; margin: 0; }
+
+@media (max-width: 720px) {
+  .subpage .data-row { flex-direction: column; }
+  .subpage .data-row__img { flex-basis: auto; width: 100%; max-width: 460px; }
+}
