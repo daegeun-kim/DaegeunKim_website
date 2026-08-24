@@ -231,6 +231,10 @@
 }
 
 .project__title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
   font-size: var(--fs-h3);
   font-weight: var(--w-bold);
   letter-spacing: -0.012em;
@@ -238,14 +242,42 @@
 }
 .project__title a {
   color: var(--ink);
-  transition: color var(--dur) var(--ease);
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
-.project__title a::after {
+/* Only the case-study link stretches over the whole card; scoping this
+   to .project__link keeps the demo pill clickable in its own right. */
+.project__title .project__link::after {
   content: "";
   position: absolute;
   inset: 0;
 }
-.project:hover .project__title a { color: var(--blue-strong); }
+.project:hover .project__title .project__link { color: var(--blue-strong); }
+
+/* Live-demo shortcut beside the title, for the projects that have one.
+   Same pill as the subpage hero button, sized down for the card.
+   z-index lifts it above the full-card overlay above. */
+.project__demo {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.42rem 1.05rem;
+  font-size: var(--fs-small);
+  font-weight: var(--w-medium);
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+.project__demo:hover {
+  background: var(--bg-elev);
+  border-color: var(--accent);
+  color: var(--accent-strong);
+}
 
 .project__summary {
   font-size: var(--fs-small);

@@ -4,8 +4,8 @@
    subpage layer (shared/site.css). Token-based.
    ============================================================ */
 
-/* "Open interactive map" button, sitting below the hero meta. */
-.hero-actions { margin-top: var(--space-4); }
+/* "Open interactive map" button, sitting directly below the hero title. */
+.hero-actions { margin-top: var(--space-3); }
 .btn-map {
   display: inline-flex;
   align-items: center;
@@ -14,8 +14,8 @@
   background: #fff;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  padding: 0.5rem 1.1rem;
-  font-size: var(--fs-small);
+  padding: 0.78rem 1.7rem;
+  font-size: calc(var(--fs-small) * 1.2);
   font-weight: var(--w-medium);
   transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }

@@ -7,7 +7,7 @@
   <meta name="description" content="A deep-learning pipeline that converts raster floorplans into editable, CAD-like vector geometry, combining SegFormer semantic segmentation with graph-based wall-topology inference.">
   <link rel="icon" type="image/png" href="/image/favicon.png?v=20260725">
   <link href="/shared/site.css?v=20260724" rel="stylesheet"/>
-  <link href="/neural-floorplan/neural-floorplan.css?v=20260725" rel="stylesheet"/>
+  <link href="/neural-floorplan/neural-floorplan.css?v=20260824" rel="stylesheet"/>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <link rel="canonical" href="https://daegeunkim.com/neural-floorplan/">
 </head>
@@ -41,6 +41,14 @@
     <section class="proj-hero">
       <p class="eyebrow">AI &middot; Computer Vision</p>
       <h1 class="proj-hero__title">Neural Floorplan</h1>
+      <div class="hero-actions">
+        <a class="btn-demo" href="/neural-floorplan/demo/">Open interactive demo<span aria-hidden="true">&#8599;</span></a>
+        <p class="hero-actions__note">
+          Step three floor plans through all six pipeline stages, then toggle layers on the
+          exported vector drawing. Every stage image and every number is real pipeline output,
+          replayed as static files rather than inferred in the browser.
+        </p>
+      </div>
       <p class="proj-hero__summary">
         A deep-learning pipeline that converts raster floorplans into editable, CAD-like vector geometry,
         combining SegFormer semantic segmentation with graph-based wall-topology inference.
@@ -58,14 +66,6 @@
           <h2>Code</h2>
           <p class="val"><a href="https://github.com/daegeun-kim/neural_floorplan" target="_blank" rel="noopener noreferrer">GitHub<span aria-hidden="true">&#8599;</span></a></p>
         </div>
-      </div>
-      <div class="hero-actions">
-        <a class="btn-demo" href="/neural-floorplan/demo/">Open interactive demo<span aria-hidden="true">&#8599;</span></a>
-        <p class="hero-actions__note">
-          Step three floor plans through all six pipeline stages, then toggle layers on the
-          exported vector drawing. Every stage image and every number is real pipeline output,
-          replayed as static files rather than inferred in the browser.
-        </p>
       </div>
     </section>
 
