@@ -125,3 +125,38 @@
 .bench-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 0.6rem; font-size: var(--fs-meta); color: var(--ink-2); }
 .bench-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .bench-legend i { width: 13px; height: 13px; border-radius: 2px; flex: none; }
+
+/* --- Hero call-to-action ------------------------------------
+   The demo link, styled to match `.btn-map` on the No True North
+   subpage so the two projects offer their live artefacts the same
+   way. Kept project-local rather than promoted into shared/site.css:
+   only these two pages have one, and the shared layer is for
+   patterns every subpage uses. */
+.hero-actions { margin-top: var(--space-4); }
+
+.btn-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-size: var(--fs-small);
+  font-weight: var(--w-medium);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.btn-map:hover { background: var(--bg-elev); border-color: var(--accent); color: var(--accent-strong); }
+
+/* What the visitor is actually about to open. The 3D is genuinely
+   interactive but the answers are recordings, and saying so here
+   costs one line and prevents the demo from over-promising before
+   it has loaded. */
+.hero-actions__note {
+  margin: var(--space-2) 0 0;
+  max-width: 46ch;
+  font-size: var(--fs-meta);
+  line-height: 1.6;
+  color: var(--ink-3);
+}
