@@ -8,6 +8,40 @@
    ============================================================ */
 
 /*-----------------------------------------------------------------*/
+/* Hero action button                                               */
+/*-----------------------------------------------------------------*/
+
+/* "Open interactive demo" button, sitting below the hero meta.
+   Matches .btn-map on the No True North subpage. */
+.hero-actions { margin-top: var(--space-4); }
+.btn-demo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 0.5rem 1.1rem;
+  font-size: var(--fs-small);
+  font-weight: var(--w-medium);
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.btn-demo:hover { background: var(--bg-elev); border-color: var(--accent); color: var(--accent-strong); }
+
+/* What the visitor is actually about to open. The stage-by-stage walkthrough
+   is real pipeline output, but it is replayed rather than inferred live, and
+   saying so here costs one line and prevents the demo from over-promising
+   before it has loaded. */
+.hero-actions__note {
+  margin: var(--space-2) 0 0;
+  max-width: 46ch;
+  font-size: var(--fs-meta);
+  line-height: 1.6;
+  color: var(--ink-3);
+}
+
+/*-----------------------------------------------------------------*/
 /* Status badges                                                    */
 /*-----------------------------------------------------------------*/
 

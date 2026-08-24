@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
+  <!-- Generator: Adobe Illustrator 30.7.0, SVG Export Plug-In . SVG Version: 2.1.4 Build 114)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #1a1a1a;
+        fill-rule: evenodd;
+      }
+
+      .st1 {
+        stroke: #a046b4;
+        stroke-width: 2px;
+      }
+
+      .st1, .st2, .st3, .st4 {
+        fill: none;
+      }
+
+      .st2 {
+        stroke: #3a78dc;
+        stroke-width: 4px;
+      }
+
+      .st3 {
+        stroke: #eb8c50;
+      }
+
+      .st3, .st4 {
+        stroke-width: 1.5px;
+      }
+
+      .st4 {
+        stroke: #dc5a5a;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1" data-px-to-mm="26.424501424501425" data-scale-status="estimated" data-unit="mm">
+    <g id="walls">
+      <path class="st0" d="M331.03,103.78h101.46l.23,35.63,7.56-.05-.27-43.14H117.22v8.01h7.56v-.45h198.69v57.22h7.56v-57.22Z"/>
+      <path class="st0" d="M323.47,226h7.56v-38.51h-7.56v38.51Z"/>
+      <path class="st0" d="M380,217.78v-7.56h-52v7.56h52Z"/>
+      <path class="st0" d="M323.47,228h7.56v-2h-7.56v2Z"/>
+      <path class="st0" d="M323.47,292h7.56v-43h-7.56v43Z"/>
+      <path class="st0" d="M301,379.22h-11.22v-169H124.78v-7.16h-7.56v14.72h165v169h18.78v-7.56Z"/>
+      <path class="st0" d="M331,323.78h72.78v-21.82l28.94-.6v15.3h7.56v-45.36h-7.56v22.49l-36.5.75v21.68h-69.05v2.27l-3.7-.21-.08,1.51,3.78.21-3.79.05.09,6,7.56-.1-.03-2.17Z"/>
+      <path class="st0" d="M323.47,354h7.56v-1.51h-7.56v1.51Z"/>
+      <path class="st0" d="M432.86,210.22h-30.86v7.56h30.84l-.12,12.48,7.56.08.17-16.3-3.78-.04,3.78-.02-.17-32.61-7.56.04.14,28.81Z"/>
+      <path class="st0" d="M400,279.78v-7.56h-62v7.56h62Z"/>
+      <path class="st0" d="M327.25,379.22v1.27h-3.78v6.29h117.1l-.29-28.16-7.56.08.21,20.52h-105.68Z"/>
+    </g>
+    <g id="windows">
+      <line class="st2" x1="121" y1="104.23" x2="121" y2="172.31"/>
+      <line class="st2" x1="436.5" y1="139.39" x2="436.5" y2="181.39"/>
+      <line class="st2" x1="436.5" y1="230.3" x2="436.5" y2="271.3"/>
+      <line class="st2" x1="436.5" y1="316.66" x2="436.5" y2="358.66"/>
+    </g>
+    <g id="doors">
+      <g id="door_0" data-door-type="single_swing" data-type="door">
+        <line id="door_0_origin" class="st1" x1="327.25" y1="161" x2="327.25" y2="187.49" data-type="door_origin"/>
+        <line id="door_0_leaf" class="st3" x1="327.25" y1="161" x2="300.76" y2="161" data-type="door_leaf"/>
+        <path id="door_0_arc" class="st4" d="M327.25,187.49c-14.63,0-26.49-11.86-26.49-26.49" data-type="door_arc"/>
+      </g>
+      <g id="door_1" data-door-type="single_swing" data-type="door">
+        <line id="door_1_origin" class="st1" x1="121" y1="203.06" x2="121" y2="169" data-type="door_origin"/>
+        <line id="door_1_leaf" class="st3" x1="121" y1="203.06" x2="86.94" y2="203.06" data-type="door_leaf"/>
+        <path id="door_1_arc" class="st4" d="M121,169c-18.81,0-34.06,15.25-34.06,34.06" data-type="door_arc"/>
+      </g>
+      <g id="door_2" data-door-type="single_swing" data-type="door">
+        <line id="door_2_origin" class="st1" x1="380" y1="214" x2="402" y2="214" data-type="door_origin"/>
+        <line id="door_2_leaf" class="st3" x1="380" y1="214" x2="380" y2="192" data-type="door_leaf"/>
+        <path id="door_2_arc" class="st4" d="M402,214c0-12.15-9.85-22-22-22" data-type="door_arc"/>
+      </g>
+      <g id="door_3" data-door-type="single_swing" data-type="door">
+        <line id="door_3_origin" class="st1" x1="327.25" y1="249" x2="327.25" y2="228" data-type="door_origin"/>
+        <line id="door_3_leaf" class="st3" x1="327.25" y1="249" x2="306.25" y2="249" data-type="door_leaf"/>
+        <path id="door_3_arc" class="st4" d="M327.25,228c-11.6,0-21,9.4-21,21" data-type="door_arc"/>
+      </g>
+      <g id="door_4" data-door-type="single_swing" data-type="door">
+        <line id="door_4_origin" class="st1" x1="327.25" y1="292" x2="327.25" y2="318.49" data-type="door_origin"/>
+        <line id="door_4_leaf" class="st3" x1="327.25" y1="292" x2="300.76" y2="292" data-type="door_leaf"/>
+        <path id="door_4_arc" class="st4" d="M327.25,318.49c-14.63,0-26.49-11.86-26.49-26.49" data-type="door_arc"/>
+      </g>
+      <g id="door_5" data-door-type="single_swing" data-type="door">
+        <line id="door_5_origin" class="st1" x1="327.25" y1="326" x2="327.25" y2="352.49" data-type="door_origin"/>
+        <line id="door_5_leaf" class="st3" x1="327.25" y1="326" x2="353.74" y2="326" data-type="door_leaf"/>
+        <path id="door_5_arc" class="st4" d="M327.25,352.49c14.63,0,26.49-11.86,26.49-26.49" data-type="door_arc"/>
+      </g>
+      <g id="door_6" data-door-type="single_swing" data-type="door">
+        <line id="door_6_origin" class="st1" x1="327.25" y1="354" x2="327.25" y2="380.49" data-type="door_origin"/>
+        <line id="door_6_leaf" class="st3" x1="327.25" y1="354" x2="300.76" y2="354" data-type="door_leaf"/>
+        <path id="door_6_arc" class="st4" d="M327.25,380.49c-14.63,0-26.49-11.86-26.49-26.49" data-type="door_arc"/>
+      </g>
+      <g id="door_7" data-door-type="single_swing" data-type="door">
+        <line id="door_7_origin" class="st1" x1="301" y1="383" x2="327.25" y2="383" data-type="door_origin"/>
+        <line id="door_7_leaf" class="st3" x1="301" y1="383" x2="301" y2="409.25" data-type="door_leaf"/>
+        <path id="door_7_arc" class="st4" d="M327.25,383c0,14.5-11.75,26.25-26.25,26.25" data-type="door_arc"/>
+      </g>
+    </g>
+  </g>
+</svg>
