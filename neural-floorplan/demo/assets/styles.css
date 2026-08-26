@@ -273,7 +273,7 @@
   border-radius: 0 var(--radius) var(--radius) 0;
 }
 
-.sheet { margin: 0; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.sheet { position: relative; margin: 0; display: flex; flex-direction: column; flex: 1; min-height: 0; }
 
 .sheet__head {
   display: flex;
@@ -319,21 +319,56 @@
      so this height is what actually governs how large they render. */
   flex: 1;
   min-height: 0;
+  /* An explicit 0-floor track. Without it the auto row is sized from the
+     media's aspect ratio and can exceed the field, which crops the drawing
+     on short viewports. */
   display: grid;
-  place-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
   padding: var(--space-3);
   background: #ffffff;
   transition: opacity var(--dur) var(--ease);
-  overflow: hidden;
+  /* Scrolls only once zoomed past fit; the canvas is exactly the field
+     until then. */
+  overflow: auto;
+  overscroll-behavior: contain;
 }
 
 .sheet__field[data-fading="true"] { opacity: 0; }
+
+/* The zoom surface. At fit it matches the field exactly; zooming grows it
+   and the field scrolls, which also gives touch devices native panning. */
+.sheet__canvas {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.sheet__canvas[data-zoomed="true"] { cursor: grab; }
+.sheet__canvas[data-dragging="true"] { cursor: grabbing; }
+
+/* --sheet-max caps *automatic* upscaling at fit so a 512px raster is never
+   blown up unasked. Once the reader deliberately zooms, that cap has to go,
+   or the drawing stops growing while the canvas keeps expanding. */
+.sheet__canvas[data-zoomed="true"] .sheet__img,
+.sheet__canvas[data-zoomed="true"] .sheet__vector {
+  max-width: none;
+  max-height: none;
+}
 
 .sheet__img,
 .sheet__vector {
   grid-area: 1 / 1;
   width: 100%;
   height: 100%;
+  min-width: 0;
+  min-height: 0;
   max-width: var(--sheet-max);
   max-height: var(--sheet-max);
   margin: auto;
@@ -344,7 +379,7 @@
 
 .sheet__vector { display: grid; place-items: center; width: 100%; height: 100%; }
 .sheet__vector[hidden] { display: none; }
-.sheet__vector svg { width: 100%; height: 100%; max-width: 100%; max-height: 100%; }
+.sheet__vector svg { width: 100%; height: 100%; max-width: 100%; max-height: 100%; display: block; }
 
 /* layer visibility, driven from app.js */
 .sheet__vector.hide-walls #walls,
@@ -361,6 +396,72 @@
 }
 
 .sheet__note strong { color: var(--ink); font-weight: var(--w-semi); }
+
+/* ------------------------------------------------------------------- zoom
+   Sits on the drawing itself rather than in the sheet header, so it is within
+   thumb reach on a phone and stays put while the field scrolls. */
+
+.zoom {
+  /* Anchored to the sheet, not to the field. The field scrolls once the
+     drawing is zoomed, so anything positioned inside it would drift away
+     from the corner. Offset by the scrollbar gutter so the buttons stay
+     clear of it. */
+  position: absolute;
+  right: calc(var(--space-2) + 6px);
+  bottom: calc(var(--space-2) + 6px);
+  z-index: 2;
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 3px rgba(20, 24, 29, 0.08);
+  overflow: hidden;
+}
+
+.zoom__btn,
+.zoom__level {
+  font-family: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.zoom__btn {
+  width: 2.1rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  padding: 0.45rem 0;
+}
+
+.zoom__level {
+  min-width: 3.4rem;
+  padding: 0.45rem 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+
+.zoom__btn:hover,
+.zoom__level:hover { background: var(--accent-soft); color: var(--accent-strong); }
+
+.zoom__btn[aria-disabled="true"] {
+  color: var(--line-strong);
+  cursor: default;
+  background: transparent;
+}
+
+/* Touch targets stay finger-sized on small screens. */
+@media (max-width: 900px) {
+  .zoom__btn { width: 2.6rem; padding: 0.6rem 0; font-size: 1.2rem; }
+  .zoom__level { min-width: 3.6rem; padding: 0.6rem 0.35rem; }
+}
 
 /* layers + downloads */
 

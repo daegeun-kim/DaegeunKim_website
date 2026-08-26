@@ -187,7 +187,11 @@
     sheetName: document.getElementById("sheetName"),
     sheetFull: document.getElementById("sheetFull"),
     sheetField: document.getElementById("sheetField"),
+    sheetCanvas: document.getElementById("sheetCanvas"),
     sheetImg: document.getElementById("sheetImg"),
+    zoomIn: document.getElementById("zoomIn"),
+    zoomOut: document.getElementById("zoomOut"),
+    zoomLevel: document.getElementById("zoomLevel"),
     sheetVector: document.getElementById("sheetVector"),
     sheetNote: document.getElementById("sheetNote"),
     layers: document.getElementById("layers"),
@@ -203,6 +207,7 @@
     running: false,
     timer: null,
     fadeTimer: null,
+    zoom: 1,
     hidden: {}
   };
 
@@ -311,6 +316,7 @@
 
   function setStage(i) {
     state.stageIndex = i;
+    resetZoom();
     // Clicking through the ledger faster than the fade would otherwise leave
     // two pending renders racing; the later click must win.
     if (state.fadeTimer) { window.clearTimeout(state.fadeTimer); state.fadeTimer = null; }
@@ -370,6 +376,120 @@
     });
   }
 
+  /* ------------------------------------------------------------------- zoom
+     Zoom works by growing a canvas inside a scrolling field rather than by
+     transforming the media. That keeps scrollbars honest, gives touch devices
+     native panning for free, and lets the SVG stage re-render crisply at any
+     level instead of being scaled as a bitmap. */
+
+  var ZOOM_STEPS = [1, 1.5, 2, 3, 4];
+
+  function zoomIndex() {
+    var i = ZOOM_STEPS.indexOf(state.zoom);
+    return i === -1 ? 0 : i;
+  }
+
+  function applyZoom(keepCentre) {
+    var field = refs.sheetField;
+    var z = state.zoom;
+
+    // Where the viewport centre sits in canvas space, before resizing.
+    var cx = 0.5, cy = 0.5;
+    if (keepCentre && field.scrollWidth > 0 && field.scrollHeight > 0) {
+      cx = (field.scrollLeft + field.clientWidth / 2) / field.scrollWidth;
+      cy = (field.scrollTop + field.clientHeight / 2) / field.scrollHeight;
+    }
+
+    if (z === 1) {
+      refs.sheetCanvas.style.width = "";
+      refs.sheetCanvas.style.height = "";
+    } else {
+      var style = window.getComputedStyle(field);
+      var w = field.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+      var h = field.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+      refs.sheetCanvas.style.width = Math.round(w * z) + "px";
+      refs.sheetCanvas.style.height = Math.round(h * z) + "px";
+    }
+
+    refs.sheetCanvas.dataset.zoomed = z > 1 ? "true" : "false";
+
+    // Restore the centre so zooming feels anchored rather than jumping home.
+    if (z > 1) {
+      field.scrollLeft = cx * field.scrollWidth - field.clientWidth / 2;
+      field.scrollTop = cy * field.scrollHeight - field.clientHeight / 2;
+    }
+
+    refs.zoomLevel.textContent = z === 1 ? "Fit" : Math.round(z * 100) + "%";
+    refs.zoomOut.setAttribute("aria-disabled", z === ZOOM_STEPS[0] ? "true" : "false");
+    refs.zoomIn.setAttribute("aria-disabled", z === ZOOM_STEPS[ZOOM_STEPS.length - 1] ? "true" : "false");
+  }
+
+  function setZoom(z, keepCentre) {
+    var clamped = Math.min(Math.max(z, ZOOM_STEPS[0]), ZOOM_STEPS[ZOOM_STEPS.length - 1]);
+    if (clamped === state.zoom) { applyZoom(keepCentre); return; }
+    state.zoom = clamped;
+    applyZoom(keepCentre);
+  }
+
+  function resetZoom() {
+    state.zoom = 1;
+    refs.sheetField.scrollTop = 0;
+    refs.sheetField.scrollLeft = 0;
+    applyZoom(false);
+  }
+
+  refs.zoomIn.addEventListener("click", function () {
+    setZoom(ZOOM_STEPS[Math.min(zoomIndex() + 1, ZOOM_STEPS.length - 1)], true);
+  });
+  refs.zoomOut.addEventListener("click", function () {
+    setZoom(ZOOM_STEPS[Math.max(zoomIndex() - 1, 0)], true);
+  });
+  refs.zoomLevel.addEventListener("click", resetZoom);
+
+  // Double-click / double-tap toggles between fit and 2x.
+  refs.sheetCanvas.addEventListener("dblclick", function () {
+    setZoom(state.zoom === 1 ? 2 : 1, state.zoom === 1);
+  });
+
+  // Drag to pan with a mouse; touch already pans by scrolling the field.
+  (function enableDragPan() {
+    var dragging = false, startX = 0, startY = 0, startLeft = 0, startTop = 0;
+
+    refs.sheetCanvas.addEventListener("pointerdown", function (e) {
+      if (state.zoom === 1 || e.pointerType === "touch" || e.button !== 0) return;
+      dragging = true;
+      startX = e.clientX; startY = e.clientY;
+      startLeft = refs.sheetField.scrollLeft; startTop = refs.sheetField.scrollTop;
+      refs.sheetCanvas.dataset.dragging = "true";
+      refs.sheetCanvas.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+
+    refs.sheetCanvas.addEventListener("pointermove", function (e) {
+      if (!dragging) return;
+      refs.sheetField.scrollLeft = startLeft - (e.clientX - startX);
+      refs.sheetField.scrollTop = startTop - (e.clientY - startY);
+    });
+
+    function endDrag(e) {
+      if (!dragging) return;
+      dragging = false;
+      refs.sheetCanvas.dataset.dragging = "false";
+      if (refs.sheetCanvas.hasPointerCapture(e.pointerId)) {
+        refs.sheetCanvas.releasePointerCapture(e.pointerId);
+      }
+    }
+    refs.sheetCanvas.addEventListener("pointerup", endDrag);
+    refs.sheetCanvas.addEventListener("pointercancel", endDrag);
+  })();
+
+  // A zoomed canvas is sized in pixels, so it has to be recomputed when the
+  // field changes size.
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(function () { if (state.zoom !== 1) applyZoom(true); });
+    ro.observe(refs.sheetField);
+  }
+
   /* -------------------------------------------------------------------- run */
 
   function startRun() {
@@ -416,4 +536,5 @@
   buildLedger();
   buildLayers();
   selectSample(0);
+  applyZoom(false);
 })();

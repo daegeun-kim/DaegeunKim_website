@@ -7,7 +7,7 @@
   <meta name="description" content="Step through the Neural Floorplan pipeline one stage at a time: preprocessing, seven-class segmentation, wall-graph inference, orthogonal alignment, opening hosting, and the exported classified vector drawing.">
   <link rel="icon" type="image/png" href="/image/favicon.png?v=20260725">
   <link href="/shared/site.css?v=20260724" rel="stylesheet"/>
-  <link href="/neural-floorplan/demo/assets/styles.css?v=20260725" rel="stylesheet"/>
+  <link href="/neural-floorplan/demo/assets/styles.css?v=20260824" rel="stylesheet"/>
   <link rel="canonical" href="https://daegeunkim.com/neural-floorplan/demo/">
 </head>
 <body>
@@ -76,8 +76,18 @@
           </div>
 
           <div class="sheet__field" id="sheetField" aria-live="polite">
-            <img class="sheet__img" id="sheetImg" alt="">
-            <div class="sheet__vector" id="sheetVector" hidden></div>
+            <div class="sheet__canvas" id="sheetCanvas">
+              <img class="sheet__img" id="sheetImg" alt="">
+              <div class="sheet__vector" id="sheetVector" hidden></div>
+            </div>
+          </div>
+
+          <!-- Outside .sheet__field on purpose: the field is what scrolls when
+               zoomed, so a control inside it would drift with the drawing. -->
+          <div class="zoom" role="group" aria-label="Zoom">
+            <button class="zoom__btn" id="zoomOut" type="button" aria-label="Zoom out">&minus;</button>
+            <button class="zoom__level" id="zoomLevel" type="button" aria-label="Reset zoom to fit">Fit</button>
+            <button class="zoom__btn" id="zoomIn" type="button" aria-label="Zoom in">+</button>
           </div>
         </figure>
 
@@ -151,8 +161,8 @@
     </div>
   </footer>
 
-  <script src="/neural-floorplan/demo/assets/data.js?v=20260725"></script>
-  <script src="/neural-floorplan/demo/assets/app.js?v=20260725"></script>
+  <script src="/neural-floorplan/demo/assets/data.js?v=20260824"></script>
+  <script src="/neural-floorplan/demo/assets/app.js?v=20260824"></script>
   <script src="/shared/site.js?v=20260724"></script>
 </body>
 </html>
